@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Decima Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/decima-bold.ttf') format('truetype');
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Decima Bold;
+  background-color: #fbfbfb;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+}

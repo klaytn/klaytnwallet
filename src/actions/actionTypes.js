@@ -1,0 +1,11 @@
+export const INIT_WALLET_SUCCESS = 'INIT_WALLET_SUCCESS'
+export const INIT_WALLET_FAILED = 'INIT_WALLET_FAILED'
+
+export const FINISH_LOADING = 'FINISH_LOADING'
+export const START_LOADING = 'START_LOADING'
+
+export const OPEN_POPUP = 'OPEN_POPUP'
+export const CLOSE_POPUP = 'CLOSE_POPUP'
+
+export const SHOW_TOAST = 'SHOW_TOAST'
+export const HIDE_TOAST = 'HIDE_TOAST'

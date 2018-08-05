@@ -1,0 +1,42 @@
+.Toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  min-width: 500px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 0.2rem solid #0b0b0b;
+  background-color: white;
+  --color-main: #e37ad3;
+  --color-shadow: #d850b1;
+  text-align: center;
+  box-shadow: inset 0 0 0 .4rem var(--color-shadow),0 .4rem 0 0 #e7e6e4;
+  height: 7rem;
+  padding: 20px 3.2rem;
+  font-size: 2.2rem;
+  outline: none;
+  vertical-align: top;
+  transition: all 100ms;
+  z-index: 9999;
+  visibility: visible;
+  animation: showToast 10s;
+  opacity: 0;
+}
+
+@keyframes showToast {
+  0% {
+    opacity: 0;
+    bottom: 0;
+    visibility: visible;
+  }
+
+  10% {
+    opacity: 1;
+    bottom: 30px;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

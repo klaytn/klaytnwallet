@@ -1,0 +1,151 @@
+.Popup {
+  position: fixed;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  width: 100vw;
+  bottom: 0;
+  height: 100vh;
+  animation: openPopup 300ms;
+}
+
+.Popup__background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(49,50,61,.4);
+}
+
+.Popup__content {
+  position: absolute;
+  padding-top: 30px;
+  bottom: 0;
+  height: 90vh;
+  width: 100%;
+  background-color: #fff;
+  overflow: auto;
+  
+  &--tx {
+    color: #A0A3B6;
+    font-size: 22px;
+    text-align: center;
+    width: 600px;
+    height: 600px;
+    background-color: #F1F4FC;
+    border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    .Popup__closeButton { width: 25px; height: 25px; }
+  }
+  
+  &--login {  
+    color: #A0A3B6;
+    border: 1px solid #BCBCBC;
+    font-size: 22px;
+    text-align: center;
+    width: 450px;
+    height: 650px;
+    background-color: #F6E24B;
+    border-radius: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    
+    .Popup__closeButton {
+      &::before { display: none; }
+      &::after { display: none; }
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: #ED6A5E;
+    }
+  }
+}
+
+@keyframes openPopup {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0,-10rem,0);
+    transform: translate3d(0,-10rem,0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+.Popup__closeButton {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  
+  &::before {
+    content: '';
+    transform: rotate(45deg);
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -2px;
+    background: #000;
+  }
+  
+  &::after {
+    content: '';
+    transform: rotate(-45deg);
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    background: #000;
+    height: 4px;
+    margin-top: -2px;
+  }
+}
+
+.Popup__continueButton {
+  width: 50%;
+  padding: 15px;
+  margin: 40px auto;
+  display: block;
+  background-color: #555BE5;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &:hover {
+    // border: 2px solid #e7e6e4;
+    -webkit-box-shadow: 0 0.4rem 0 0 #e7e6e4;
+    box-shadow: 0 0.4rem 0 0 #e7e6e4;
+    // -webkit-transform: translateY(-.2rem);
+    // transform: translateY(-.2rem);
+  }
+}
+
+.Popup__Caution {
+  margin-top: 80px;
+  line-height: 40px;
+}
+
+.Popup__CautionImage {
+  width: 100px;
+  height: 100px;
+}

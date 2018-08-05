@@ -1,0 +1,15 @@
+.TabItem {
+  font-family: Open Sans;
+  width: 33.33%;
+  font-size: 16px;
+  padding: 16px;
+  display: inline-block;
+  border-bottom: 2px solid #fff;
+  text-align: center;
+  transition: border-bottom 500ms;
+
+  &:hover, &--active {
+    color: #0e97c0;
+    border-bottom: 2px solid #0e97c0;
+  }
+}

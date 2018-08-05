@@ -1,0 +1,20 @@
+@import 'mixins';
+
+.Loading {
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(/images/loader.gif);
+  margin: 0 auto;
+
+  &--wholePage {
+    @include fixed-center;
+  }
+}
+
+.Loading__msg {
+  margin-top: 16px;
+  font-size: 2rem;
+  text-align: center;
+}

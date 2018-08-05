@@ -1,0 +1,44 @@
+.Header {
+  height: 75px;
+  text-align: center;
+  font-size: 2.4rem;
+  padding: 0 3.2rem;
+  position: relative;
+
+  color: #fff;
+  background: #163151;
+  background: -webkit-linear-gradient(301deg,#ffd,#143a56,#21a4ce,#19b4ad);
+  background: -o-linear-gradient(301deg,#ffd,#143a56,#21a4ce,#19b4ad);
+  background: linear-gradient(149deg,#ffd,#143a56,#21a4ce,#19b4ad);
+}
+
+.Header__link {
+  display: inline-block;
+  transition: color 200ms;
+  padding: 20px;
+  &:hover {
+    color: #e96bd4;
+  }
+}
+
+.HeaderLogo {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  display: inline-block;
+  transform: translateY(-50%);
+}
+
+.HeaderLogo__img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.HeaderLogo__title {
+  line-height: 30px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
