@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router'
 import { onitSocket } from 'klaytn/onit'
 
 import Panel from 'components/Panel'
+import MyToken from 'components/MyToken'
 
 import './MyWallet.scss'
 
@@ -62,6 +63,7 @@ class MyWallet extends Component<Props> {
           <p>privatekey: {this.wallet.privateKey}</p>
           <p>balance: {balance === null ? '불러오는 중...' : balance}</p>
         </div>
+        <MyToken />
       </Panel>
     )
   }

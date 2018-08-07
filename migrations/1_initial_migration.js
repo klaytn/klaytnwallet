@@ -1,13 +1,22 @@
 const Migrations = artifacts.require('./Migrations.sol')
+const RAS = artifacts.require('./RAS.sol')
+const OKA = artifacts.require('./OKA.sol')
 const fs = require('fs')
 
 module.exports = function (deployer) {
   deployer.deploy(Migrations)
-  // deployer.deploy(KittyCore).then(function () {
+  // deployer.deploy(RAS).then(function () {
   //   // Record recently deployed contract address to 'deployedAddress' file.
-  //   fs.writeFile('deployedAddress', KittyCore.address, function (err) {
+  //   fs.writeFile('deployedAddress', RAS.address, function (err) {
   //     if (err) throw err
-  //     console.log(`The address ${KittyCore.address} is recorded on deployedAddress file`)
+  //     console.log(`The address ${RAS.address} is recorded on deployedAddress file`)
   //   })
   // })
+  deployer.deploy(OKA).then(function () {
+    // Record recently deployed contract address to 'deployedAddress' file.
+    fs.writeFile('deployedAddress', RAS.address, function (err) {
+      if (err) throw err
+      console.log(`The address ${RAS.address} is recorded on deployedAddress file`)
+    })
+  })
 };

@@ -6,7 +6,7 @@ export const contractInfo = {
     name: 'KittyCore',
     address: DEPLOYED_ADDRESS,
     abi: KittyCoreJSON.abi,
-  },
+  }
 }
 
 contractInfo.mainContract = contractInfo.KittyCore
@@ -18,6 +18,7 @@ export const getContract = (contractName, provider = 'rpc') => {
     contractInstance = new onit.klay.Contract(abi, address)
   } else {
     contractInstance = new onitSocket.klay.Contract(abi, address)
+    contractInstance.accounts = onitSocket.accounts
   }
   return contractInstance
 }
