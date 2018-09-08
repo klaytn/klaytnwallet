@@ -1,6 +1,6 @@
 import Onit from 'onit-js'
 
-const PING_TIME = 3000
+const PING_TIME = 3000 // 3s
 
 const intervalId = setInterval(() =>
   onitSocket.klay.getBlockNumber().then(console.log), PING_TIME)

@@ -1,11 +1,22 @@
 import randombytes from 'randombytes'
 
+const MINIMUM_PASSWORD_LENGTH = 3
+
 export const getRandomBytes = () => randombytes(32)
   .reduce((acc, cur) => {
     return acc += (cur.toString(16).length == 2)
       ? cur.toString(16)
       : '0' + cur.toString(16)
     }, '')
+
+export const isValidPrivateKey = (privateKey) => {
+  return String(privateKey)
+    .split('')
+    .filter(character => /^[a-f0-9A-F]$/i.test(character))
+    .length === 64
+}
+
+export const checkValidPassword = (password) => password.length >= MINIMUM_PASSWORD_LENGTH
 
 export const krc20ABI = [
   {

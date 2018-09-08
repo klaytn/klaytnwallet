@@ -1,14 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import TabList from 'components/TabList'
 
 import './Nav.scss'
 
 const navLinks = [
-  { title: 'Creation', link: '/create' },
-  { title: 'Access', link: '/access' },
-  { title: 'Transfer', link: '/transfer' },
+  { title: '지갑 생성', link: '/create' },
+  { title: '내 정보', link: '/access' },
+  { title: '전송', link: '/transfer' },
 ]
 
 const Nav = () => (
@@ -17,11 +16,4 @@ const Nav = () => (
   </div>
 )
 
-const mapStateToProps = (state) => ({
-  address: state.wallet.address,
-})
-
-export default connect(
-  mapStateToProps,
-  null,
-)(Nav)
+export default Nav

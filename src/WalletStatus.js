@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import './WalletStatus.scss'
@@ -25,11 +24,4 @@ const WalletStatus = ({ address }: Props) => (
   </div>
 )
 
-const mapStateToProps = (state) => ({
-  address: state.wallet.address,
-})
-
-export default connect(
-  mapStateToProps,
-  null,
-)(WalletStatus)
+export default WalletStatus

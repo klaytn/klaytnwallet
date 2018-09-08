@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const fs = require('fs')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -54,8 +55,8 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       utils: path.resolve(__dirname, 'src/utils/'),
-      contracts: path.resolve(__dirname, 'build/contracts/'),
-      ethereum: path.resolve(__dirname, 'src/klaytn/'),
+      contracts: path.resolve(__dirname, 'contracts'),
+      klaytn: path.resolve(__dirname, 'src/klaytn/'),
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
     },
@@ -68,7 +69,16 @@ module.exports = {
     extractCSS,
     new webpack.NoEmitOnErrorsPlugin(),
     new UglifyJSPlugin({
-      sourceMap: true,
+          test: /\.js($|\?)/i,
+          sourceMap: true,
+          uglifyOptions: {
+            compress: true
+          }
+        }),
+    new webpack.DefinePlugin({
+      DEV: false,
+      DEPLOYED_ADDRESS: JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
+      METAMASK: process.env.METAMASK,
     }),
   ],
 }

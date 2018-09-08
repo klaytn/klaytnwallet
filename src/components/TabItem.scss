@@ -1,15 +1,21 @@
 .TabItem {
+  background-color: #fff;
+  opacity: 0.8;
   font-family: Open Sans;
   width: 33.33%;
   font-size: 16px;
-  padding: 16px;
+  padding: 10px;
   display: inline-block;
-  border-bottom: 2px solid #fff;
   text-align: center;
-  transition: border-bottom 500ms;
+  transition: all 200ms;
+  background-color: rgba(48, 51, 43, 1);
+  color: #bcbcbc;
 
   &:hover, &--active {
-    color: #0e97c0;
-    border-bottom: 2px solid #0e97c0;
+    border-top: 4px solid black;
+    color: #fff;
+    background-color: transparent;
+    // border-bottom: 4px solid #0e97c0;
+    opacity: 1;
   }
 }

@@ -1,3 +1,41 @@
+@import "mixins.scss";
+
 .WalletAccess {
+  @include mobile {
+    height: 220px;
+  }
+  height: 300px;
+}
+
+.WalletAccess__Radio {
+  // @include full-width {
+  //   text-align: center;
+  // }
+  @include mobile {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 0;
+  }
+  display: inline-block;
+  width: 35%;
+  height: 100%;
+  padding: 40px 30px;
+  vertical-align: top;
+}
+
+.WalletAccess__AccessSide {
+  @include mobile {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+  position: relative;
+  display: inline-block;
+  width: 55%;
+  height: 100%;
+  vertical-align: top;
+  margin: 0 auto;
   text-align: center;
 }

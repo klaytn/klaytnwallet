@@ -1,0 +1,46 @@
+.RegisterToken {
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.RegisterToken__register {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.RegisterToken__input {
+  input {
+    color: black;
+  }
+}
+
+.RegisterTokenButton {
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  width: 80%;
+  text-align: right;
+
+  &::before {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin: 0 8px 0 0;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+    background-image: url(/images/plus.png);
+    background-size: contain;
+  }
+}

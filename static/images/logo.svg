@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 24">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:#fff}.cls-2{font-size:20px;font-family:SFUIText-Heavy,SF UI Text;font-weight:800}.cls-3{fill:#2cc;font-size:10px;font-family:SFUIText-LightItalic,SF UI Text;font-weight:300;font-style:italic}
+        </style>
+    </defs>
+    <g id="logo" transform="translate(-28 -25)">
+        <path id="패스_16" d="M12 0A12 12 0 1 1 0 12 12 12 0 0 1 12 0z" class="cls-1" data-name="패스 16" transform="translate(28 25)"/>
+        <text id="KLAYTN_WALLET" class="cls-2" data-name="KLAYTN WALLET" transform="translate(62 44)">
+            <tspan x="0" y="0">KLAYTN WALLET</tspan>
+        </text>
+        <text id="Beta" class="cls-3" transform="translate(242 37)">
+            <tspan x="0" y="0">Beta</tspan>
+        </text>
+    </g>
+</svg>

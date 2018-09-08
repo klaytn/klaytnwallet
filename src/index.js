@@ -4,7 +4,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import registerServiceWorker from './registerServiceWorker'
 import store from './store'
 
 import App from './App'
@@ -21,6 +20,7 @@ export const renderRoutes = (rootComponent) => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={rootComponent}>
+        <IndexRoute component={WalletAccess} />
         <Route path="/create" component={WalletCreation} />
         <Route path="/access" component={WalletAccess} />
         <Route path="/access/:id" component={MyWallet} />
@@ -32,7 +32,6 @@ export const renderRoutes = (rootComponent) => (
 )
 
 ReactDOM.render(renderRoutes(App), document.getElementById('root'))
-registerServiceWorker()
 
 if (module.hot) {
   module.hot.accept('./App.js', () => {

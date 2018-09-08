@@ -55,7 +55,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       utils: path.resolve(__dirname, 'src/utils/'),
-      contracts: path.resolve(__dirname, 'build/contracts/'),
+      contracts: path.resolve(__dirname, 'contracts'),
       klaytn: path.resolve(__dirname, 'src/klaytn/'),
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),

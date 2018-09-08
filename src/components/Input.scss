@@ -1,0 +1,67 @@
+@import "mixins.scss";
+
+.Input {
+  border-bottom: 1px solid #333;
+  padding: 10px;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  margin-bottom: 20px;
+
+  &::after {
+    @include mobile {
+      right: 0;
+    }
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: right 50%;
+    background-size: cover;
+  }
+
+  &:focus-within {
+    border-bottom: 4px solid #0DFF92 !important;
+  }
+
+  &--noFocus {
+    border-bottom: 1px solid #333 !important; 
+  }
+
+  &--valid {
+    &::after {
+      background-image: url(/images/check.png);
+    }
+  }
+
+  &--invalid {
+    &::after {
+      background-image: url(/images/x.png);
+    }
+  }
+}
+
+.Input__label {
+  cursor: text;
+  color: #AAAAAA;
+  display: block;
+  text-align: left;
+  font-size: 16px;
+}
+
+.Input__input {
+  color: #0DFF92;
+  background-color: transparent;
+  font-size: 20px;
+  outline: 0;
+  border: 0;
+  width: 95%;
+  height: 100%;
+  display: block;
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+}

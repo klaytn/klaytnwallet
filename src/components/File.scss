@@ -1,0 +1,31 @@
+.File {
+  &--imported {
+    .File__button {
+      background-color: #AAAAAA;
+      background-image: url(/images/check.png);
+      background-position: right 5px center;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      border: 1px solid #0DFF92;
+    }
+  }
+}
+
+.File__input {
+  display: none;
+}
+
+.File__label {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.File__button {
+  position: relative;
+  width: 220px;
+  padding: 0;
+}

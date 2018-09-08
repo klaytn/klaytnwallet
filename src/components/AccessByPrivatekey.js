@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import { onitSocket } from 'klaytn/onit'
 
+import Input from 'components/Input'
+import Button from 'components/Button'
 import ui from 'utils/ui'
+import { isValidPrivateKey } from 'utils/crypto'
+
+import './AccessByPrivatekey.scss'
 
 type Props = {
 
@@ -10,11 +16,15 @@ type Props = {
 class AccessByPrivateKey extends Component<Props> {
   state = {
     privatekey: '',
+    isValid: null,
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+      isValid: e.target.value.length === 0
+        ? null
+        : isValidPrivateKey(e.target.value),
     })
   }
 
@@ -31,14 +41,25 @@ class AccessByPrivateKey extends Component<Props> {
   }
 
   render() {
+    const { isValid } = this.state
     return (
       <div className="AccessByPrivatekey">
-        <input
+        <Input
           type="text"
+          autoFocus
           name="privatekey"
+          className="AccessByPrivatekey__input"
+          placeholder="개인 키를 입력해주세요."
           onChange={this.handleChange}
+          isValid={isValid}
+          autocomplete="off"
         />
-        <button onClick={this.access}>접근</button>
+        <Button
+          className="AccessByPrivatekey__button"
+          disabled={!isValid}
+          onClick={this.access}
+          title="접근"
+        />
       </div>
     )
   }

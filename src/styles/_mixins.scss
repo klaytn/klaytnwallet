@@ -4,3 +4,36 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin full-width() {
+  @media screen and (min-width: 1320px) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin title() {
+  color: #AAAAAA;
+  text-align: left;
+  margin-left: 14px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+@mixin description() {
+  color: #AAAAAA;
+  text-align: left;
+  margin-left: 14px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 24px;
+
+  &--highlight {
+    color: #0DFF92;
+  }
+}

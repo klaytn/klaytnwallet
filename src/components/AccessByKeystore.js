@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import { onitSocket } from 'klaytn/onit'
+import classNames from 'classnames'
 
+import Input from 'components/Input'
+import File from 'components/File'
+import Button from 'components/Button'
 import ui from 'utils/ui'
+import { checkValidPassword } from 'utils/crypto'
+
+import './AccessByKeystore.scss'
 
 type Props = {
 
@@ -10,6 +17,8 @@ type Props = {
 class AccessByKeystore extends Component<Props> {
   state = {
     keystore: '',
+    keystoreAddress: '',
+    isValidPassword: null,
   }
 
   handleImport = (e) => {
@@ -30,7 +39,10 @@ class AccessByKeystore extends Component<Props> {
         }
 
         ui.showToast({ msg: '올바른 키스토어 파일입니다. 패스워드를 입력해주세요.' })
-        this.setState({ keystore: target.result })
+        this.setState({
+          keystore: target.result,
+          keystoreAddress: parsedKeystore.address,
+        }, () => document.querySelector('#input-password').focus())
       } catch (e) {
         ui.showToast({ msg: '올바른 키스토어 파일 (JSON)이 아닙니다.' })
         return
@@ -42,6 +54,7 @@ class AccessByKeystore extends Component<Props> {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+      isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
     })
   }
 
@@ -59,29 +72,37 @@ class AccessByKeystore extends Component<Props> {
   }
 
   render() {
-    const { keystore } = this.state
+    const { keystore, keystoreAddress, isValidPassword } = this.state
     return (
       <div className="AccessByKeystore">
-        <input
-          className="AccessByKeystore__keystore"
-          type="file"
+        <File
+          className={classNames({
+            'File--imported': keystore,
+          })}
+          title={keystore ? `키스토어: ${keystoreAddress.slice(0, 7)}...` : "키스토어 파일첨부" }
           onChange={this.handleImport}
         />
-        {keystore && [
-          <input
+        <div className={classNames('AccessByKeystore__form', {
+          'AccessByKeystore__form--hide': !keystore,
+        })}
+        >
+          <Input
+            autoFocus
             key="privatekey"
             className="AccessByKeystore__privateKey"
             name="password"
             type="password"
             onChange={this.handleChange}
-          />,
-          <button
+            isValid={isValidPassword}
+          />
+          <Button
             key="access"
+            className="AccessByKeystore__button"
             onClick={this.access}
-          >
-            접근
-          </button>
-        ]}
+            disabled={!isValidPassword}
+            title="접근"
+          />
+        </div>
       </div>
     )
   }
