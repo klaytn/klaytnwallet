@@ -1,44 +1,73 @@
+@import "fonts.scss";
+@import "colors.scss";
+
 .Header {
-  height: 75px;
+  height: 72px;
   text-align: center;
-  font-size: 2.4rem;
-  padding: 0 3.2rem;
+  font-size: 1.2rem;
   position: relative;
 
   color: #fff;
-  background: #163151;
-  background: -webkit-linear-gradient(301deg,#ffd,#143a56,#21a4ce,#19b4ad);
-  background: -o-linear-gradient(301deg,#ffd,#143a56,#21a4ce,#19b4ad);
-  background: linear-gradient(149deg,#ffd,#143a56,#21a4ce,#19b4ad);
-}
+  background-color: $main-theme;
+  clear: both;
 
-.Header__link {
-  display: inline-block;
-  transition: color 200ms;
-  padding: 20px;
-  &:hover {
-    color: #e96bd4;
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
   }
 }
 
-.HeaderLogo {
+.Header__LogoWithLink {
+  padding: 2.5rem 2.8rem;
+  display: inline-block;
+  width: 88%;
+  float: left;
+}
+
+.Header__logo {
+  float: left;
+  width: 235px;
+  height: 24px;
+  left: 28px;
+  display: inline-block;
+  background-image: url(/images/logo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.Header__link {
+  @include font-style('caption')
+  color: $steel-blue;
+  font-size: 12px;
+  float: right;
+  line-height: 24px;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 8px;
+    width: 10px;
+    height: 10px;
+    background-image: url(/images/icon-outlink.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.Header__network {
+  @include font-style('caption');
   position: absolute;
-  top: 50%;
-  left: 30px;
+  padding: 2.5rem 2.8rem;
+  right: 0;
+  top: 0;
+  min-width: 148px;
   display: inline-block;
-  transform: translateY(-50%);
-}
-
-.HeaderLogo__img {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.HeaderLogo__title {
-  line-height: 30px;
-  margin-left: 10px;
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 2.2rem;
-  font-weight: bold;
+  width: 8%;
+  color: $fluro-green;
+  border-left: 1px solid rgba($white, .1);
+  text-align: center;
+  line-height: 24px;
 }

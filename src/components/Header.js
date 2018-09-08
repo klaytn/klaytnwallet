@@ -1,25 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import './Header.scss'
 
-const HeaderLogo = () => (
-  <div className="HeaderLogo">
-    <p className="HeaderLogo__title">MyKlayWallet</p>
-  </div>
-)
-
 const Header = () => (
   <div className="Header">
-    <HeaderLogo />
+    <div className="Header__LogoWithLink">
+      <div className="Header__logo" />
+      <Link to="/klaytnscope" className="Header__link">klaytnscope</Link>
+    </div>
+    <div className="Header__network">Moso Network</div>
   </div>
 )
 
-const mapStateToProps = (state) => ({
-  address: state.wallet.address,
-})
-
-export default connect(
-  mapStateToProps,
-  null,
-)(Header)
+export default Header
