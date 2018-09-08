@@ -13,9 +13,10 @@ class TabList extends Component<Props> {
     const { tabItems } = this.props
     return (
       <div className="TabList">
-        {tabItems.map(({ title, link }) => (
+        {tabItems.map(({ title, link, icon }) => (
           <TabItem
             isActive={new RegExp(link).test(window.location.pathname)}
+            icon={icon}
             key={title}
             title={title}
             link={link}

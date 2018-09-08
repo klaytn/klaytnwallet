@@ -1,21 +1,23 @@
+@import "fonts.scss";
+@import "colors.scss";
+
 .TabItem {
-  background-color: #fff;
-  opacity: 0.8;
-  font-family: Open Sans;
-  width: 33.33%;
-  font-size: 16px;
-  padding: 10px;
-  display: inline-block;
-  text-align: center;
-  transition: all 200ms;
-  background-color: rgba(48, 51, 43, 1);
-  color: #bcbcbc;
+  @include font-style('button');
+  display: block;
+  padding: 22px 28px;
+  text-align: left;
+  color: $warm-grey;
 
   &:hover, &--active {
-    border-top: 4px solid black;
-    color: #fff;
-    background-color: transparent;
-    // border-bottom: 4px solid #0e97c0;
-    opacity: 1;
+    background-color: $light-blue-gray;
+    color: $main-theme;
   }
+}
+
+.TabItem__icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }

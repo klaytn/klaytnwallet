@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import Popup from 'components/Popup'
 import Toast from 'components/Toast'
-import WalletCreation from 'components/WalletCreation'
-import Layout from './Layout'
-import WalletStatus from './WalletStatus'
 import ui from 'utils/ui'
+
+import Header from 'components/Header'
+import Nav from 'components/Nav'
 
 import './App.scss'
 
@@ -16,12 +16,17 @@ type Props = {
 
 class App extends Component<Props> {
   render() {
+    const { children } = this.props
+
     return [
-      <Popup key="popup" />,
-      <Toast key="toast" />,
-      <Layout key="Layout">
-        {this.props.children}
-      </Layout>,
+      <Popup key="Popup" />,
+      <Toast key="Toast" />,
+      <div className="App" key="App">
+        <Header />
+        <section className="App__section">
+          <Nav />
+        </section>
+      </div>
     ]
   }
 }

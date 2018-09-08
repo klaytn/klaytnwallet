@@ -1,2 +1,10 @@
 .App {
+  width: 1280px;
+  min-height: 800px;
+  height: 100vh;
+}
+
+.App__section {
+  padding-top: 72px;
+  height: 100%;
 }

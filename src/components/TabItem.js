@@ -9,10 +9,19 @@ type Props = {
   link: string,
 }
 
-const TabItem = ({ title, link, isActive }) => (
-  <Link className={classNames('TabItem', {
-    'TabItem--active': isActive,
-  })} to={link}>{title}</Link>
+const TabItem = ({ title, link, isActive, icon }) => (
+  <Link
+    className={classNames('TabItem', {
+      'TabItem--active': isActive,
+    })}
+    to={link}
+  >
+    <img
+      className="TabItem__icon"
+      src={`/images/${icon}${isActive ? '-on' : '-off'}.svg`}
+    />
+    {title}
+  </Link>
 )
 
 export default TabItem

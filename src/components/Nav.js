@@ -5,14 +5,16 @@ import TabList from 'components/TabList'
 import './Nav.scss'
 
 const navLinks = [
-  { title: '지갑 생성', link: '/create' },
-  { title: '내 정보', link: '/access' },
-  { title: '전송', link: '/transfer' },
+  { title: 'Create New Wallet', link: '/create', icon: 'icon-create' },
+  { title: 'View Wallet Info', link: '/access', icon: 'icon-info' },
+  { title: 'Send KLAY & Token', link: '/transfer', icon: 'icon-send' },
+  { title: 'KLAY Faucet', link: '/faucet', icon: 'icon-faucet' },
 ]
 
 const Nav = () => (
   <div className="Nav">
     <TabList tabItems={navLinks} />
+    <p className="Nav__copyright">©klaytnwallet.com</p>
   </div>
 )
 

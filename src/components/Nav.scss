@@ -1,3 +1,23 @@
+@import "colors.scss";
+@import "fonts.scss";
+
 .Nav {
-  color: #fff;
+  position: relative;
+  display: inline-block;
+  background-color: $white;
+  padding-top: 24px;
+  top: 0;
+  left: 0;
+  width: 20%;
+  min-width: 236px;
+  min-height: 800px;
+  color: $warm-grey;
+  height: 100%;
+}
+
+.Nav__copyright {
+  @include font-style('label')
+  position: absolute;
+  left: 28px;
+  bottom: 40px;
 }

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1{fill:#fff;opacity:0}.cls-2{fill:none;stroke:#999;stroke-miterlimit:10;stroke-width:1.5px}
+        </style>
+    </defs>
+    <g id="icon_Create_Off" transform="translate(-28 -122)">
+        <path id="사각형_95" d="M0 0h16v16H0z" class="cls-1" data-name="사각형 95" transform="translate(28 122)"/>
+        <g id="create" transform="translate(28.2 122.2)">
+            <path id="패스_40" d="M13.8 14.8h-12a1 1 0 0 1-1-1v-12a1.075 1.075 0 0 1 1-1h12a1 1 0 0 1 1 1v12a1.075 1.075 0 0 1-1 1z" class="cls-2" data-name="패스 40"/>
+            <path id="선_21" d="M0 0h6" class="cls-2" data-name="선 21" transform="translate(4.8 7.8)"/>
+            <path id="선_22" d="M0 0v6" class="cls-2" data-name="선 22" transform="translate(7.8 4.8)"/>
+        </g>
+    </g>
+</svg>

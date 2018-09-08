@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none}.cls-1{stroke:#0aff00}.cls-2{stroke:none}
+        </style>
+    </defs>
+    <g id="icon_Check_On" transform="translate(-325 -326)">
+        <path id="패스_504" d="M15771.323-2136.113l2.17 1.924 3.478-4" class="cls-1" data-name="패스 504" transform="translate(-15443.123 2468.189)"/>
+        <g id="타원_352" class="cls-1" data-name="타원 352" transform="translate(325 326)">
+            <circle cx="6" cy="6" r="6" class="cls-2"/>
+            <circle cx="6" cy="6" r="5.5" class="cls-3"/>
+        </g>
+    </g>
+</svg>
