@@ -1,0 +1,54 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.InputCopy {
+  width: 100%;
+
+  .Input {
+    padding-bottom: 0;
+    height: 40px;
+    color: $dark-blue-grey;
+  }
+}
+
+.InputCopy__input {
+  position: relative;
+}
+
+.InputCopy__copyButton {
+  @include font-style('label');
+  color: $dark-blue-grey;
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border: 1px solid $middle-blue-grey;
+  background-color: $light-blue-gray;
+}
+
+.InputCopy__icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 12px;
+  margin-right: 4px;
+}
+
+.InputCopy__copiedText {
+  @include font-style('caption');
+  text-align: left;
+  color: $main-point;
+  transition: opacity 300ms;
+  opacity: 0;
+  margin-top: 10px;
+
+  &--copied {
+    opacity: 1;
+  }
+
+}
