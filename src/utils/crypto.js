@@ -1,6 +1,6 @@
 import randombytes from 'randombytes'
 
-const MINIMUM_PASSWORD_LENGTH = 3
+const MINIMUM_PASSWORD_LENGTH = 9
 
 export const getRandomBytes = () => randombytes(32)
   .reduce((acc, cur) => {
