@@ -10,6 +10,7 @@
   transition: border-width 100ms linear, border-color 300ms linear;
   position: relative;
   outline: 0;
+  background-color: transparent;
 
   &::after {
     @include mobile {

@@ -9,7 +9,6 @@ import './StepIndicator.scss'
 
 const StepIndicatorItem = ({ stepValue, currentStep }) => {
   const isChecked = currentStep > stepValue
-  console.log(stepValue, currentStep)
   return (
     <div className={cx('StepIndicator__item', {
       'StepIndicator__item--active': currentStep == stepValue,

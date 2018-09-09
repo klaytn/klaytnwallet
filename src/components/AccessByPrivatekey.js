@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { onitSocket } from 'klaytn/onit'
+import { onit } from 'klaytn/onit'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -32,7 +32,7 @@ class AccessByPrivateKey extends Component<Props> {
     const { privatekey } = this.state
     const { accessTo } = this.props
     try {
-      const wallet = onitSocket.klay.accounts.wallet.add(privatekey)
+      const wallet = onit.klay.accounts.wallet.add(privatekey)
       ui.showToast({ msg: `${wallet.address} 지갑으로 로그인되었습니다.` })
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {

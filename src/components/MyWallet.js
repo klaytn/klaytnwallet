@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import jsonFormat from 'json-format'
-import { onitSocket } from 'klaytn/onit'
+import { onit } from 'klaytn/onit'
 
 import Input from 'components/Input'
+import InputCopy from 'components/InputCopy'
 import MyToken from 'components/MyToken'
 import Button from 'components/Button'
 import ui from 'utils/ui'
@@ -21,7 +22,7 @@ type Props = {
 class MyWallet extends Component<Props> {
   constructor() {
     super()
-    this.wallet = onitSocket.klay.accounts.wallet[0]
+    this.wallet = onit.klay.accounts.wallet[0]
     this.getBalanceInterval = null
   }
 
@@ -31,7 +32,7 @@ class MyWallet extends Component<Props> {
   }
 
   componentWillMount() {
-    if (!onitSocket.klay.accounts.wallet[0]) {
+    if (!onit.klay.accounts.wallet[0]) {
       browserHistory.replace('/access')
     }
   }
@@ -44,7 +45,7 @@ class MyWallet extends Component<Props> {
   }
 
   getBalance = () => {
-    onitSocket.klay.getBalance(this.wallet.address)
+    onit.klay.getBalance(this.wallet.address)
       .then(balance => {
         if (balance !== this.state.balance) {
           ui.showToast({ msg: '잔액이 업데이트 되었습니다.' })
@@ -82,46 +83,33 @@ class MyWallet extends Component<Props> {
     return !!this.wallet && (
       <div className="MyWallet">
         <div className="MyWallet__info">
-          <Input
+          <header className="MyWallet__title">My Wallet Info</header>
+          <hr className="MyWallet__hr" />
+          <InputCopy
             className="MyWallet__Input"
-            title="내 주소"
+            label="Wallet Address"
             name="address"
             value={this.wallet.address}
           />
-          <Input
+          <InputCopy
             className="MyWallet__Input"
             name="privateKey"
-            title={
-              <div>개인 키&nbsp;
-                <span>
-                  <img
-                    className="MyWallet__icon"
-                    src={`/images/${hidePrivateKey ? 'hide' : 'show'}.png`}
-                  />
-                </span>
-                &nbsp;&nbsp;
-                <span style={{ color: '#AAAAAA' }}>- 아이콘 클릭을 통해 숨기고 보이게 할 수 있습니다.</span>
-              </div>
-            }
+            label="Private Key"
             onLabelClick={this.togglePrivateKey}
             labelClassName="MyWallet__hideButton"
             value={hidePrivateKey ? '************************************************' : this.wallet.privateKey}
             readOnly
             autoFocus
           />
-          <Input
-            name="balance"
-            className="MyWallet__Input"
-            title="KLAY 잔액"
-            value={balance === null ? '불러오는 중...' : balance}
+          <p className="MyWallet__transactionListTitle">Transaction List</p>
+          <p className="MyWallet__transactionListDescription">
+            All transactions transferred or received<br />
+            via the currently active wallet can be viewed at Klaytnscope.
+          </p>
+          <Button
+            title="View Transaction List"
+            className="MyWallet__viewTransationListButton"
           />
-          {/*
-            <Button
-              className="Mywallet__download"
-              title="키스토어 파일 다운로드"
-              onClick={this.handleDownload}
-            />
-          */}
         </div>
         <div className="MyWallet__token">
           <MyToken />

@@ -23,7 +23,7 @@ const radioItems = [{
   attribute: 'accessMethod',
 }]
 
-class WalletAccess extends Component<Props> {
+class WalletAccess2 extends Component<Props> {
   state = {
     accessMethod: 'privatekey' // default value : privatekey
   }
@@ -83,4 +83,4 @@ const AccessSide = ({ accessMethod, accessTo }) => (
   </div>
 )
 
-export default WalletAccess
+export default WalletAccess2

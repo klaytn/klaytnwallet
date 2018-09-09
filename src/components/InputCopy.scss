@@ -5,9 +5,13 @@
   width: 100%;
 
   .Input {
-    padding-bottom: 0;
+    padding: 0;
     height: 40px;
     color: $dark-blue-grey;
+  }
+
+  .Input__label {
+    margin-bottom: 5px;
   }
 }
 

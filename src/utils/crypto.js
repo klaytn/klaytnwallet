@@ -10,7 +10,15 @@ export const getRandomBytes = () => randombytes(32)
     }, '')
 
 export const isValidPrivateKey = (privateKey) => {
-  return String(privateKey)
+  let privateKeyCandidate = privateKey
+  console.log(privateKey.slice(0, 2), 'sliced')
+  if (privateKey.slice(0, 2) === '0x') {
+    privateKeyCandidate = privateKey.slice(2)
+  }
+
+  console.log(privateKeyCandidate)
+
+  return String(privateKeyCandidate)
     .split('')
     .filter(character => /^[a-f0-9A-F]$/i.test(character))
     .length === 64

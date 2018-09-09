@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { onitSocket } from 'klaytn/onit'
+import { onit } from 'klaytn/onit'
 
 import { krc20ABI } from 'utils/crypto'
 
@@ -15,7 +15,7 @@ type Props = {
 class MyToken extends Component<Props> {
   constructor() {
     super()
-    this.wallet = onitSocket.klay.accounts.wallet[0]
+    this.wallet = onit.klay.accounts.wallet[0]
   }
 
   state = {
@@ -43,8 +43,8 @@ class MyToken extends Component<Props> {
     console.log(tokenList)
     Promise.all(
       tokenList.map(({ name, contractAddress }) => {
-        const contractInstance = new onitSocket.klay.Contract(krc20ABI, contractAddress)
-        contractInstance.accounts = onitSocket.klay.accounts
+        const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
+        contractInstance.accounts = onit.klay.accounts
         return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
       }))
       .then(balances => {

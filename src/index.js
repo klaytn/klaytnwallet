@@ -10,8 +10,6 @@ import App from './App'
 import WalletCreation2 from 'components/WalletCreation2'
 import WalletAccess2 from 'components/WalletAccess2'
 
-import WalletCreation from 'components/WalletCreation'
-import WalletAccess from 'components/WalletAccess'
 import WalletTransfer from 'components/WalletTransfer'
 import MyWallet from 'components/MyWallet'
 
