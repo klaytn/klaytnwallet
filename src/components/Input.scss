@@ -1,11 +1,16 @@
 @import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
 
 .Input {
-  border-bottom: 1px solid #333;
-  padding: 10px;
+  @include font-style('body');
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid $middle-blue-grey;
+  padding: 10px 0;
   transition: border-width 100ms linear, border-color 300ms linear;
   position: relative;
-  margin-bottom: 20px;
+  outline: 0;
 
   &::after {
     @include mobile {
@@ -22,12 +27,16 @@
     background-size: cover;
   }
 
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
   &:focus-within {
-    border-bottom: 4px solid #0DFF92 !important;
+    border-color: $main-theme;
   }
 
   &--noFocus {
-    border-bottom: 1px solid #333 !important; 
+    border-bottom: 1px solid #333 !important;
   }
 
   &--valid {
@@ -44,11 +53,11 @@
 }
 
 .Input__label {
+  @include font-style('label');
+  color: $main-theme;
   cursor: text;
-  color: #AAAAAA;
   display: block;
   text-align: left;
-  font-size: 16px;
 }
 
 .Input__input {

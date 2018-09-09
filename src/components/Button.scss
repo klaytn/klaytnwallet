@@ -1,19 +1,25 @@
+@import "colors.scss";
+@import "fonts.scss";
+
 .Button {
+  @include font-style('button');
   display: inline-block;
   border: 0;
-  border-bottom: 1px solid black;
-  background-color: #0DFF92;
-  color: #222;
+  background-color: $main-point;
+  color: $white;
   cursor: pointer;
-  padding: 8px;
-  font-size: 20px;
+  padding: 16px;
   text-align: center;
-  border-radius: 4px;
-  transition: background-color 500ms, border 200ms;
   outline: 0;
+  box-shadow: 0 4px 8px 0 rgba($main-point, .25);
 
   &:disabled {
+    box-shadow: unset;
     cursor: not-allowed;
-    background-color: #AAAAAA;
+    background-color: $middle-blue-grey;
+  }
+
+  &--gray {
+    background-color: $dark-blue-grey;
   }
 }
