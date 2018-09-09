@@ -1,0 +1,11 @@
+@import "colors.scss";
+
+.WalletCreationStep3__viewWalletInfoButton {
+  margin-right: 8px;
+  background-color: $dark-blue-grey;
+  box-shadow: unset;
+}
+
+.WalletCreationStep3__sendKlayButton {
+  margin-left: 8px;
+}
