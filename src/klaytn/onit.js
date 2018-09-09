@@ -1,9 +1,9 @@
 import Onit from 'onit-js'
 
-const PING_TIME = 3000 // 3s
+// const PING_TIME = 3000 // 3s
 
-const intervalId = setInterval(() =>
-  onitSocket.klay.getBlockNumber().then(console.log), PING_TIME)
+// const intervalId = setInterval(() =>
+  // onitSocket.klay.getBlockNumber().then(console.log), PING_TIME)
 
 export const config = {
   rpcURL: 'http://devnet.klaytn.io:22000',
@@ -11,4 +11,4 @@ export const config = {
 }
 
 export const onit = new Onit(new Onit.providers.HttpProvider(config.rpcURL))
-export const onitSocket = new Onit(new Onit.providers.WebsocketProvider(config.wsURL))
+// export const onitSocket = new Onit(new Onit.providers.WebsocketProvider(config.wsURL))
