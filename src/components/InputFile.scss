@@ -1,0 +1,44 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.InputFile {
+  width: 100%;
+
+  .Input {
+    padding: 0;
+    height: 40px;
+    color: $dark-blue-grey;
+  }
+
+  .Input__label {
+    margin-bottom: 4px;
+  }
+}
+
+.InputFile__input {
+  position: relative;
+}
+
+.InputFile__uploadButton {
+  @include font-style('label');
+  color: $dark-blue-grey;
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border: 1px solid $middle-blue-grey;
+  background-color: $light-blue-gray;
+}
+
+.InputFile__icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 12px;
+  margin-right: 4px;
+}

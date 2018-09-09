@@ -1,0 +1,30 @@
+@import "fonts.scss";
+@import "mixins.scss";
+
+.WalletAccess2 {
+  @include panelize;
+  width: 100%;
+  text-align: center;
+  padding: 100px;
+}
+
+.WalletAccess2__title {
+  @include font-style('h1');
+  color: $black;
+  margin-bottom: 12px;
+}
+
+.WalletAccess2__description {
+  @include font-style('body');
+  color: $warm-grey;
+  margin-bottom: 48px;
+}
+
+.WalletAccess2__inner {
+  width: 496px;
+  margin: 0 auto;
+}
+
+.WalletAcess2__tabRadio {
+  margin-bottom: 49px;
+}

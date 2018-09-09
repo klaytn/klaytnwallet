@@ -45,11 +45,12 @@ class AccessByPrivateKey extends Component<Props> {
     return (
       <div className="AccessByPrivatekey">
         <Input
+          label="Private Key"
           type="text"
           autoFocus
           name="privatekey"
           className="AccessByPrivatekey__input"
-          placeholder="개인 키를 입력해주세요."
+          placeholder="Enter the private key"
           onChange={this.handleChange}
           isValid={isValid}
           autocomplete="off"
@@ -58,7 +59,7 @@ class AccessByPrivateKey extends Component<Props> {
           className="AccessByPrivatekey__button"
           disabled={!isValid}
           onClick={this.access}
-          title="접근"
+          title="Access"
         />
       </div>
     )

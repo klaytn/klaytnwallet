@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.5 11.321">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.5 11.32">
     <defs>
         <style>
             .cls-1{fill:none;stroke:#acb2ce;stroke-miterlimit:10;stroke-width:1.5px}
         </style>
     </defs>
-    <g id="icon_Upload" transform="translate(-767.25 -614.429)">
+    <g id="icon_Upload" transform="translate(-767.25 -614.43)">
         <path id="패스_512" d="M10.8 7.5v3a.945.945 0 0 1-1 1h-8a1 1 0 0 1-1-1v-3" class="cls-1" data-name="패스 512" transform="translate(767.2 613.5)"/>
         <path id="선_322" d="M0 7V0" class="cls-1" data-name="선 322" transform="translate(773 615)"/>
         <path id="패스_513" d="M8.5 3.2L6.3 1a.785.785 0 0 0-1.1 0L3 3.2" class="cls-1" data-name="패스 513" transform="translate(767.2 614.5)"/>

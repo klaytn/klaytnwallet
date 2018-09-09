@@ -3,7 +3,6 @@
 @import "colors.scss";
 
 .Input {
-  @include font-style('body');
   width: 100%;
   border: 0;
   border-bottom: 1px solid $middle-blue-grey;
@@ -39,17 +38,17 @@
     border-bottom: 1px solid #333 !important;
   }
 
-  &--valid {
-    &::after {
-      background-image: url(/images/check.png);
-    }
-  }
-
-  &--invalid {
-    &::after {
-      background-image: url(/images/x.png);
-    }
-  }
+  // &--valid {
+  //   &::after {
+  //     background-image: url(/images/check.png);
+  //   }
+  // }
+  //
+  // &--invalid {
+  //   &::after {
+  //     background-image: url(/images/x.png);
+  //   }
+  // }
 }
 
 .Input__label {
@@ -58,12 +57,13 @@
   cursor: text;
   display: block;
   text-align: left;
+  margin-bottom: 16px;
 }
 
 .Input__input {
-  color: #0DFF92;
+  @include font-style('body');
+  color: $black;
   background-color: transparent;
-  font-size: 20px;
   outline: 0;
   border: 0;
   width: 95%;

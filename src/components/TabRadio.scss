@@ -1,0 +1,27 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+.TabRadio {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.TabRadio__item {
+  @include font-style('button');
+  width: 50%;
+  display: inline-block;
+  margin: 0;
+  border: 1px solid $solitude;
+  color: $middle-blue-grey;
+  background-color: $light-blue-gray;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+
+  &--active {
+    border-bottom: 1px solid $white;
+    background-color: $white;
+    color: $black;
+  }
+}

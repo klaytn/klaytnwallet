@@ -10,7 +10,7 @@ type Props = {
 class Input extends Component<Props> {
   render() {
     const {
-      title,
+      label,
       name,
       type,
       onChange,
@@ -36,7 +36,7 @@ class Input extends Component<Props> {
           htmlFor={'input-' + name}
           className={classNames('Input__label', labelClassName)}
         >
-          {title}
+          {label}
         </label>
         <input
           className="Input__input"

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { onitSocket } from 'klaytn/onit'
+import { onit } from 'klaytn/onit'
 import classNames from 'classnames'
 
+import InputFile from 'components/InputFile'
 import Input from 'components/Input'
 import File from 'components/File'
 import Button from 'components/Button'
@@ -23,6 +24,7 @@ class AccessByKeystore extends Component<Props> {
 
   handleImport = (e) => {
     const keystore = e.target.files[0]
+    const fileName = keystore && keystore.name
     const fileReader = new FileReader()
     fileReader.onload = ({ target }) => {
       try {
@@ -40,6 +42,7 @@ class AccessByKeystore extends Component<Props> {
 
         ui.showToast({ msg: '올바른 키스토어 파일입니다. 패스워드를 입력해주세요.' })
         this.setState({
+          fileName,
           keystore: target.result,
           keystoreAddress: parsedKeystore.address,
         }, () => document.querySelector('#input-password').focus())
@@ -59,11 +62,11 @@ class AccessByKeystore extends Component<Props> {
   }
 
   access = () => {
-    const { keystore, password } = this.state
+    const { fileName, keystore, password } = this.state
     const { accessTo } = this.props
     // Wallet instance will be addded to onit.klay.accounts.wallet
     try {
-      const wallet = onitSocket.klay.accounts.wallet.decrypt([keystore], password)[0]
+      const wallet = onit.klay.accounts.wallet.decrypt([keystore], password)[0]
       ui.showToast({ msg: `${wallet.address} 지갑으로 로그인되었습니다.` })
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {
@@ -72,37 +75,30 @@ class AccessByKeystore extends Component<Props> {
   }
 
   render() {
-    const { keystore, keystoreAddress, isValidPassword } = this.state
+    const { fileName, keystore, keystoreAddress, isValidPassword } = this.state
     return (
       <div className="AccessByKeystore">
-        <File
-          className={classNames({
-            'File--imported': keystore,
-          })}
-          title={keystore ? `키스토어: ${keystoreAddress.slice(0, 7)}...` : "키스토어 파일첨부" }
+        <InputFile
+          label="Import Keystore File (.json)"
+          value={fileName}
           onChange={this.handleImport}
         />
-        <div className={classNames('AccessByKeystore__form', {
-          'AccessByKeystore__form--hide': !keystore,
-        })}
-        >
-          <Input
-            autoFocus
-            key="privatekey"
-            className="AccessByKeystore__privateKey"
-            name="password"
-            type="password"
-            onChange={this.handleChange}
-            isValid={isValidPassword}
-          />
-          <Button
-            key="access"
-            className="AccessByKeystore__button"
-            onClick={this.access}
-            disabled={!isValidPassword}
-            title="접근"
-          />
-        </div>
+        <Input
+          autoFocus
+          label="Password"
+          key="password"
+          className="AccessByKeystore__password"
+          name="password"
+          type="password"
+          onChange={this.handleChange}
+          isValid={isValidPassword}
+        />
+        <Button
+          className="AccessByKeystore__button"
+          onClick={this.access}
+          disabled={!isValidPassword}
+          title="Access"
+        />
       </div>
     )
   }

@@ -7,8 +7,10 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 
 import App from './App'
-import WalletCreation from 'components/WalletCreation'
 import WalletCreation2 from 'components/WalletCreation2'
+import WalletAccess2 from 'components/WalletAccess2'
+
+import WalletCreation from 'components/WalletCreation'
 import WalletAccess from 'components/WalletAccess'
 import WalletTransfer from 'components/WalletTransfer'
 import MyWallet from 'components/MyWallet'
@@ -23,7 +25,7 @@ export const renderRoutes = (rootComponent) => (
       <Route path="/" component={rootComponent}>
         <IndexRoute component={WalletCreation2} />
         <Route path="/create" component={WalletCreation2} />
-        <Route path="/access" component={WalletAccess} />
+        <Route path="/access" component={WalletAccess2} />
         <Route path="/access/:id" component={MyWallet} />
         <Route path="/transfer" component={WalletTransfer} />
         <Route path="/transfer/:id" component={WalletTransfer} />

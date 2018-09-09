@@ -1,25 +1,20 @@
 @import "mixins.scss";
+@import "fonts.scss";
 
 .AccessByPrivatekey {
   @include mobile {
     margin-bottom: 60px;
   }
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   padding: 30px 0;
-  margin-top: 18px;
 }
 
 .AccessByPrivatekey__input {
-  width: 80%;
   margin: 0 auto;
-  border-bottom: 2px solid #AAAAAA;
 }
 
 .AccessByPrivatekey__button {
-  width: 50%;
+  @include font-style('button');
   margin-top: 20px;
+  padding: 16px 40px;
 }
