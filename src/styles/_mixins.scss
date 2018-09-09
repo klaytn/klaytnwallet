@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 @mixin fixed-center() {
   position: fixed;
   top: 50%;
@@ -36,4 +38,12 @@
   &--highlight {
     color: #0DFF92;
   }
+}
+
+@mixin panelize() {
+  width: 600px;
+  height: 672px;
+  background-color: $white;
+  border: 1px solid $solitude;
+  padding: 40px 75px;
 }
