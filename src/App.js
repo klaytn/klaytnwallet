@@ -24,7 +24,10 @@ class App extends Component<Props> {
       <div className="App" key="App">
         <Header />
         <section className="App__section">
-          <Nav />
+          <Nav className="App__navSection" />
+          <div className="App__contentSection">
+            {children}
+          </div>
         </section>
       </div>
     ]

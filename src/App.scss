@@ -1,5 +1,5 @@
 .App {
-  width: 1280px;
+  min-width: 1280px;
   min-height: 800px;
   height: 100vh;
 }
@@ -7,4 +7,18 @@
 .App__section {
   padding-top: 72px;
   height: 100%;
+}
+
+
+.App__navSection {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+}
+
+.App__contentSection {
+  padding: 28px;
+  display: inline-block;
+  width: 80%;
+  vertical-align: top;
 }

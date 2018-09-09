@@ -1,4 +1,5 @@
 import React from 'react'
+import cx from 'classnames'
 
 import TabList from 'components/TabList'
 
@@ -11,8 +12,8 @@ const navLinks = [
   { title: 'KLAY Faucet', link: '/faucet', icon: 'icon-faucet' },
 ]
 
-const Nav = () => (
-  <div className="Nav">
+const Nav = ({ className }) => (
+  <div className={cx('Nav', className)}>
     <TabList tabItems={navLinks} />
     <p className="Nav__copyright">©klaytnwallet.com</p>
   </div>
