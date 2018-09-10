@@ -82,10 +82,12 @@ class AccessByKeystore extends Component<Props> {
           label="Import Keystore File (.json)"
           value={fileName}
           onChange={this.handleImport}
+          placeholder="Search..."
         />
         <Input
           autoFocus
           label="Password"
+          placeholder="Enter the password"
           key="password"
           className="AccessByKeystore__password"
           name="password"
