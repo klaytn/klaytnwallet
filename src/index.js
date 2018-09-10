@@ -10,6 +10,7 @@ import App from './App'
 import WalletCreation2 from 'components/WalletCreation2'
 import WalletAccess2 from 'components/WalletAccess2'
 import WalletTransfer2 from 'components/WalletTransfer2'
+import KlayFaucet from 'components/KlayFaucet'
 
 import WalletTransfer from 'components/WalletTransfer'
 import MyWallet from 'components/MyWallet'
@@ -28,6 +29,7 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/access/:id" component={MyWallet} />
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
+        <Route path="/faucet" component={KlayFaucet} />
       </Route>
     </Router>
   </Provider>

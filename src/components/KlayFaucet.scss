@@ -1,0 +1,56 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.KlayFaucet {
+
+}
+
+.KlayFaucet__content {
+  @include panelize;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  padding: 64px 48px;
+}
+
+.KlayFaucet__img {
+  width: 160px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.KlayFaucet__title {
+  @include font-style('h1');
+  color: $black;
+  margin-bottom: 64px;
+}
+
+.KlayFaucet__howItWork {
+  width: 300px;
+  margin-left: 48px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.KlayFaucet__howItWorkTitle {
+  @include font-style('h3');
+  color: $dolphin;
+  margin-bottom: 12px;
+}
+
+.KlayFaucet__howItWorkDescription {
+  @include font-style('body');
+  color: $dark-blue-grey;
+  line-height: 20px;
+  word-break: break-all;
+}
+
+.KlayFaucet__input {
+  margin-bottom: 32px;
+}
+
+.KlayFaucet__button {
+
+}
