@@ -97,9 +97,11 @@ class MyWallet extends Component<Props> {
             label="Private Key"
             onLabelClick={this.togglePrivateKey}
             labelClassName="MyWallet__hideButton"
-            value={hidePrivateKey ? '************************************************' : this.wallet.privateKey}
+            type={hidePrivateKey ? 'password' : 'text'}
+            value={this.wallet.privateKey}
             readOnly
             autoFocus
+            eye
           />
           <p className="MyWallet__transactionListTitle">Transaction List</p>
           <p className="MyWallet__transactionListDescription">
@@ -109,6 +111,7 @@ class MyWallet extends Component<Props> {
           <Button
             title="View Transaction List"
             className="MyWallet__viewTransationListButton"
+            gray
           />
         </div>
         <div className="MyWallet__token">
