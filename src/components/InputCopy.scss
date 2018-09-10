@@ -3,20 +3,38 @@
 
 .InputCopy {
   width: 100%;
+  border: 0;
+  padding: 0;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  outline: 0;
+  background-color: transparent;
+}
 
-  .Input {
-    padding: 0;
-    height: 40px;
-    color: $dark-blue-grey;
-  }
-
-  .Input__label {
-    margin-bottom: 5px;
-  }
+.InputCopy__inputWrapper {
+  position: relative;
+  border-bottom: 1px solid $light-blue-gray;
 }
 
 .InputCopy__input {
-  position: relative;
+  @include font-style('body');
+  text-overflow: ellipsis;
+  color: $dark-blue-grey;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 74%;
+  height: 100%;
+  display: block;
+  padding-bottom: 12px;
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
 }
 
 .InputCopy__copyButton {
@@ -25,9 +43,8 @@
   width: 100px;
   height: 40px;
   position: absolute;
-  top: 50%;
+  bottom: 0;
   right: 0;
-  transform: translateY(-50%);
   outline: none;
   cursor: pointer;
   padding: 0;
@@ -55,4 +72,29 @@
     opacity: 1;
   }
 
+}
+
+.InputCopy__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+
+.InputCopy__eye {
+  border: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 115px;
+  outline: none;
+  background: center / contain no-repeat transparent;
+  cursor: pointer;
+
+  &--show { background-image: url('/images/btn-show.svg'); }
+  &--hide { background-image: url('/images/btn-hide.svg'); }
 }
