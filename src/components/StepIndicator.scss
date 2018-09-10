@@ -37,6 +37,9 @@
   display: inline-block;
   vertical-align: middle;
   width: 128px;
-  height: 1px;
-  background-color: $middle-blue-grey;
+  border-bottom: 2px dashed $middle-blue-grey;
+
+  &--checked {
+    border-bottom: 2px solid $middle-blue-grey;
+  }
 }

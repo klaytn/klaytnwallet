@@ -20,12 +20,23 @@ const StepIndicatorItem = ({ stepValue, currentStep }) => {
   )
 }
 
+const StepIndicatorBorder = ({ stepValue, currentStep }) => {
+  const isChecked = currentStep > stepValue
+  return (
+    <div
+      className={cx('StepIndicator__border', {
+        'StepIndicator__border--checked': isChecked,
+      })}
+    />
+  )
+}
+
 const StepIndicator = ({ currentStep, className }) => (
   <div className={cx('StepIndicator', className)}>
     <StepIndicatorItem stepValue={1} currentStep={currentStep} />
-    <div className="StepIndicator__border" />
+    <StepIndicatorBorder stepValue={1} currentStep={currentStep} />
     <StepIndicatorItem stepValue={2} currentStep={currentStep} />
-    <div className="StepIndicator__border" />
+    <StepIndicatorBorder stepValue={2} currentStep={currentStep} />
     <StepIndicatorItem stepValue={3} currentStep={currentStep} />
   </div>
 )
