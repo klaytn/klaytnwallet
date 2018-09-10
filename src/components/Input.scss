@@ -38,18 +38,6 @@
   &--noFocus {
     border-bottom: 1px solid #333 !important;
   }
-
-  // &--valid {
-  //   &::after {
-  //     background-image: url(/images/check.png);
-  //   }
-  // }
-  //
-  // &--invalid {
-  //   &::after {
-  //     background-image: url(/images/x.png);
-  //   }
-  // }
 }
 
 .Input__label {
@@ -70,6 +58,7 @@
   width: 95%;
   height: 100%;
   display: block;
+  padding-bottom: 12px;
 
   &:-webkit-autofill {
     background-color: transparent;

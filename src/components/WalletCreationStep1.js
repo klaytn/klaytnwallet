@@ -19,8 +19,9 @@ class WalletCreationStep1 extends Component<Props> {
   }
 
   render() {
-    const { isValidPassword } = this.state
+    const { password, isValidPassword } = this.state
     const { handleStepMove } = this.props
+
     return (
       <WalletCreationStepPlate
         stepName="STEP 1"
@@ -28,6 +29,7 @@ class WalletCreationStep1 extends Component<Props> {
         description="This is the first step in creating a Klaytn Wallet. Set the password for the keystore file for the new wallet."
         render={() => (
           <InputPassword
+            value={password}
             name="password"
             placeholder="Enter the password"
             label="Password"

@@ -3,11 +3,8 @@ import classNames from 'classnames'
 
 import './Input.scss'
 
-type Props = {
-
-}
-
 class Input extends Component<Props> {
+
   render() {
     const {
       label,
@@ -23,6 +20,7 @@ class Input extends Component<Props> {
       value,
       onLabelClick,
       labelClassName,
+      tooltip,
     } = this.props
 
     return (
@@ -31,13 +29,15 @@ class Input extends Component<Props> {
         'Input--invalid': isValid !== undefined && isValid !== null && !isValid,
       })}
       >
-        <label
-          onClick={onLabelClick}
-          htmlFor={'input-' + name}
-          className={classNames('Input__label', labelClassName)}
-        >
-          {label}
-        </label>
+        {label && (
+          <label
+            onClick={onLabelClick}
+            htmlFor={'input-' + name}
+            className={classNames('Input__label', labelClassName)}
+          >
+            {label}
+          </label>
+        )}
         <input
           className="Input__input"
           onClick={onClick}

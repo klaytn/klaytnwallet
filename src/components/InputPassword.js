@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
+import ReactTooltip from 'react-tooltip'
+
+import PasswordTooltip from 'components/PasswordTooltip'
 
 import './InputPassword.scss'
 
@@ -51,11 +54,23 @@ class InputPassword extends Component<Props> {
         onFocus={this.toggleActive}
         onBlur={this.toggleActive}
       >
-        {label && <label className="Input__label" htmlFor={name}>{label}</label>}
+        {label && <label className="InputPassword__label" htmlFor={name}>{label}</label>}
         <div className={cx('InputPassword__input', {
           'InputPassword__input--active': activeAlways || active,
         })}>
+          <ReactTooltip
+            id="password-tooltip"
+            className="InputPassword__tooltip"
+            effect="solid"
+          >
+            <PasswordTooltip value={value} />
+          </ReactTooltip>
           <input
+            data-tip
+            data-for='password-tooltip'
+            data-event='focus'
+            data-event-off='blur'
+            data-offset={'{ "top": 10 }'}
             id={name}
             type={showPassword ? 'text' : 'password'}
             name={name}
@@ -64,7 +79,7 @@ class InputPassword extends Component<Props> {
             onKeyPress={onKeyPress}
             placeholder={placeholder}
             disabled={disabled}
-            className={cx('Input', { 'Input--err': err })}
+            className={cx('InputPassword__input', { 'InputPassword--err': err })}
           />
           <button
             className={cx('InputPassword__eye', {

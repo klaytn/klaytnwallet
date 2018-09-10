@@ -1,6 +1,6 @@
 import randombytes from 'randombytes'
 
-const MINIMUM_PASSWORD_LENGTH = 9
+const MINIMUM_PASSWORD_LENGTH = 8
 
 export const getRandomBytes = () => randombytes(32)
   .reduce((acc, cur) => {
@@ -24,7 +24,17 @@ export const isValidPrivateKey = (privateKey) => {
     .length === 64
 }
 
-export const checkValidPassword = (password) => password.length >= MINIMUM_PASSWORD_LENGTH
+export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH
+
+export const hasSpecialCharacters = (password) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(password))
+
+export const hasAtLeastOneNumber = (password) => (/[0-9]/.test(password))
+
+export const checkValidPassword = (password) => {
+  return has8MoreCharacters(password)
+    && hasSpecialCharacters(password)
+    && hasAtLeastOneNumber(password)
+}
 
 export const krc20ABI = [
   {
