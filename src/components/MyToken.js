@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
 import { connect } from 'react-redux'
-import { onit } from 'klaytn/onit'
+import { keyBy } from 'lodash'
 
+import { onit } from 'klaytn/onit'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
 import { krc20ABI } from 'utils/crypto'
@@ -22,59 +23,78 @@ class MyToken extends Component<Props> {
   }
 
   state = {
+    selectedTokenName: null,
+    balance: 0,
     isShowAddToken: false,
     isLoading: false,
     tokenList: [],
-    myTokenBalances: [
-      { fullname: 'KKK', name: 'KKK network', balance: 500 },
-      { fullname: 'KKK', name: 'KKK network', balance: 500 },
-      { fullname: 'KKK', name: 'KKK network', balance: 500 },
-      { fullname: 'KKK', name: 'KKK network', balance: 500 },
-      { fullname: 'KKK', name: 'KKK network', balance: 500 },
-      { fullname: 'KKK', name: 'KKK network', balance: 500 },
-    ]
-  }
-
-  componentDidMount() {
-    // this.initTokenListing()
-    // this.initTokenListingInterval = setInterval(this.initTokenListing, INIT_TOKEN_LISTING_INTERVAL)
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.tokenList.length !== this.props.tokenList.length) {
-      // this.initTokenListing()
-    }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.initTokenListingInterval)
-  }
-
-  initTokenListing = () => {
-    const { tokenList } = this.props
-    console.log(tokenList)
-    Promise.all(
-      tokenList.map(({ name, contractAddress }) => {
-        const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
-        contractInstance.accounts = onit.klay.accounts
-        return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
-      }))
-      .then(balances => {
-        this.setState({
-          isLoading: false,
-          myTokenBalances: balances.map((balance, idx) => ({ fullname: tokenList[idx].fullname || tokenList[idx].name, name: tokenList[idx].name, balance }))
-        })
-      })
+    myTokenBalances: [],
   }
 
   toggleAddToken = () => {
     this.setState({ isShowAddToken: !this.state.isShowAddToken })
   }
 
+  componentDidMount() {
+    if (this.wallet) {
+      this.getTokenBalances()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.tokenList.length !== this.props.tokenList.length) {
+      this.getTokenBalances()
+    }
+  }
+
+  selectToken = (selectedTokenName) => () => {
+    this.setState({ selectedTokenName })
+  }
+
+  getTokenBalances = () => {
+    const { tokenList } = this.props
+    Promise.all(
+      [
+        onit.klay.getBalance(this.wallet.address),
+        ...tokenList
+          .filter(({ contractAddress }) => contractAddress)
+          .map(({ name, contractAddress }) => {
+            const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
+            contractInstance.accounts = onit.klay.accounts
+            return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
+          }),
+      ])
+      .then(balances => {
+        const myTokenBalances = balances.map((balance, idx) => {
+          const isNativeCoin = idx === 0
+          if (isNativeCoin) {
+            return {
+              fullname: 'KLAY',
+              name: 'KLAY',
+              balance: onit.utils.fromWei(balance, 'ether'),
+            }
+          } else {
+            return {
+              fullname: tokenList[idx - 1].fullname,
+              name: tokenList[idx - 1].name,
+              balance,
+            }
+          }
+        })
+        this.setState({
+          isLoading: false,
+          myTokenBalances: myTokenBalances,
+          tokenBalanceByName: keyBy(myTokenBalances, ({ value }) => value),
+        })
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+
   render() {
-    const { isLoading, myTokenBalances, isShowAddToken } = this.state
+    const { selectedTokenName, isLoading, myTokenBalances, isShowAddToken } = this.state
     const { title, className } = this.props
-    console.log(myTokenBalances)
     return (
       <div className={cx('MyToken', className)}>
         <header className="MyToken__header">
@@ -88,7 +108,15 @@ class MyToken extends Component<Props> {
           {isLoading
             ? 'loading...'
             : myTokenBalances.map(({ fullname, name, balance }, idx) => (
-              <TokenItem key={name} fullname={fullname} name={name} balance={balance} />
+              <TokenItem
+                key={name}
+                fullname={fullname}
+                name={name}
+                balance={balance}
+                tokenColor={(idx % 4) + 1}
+                selectedTokenName={selectedTokenName}
+                onClick={this.selectToken(name)}
+              />
             ))
           }
         </div>
@@ -98,12 +126,22 @@ class MyToken extends Component<Props> {
   }
 }
 
-const TokenItem = ({ fullname, name, balance }) => (
-  <div className="TokenItem">
+const TokenItem = ({ fullname, name, balance, tokenColor, selectedTokenName, onClick }) => (
+  <div
+    className={cx('TokenItem', {
+      'TokenItem--active': selectedTokenName == name,
+      'TokenItem--token-color-1': tokenColor == 1,
+      'TokenItem--token-color-2': tokenColor == 2,
+      'TokenItem--token-color-3': tokenColor == 3,
+      'TokenItem--token-color-4': tokenColor == 4,
+    })}
+    onClick={onClick}
+  >
     <header className="TokenItem__title">{fullname}</header>
     <span className="TokenItem__balance">{balance}</span>
     <span className="TokenItem__tokenName">{name}</span>
     <div className="TokenItem__decoration" />
+    <div className="TokenItem__arrow" />
   </div>
 )
 

@@ -1,0 +1,9 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.EditButton {
+  @include font-style('label');
+  width: 60px;
+  padding: 10px;
+  border: 1px solid $solitude;
+}

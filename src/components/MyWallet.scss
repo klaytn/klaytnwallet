@@ -45,12 +45,6 @@
 }
 
 .MyWallet__token {
-  @include mobile {
-    display: block;
-    width: 100%;
-    padding: 6px;
-    margin-top: 10px;
-  }
   height: 100%;
   display: inline-block;
   vertical-align: middle;

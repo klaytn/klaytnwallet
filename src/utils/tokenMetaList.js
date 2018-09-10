@@ -1,4 +1,8 @@
 const tokenMetaList = [
+  {
+    name: 'KLAY',
+    fullname: 'KLAY',
+  },
   // {
   //   name: 'RAS',
   //   fullname: 'RASPUTIN',

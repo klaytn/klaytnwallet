@@ -104,7 +104,6 @@ class WalletTransfer extends Component<Props> {
 
   transfer = () => {
     const { type } = this.state
-    console.log(type)
     switch (type) {
       case 'KLAY':
         this.transferCoin()
@@ -165,6 +164,7 @@ class WalletTransfer extends Component<Props> {
 
   render() {
     const { to, value, type, myTokenBalances, tokenBalanceByName } = this.state
+    console.log(myTokenBalances, 'myTokenBalances')
     if (!tokenBalanceByName) return 'loading...'
     return (
       <div className="WalletTransfer">

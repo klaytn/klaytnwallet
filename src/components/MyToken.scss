@@ -14,8 +14,9 @@
 
 .MyToken__header {
   position: relative;
-  margin-left: 48px;
   margin-bottom: 46px;
+  margin-left: 48px;
+  margin-right: 48px;
 }
 
 .MyToken__title {
@@ -24,14 +25,14 @@
 
 .MyToken__addTokenButton {
   position: absolute;
-  right: 40px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .MyToken__list {
   height: 555px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .MyToken__addToken {
@@ -50,6 +51,7 @@
   border-left: 0;
   height: 100px;
   background-color: $white;
+  cursor: pointer;
 
   &:first-of-type {
     border-top: 1px solid $light-blue-gray;
@@ -57,7 +59,37 @@
 
   &--active {
     color: $white;
-    background-color: $light-purple;
+    border-top: 0;
+    border-bottom: 0;
+    .TokenItem__arrow { display: inline-block; }
+    .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+  }
+
+  &--token-color-1 {
+    .TokenItem__decoration { background-color: #AD6AF0; }
+    .TokenItem__arrow { border-left: 20px solid #8B55C0; }
+    &.TokenItem--active, &:hover {
+      background-color: #8B55C0;
+      color: $white;
+    }
+  }
+
+  &--token-color-2 {
+    .TokenItem__decoration { background-color: #FA265F; }
+    .TokenItem__arrow { border-left: 20px solid #C81E4C; }
+    &.TokenItem--active, &:hover { background-color: #C81E4C; color:$white; }
+  }
+
+  &--token-color-3 {
+    .TokenItem__decoration { background-color: #ffd800; }
+    .TokenItem__arrow { border-left: 20px solid #ccad00; }
+    &.TokenItem--active, &:hover { background-color: #ccad00; color:$white; }
+  }
+
+  &--token-color-4 {
+    .TokenItem__decoration { background-color: #9cce2c; }
+    .TokenItem__arrow { border-left: 20px solid #7da523; }
+    &.TokenItem--active, &:hover { background-color: #7da523; color:$white; }
   }
 }
 
@@ -71,6 +103,7 @@
   @include font-style('body');
   margin-left: 10px;
   color: $dark-blue-grey;
+  margin-bottom: 6px;
 }
 
 .TokenItem__description {
@@ -85,4 +118,17 @@
   width: 6px;
   background-color: #ad6af0;
   height: 102%;
+}
+
+.TokenItem__arrow {
+  display: none;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid black;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -15px;
 }

@@ -37,48 +37,12 @@ class MyWallet extends Component<Props> {
     }
   }
 
-  componentDidMount() {
-    if (this.wallet) {
-      this.getBalance()
-      this.getBalanceInterval = setInterval(this.getBalance, GET_BALANCE_INTERVAL)
-    }
-  }
-
-  getBalance = () => {
-    onit.klay.getBalance(this.wallet.address)
-      .then(balance => {
-        if (balance !== this.state.balance) {
-          ui.showToast({ msg: '잔액이 업데이트 되었습니다.' })
-          this.setState({ balance })
-        }
-      })
-  }
-
   togglePrivateKey = () => {
     this.setState({ hidePrivateKey: !this.state.hidePrivateKey })
   }
 
-  // handleDownload = () => {
-  //   // const { privateKey, password } = this.props
-  //   const keystore = onit.klay.accounts.encrypt(privateKey, password)
-  //   this.downloadKeystore(keystore)
-  // }
-
-  // downloadKeystore = (keystore) => {
-  //   const date = new Date()
-  //   const fileName = `keystore-${keystore.address}-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}.json`
-  //   download(jsonFormat(keystore), fileName)
-  //   ui.showToast({ msg: '키스토어 파일이 저장되었습니다!' })
-  // }
-
-  componentWillUnmount() {
-    if (this.getBalanceInterval) {
-      clearInterval(this.getBalanceInterval)
-    }
-  }
-
   render() {
-    const { balance, hidePrivateKey } = this.state
+    const { hidePrivateKey } = this.state
 
     return !!this.wallet && (
       <div className="MyWallet">

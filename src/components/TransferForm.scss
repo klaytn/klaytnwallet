@@ -5,6 +5,8 @@
 .TransferForm {
   // @include panelize;
   padding: 48px;
+  border-left: 1px solid $solitude;
+  height: 100%;
 }
 
 .TransferForm__title {
@@ -20,6 +22,13 @@
 
 .TransferForm__input {
   margin-bottom: 32px;
+  border-bottom: 1px solid $light-blue-gray;
+
+  &--readOnly {
+    .Input__input {
+      color: $dark-blue-grey;
+    }
+  }
 }
 
 .TransferForm__sendTransactionButton {

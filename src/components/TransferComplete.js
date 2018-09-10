@@ -24,7 +24,8 @@ const TransferComplete = () => (
     </p>
     <Button
       title="Send KLAY & Tokens"
-      className="TransferComplete__button" 
+      className="TransferComplete__button"
+      gray
     />
     <Button
       title="View Transaction Info"
