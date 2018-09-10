@@ -30,7 +30,7 @@
 
   &--gray {
     background-color: $dark-blue-grey;
-    box-shadow: rgba($dark-blue-grey, .25);
+    box-shadow: 0 4px 8px 0 rgba($dark-blue-grey, 0.25);
 
     &:hover {
       background-color: $manatee;

@@ -16,6 +16,7 @@ class WalletCreationStep3 extends Component<Props> {
     const { privateKey } = this.props
     return (
       <WalletCreationStepPlate
+        className="WalletCreationStep3"
         stepName="FINAL"
         title="Save Private Key"
         description={`
@@ -32,12 +33,13 @@ class WalletCreationStep3 extends Component<Props> {
           {
             title: 'View Wallet Info',
             onClick: () => browserHistory.push('/access'),
-            className: 'WalletCreationStep3__viewWalletInfoButton',
+            className: 'WalletCreationStep3__button',
+            gray: true,
           },
           {
             title: 'Send KLAY & Tokens',
             onClick: () => browserHistory.push('/transfer'),
-            className: 'WalletCreationStep3__sendKlayButton',
+            className: 'WalletCreationStep3__button',
           },
         ]}
       />
