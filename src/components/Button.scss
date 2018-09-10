@@ -8,7 +8,7 @@
   background-color: $main-point;
   color: $white;
   cursor: pointer;
-  padding: 16px;
+  padding: 16px 40px;
   text-align: center;
   outline: 0;
   box-shadow: 0 4px 8px 0 rgba($main-point, .25);
@@ -16,10 +16,43 @@
   &:disabled {
     box-shadow: unset;
     cursor: not-allowed;
-    background-color: $middle-blue-grey;
+    background-color: $middle-blue-grey !important;
+  }
+
+  &:hover {
+    background-color: $breakerbay;
+  }
+
+  &:active {
+    background-color: $ming;
+    box-shadow: unset;
   }
 
   &--gray {
     background-color: $dark-blue-grey;
+    box-shadow: rgba($dark-blue-grey, .25);
+
+    &:hover {
+      background-color: $manatee;
+    }
+
+    &:active {
+      background-color: $nevada;
+      box-shadow: unset;
+    }
+  }
+
+  &--red {
+    background-color: $light-red;
+    box-shadow: 0 4px 8px 0 rgba($light-red, 0.25);
+
+    &:hover {
+      background-color: $dark-red;
+    }
+
+    &:active {
+      background-color: $shiraz;
+      box-shadow: unset;
+    }
   }
 }

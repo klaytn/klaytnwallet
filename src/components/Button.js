@@ -5,11 +5,23 @@ import './Button.scss'
 
 class Button extends Component<Props> {
   render() {
-    const { children, style, disabled, title, className, onClick } = this.props
+    const {
+      children,
+      style,
+      disabled,
+      title,
+      className,
+      onClick,
+      gray,
+      red,
+     } = this.props
     return (
       <button
         style={{...style}}
-        className={classNames('Button', className)}
+        className={classNames('Button', className, {
+          'Button--gray': gray,
+          'Button--red': red,
+        })}
         onClick={onClick}
         disabled={disabled}
       >
