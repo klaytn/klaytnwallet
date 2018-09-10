@@ -2,8 +2,10 @@
 @import 'fonts.scss';
 
 .StepIndicator {
+  width: 400px;
   display: block;
   text-align: center;
+  margin: 0 auto;
 }
 
 .StepIndicator__item {

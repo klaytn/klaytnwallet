@@ -21,7 +21,9 @@ class WalletCreationStepPlate extends Component<Props> {
       <div className="WalletCreationStepPlate">
         <div className="WalletCreationStepPlate__stepName">{stepName}</div>
         <header className="WalletCreationStepPlate__title">{title}</header>
-        <p className="WalletCreationStepPlate__description">{description}</p>
+        <p className="WalletCreationStepPlate__description">
+          {description}
+        </p>
         {render && render()}
         <div className="WalletCreationStepPlate__nextButtons">
           {nextStepButtons.map(({ title, onClick, disabled, className }) =>

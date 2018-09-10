@@ -14,7 +14,7 @@ class InputCopy extends Component<Props> {
     if (this.$input)
     copy(this.$input)
     this.setCopyState(true)
-    setTimeout(() => this.setCopyState(false), 3000)
+    setTimeout(() => this.setCopyState(false), 1500)
   }
 
   setCopyState = (isCopied) => this.setState({ isCopied })

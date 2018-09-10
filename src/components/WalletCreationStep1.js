@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import InputPassword from 'components/InputPassword'
@@ -26,7 +26,12 @@ class WalletCreationStep1 extends Component<Props> {
       <WalletCreationStepPlate
         stepName="STEP 1"
         title="Set Password for Keystore File"
-        description="This is the first step in creating a Klaytn Wallet. Set the password for the keystore file for the new wallet."
+        description={(
+          <Fragment>
+            This is the first step in creating a Klaytn Wallet.<br />
+            Set the password for the keystore file for the new wallet.
+          </Fragment>
+        )}
         render={() => (
           <InputPassword
             value={password}

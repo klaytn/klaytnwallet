@@ -4,6 +4,8 @@
 .WalletCreation2 {
   @include panelize;
   margin: 0 auto;
+  width: 100%;
+  max-width: 992px;
 }
 
 .WalletCreation2__stepIndicator {
