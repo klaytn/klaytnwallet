@@ -13,11 +13,16 @@
   display: inline-block;
   margin: 0;
   border: 1px solid $solitude;
+  border-left: 0;
   color: $middle-blue-grey;
   background-color: $light-blue-gray;
   padding: 16px;
   text-align: center;
   cursor: pointer;
+
+  &:first-of-type {
+    border-left: 1px solid $solitude;
+  }
 
   &--active {
     border-bottom: 1px solid $white;

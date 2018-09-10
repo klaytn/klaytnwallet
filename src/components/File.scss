@@ -38,6 +38,18 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgba($dolphin, .2);
+  }
+
+  &:active {
+    background-color: rgba($dolphin, .4);
+  }
+
+  &:disabled {
+    background-color: $light-blue-gray;
+  }
 }
 
 .File__icon {

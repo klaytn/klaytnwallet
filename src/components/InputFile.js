@@ -24,8 +24,8 @@ class InputFile extends Component<Props> {
 
     return (
       <div className={cx('InputFile', className)}>
-        {label && <label className="Input__label" htmlFor={name}>{label}</label>}
-        <div className="InputFile__input">
+        {label && <label className="InputFile__label" htmlFor={name}>{label}</label>}
+        <div className="InputFile__inputWrapper">
           <input
             ref={($input) => this.$input = $input}
             name={name}
@@ -34,7 +34,7 @@ class InputFile extends Component<Props> {
             onKeyPress={onKeyPress}
             placeholder={placeholder}
             disabled={disabled}
-            className={cx('Input', { 'Input--err': err })}
+            className={cx('InputFile__input', { 'InputFile--err': err })}
             readOnly
           />
           <File

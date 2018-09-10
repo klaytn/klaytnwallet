@@ -3,20 +3,46 @@
 
 .InputFile {
   width: 100%;
-
-  .Input {
-    padding: 0;
-    height: 40px;
-    color: $dark-blue-grey;
-  }
-
-  .Input__label {
-    margin-bottom: 4px;
-  }
+  border: 0;
+  border-bottom: 1px solid $middle-blue-grey;
+  padding: 0;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  outline: 0;
+  background-color: transparent;
 }
 
 .InputFile__input {
   position: relative;
+  height: 40px;
+  color: $dark-blue-grey;
+
+  @include font-style('body');
+  color: $black;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 95%;
+  height: 100%;
+  display: block;
+  padding-bottom: 12px;
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+}
+
+.InputFile__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 16px;
 }
 
 .InputFile__uploadButton {
@@ -25,14 +51,14 @@
   width: 100px;
   height: 40px;
   position: absolute;
-  top: 50%;
+  bottom: 0;
   right: 0;
-  transform: translateY(-50%);
   outline: none;
   cursor: pointer;
   padding: 0;
   border: 1px solid $middle-blue-grey;
   background-color: $light-blue-gray;
+  border-bottom: 0;
 }
 
 .InputFile__icon {

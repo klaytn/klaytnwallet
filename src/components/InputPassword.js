@@ -55,7 +55,7 @@ class InputPassword extends Component<Props> {
         onBlur={this.toggleActive}
       >
         {label && <label className="InputPassword__label" htmlFor={name}>{label}</label>}
-        <div className={cx('InputPassword__input', {
+        <div className={cx('InputPassword__inputWrapper', {
           'InputPassword__input--active': activeAlways || active,
         })}>
           <ReactTooltip
