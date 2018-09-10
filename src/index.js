@@ -9,6 +9,7 @@ import store from './store'
 import App from './App'
 import WalletCreation2 from 'components/WalletCreation2'
 import WalletAccess2 from 'components/WalletAccess2'
+import WalletTransfer2 from 'components/WalletTransfer2'
 
 import WalletTransfer from 'components/WalletTransfer'
 import MyWallet from 'components/MyWallet'
@@ -25,8 +26,8 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/create" component={WalletCreation2} />
         <Route path="/access" component={WalletAccess2} />
         <Route path="/access/:id" component={MyWallet} />
-        <Route path="/transfer" component={WalletTransfer} />
-        <Route path="/transfer/:id" component={WalletTransfer} />
+        <Route path="/transfer" component={WalletTransfer2} />
+        <Route path="/transfer/:id" component={WalletTransfer2} />
       </Route>
     </Router>
   </Provider>

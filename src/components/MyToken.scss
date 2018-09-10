@@ -50,6 +50,11 @@
   border-left: 0;
   height: 100px;
   background-color: $white;
+
+  &--active {
+    color: $white;
+    background-color: $light-purple;
+  }
 }
 
 .TokenItem__balance {

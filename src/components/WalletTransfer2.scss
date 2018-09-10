@@ -1,0 +1,23 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.WalletTransfer2 {
+  @include panelize;
+  width: 988px;
+  min-height: 683px;
+  padding: 0;
+}
+
+.WalletTransfer2__myToken {
+  display: inline-block;
+  min-width: 388px;
+  width: 40%;
+  vertical-align: top;
+}
+
+.WalletTransfer2__transferForm {
+  display: inline-block;
+  width: 60%;
+  vertical-align: top;
+}

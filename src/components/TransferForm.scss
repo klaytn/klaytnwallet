@@ -1,0 +1,31 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.TransferForm {
+  // @include panelize;
+  padding: 48px;
+}
+
+.TransferForm__title {
+  @include font-style('h2');
+  color: $black;
+}
+
+.TransferForm__hr {
+  border-color: $solitude;
+  border-style: dashed;
+  margin: 46px 0;
+}
+
+.TransferForm__input {
+  margin-bottom: 32px;
+}
+
+.TransferForm__sendTransactionButton {
+  display: block;
+  margin: 0 auto;
+  width: 202px;
+  margin-top: 40px;
+  padding: 16px 40px;
+}

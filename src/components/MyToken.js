@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import cx from 'classnames'
 import { connect } from 'react-redux'
 import { onit } from 'klaytn/onit'
 
@@ -72,10 +73,10 @@ class MyToken extends Component<Props> {
 
   render() {
     const { isLoading, myTokenBalances, isShowAddToken } = this.state
-    const { title } = this.props
+    const { title, className } = this.props
     console.log(myTokenBalances)
     return (
-      <div className="MyToken">
+      <div className={cx('MyToken', className)}>
         <header className="MyToken__header">
           <p className="MyToken__title">{title}</p>
           <PlusButton
