@@ -1,4 +1,5 @@
 import { onit } from 'klaytn/onit'
+import copyToClipboard from 'copy-to-clipboard'
 
 String.prototype.lpad = function(padString, length) {
   var str = this
@@ -59,7 +60,11 @@ export const download = (text, name) => {
 
 export const copy = ($input) => {
   if (document) {
-    const copyText = $input
+    let copyText = $input
+    if (copyText && copyText.type === 'password') {
+      copyToClipboard(copyText.value)
+      return
+    }
     copyText.select()
     document.execCommand("copy");
   }
