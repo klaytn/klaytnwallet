@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 
 import Input from 'components/Input'
+import Button from 'components/Button'
 import { XButton } from 'components/PlusButton'
+import { krc20ABI } from 'utils/crypto'
+import { onit } from 'klaytn/onit'
+import { registerToken } from 'actions/token'
+
+import store from '../store'
 
 type Props = {
 
@@ -11,7 +17,45 @@ type Props = {
 import './AddToken.scss'
 
 class AddToken extends Component<Props> {
+  state = {
+    name: '',
+    address: '',
+    decimal: ''
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  add = () => {
+    const { name, address, decimal } = this.state
+    const contractInstance = new onit.klay.Contract(krc20ABI, address)
+    contractInstance.methods.balanceOf('0x006056d2F4C68233F1AE99364445D7b587ef6642').call()
+      .then(balance => {
+        if (typeof balance === 'undefined') {
+          ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})
+          return
+        }
+        store.dispatch(
+          registerToken({
+            name,
+            address,
+            decimal,
+          })
+        )
+        ui.closePopup()
+        ui.showToast({ msg: `${name} 토큰이 등록되었습니다.`})
+      })
+      .catch((e) => {
+        ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})
+        console.log(e)
+      })
+  }
+
   render() {
+    const { name, address, decimal } = this.state
     const { onClick, className } = this.props
     return (
       <div className={cx('AddToken', className)}>
@@ -28,19 +72,34 @@ class AddToken extends Component<Props> {
         </div>
         <div className="AddToken__downBlock">
           <Input
+            name="name"
             className="AddToken__input"
             label="Token Symbol"
             placeholder="Enter new token name"
+            autoComplete="off"
+            onChange={this.handleChange}
           />
           <Input
+            name="address"
             className="AddToken__input"
             label="Token Contract Address"
             placeholder="Enter token contract address"
+            autoComplete="off"
+            onChange={this.handleChange}
           />
           <Input
+            name="decimal"
             className="AddToken__input"
             label="Decimals"
             placeholder="Enter decimals"
+            autoComplete="off"
+            onChange={this.handleChange}
+          />
+          <Button
+            title="Save"
+            className="AddToken__saveButton"
+            onClick={this.add}
+            disabled={!name || !address || !decimal}
           />
         </div>
       </div>

@@ -17,7 +17,7 @@ class Input extends Component<Props> {
       onClick,
       className,
       isValid,
-      autocomplete,
+      autoComplete,
       autoFocus,
       placeholder,
       value,
@@ -42,7 +42,7 @@ class Input extends Component<Props> {
           className="Input__input"
           onClick={onClick}
           placeholder={placeholder}
-          autoComplete={autocomplete}
+          autoComplete={autoComplete}
           autoFocus={autoFocus}
           id={'input-' + name}
           name={name}

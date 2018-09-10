@@ -14,12 +14,12 @@
 
 .AddToken__header {
   position: relative;
+  margin-bottom: 8px;
 }
 
 .AddToken__title {
   @include font-style('h2');
   color: $white;
-  margin-bottom: 8px;
 }
 
 .AddToken__description {
@@ -40,14 +40,32 @@
 }
 
 .AddToken__input {
+  margin-bottom: 32px;
+
   .Input__label {
     color: $white;
   }
 
-  .Input {
-    border-color: $dark-blue-grey;
+  .Input__input {
+    color: $white;
     &::placeholder {
       color: $dark-blue-grey;
     }
   }
+
+  &.Input {
+    border-color: $dark-blue-grey;
+
+    &:focus-within {
+      border-color: $white;
+    }
+  }
+}
+
+.AddToken__saveButton {
+  display: block;
+  width: 114px;
+  padding: 16px 40px;
+  margin: 0 auto;
+  margin-top: 40px;
 }
