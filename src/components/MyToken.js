@@ -23,7 +23,6 @@ class MyToken extends Component<Props> {
   }
 
   state = {
-    selectedTokenName: null,
     balance: 0,
     isShowAddToken: false,
     isLoading: false,
@@ -48,7 +47,9 @@ class MyToken extends Component<Props> {
   }
 
   selectToken = (selectedTokenName) => () => {
-    this.setState({ selectedTokenName })
+    const { selectable, handleSelect } = this.props
+    if (!selectable) return
+    handleSelect(selectedTokenName)
   }
 
   getTokenBalances = () => {
@@ -93,8 +94,8 @@ class MyToken extends Component<Props> {
   }
 
   render() {
-    const { selectedTokenName, isLoading, myTokenBalances, isShowAddToken } = this.state
-    const { title, className } = this.props
+    const { isLoading, myTokenBalances, isShowAddToken } = this.state
+    const { title, className, selectedTokenName, selectable } = this.props
     return (
       <div className={cx('MyToken', className)}>
         <header className="MyToken__header">
@@ -109,6 +110,7 @@ class MyToken extends Component<Props> {
             ? 'loading...'
             : myTokenBalances.map(({ fullname, name, balance }, idx) => (
               <TokenItem
+                selectable={selectable}
                 key={name}
                 fullname={fullname}
                 name={name}
@@ -126,9 +128,10 @@ class MyToken extends Component<Props> {
   }
 }
 
-const TokenItem = ({ fullname, name, balance, tokenColor, selectedTokenName, onClick }) => (
+const TokenItem = ({ fullname, name, balance, tokenColor, selectedTokenName, onClick, selectable }) => (
   <div
     className={cx('TokenItem', {
+      'TokenItem--readOnly': !selectable,
       'TokenItem--active': selectedTokenName == name,
       'TokenItem--token-color-1': tokenColor == 1,
       'TokenItem--token-color-2': tokenColor == 2,

@@ -65,6 +65,16 @@
     .TokenItem__balance, .TokenItem__tokenName { color: $white; }
   }
 
+  &--readOnly {
+    cursor: default;
+    background-color: $white;
+    .TokenItem__arrow { border-left: 0; }
+    &.TokenItem--active, &:hover {
+      color: inherit !important;
+      background-color: $white !important;
+    }
+  }
+
   &--token-color-1 {
     .TokenItem__decoration { background-color: #AD6AF0; }
     .TokenItem__arrow { border-left: 20px solid #8B55C0; }

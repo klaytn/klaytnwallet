@@ -46,10 +46,9 @@ class WalletTransfer2 extends Component<Props> {
     })
   }
 
-  handleSelect = (token) => {
+  handleSelect = (tokenSymbol) => {
     this.setState({
-      type: token.value,
-      token,
+      type: tokenSymbol,
     })
   }
 
@@ -136,6 +135,9 @@ class WalletTransfer2 extends Component<Props> {
             <MyToken
               className="WalletTransfer2__myToken"
               title="Step1. Select Tokens"
+              selectedTokenName={type}
+              handleSelect={this.handleSelect}
+              selectable
             />
             <TransferForm
               className="WalletTransfer2__transferForm"
