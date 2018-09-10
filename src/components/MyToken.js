@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { onit } from 'klaytn/onit'
 
+import AddToken from 'components/AddToken'
+import PlusButton from 'components/PlusButton'
 import { krc20ABI } from 'utils/crypto'
 
 import './MyToken.scss'
@@ -19,18 +21,27 @@ class MyToken extends Component<Props> {
   }
 
   state = {
-    isLoading: true,
+    isShowAddToken: false,
+    isLoading: false,
     tokenList: [],
+    myTokenBalances: [
+      { fullname: 'KKK', name: 'KKK network', balance: 500 },
+      { fullname: 'KKK', name: 'KKK network', balance: 500 },
+      { fullname: 'KKK', name: 'KKK network', balance: 500 },
+      { fullname: 'KKK', name: 'KKK network', balance: 500 },
+      { fullname: 'KKK', name: 'KKK network', balance: 500 },
+      { fullname: 'KKK', name: 'KKK network', balance: 500 },
+    ]
   }
 
   componentDidMount() {
-    this.initTokenListing()
-    this.initTokenListingInterval = setInterval(this.initTokenListing, INIT_TOKEN_LISTING_INTERVAL)
+    // this.initTokenListing()
+    // this.initTokenListingInterval = setInterval(this.initTokenListing, INIT_TOKEN_LISTING_INTERVAL)
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.tokenList.length !== this.props.tokenList.length) {
-      this.initTokenListing()
+      // this.initTokenListing()
     }
   }
 
@@ -55,17 +66,32 @@ class MyToken extends Component<Props> {
       })
   }
 
+  toggleAddToken = () => {
+    this.setState({ isShowAddToken: !this.state.isShowAddToken })
+  }
+
   render() {
-    const { isLoading, myTokenBalances } = this.state
+    const { isLoading, myTokenBalances, isShowAddToken } = this.state
+    const { title } = this.props
     console.log(myTokenBalances)
     return (
       <div className="MyToken">
-        {isLoading
-          ? 'loading...'
-          : myTokenBalances.map(({ fullname, name, balance }, idx) => (
-            <TokenItem key={name} fullname={fullname} name={name} balance={balance} />
-          ))
-        }
+        <header className="MyToken__header">
+          <p className="MyToken__title">{title}</p>
+          <PlusButton
+            className="MyToken__addTokenButton"
+            onClick={this.toggleAddToken}
+          />
+        </header>
+        <div className="MyToken__list">
+          {isLoading
+            ? 'loading...'
+            : myTokenBalances.map(({ fullname, name, balance }, idx) => (
+              <TokenItem key={name} fullname={fullname} name={name} balance={balance} />
+            ))
+          }
+        </div>
+        {isShowAddToken && <AddToken onClick={this.toggleAddToken} className="MyToken__addToken" />}
       </div>
     )
   }
@@ -73,9 +99,10 @@ class MyToken extends Component<Props> {
 
 const TokenItem = ({ fullname, name, balance }) => (
   <div className="TokenItem">
-    <p className="TokenItem__description">
-      {fullname} 보유량: {balance} {name}
-    </p>
+    <header className="TokenItem__title">{fullname}</header>
+    <span className="TokenItem__balance">{balance}</span>
+    <span className="TokenItem__tokenName">{name}</span>
+    <div className="TokenItem__decoration" />
   </div>
 )
 

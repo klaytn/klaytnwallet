@@ -112,7 +112,7 @@ class MyWallet extends Component<Props> {
           />
         </div>
         <div className="MyWallet__token">
-          <MyToken />
+          <MyToken title="Balance" />
           <RegisterTokenButton />
         </div>
       </div>

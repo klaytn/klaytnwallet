@@ -1,0 +1,35 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.PlusButton, .XButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 16px;
+  box-shadow: 0 4px 8px 0 rgba($dark-blue-grey, 0.25);
+  outline: 0;
+  cursor: pointer;
+  background-color: $dark-blue-grey;
+  background-image: url(/images/icon-plus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+  border: 0;
+
+  &:hover {
+    background-color: $manatee;
+  }
+
+  &:active {
+    background-color: $nevada;
+  }
+
+  &:disabled {
+    background-color: $solitude;
+  }
+}
+
+.XButton {
+  background-image: url(/images/icon-x.svg);
+}

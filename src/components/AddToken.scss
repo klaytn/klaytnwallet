@@ -1,0 +1,53 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.AddToken {
+  background-color: $dolphin;
+  padding-bottom: 100px;
+}
+
+.AddToken__topBlock {
+  background-color: $bluezodiac;
+  padding: 48px;
+}
+
+.AddToken__header {
+  position: relative;
+}
+
+.AddToken__title {
+  @include font-style('h2');
+  color: $white;
+  margin-bottom: 8px;
+}
+
+.AddToken__description {
+  @include font-style('body');
+  color: $dark-blue-grey;
+  line-height: 20px;
+}
+
+.AddToken__downBlock {
+  padding: 48px;
+}
+
+.AddToken__xButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.AddToken__input {
+  .Input__label {
+    color: $white;
+  }
+
+  .Input {
+    border-color: $dark-blue-grey;
+    &::placeholder {
+      color: $dark-blue-grey;
+    }
+  }
+}

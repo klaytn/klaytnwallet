@@ -1,40 +1,79 @@
 @import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
 
 .MyToken {
   @include mobile {
     padding-left: 0;
     height: 100px;
   }
+  padding-top: 48px;
+  position: relative;
   text-align: left;
-  padding-left: 50px;
+}
+
+.MyToken__header {
+  position: relative;
+  margin-left: 48px;
+  margin-bottom: 46px;
+}
+
+.MyToken__title {
+  @include font-style('h2');
+}
+
+.MyToken__addTokenButton {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.MyToken__list {
+  height: 555px;
   overflow: scroll;
-  height: 300px;
+}
+
+.MyToken__addToken {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .TokenItem {
+  @include font-style('button');
+  position: relative;
+  padding: 28px 42px;
+  border: 1px solid $light-blue-gray;
+  border-left: 0;
+  height: 100px;
+  background-color: $white;
+}
 
+.TokenItem__balance {
+  @include font-family('roboto');
+  @include font-style('h3');
+  color: $dark-blue-grey;
+}
+
+.TokenItem__tokenName {
+  @include font-style('body');
+  margin-left: 10px;
+  color: $dark-blue-grey;
 }
 
 .TokenItem__description {
-  color: #fff;
-  font-size: 14px;
-  margin-bottom: 10px;
-  &::before {
-    content: '';
-    vertical-align: middle;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    box-sizing: border-box;
-    margin: 0 20px 0 0;
-    color: rgba(0, 0, 0, 0.8);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 16px;
-    text-align: center;
-    background-image: url(/images/ras.png);
-    background-size: contain;
-  }
+  @include font-style('h3');
+  color: $dark-blue-grey;
+}
+
+.TokenItem__decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  background-color: #ad6af0;
+  height: 100%;
 }

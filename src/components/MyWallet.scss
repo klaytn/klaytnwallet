@@ -12,7 +12,7 @@
   margin-top: 30px;
   text-align: center;
   font-size: 16px;
-  padding: 50px 48px;
+  padding: 0;
 }
 
 .MyWallet__title {
@@ -31,6 +31,8 @@
     display: block;
     width: 100%;
   }
+  padding: 48px;
+  border-right: 1px solid $solitude;
   text-align: left;
   height: 100%;
   display: inline-block;
@@ -48,8 +50,9 @@
   height: 100%;
   display: inline-block;
   vertical-align: middle;
-  width: 40%;
-  padding: 24px;
+  width: 45%;
+  padding: 0;
+  overflow: hidden;
 }
 
 .MyWallet__hideButton {
@@ -83,6 +86,8 @@
 
 .MyWallet__viewTransationListButton {
   @include font-style('body');
+  padding: 16px 40px;
   box-shadow: unset;
   background-color: $dark-blue-grey;
+  box-shadow: 0 4px 8px 0 rgba($dark-blue-grey, 0.25);
 }
