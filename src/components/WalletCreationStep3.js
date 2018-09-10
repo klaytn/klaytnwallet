@@ -19,10 +19,12 @@ class WalletCreationStep3 extends Component<Props> {
         className="WalletCreationStep3"
         stepName="FINAL"
         title="Save Private Key"
-        description={`
-          A new wallet has been created.
-          Finally, please copy the private key below and save it.
-        `}
+        description={(
+          <Fragment>
+            A new wallet has been created.<br />
+            Finally, please copy the private key below and save it.
+          </Fragment>
+        )}
         render={() => (
           <InputCopy
             value={privateKey}
