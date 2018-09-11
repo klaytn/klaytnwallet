@@ -56,6 +56,14 @@ class WalletTransfer2 extends Component<Props> {
     })
   }
 
+  handleEdit = () => {
+    this.setState({ valueBeforeEdit: this.state.totalGasFee })
+  }
+
+  handleEditCancel = () => {
+    this.setState({ totalGasFee: this.state.valueBeforeEdit })
+  }
+
   transfer = () => {
     const { type } = this.state
     switch (type) {
@@ -155,6 +163,8 @@ class WalletTransfer2 extends Component<Props> {
               onChange={this.handleChange}
               totalGasFee={totalGasFee}
               gasPrice={gasPrice}
+              handleEdit={this.handleEdit}
+              handleEditCancel={this.handleEditCancel}
             />
           </div>
         )

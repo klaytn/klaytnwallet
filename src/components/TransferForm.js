@@ -6,6 +6,7 @@ import { onit } from 'klaytn/onit'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import EditButton from 'components/EditButton'
+import InputEdit from 'components/InputEdit'
 
 type Props = {
 
@@ -38,6 +39,8 @@ class TransferForm extends Component<Props> {
       type,
       totalGasFee,
       gasPrice,
+      handleEdit,
+      handleEditCancel,
     } = this.props
     return (
       <div className={cx('TransferForm', className)}>
@@ -59,17 +62,21 @@ class TransferForm extends Component<Props> {
           </ReactTooltip>
           <p className="TransferForm__feeLimitLabel">
             Transction Fee Limit
-            <span
-              className="TransferForm__questionMark"
+            <img
               data-tip
               data-for='gas-tooltip'
-            >?</span>
+              className="TransferForm__questionMark"
+              src="/images/icon-help-label.svg"
+            />
           </p>
-          {isEditing
-            ? <Input name="totalGasFee" value={totalGasFee} onChange={onChange} />
-            : <EditButton onClick={this.toggleEdit} className="TransferForm__editButton" />
-          }
-          <span className="TransferForm__fee">{onit.utils.fromWei(`${totalGasFee}`)} {tokenSymbol}</span>
+          <InputEdit
+            name="totalGasFee"
+            value={totalGasFee}
+            onChange={onChange}
+            handleEdit={handleEdit}
+            handleEditCancel={handleEditCancel}
+            unit="KLAY"
+          />
         </div>
         {!isEditing && (
           <div className="TransferForm__gasInfo">

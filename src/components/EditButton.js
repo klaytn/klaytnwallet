@@ -5,6 +5,8 @@ type Props = {
 
 }
 
+import './EditButton.scss'
+
 const EditButton = ({ onClick, className }) => (
   <button
     onClick={onClick}
