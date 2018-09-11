@@ -41,12 +41,34 @@ class KlayFaucet extends Component<Props> {
       return
     }
 
+    this.updateBalance()
+  }
+
+  updateBalance = () => {
     onit.klay.getBalance(this.wallet.address)
       .then((balance) => {
         this.setState({
           balance,
         })
       })
+  }
+
+  runFacuet = () => {
+    fetch(`http://54.64.39.248:8989/example/faucet?address=${this.wallet && this.wallet.address}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'API_VERSION': '1.0',
+      },
+    })
+      .then(res => res.json())
+      .then(({ code }) => {
+        if (code == 0) {
+          this.updateBalance()
+        }
+        return code
+      })
+      .catch(err => console.log(`Error catch: ${err}`))
   }
 
   render() {
@@ -70,6 +92,7 @@ class KlayFaucet extends Component<Props> {
           <Button
             title="Run Faucet"
             className="KlayFaucet__button"
+            onClick={this.runFacuet}
           />
         </div>
         <FaucetHowItWork />

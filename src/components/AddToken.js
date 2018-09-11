@@ -8,6 +8,7 @@ import { XButton } from 'components/PlusButton'
 import { krc20ABI } from 'utils/crypto'
 import { onit } from 'klaytn/onit'
 import { registerToken } from 'actions/token'
+import { pipe } from 'utils/Functional'
 
 import store from '../store'
 
@@ -121,7 +122,7 @@ class AddToken extends Component<Props> {
           <Button
             title="Save"
             className="AddToken__saveButton"
-            onClick={this.add}
+            onClick={pipe(this.add, onClick)}
             disabled={!name || !address || !decimal}
           />
         </div>
