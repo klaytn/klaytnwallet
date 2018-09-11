@@ -69,3 +69,19 @@
   margin: 0 auto;
   margin-top: 40px;
 }
+
+.AddToken__more {
+  @include font-style('label');
+  text-decoration: underline;
+  color: $dark-blue-grey;
+}
+
+.AddToken__moreTooltip {
+  @include font-style('caption');
+  color: $solitude;
+  line-height: 18px;
+  width: 244px;
+  padding: 20px 24px;
+  background-color: $dark;
+  border-radius: 10px;
+}

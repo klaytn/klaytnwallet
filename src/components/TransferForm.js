@@ -18,6 +18,12 @@ class TransferForm extends Component<Props> {
     isEditing: false,
   }
 
+  toggleEdit = () => {
+    this.setState({
+      isEditing: !this.state.isEditing
+    })
+  }
+
   render() {
     const { isEditing } = this.state
     const {
@@ -59,7 +65,10 @@ class TransferForm extends Component<Props> {
               data-for='gas-tooltip'
             >?</span>
           </p>
-          <EditButton className="TransferForm__editButton" />
+          {isEditing
+            ? <Input name="totalGasFee" value={totalGasFee} onChange={onChange} />
+            : <EditButton onClick={this.toggleEdit} className="TransferForm__editButton" />
+          }
           <span className="TransferForm__fee">{onit.utils.fromWei(`${totalGasFee}`)} {tokenSymbol}</span>
         </div>
         {!isEditing && (

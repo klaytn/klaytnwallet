@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
+import ReactTooltip from 'react-tooltip'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -67,8 +68,25 @@ class AddToken extends Component<Props> {
           <p className="AddToken__description">
             Tokens registered in Testnet are<br />
             only visible in the currently<br />
-            active wallet.
+            active wallet. &nbsp;
+            <span
+              className="AddToken__more"
+              data-tip
+              data-for="more-tooltip"
+            >
+              more
+            </span>
           </p>
+          <ReactTooltip
+            id="more-tooltip"
+            className="AddToken__moreTooltip"
+            effect="solid"
+            place="bottom"
+          >
+            The registered token is stored in the browser repository,
+            so when you delete the cookie, the records of all registered tokens
+            are also deleted.
+          </ReactTooltip>
         </div>
         <div className="AddToken__downBlock">
           <Input
