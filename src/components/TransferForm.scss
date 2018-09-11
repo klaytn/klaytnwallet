@@ -39,6 +39,37 @@
   padding: 16px 40px;
 }
 
+.TransferForm__feeLimit {
+
+}
+
+.TransferForm__feeLimitLabel {
+  @include font-style('label');
+  color: $main-theme;
+  margin-bottom: 14px;
+}
+
+.TransferForm__questionMark {
+  font-size: 8px;
+  color: $white;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 6px;
+  width: 12px;
+  height: 12px;
+  background-color: $main-theme;
+  border-radius: 50%;
+  text-align: center;
+  cursor: help;
+}
+
+.TransferForm__gasTooltip {
+  @include font-style('caption');
+  padding: 20px 24px;
+  background-color: $dark;
+  border-radius: 10px;
+}
+
 .TransferForm__gasInfo {
   margin-top: 18px;
   background-color: $light-blue-gray;
