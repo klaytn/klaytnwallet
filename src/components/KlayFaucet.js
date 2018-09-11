@@ -31,7 +31,7 @@ class KlayFaucet extends Component<Props> {
     super()
     this.state = {
       balance: '0',
-      address: onit.klay.accounts && onit.klay.accounts.wallet[0]
+      address: onit.klay.accounts && onit.klay.accounts.wallet[0] && onit.klay.accounts.wallet[0].address || ''
     }
   }
 
@@ -44,9 +44,11 @@ class KlayFaucet extends Component<Props> {
 
   updateBalance = () => {
     const { address } = this.state
-    console.log('updating...')
-    onit.klay.getBalance(address)
-      .then((balance) => this.setState({ balance }))
+    if (address && onit.utils.checkAddressChecksum(address)) {
+      console.log(address, 'address')
+      onit.klay.getBalance(address)
+        .then((balance) => this.setState({ balance }))
+    }
   }
 
   handleAddressChange = (e) => {
@@ -92,6 +94,7 @@ class KlayFaucet extends Component<Props> {
           <Input
             name="address"
             defaultValue={address}
+            value={address}
             label="Wallet Address"
             className="KlayFaucet__input"
             onChange={this.handleAddressChange}
