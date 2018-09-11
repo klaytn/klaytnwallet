@@ -29,16 +29,23 @@ class TransferTotal extends Component<Props> {
       type: tokenSymbol,
       from,
       to,
-      value,
+      value = '0',
       transfer,
       totalGasFee,
       gas,
       changeView,
     } = this.props
+
+    const [ integerPoints, decimalPoints ] = new BN(value).toString().split('.')
+
     return (
       <div className="TransferTotal">
         <header className="TransferTotal__title">Total</header>
-        <p className="TransferTotal__totalToken">{new BN(value).toString()} {tokenSymbol}</p>
+        <p className="TransferTotal__totalToken">
+          {integerPoints}{!!decimalPoints && '.'}
+          {decimalPoints && <span className="TransferTotal__valueDecimal">{decimalPoints.slice(0, 6)}</span>}&nbsp;
+          <span className="TransferTotal__tokenSymbol">{tokenSymbol}</span>
+        </p>
         <p className="TransferTotal__feeLimit">
           (Transaction Fee Limit&nbsp;&nbsp;
             <span className={cx('TransferTotal__feeLimit', 'TransferTotal__feeLimit--light')}>

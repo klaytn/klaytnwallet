@@ -79,3 +79,12 @@
   background-color: $dark-blue-grey;
   box-shadow: rgba($dark-blue-grey, .25);
 }
+
+.TransferTotal__valueDecimal {
+  color: $warm-grey;
+}
+
+.TransferTotal__tokenSymbol {
+  @include font-style('h2');
+  color: $warm-grey;
+}

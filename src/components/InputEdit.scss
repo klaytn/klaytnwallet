@@ -25,6 +25,10 @@
   }
 }
 
+.InputEdit__inputWrapper {
+  position: relative;
+}
+
 .InputEdit__input {
   @include font-style('body');
   color: $dark-grey;
@@ -49,7 +53,7 @@
 
 .InputEdit__editButton {
   position: absolute;
-  bottom: 8px;
+  bottom: 0;
   left: 0;
   outline: none;
   background: center / contain no-repeat transparent;
@@ -60,7 +64,7 @@
   @include font-style('label');
   border: 1px solid $main-point;
   position: absolute;
-  bottom: 8px;
+  bottom: 0;
   left: 104px;
   outline: none;
   background: center / contain no-repeat transparent;
@@ -86,7 +90,7 @@
   border: 1px solid $solitude;
   position: absolute;
   left: 0;
-  bottom: 8px;
+  bottom: 0;
   outline: none;
   background: center / contain no-repeat transparent;
   cursor: pointer;
@@ -126,6 +130,7 @@
   @include font-style('body');
   color: $dark-grey;
   position: absolute;
-  top: 2px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
 }

@@ -94,3 +94,21 @@
     float: right;
   }
 }
+
+.TransferForm__totalGasFeeInput {
+  .InputEdit__input {
+    color: $dark-grey;
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+}
+
+.TransferForm__valueInput {
+  .Input__input {
+    color: $dark-grey;
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+}

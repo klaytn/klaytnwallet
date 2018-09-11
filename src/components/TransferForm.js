@@ -49,7 +49,7 @@ class TransferForm extends Component<Props> {
         <hr className="TransferForm__hr" />
         <Input readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address" />
         <Input name="to" onChange={onChange} className="TransferForm__input" label="To Address" placeholder="Enter the address to send" />
-        <Input name="value" onChange={onChange} className="TransferForm__input" label="Amount to Send" placeholder="0.000000" />
+        <Input name="value" onChange={onChange} className="TransferForm__input TransferForm__valueInput" label="Amount to Send" placeholder="0.000000" />
         <div className="TransferForm__feeLimit">
           <ReactTooltip
             id="gas-tooltip"
@@ -69,6 +69,7 @@ class TransferForm extends Component<Props> {
             />
           </p>
           <InputEdit
+            className="TransferForm__totalGasFeeInput"
             name="totalGasFee"
             value={totalGasFee}
             onChange={onChange}
