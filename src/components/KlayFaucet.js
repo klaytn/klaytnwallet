@@ -29,32 +29,43 @@ const FaucetHowItWork = () => (
 class KlayFaucet extends Component<Props> {
   constructor() {
     super()
-    this.wallet = onit.klay.accounts.wallet[0]
     this.state = {
       balance: '0',
+      address: onit.klay.accounts && onit.klay.accounts.wallet[0]
     }
   }
 
   componentDidMount() {
-    if (!this.wallet) {
-      browserHistory.push('/access?next=faucet')
-      return
+    const { address } = this.state
+    if (address) {
+      this.updateBalance()
     }
-
-    this.updateBalance()
   }
 
   updateBalance = () => {
-    onit.klay.getBalance(this.wallet.address)
-      .then((balance) => {
+    const { address } = this.state
+    console.log('updating...')
+    onit.klay.getBalance(address)
+      .then((balance) => this.setState({ balance }))
+  }
+
+  handleAddressChange = (e) => {
+    this.setState({ address: e.target.value }, () => {
+      if (this.state.address.length == 42) {
+        this.updateBalance()
+      } else {
         this.setState({
-          balance,
+          balance: '0',
         })
-      })
+      }
+    })
   }
 
   runFacuet = () => {
-    fetch(`http://54.64.39.248:8989/example/faucet?address=${this.wallet && this.wallet.address}`, {
+    const { address } = this.state
+    if (!address) return
+
+    fetch(`http://54.64.39.248:8989/example/faucet?address=${address}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -72,17 +83,18 @@ class KlayFaucet extends Component<Props> {
   }
 
   render() {
-    const { balance } = this.state
+    const { address, balance } = this.state
     return (
       <div className="KlayFaucet">
         <div className="KlayFaucet__content">
           <img className="KlayFaucet__img" src="/images/icon-faucet.svg" />
           <header className="KlayFaucet__title">KLAY Faucet</header>
           <Input
-            value={this.wallet && this.wallet.address}
-            readOnly
+            name="address"
+            defaultValue={address}
             label="Wallet Address"
             className="KlayFaucet__input"
+            onChange={this.handleAddressChange}
           />
           <Input
             value={onit.utils.fromWei(balance, 'ether')}
