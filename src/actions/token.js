@@ -11,6 +11,7 @@ export const registerToken = (token) => ({
   type: REGISTER_TOKEN,
   payload: {
     token: {
+      fullname: token.fullname,
       name: token.name,
       decimal: token.decimal,
       contractAddress: token.address,

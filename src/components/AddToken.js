@@ -36,9 +36,11 @@ class AddToken extends Component<Props> {
     })
   }
 
-  add = () => {
+  add = async () => {
     const { name, address, decimal } = this.state
     const contractInstance = new onit.klay.Contract(krc20ABI, address)
+    console.log(contractInstance)
+    const fullname = await contractInstance.methods.name().call()
     contractInstance.methods.balanceOf(this.wallet && this.wallet.address).call()
       .then(balance => {
         if (typeof balance === 'undefined') {
@@ -47,6 +49,7 @@ class AddToken extends Component<Props> {
         }
         store.dispatch(
           registerToken({
+            fullname: fullname || name,
             name,
             address,
             decimal,
