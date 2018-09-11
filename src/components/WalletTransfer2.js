@@ -2,12 +2,14 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { keyBy } from 'lodash'
+import BN from 'bignumber.js'
 
 import { onit } from 'klaytn/onit'
 import MyToken from 'components/MyToken'
 import TransferForm from 'components/TransferForm'
 import TransferTotal from 'components/TransferTotal'
 import TransferComplete from 'components/TransferComplete'
+import { krc20ABI } from 'utils/crypto'
 
 type Props = {
 
@@ -15,7 +17,9 @@ type Props = {
 
 import './WalletTransfer2.scss'
 
-const KLAY_GAS_PRICE = '25'
+const KLAY_GAS_PRICE = onit.utils.toWei('25', 'shannon')
+const DEFAULT_KLAY_TRANSFER_GAS = 21000
+const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 
 class WalletTransfer2 extends Component<Props> {
   constructor(props) {
@@ -31,7 +35,7 @@ class WalletTransfer2 extends Component<Props> {
       myTokenBalances: [],
       gas: '21000',
       gasPrice: KLAY_GAS_PRICE,
-      totalGasFee: 21000 * KLAY_GAS_PRICE,
+      totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`),
     },
     this.wallet = onit.klay.accounts.wallet[0]
   }
@@ -45,14 +49,30 @@ class WalletTransfer2 extends Component<Props> {
   }
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
+    if (e.target.name === 'totalGasFee') {
+      this.setState({
+        [e.target.name]: e.target.value,
+        gas: new BN(onit.utils.toWei(e.target.value, 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
+      })
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value,
+      })
+    }
   }
 
   handleSelect = (tokenSymbol) => {
+    const _totalGasFee = onit.utils.fromWei(
+      `${(tokenSymbol === 'KLAY'
+        ? DEFAULT_KLAY_TRANSFER_GAS
+        : DEFAULT_TOKEN_TRANSFER_GAS
+      ) * KLAY_GAS_PRICE}`)
+    console.log(_totalGasFee, '_totalGasFee')
+    console.log(this.state.gasPrice, 'this.state.gasPrice')
     this.setState({
       type: tokenSymbol,
+      totalGasFee: _totalGasFee,
+      gas: new BN(onit.utils.toWei(_totalGasFee, 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
     })
   }
 
@@ -62,6 +82,12 @@ class WalletTransfer2 extends Component<Props> {
 
   handleEditCancel = () => {
     this.setState({ totalGasFee: this.state.valueBeforeEdit })
+  }
+
+  changeView = (view) => () => {
+    this.setState({
+      view,
+    })
   }
 
   transfer = () => {
@@ -77,7 +103,7 @@ class WalletTransfer2 extends Component<Props> {
 
   transferCoin = () => {
     const { to, value, gas } = this.state
-    console.log(value)
+
     onit.klay.sendTransaction({
       from: this.wallet.address,
       to,
@@ -85,13 +111,12 @@ class WalletTransfer2 extends Component<Props> {
       gas: gas || '21000',
       chainId: '2018',
     })
-      .on('transactionHash', () => {
+      .once('transactionHash', () => {
         ui.showToast({ msg: `${to} 주소로 ${value} klay를 전송합니다.` })
       })
-      .on('receipt', () => {
+      .once('receipt', () => {
         new Audio('/sound/transfer.mp3').play()
         ui.showToast({ msg: `${to} 주소로 ${value} klay 전송에 성공했습니다.` })
-        this.getTokenBalances()
         this.changeView('complete')()
       })
       .on('error', (e) => {
@@ -102,22 +127,22 @@ class WalletTransfer2 extends Component<Props> {
   }
 
   transferToken = () => {
-    const { to, value, type } = this.state
+    const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
     const contractInstance = new onit.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
     contractInstance.accounts = onit.klay.accounts
     contractInstance.methods.transfer(to, value).send({
       from: this.wallet.address,
-      gas: '300000',
-      gasPrice: '25',
+      gas: gas || '21000',
+      chainId: '2018',
     })
-    .on('transactionHash', () => {
+    .once('transactionHash', () => {
       ui.showToast({ msg: `${to} 주소로 ${value} ${type}를 전송합니다.` })
     })
-    .on('receipt', () => {
+    .once('receipt', () => {
       new Audio('/sound/transfer.mp3').play()
       ui.showToast({ msg: `${to} 주소로 ${value} ${type} 전송에 성공했습니다.` })
-      this.getTokenBalances()
+      this.changeView('complete')()
     })
     .on('error', (e) => {
       console.log(e)
@@ -138,9 +163,9 @@ class WalletTransfer2 extends Component<Props> {
       totalGasFee,
     } = this.state
 
-    console.log(this.state.myTokenBalances, 'this.state.myTokenBalances')
-
     const from = this.wallet && this.wallet.address
+
+    console.log(view, 'view')
 
     switch (view) {
       case 'form':
@@ -165,6 +190,7 @@ class WalletTransfer2 extends Component<Props> {
               gasPrice={gasPrice}
               handleEdit={this.handleEdit}
               handleEditCancel={this.handleEditCancel}
+              gas={gas}
             />
           </div>
         )
@@ -178,18 +204,13 @@ class WalletTransfer2 extends Component<Props> {
             type={type}
             fee={fee}
             gas={gas}
+            totalGasFee={totalGasFee}
             changeView={this.changeView}
           />
         )
       case 'complete':
-        return <TransferComplete />
+        return <TransferComplete changeView={this.changeView} />
     }
-  }
-
-  changeView = (view) => () => {
-    this.setState({
-      view,
-    })
   }
 
   render() {

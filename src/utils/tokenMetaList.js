@@ -1,20 +1,22 @@
 const tokenMetaList = [
   {
-    name: 'KLAY',
-    fullname: 'KLAY',
+    name: 'RAS',
+    fullname: 'RASPUTIN',
+    contractAddress: '0x17a24b90ad7defde7f02628dde1d7221738c9686',
+    decimal: 18,
   },
-  // {
-  //   name: 'RAS',
-  //   fullname: 'RASPUTIN',
-  //   contractAddress: '0x5807f733c6423d5b99fa427572626b2efa8aad0f',
-  //   decimal: 18,
-  // },
-  // {
-  //   name: 'OKA',
-  //   fullname: 'OKAKA',
-  //   contractAddress: '0x7d6f65b1c03fc90f74844bd5515a919df5d7601c',
-  //   decimal: 18,
-  // },
+  {
+    name: 'IRE',
+    fullname: 'IRENE',
+    contractAddress: '0x52f9a9b73f49feb330a99f2c8faa747189840ea7',
+    decimal: 18,
+  },
+  {
+    name: 'OKA',
+    fullname: 'OKAKA',
+    contractAddress: '0x3f80f1267b1ba31f93207dcec1870eb01c9509de',
+    decimal: 18,
+  },
 ]
 
 export default tokenMetaList

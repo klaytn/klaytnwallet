@@ -8,7 +8,9 @@ type Props = {
 
 }
 
-const TransferComplete = () => (
+const TransferComplete = ({
+  changeView,
+}) => (
   <div className="TransferComplete">
     <img
       className="TransferComplete__img"
@@ -26,6 +28,7 @@ const TransferComplete = () => (
       title="Send KLAY & Tokens"
       className="TransferComplete__button"
       gray
+      onClick={changeView('form')}
     />
     <Button
       title="View Transaction Info"

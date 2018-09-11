@@ -18,6 +18,11 @@ type Props = {
 import './AddToken.scss'
 
 class AddToken extends Component<Props> {
+  constructor() {
+    super()
+
+    this.wallet = onit.klay.wallet[0]
+  }
   state = {
     name: '',
     address: '',
@@ -33,7 +38,7 @@ class AddToken extends Component<Props> {
   add = () => {
     const { name, address, decimal } = this.state
     const contractInstance = new onit.klay.Contract(krc20ABI, address)
-    contractInstance.methods.balanceOf('0x006056d2F4C68233F1AE99364445D7b587ef6642').call()
+    contractInstance.methods.balanceOf(this.wallet && this.wallet.address).call()
       .then(balance => {
         if (typeof balance === 'undefined') {
           ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})

@@ -30,6 +30,7 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
         <Route path="/faucet" component={KlayFaucet} />
+        <Route path="/faucet/:address" component={KlayFaucet} />
       </Route>
     </Router>
   </Provider>

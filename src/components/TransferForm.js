@@ -29,14 +29,13 @@ class TransferForm extends Component<Props> {
     const { isEditing } = this.state
     const {
       from,
-      tokenSymbol = 'KLAY',
       className,
       changeView,
       onChange,
       fee,
       value,
       to,
-      type,
+      type = 'KLAY',
       totalGasFee,
       gasPrice,
       handleEdit,
@@ -45,7 +44,7 @@ class TransferForm extends Component<Props> {
     return (
       <div className={cx('TransferForm', className)}>
         <header className="TransferForm__title">
-          Step2. Enter the infomation (<span className="TransferForm__tokenSymbol">{tokenSymbol}</span>)
+          Step2. Enter the infomation (<span className="TransferForm__tokenSymbol">{type}</span>)
         </header>
         <hr className="TransferForm__hr" />
         <Input readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address" />
@@ -82,11 +81,11 @@ class TransferForm extends Component<Props> {
           <div className="TransferForm__gasInfo">
             <div className="TransferForm__gasPrice">
               <span>Gas Price</span>
-              <span>{gasPrice} ston</span>
+              <span>{onit.utils.fromWei(gasPrice, 'shannon')} ston</span>
             </div>
             <div className="TransferForm__gasLimit">
               <span>Gas Limit</span>
-              <span>{totalGasFee / gasPrice}</span>
+              <span>{onit.utils.toWei(totalGasFee) / gasPrice}</span>
             </div>
           </div>
         )}

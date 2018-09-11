@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
+import BN from 'bignumber.js'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -30,14 +31,14 @@ class TransferTotal extends Component<Props> {
       to,
       value,
       transfer,
-      totalFee,
+      totalGasFee,
       gas,
       changeView,
     } = this.props
     return (
       <div className="TransferTotal">
         <header className="TransferTotal__title">Total</header>
-        <p className="TransferTotal__totalToken">{Number(value) + Number(totalFee || 0)} {tokenSymbol}</p>
+        <p className="TransferTotal__totalToken">{new BN(value).plus(totalGasFee).toString()} {tokenSymbol}</p>
         <p className="TransferTotal__feeLimit">
           (Transaction Fee Limit
             <span className={cx('TransferTotal__feeLimit', 'TransferTotal__feeLimit--light')}>
