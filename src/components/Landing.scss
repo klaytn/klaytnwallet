@@ -6,6 +6,7 @@
   @include panelize;
   width: 992px;
   padding: 110px 60px;
+  margin: 0 auto;
 }
 
 .Landing__title {
@@ -31,6 +32,7 @@
 .Landing__item {
   width: 33.33%;
   display: inline-block;
+  vertical-align: top;
   width: 256px;
   text-align: left;
   margin-right: 40px;

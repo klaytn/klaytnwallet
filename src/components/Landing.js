@@ -10,11 +10,11 @@ const LandingItem = ({ img, title, description }) => (
   <div className="Landing__item">
     <img className="Landing__image" src={img} />
     <header className="Landing__itemTitle">
-      We do not store the private key on the server.
+      {title}
     </header>
-    <header className="Landing__itemDescription">
-      Private key is stored only in the browser’s storage and is automatically deleted when you close the browser.
-    </header>
+    <p className="Landing__itemDescription">
+      {description}
+    </p>
   </div>
 )
 
