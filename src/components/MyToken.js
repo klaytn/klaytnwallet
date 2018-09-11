@@ -47,10 +47,10 @@ class MyToken extends Component<Props> {
     }
   }
 
-  selectToken = (selectedTokenName) => () => {
+  selectToken = ({ name: tokenSymbol, tokenColorIdx }) => () => {
     const { selectable, handleSelect } = this.props
     if (!selectable) return
-    handleSelect(selectedTokenName)
+    handleSelect({ tokenSymbol, tokenColorIdx })
   }
 
   getTokenBalances = () => {
@@ -118,7 +118,7 @@ class MyToken extends Component<Props> {
                 balance={balance}
                 tokenColor={(idx % 4) + 1}
                 selectedTokenName={selectedTokenName}
-                onClick={this.selectToken(name)}
+                onClick={this.selectToken({ name, tokenColorIdx: (idx % 4) + 1})}
               />
             ))
           }

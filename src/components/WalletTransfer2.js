@@ -36,6 +36,7 @@ class WalletTransfer2 extends Component<Props> {
       gas: '21000',
       gasPrice: KLAY_GAS_PRICE,
       totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`),
+      tokenColorIdx: 1,
     },
     this.wallet = onit.klay.accounts.wallet[0]
   }
@@ -61,18 +62,18 @@ class WalletTransfer2 extends Component<Props> {
     }
   }
 
-  handleSelect = (tokenSymbol) => {
+  handleSelect = ({ tokenSymbol, tokenColorIdx }) => {
     const _totalGasFee = onit.utils.fromWei(
       `${(tokenSymbol === 'KLAY'
         ? DEFAULT_KLAY_TRANSFER_GAS
         : DEFAULT_TOKEN_TRANSFER_GAS
       ) * KLAY_GAS_PRICE}`)
-    console.log(_totalGasFee, '_totalGasFee')
-    console.log(this.state.gasPrice, 'this.state.gasPrice')
+
     this.setState({
       type: tokenSymbol,
       totalGasFee: _totalGasFee,
       gas: new BN(onit.utils.toWei(_totalGasFee, 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
+      tokenColorIdx,
     })
   }
 
@@ -161,6 +162,7 @@ class WalletTransfer2 extends Component<Props> {
       gas,
       gasPrice,
       totalGasFee,
+      tokenColorIdx,
     } = this.state
 
     const from = this.wallet && this.wallet.address
@@ -191,6 +193,7 @@ class WalletTransfer2 extends Component<Props> {
               handleEdit={this.handleEdit}
               handleEditCancel={this.handleEditCancel}
               gas={gas}
+              tokenColorIdx={tokenColorIdx}
             />
           </div>
         )

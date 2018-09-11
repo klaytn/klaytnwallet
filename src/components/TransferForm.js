@@ -40,11 +40,17 @@ class TransferForm extends Component<Props> {
       gasPrice,
       handleEdit,
       handleEditCancel,
+      tokenColorIdx,
     } = this.props
     return (
       <div className={cx('TransferForm', className)}>
         <header className="TransferForm__title">
-          Step2. Enter the infomation (<span className="TransferForm__tokenSymbol">{type}</span>)
+          Step2. Enter the infomation <span className={cx('TransferForm__tokenSymbol', {
+            [`TransferForm__tokenSymbol--token-color-${tokenColorIdx}`]: tokenColorIdx,
+          })}
+        >
+          ({type})
+        </span>
         </header>
         <hr className="TransferForm__hr" />
         <Input readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address" />

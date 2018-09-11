@@ -112,3 +112,10 @@
     font-weight: normal;
   }
 }
+
+.TransferForm__tokenSymbol {
+  &--token-color-1 { color: $token-color-1-main; }
+  &--token-color-2 { color: $token-color-2-main; }
+  &--token-color-3 { color: $token-color-3-main; }
+  &--token-color-4 { color: $token-color-4-main; }
+}

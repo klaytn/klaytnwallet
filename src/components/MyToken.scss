@@ -85,25 +85,39 @@
     &.TokenItem--active, &:hover {
       background-color: #8B55C0;
       color: $white;
+
+      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
     }
   }
 
   &--token-color-2 {
     .TokenItem__decoration { background-color: #FA265F; }
     .TokenItem__arrow { border-left: 20px solid #C81E4C; }
-    &.TokenItem--active, &:hover { background-color: #C81E4C; color:$white; }
+    &.TokenItem--active, &:hover {
+      background-color: #C81E4C;
+      color:$white;
+      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
   }
 
   &--token-color-3 {
     .TokenItem__decoration { background-color: #ffd800; }
     .TokenItem__arrow { border-left: 20px solid #ccad00; }
-    &.TokenItem--active, &:hover { background-color: #ccad00; color:$white; }
+    &.TokenItem--active, &:hover {
+      background-color: #ccad00;
+      color:$white;
+      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
   }
 
   &--token-color-4 {
     .TokenItem__decoration { background-color: #9cce2c; }
     .TokenItem__arrow { border-left: 20px solid #7da523; }
-    &.TokenItem--active, &:hover { background-color: #7da523; color:$white; }
+    &.TokenItem--active, &:hover {
+      background-color: #7da523;
+      color:$white;
+      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
   }
 }
 
