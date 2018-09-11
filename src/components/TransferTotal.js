@@ -38,11 +38,11 @@ class TransferTotal extends Component<Props> {
     return (
       <div className="TransferTotal">
         <header className="TransferTotal__title">Total</header>
-        <p className="TransferTotal__totalToken">{new BN(value).plus(totalGasFee).toString()} {tokenSymbol}</p>
+        <p className="TransferTotal__totalToken">{new BN(value).toString()} {tokenSymbol}</p>
         <p className="TransferTotal__feeLimit">
-          (Transaction Fee Limit
+          (Transaction Fee Limit&nbsp;&nbsp;
             <span className={cx('TransferTotal__feeLimit', 'TransferTotal__feeLimit--light')}>
-              {feeLimit} {tokenSymbol}
+              {new BN(totalGasFee).toString()} KLAY
             </span>
           )
         </p>

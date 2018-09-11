@@ -21,7 +21,7 @@ class AddToken extends Component<Props> {
   constructor() {
     super()
 
-    this.wallet = onit.klay.wallet[0]
+    this.wallet = onit.klay.accounts && onit.klay.accounts.wallet[0]
   }
   state = {
     name: '',
