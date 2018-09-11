@@ -2,10 +2,11 @@ import {
   REGISTER_TOKEN,
 } from 'actions/actionTypes'
 
+import { getParsedLocalStorageItem } from 'utils/misc'
 import tokenMetaList from 'utils/tokenMetaList'
 
 const initialState = {
-  tokenList: tokenMetaList,
+  tokenList: [...tokenMetaList, ...getParsedLocalStorageItem('savedTokenList')],
 }
 
 const tokenReducer = (state = initialState, action) => {
