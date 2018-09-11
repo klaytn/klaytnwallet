@@ -15,7 +15,11 @@ class TabList extends Component<Props> {
       <div className="TabList">
         {tabItems.map(({ title, link, icon }) => (
           <TabItem
-            isActive={new RegExp(link).test(window.location.pathname)}
+            isActive={
+              link === '/'
+                ? link == window.location.pathname
+                : new RegExp(link).test(window.location.pathname)
+              }
             icon={icon}
             key={title}
             title={title}

@@ -6,6 +6,7 @@ import TabList from 'components/TabList'
 import './Nav.scss'
 
 const navLinks = [
+  { title: 'Home', link: '/', icon: 'icon-home' },
   { title: 'Create New Wallet', link: '/create', icon: 'icon-create' },
   { title: 'View Wallet Info', link: '/access', icon: 'icon-info' },
   { title: 'Send KLAY & Token', link: '/transfer', icon: 'icon-send' },
