@@ -12,6 +12,6 @@
 
 @mixin font-family($family) {
   @if $family == 'roboto' {
-    font-family: RobotoMono;
+    font-family: 'RobotoMono';
   }
 }

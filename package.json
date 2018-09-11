@@ -25,6 +25,7 @@
     "ethereumjs-wallet": "^0.6.0",
     "json-format": "^1.0.1",
     "lodash": "^4.17.10",
+    "numeral": "^2.0.6",
     "onit-js": "0.0.1-k",
     "randombytes": "^2.0.6",
     "react": "^16.3.2",

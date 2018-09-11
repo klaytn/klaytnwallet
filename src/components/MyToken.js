@@ -7,6 +7,7 @@ import { onit } from 'klaytn/onit'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
 import { krc20ABI } from 'utils/crypto'
+import numeral from 'numeral'
 
 import './MyToken.scss'
 
@@ -128,25 +129,31 @@ class MyToken extends Component<Props> {
   }
 }
 
-const TokenItem = ({ fullname, name, balance, tokenColor, selectedTokenName, onClick, selectable }) => (
-  <div
-    className={cx('TokenItem', {
-      'TokenItem--readOnly': !selectable,
-      'TokenItem--active': selectedTokenName == name,
-      'TokenItem--token-color-1': tokenColor == 1,
-      'TokenItem--token-color-2': tokenColor == 2,
-      'TokenItem--token-color-3': tokenColor == 3,
-      'TokenItem--token-color-4': tokenColor == 4,
-    })}
-    onClick={onClick}
-  >
-    <header className="TokenItem__title">{fullname}</header>
-    <span className="TokenItem__balance">{balance}</span>
-    <span className="TokenItem__tokenName">{name}</span>
-    <div className="TokenItem__decoration" />
-    <div className="TokenItem__arrow" />
-  </div>
-)
+const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenName, onClick, selectable }) => {
+  const [ integerPoints, decimalPoints ] = balance.split('.')
+  return (
+    <div
+      className={cx('TokenItem', {
+        'TokenItem--readOnly': !selectable,
+        'TokenItem--active': selectedTokenName == name,
+        'TokenItem--token-color-1': tokenColor == 1,
+        'TokenItem--token-color-2': tokenColor == 2,
+        'TokenItem--token-color-3': tokenColor == 3,
+        'TokenItem--token-color-4': tokenColor == 4,
+      })}
+      onClick={onClick}
+    >
+      <header className="TokenItem__title">{fullname}</header>
+      <span className="TokenItem__balance">
+        <span className="TokenItem__balanceInteger">{numeral(integerPoints).format('0,0')}</span>
+        {decimalPoints && <span className="TokenItem__balanceDecimal">.{decimalPoints.slice(0, 6)}</span>}
+      </span>
+      <span className="TokenItem__tokenName">{name}</span>
+      <div className="TokenItem__decoration" />
+      <div className="TokenItem__arrow" />
+    </div>
+  )
+}
 
 const mapStateToProps = (state) => ({
   tokenList: state.token.tokenList,

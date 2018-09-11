@@ -31,7 +31,7 @@
 }
 
 .MyToken__list {
-  height: 555px;
+  height: 636px;
   overflow-y: scroll;
 }
 
@@ -55,6 +55,10 @@
 
   &:first-of-type {
     border-top: 1px solid $light-blue-gray;
+  }
+
+  &:last-of-type {
+    .TokenItem__decoration { height: 100%; }
   }
 
   &--active {
@@ -141,4 +145,17 @@
   top: 50%;
   transform: translateY(-50%);
   right: -15px;
+}
+
+.TokenItem__balanceInteger {
+  @include font-style('h3');
+}
+
+.TokenItem__balanceDecimal {
+  @include font-style('body');
+}
+
+.TokenItem__title {
+  @include font-style('button');
+  margin-bottom: 6px;
 }
