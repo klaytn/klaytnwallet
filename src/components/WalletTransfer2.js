@@ -15,6 +15,8 @@ type Props = {
 
 import './WalletTransfer2.scss'
 
+const KLAY_GAS_PRICE = '25'
+
 class WalletTransfer2 extends Component<Props> {
   constructor(props) {
     super(props)
@@ -28,6 +30,8 @@ class WalletTransfer2 extends Component<Props> {
       isValidTransaction: false,
       myTokenBalances: [],
       gas: '21000',
+      gasPrice: KLAY_GAS_PRICE,
+      totalGasFee: 21000 * KLAY_GAS_PRICE,
     },
     this.wallet = onit.klay.accounts.wallet[0]
   }
@@ -97,7 +101,7 @@ class WalletTransfer2 extends Component<Props> {
     contractInstance.methods.transfer(to, value).send({
       from: this.wallet.address,
       gas: '300000',
-      gasPrice: '0',
+      gasPrice: '25',
     })
     .on('transactionHash', () => {
       ui.showToast({ msg: `${to} 주소로 ${value} ${type}를 전송합니다.` })
@@ -122,6 +126,8 @@ class WalletTransfer2 extends Component<Props> {
       type, // default type is KLAY.
       fee,
       gas,
+      gasPrice,
+      totalGasFee,
     } = this.state
 
     console.log(this.state.myTokenBalances, 'this.state.myTokenBalances')
@@ -147,6 +153,8 @@ class WalletTransfer2 extends Component<Props> {
               type={type}
               changeView={this.changeView}
               onChange={this.handleChange}
+              totalGasFee={totalGasFee}
+              gasPrice={gasPrice}
             />
           </div>
         )

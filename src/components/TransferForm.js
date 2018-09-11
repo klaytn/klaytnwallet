@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
+import { onit } from 'klaytn/onit'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -23,6 +24,8 @@ class TransferForm extends Component<Props> {
       value,
       to,
       type,
+      totalGasFee,
+      gasPrice,
     } = this.props
     return (
       <div className={cx('TransferForm', className)}>
@@ -39,7 +42,17 @@ class TransferForm extends Component<Props> {
             <span className="TransferForm__questionMark">?</span>
           </p>
           <EditButton className="TransferForm__editButton" />
-          <span className="TransferForm__fee">{fee} {tokenSymbol}</span>
+          <span className="TransferForm__fee">{onit.utils.fromWei(`${totalGasFee}`)} {tokenSymbol}</span>
+        </div>
+        <div className="TransferForm__gasInfo">
+          <div className="TransferForm__gasPrice">
+            <span>Gas Price</span>
+            <span>{gasPrice} ston</span>
+          </div>
+          <div className="TransferForm__gasLimit">
+            <span>Gas Limit</span>
+            <span>{totalGasFee / gasPrice}</span>
+          </div>
         </div>
         <Button
           title="Send Transaction"

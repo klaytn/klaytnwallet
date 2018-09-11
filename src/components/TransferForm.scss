@@ -35,6 +35,32 @@
   display: block;
   margin: 0 auto;
   width: 202px;
-  margin-top: 40px;
+  margin-top: 32px;
   padding: 16px 40px;
+}
+
+.TransferForm__gasInfo {
+  margin-top: 18px;
+  background-color: $light-blue-gray;
+  border: 1px solid $solitude;
+  padding: 16px 20px;
+}
+
+.TransferForm__gasPrice {
+  margin-bottom: 13px;
+}
+
+.TransferForm__gasPrice, .TransferForm__gasLimit {
+  overflow: hidden;
+  color: $dark-blue-grey;
+
+  & span:first-child {
+    @include font-style('label');
+    float: left;
+  }
+
+  & span:last-child {
+    @include font-style('body');
+    float: right;
+  }
 }
