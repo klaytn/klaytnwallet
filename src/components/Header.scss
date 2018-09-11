@@ -64,7 +64,7 @@
 .Header__network {
   @include font-style('caption');
   position: absolute;
-  padding: 2.5rem 2.8rem;
+  padding: 2.5rem;
   right: 0;
   top: 0;
   min-width: 148px;
@@ -74,4 +74,22 @@
   border-left: 1px solid rgba($white, .1);
   text-align: center;
   line-height: 24px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: $fluro-green;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+
+  &--disconnected {
+    color: #ff7499;
+    &::before {
+      background-color: #ff7499;
+    }
+  }
 }
