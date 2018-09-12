@@ -3,7 +3,7 @@
 @import "mixins.scss";
 
 .KlayFaucet {
-
+  text-align: center;
 }
 
 .KlayFaucet__content {
@@ -12,6 +12,7 @@
   vertical-align: middle;
   text-align: center;
   padding: 64px 48px;
+  margin: 0 auto;
 }
 
 .KlayFaucet__img {
@@ -32,6 +33,7 @@
   margin-left: 48px;
   display: inline-block;
   vertical-align: middle;
+  text-align: left;
 }
 
 .KlayFaucet__howItWorkTitle {
@@ -45,6 +47,19 @@
   color: $dark-blue-grey;
   line-height: 20px;
   word-break: break-all;
+}
+
+.KlayFaucet__address {
+  .Input__input {
+    color: $dark-blue-grey;
+  }
+}
+
+.KlayFaucet__balance {
+  .Input__input {
+    @include font-family('roboto');
+    @include font-style('h2');
+  }
 }
 
 .KlayFaucet__input {

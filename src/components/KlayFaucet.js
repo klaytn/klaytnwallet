@@ -82,12 +82,13 @@ class KlayFaucet extends Component<Props> {
             value={this.wallet && this.wallet.address}
             readOnly
             label="Wallet Address"
-            className="KlayFaucet__input"
+            className="KlayFaucet__input KlayFaucet__address"
           />
           <Input
             value={onit.utils.fromWei(balance, 'ether')}
             label="KLAY Balance"
-            className="KlayFaucet__input"
+            className="KlayFaucet__input KlayFaucet__balance"
+            unit="KLAY"
           />
           <Button
             title="Run Faucet"
