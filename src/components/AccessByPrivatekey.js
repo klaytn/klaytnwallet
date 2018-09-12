@@ -33,7 +33,6 @@ class AccessByPrivateKey extends Component<Props> {
     const { accessTo } = this.props
     try {
       const wallet = onit.klay.accounts.wallet.add(privatekey)
-      ui.showToast({ msg: `${wallet.address} 지갑으로 로그인되었습니다.` })
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {
       ui.showToast({ msg: '올바르지 않은 개인 키 입니다.' })

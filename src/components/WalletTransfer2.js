@@ -120,13 +120,11 @@ class WalletTransfer2 extends Component<Props> {
       chainId: '2018',
     })
       .once('transactionHash', () => {
-        ui.showToast({ msg: `${to} 주소로 ${value} klay를 전송합니다.` })
-      })
-      .once('receipt', () => {
         new Audio('/static/sound/transfer.mp3').play()
-        ui.showToast({ msg: `${to} 주소로 ${value} klay 전송에 성공했습니다.` })
         this.changeView('complete')()
       })
+      // .once('receipt', () => {
+      // })
       .on('error', (e) => {
         console.log(e)
         new Audio('/static/sound/error.ogg').play()
@@ -145,13 +143,11 @@ class WalletTransfer2 extends Component<Props> {
       chainId: '2018',
     })
     .once('transactionHash', () => {
-      ui.showToast({ msg: `${to} 주소로 ${value} ${type}를 전송합니다.` })
-    })
-    .once('receipt', () => {
       new Audio('/static/sound/transfer.mp3').play()
-      ui.showToast({ msg: `${to} 주소로 ${value} ${type} 전송에 성공했습니다.` })
       this.changeView('complete')()
     })
+    // .once('receipt', () => {
+    // })
     .on('error', (e) => {
       console.log(e)
       new Audio('/static/sound/error.ogg').play()

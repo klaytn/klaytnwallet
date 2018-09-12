@@ -67,7 +67,6 @@ class AccessByKeystore extends Component<Props> {
     // Wallet instance will be addded to onit.klay.accounts.wallet
     try {
       const wallet = onit.klay.accounts.wallet.decrypt([keystore], password)[0]
-      ui.showToast({ msg: `${wallet.address} 지갑으로 로그인되었습니다.` })
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {
       ui.showToast({ msg: '패스워드가 올바르지 않습니다.' })
