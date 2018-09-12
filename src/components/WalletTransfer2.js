@@ -167,8 +167,6 @@ class WalletTransfer2 extends Component<Props> {
 
     const from = this.wallet && this.wallet.address
 
-    console.log(view, 'view')
-
     switch (view) {
       case 'form':
         return (

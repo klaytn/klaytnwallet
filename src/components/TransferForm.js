@@ -53,9 +53,17 @@ class TransferForm extends Component<Props> {
         </span>
         </header>
         <hr className="TransferForm__hr" />
-        <Input readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address" />
-        <Input name="to" onChange={onChange} className="TransferForm__input" label="To Address" placeholder="Enter the address to send" />
-        <Input name="value" onChange={onChange} className="TransferForm__input TransferForm__valueInput" label="Amount to Send" placeholder="0.000000" />
+        <Input
+          readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address"
+        />
+        <Input 
+          name="to" onChange={onChange} className="TransferForm__input" label="To Address" placeholder="Enter the address to send"
+          autoComplete="off"
+        />
+        <Input
+          name="value" onChange={onChange} className="TransferForm__input TransferForm__valueInput" label="Amount to Send" placeholder="0.000000"
+          autoComplete="off"
+        />
         <div className="TransferForm__feeLimit">
           <ReactTooltip
             id="gas-tooltip"
@@ -82,6 +90,7 @@ class TransferForm extends Component<Props> {
             handleEdit={handleEdit}
             handleEditCancel={handleEditCancel}
             unit="KLAY"
+            autoComplete="off"
           />
         </div>
         {!isEditing && (

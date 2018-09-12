@@ -10,6 +10,7 @@
   padding-top: 48px;
   position: relative;
   text-align: left;
+  overflow-x: visible;
 }
 
 .MyToken__header {
@@ -31,7 +32,7 @@
 }
 
 .MyToken__list {
-  height: 636px;
+  height: 553px;
   overflow-y: scroll;
 }
 
@@ -74,6 +75,7 @@
     background-color: $white;
     .TokenItem__arrow { border-left: 0; }
     &.TokenItem--active, &:hover {
+      .TokenItem__balance, .TokenItem__tokenName { color: $dark-blue-grey !important; }
       color: inherit !important;
       background-color: $white !important;
     }
@@ -153,12 +155,12 @@
   position: absolute;
   width: 0px;
   height: 0px;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 20px solid black;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid $white;
   top: 50%;
   transform: translateY(-50%);
-  right: -15px;
+  right: 0;
 }
 
 .TokenItem__balanceInteger {
