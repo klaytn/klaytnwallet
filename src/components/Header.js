@@ -46,7 +46,7 @@ class Header extends Component<Props> {
       <div className="Header">
         <div className="Header__LogoWithLink">
           <div className="Header__logo" />
-          <Link to="/klaytnscope" className="Header__link">klaytnscope</Link>
+          <Link to="/klaytnscope" className="Header__link">Klaytnscope</Link>
         </div>
         <div className={cx('Header__network', {
           'Header__network--disconnected': !network

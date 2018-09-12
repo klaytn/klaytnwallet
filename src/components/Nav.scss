@@ -15,7 +15,8 @@
 }
 
 .Nav__copyright {
-  @include font-style('label')
+  @include font-style('body');
+  color: #cccccc;
   position: absolute;
   left: 28px;
   bottom: 40px;

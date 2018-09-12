@@ -2,7 +2,7 @@
 @import "colors.scss";
 
 .TabItem {
-  @include font-style('button');
+  @include font-style('body');
   display: block;
   padding: 22px 28px;
   text-align: left;

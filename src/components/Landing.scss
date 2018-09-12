@@ -17,7 +17,7 @@
 }
 
 .Landing__label {
-  @include font-style('button');
+  @include font-style('label');
   display: block;
   padding: 6px;
   color: $white;
