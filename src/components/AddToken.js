@@ -9,6 +9,7 @@ import { krc20ABI } from 'utils/crypto'
 import { onit } from 'klaytn/onit'
 import { registerToken } from 'actions/token'
 import { pipe } from 'utils/Functional'
+import ui from 'utils/ui'
 
 import store from '../store'
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { keyBy } from 'lodash'
 import BN from 'bignumber.js'
+import ui from 'utils/ui'
 
 import { onit } from 'klaytn/onit'
 import MyToken from 'components/MyToken'
