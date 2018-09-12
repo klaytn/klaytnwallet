@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 
@@ -9,19 +9,37 @@ type Props = {
   link: string,
 }
 
-const TabItem = ({ title, link, isActive, icon }) => (
-  <Link
-    className={classNames('TabItem', {
-      'TabItem--active': isActive,
-    })}
-    to={link}
-  >
-    <img
-      className="TabItem__icon"
-      src={`/images/${icon}${isActive ? '-on' : '-off'}.svg`}
-    />
-    {title}
-  </Link>
-)
+class TabItem extends Component<Props> {
+  state = {
+    isHovered: false,
+  }
+
+  toggleHover = (isHovered) => () => {
+    this.setState({
+      isHovered,
+    })
+  }
+
+  render() {
+    const { isHovered } = this.state
+    const { title, link, isActive, icon } = this.props
+    return (
+      <Link
+        className={classNames('TabItem', {
+          'TabItem--active': isActive,
+        })}
+        to={link}
+        onMouseEnter={this.toggleHover(true)}
+        onMouseLeave={this.toggleHover(false)}
+      >
+        <img
+          className="TabItem__icon"
+          src={`/images/${icon}${(isActive || isHovered) ? '-on' : '-off'}.svg`}
+        />
+        {title}
+        </Link>
+    )
+  }
+}
 
 export default TabItem
