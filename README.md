@@ -117,7 +117,7 @@ webpack.prod.config.js - webpack prod config
 
 contracts // Solidity 컨트랙트
 dist // npm run build를 통해 빌드된 파일
-images // static image들이 있는 폴더. 프론트엔드 코드에서 <img src="/images/xxx.png" /> 로 접근 가능
+images // static image들이 있는 폴더. 프론트엔드 코드에서 <img src="/static/images/xxx.png" /> 로 접근 가능
 migrations // truffle migrate 시 실행되는 파일
 public // index.html, favicon, manifest.json이 존재하는 폴더
 src - actions // Redux action들이 정의되어 있는 폴더

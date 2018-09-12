@@ -5,6 +5,10 @@ const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+
 require('babel-polyfill')
 
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
@@ -15,7 +19,6 @@ module.exports = {
   entry: [
     'babel-polyfill',
     path.resolve(__dirname, 'src/index.js'),
-    'webpack-hot-middleware/client',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -31,7 +34,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: extractCSS.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: { minimize: true },
+            },
+          ],
+        })
       },
       {
         test: /\.scss$/,
@@ -39,6 +50,7 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
+              options: { minimize: true },
             },
             {
               loader: 'sass-loader',
@@ -61,24 +73,31 @@ module.exports = {
       actions: path.resolve(__dirname, 'src/actions'),
     },
   },
+  optimization: {
+    minimizer: [
+      new UglifyJSPlugin({
+        sourceMap: true,
+      }),
+    ]
+  },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       inject: 'body',
     }),
     extractCSS,
     new webpack.NoEmitOnErrorsPlugin(),
-    new UglifyJSPlugin({
-          test: /\.js($|\?)/i,
-          sourceMap: true,
-          uglifyOptions: {
-            compress: true
-          }
-        }),
     new webpack.DefinePlugin({
-      DEV: false,
-      DEPLOYED_ADDRESS: JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
-      METAMASK: process.env.METAMASK,
+      'DEV': false,
+      'DEPLOYED_ADDRESS': JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
+      'METAMASK': process.env.METAMASK,
     }),
+    new CompressionPlugin(),
+    new CopyWebpackPlugin([{
+      from: 'static',
+      to: 'static',
+      toType: 'dir',
+    }]),
   ],
 }
