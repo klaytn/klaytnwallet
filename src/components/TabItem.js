@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 
+import { onit } from 'klaytn/onit'
+
 import './TabItem.scss'
 
 type Props = {
@@ -29,6 +31,7 @@ class TabItem extends Component<Props> {
           'TabItem--active': isActive,
         })}
         to={link}
+        onClick={() => { onit.klay.accounts.wallet.clear() }}
         onMouseEnter={this.toggleHover(true)}
         onMouseLeave={this.toggleHover(false)}
       >
