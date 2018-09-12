@@ -45,7 +45,7 @@ class WalletTransfer2 extends Component<Props> {
   componentWillMount() {
     if (!onit.klay.accounts || !onit.klay.accounts.wallet[0]) {
       ui.showToast({ msg: '로그인을 해주세요.' })
-      new Audio('/sound/error.ogg').play()
+      new Audio('/static/sound/error.ogg').play()
       browserHistory.replace('/access?next=transfer')
     }
   }
@@ -117,13 +117,13 @@ class WalletTransfer2 extends Component<Props> {
         ui.showToast({ msg: `${to} 주소로 ${value} klay를 전송합니다.` })
       })
       .once('receipt', () => {
-        new Audio('/sound/transfer.mp3').play()
+        new Audio('/static/sound/transfer.mp3').play()
         ui.showToast({ msg: `${to} 주소로 ${value} klay 전송에 성공했습니다.` })
         this.changeView('complete')()
       })
       .on('error', (e) => {
         console.log(e)
-        new Audio('/sound/error.ogg').play()
+        new Audio('/static/sound/error.ogg').play()
         ui.showToast({ msg: '오류가 발생했습니다.' })
       })
   }
@@ -142,13 +142,13 @@ class WalletTransfer2 extends Component<Props> {
       ui.showToast({ msg: `${to} 주소로 ${value} ${type}를 전송합니다.` })
     })
     .once('receipt', () => {
-      new Audio('/sound/transfer.mp3').play()
+      new Audio('/static/sound/transfer.mp3').play()
       ui.showToast({ msg: `${to} 주소로 ${value} ${type} 전송에 성공했습니다.` })
       this.changeView('complete')()
     })
     .on('error', (e) => {
       console.log(e)
-      new Audio('/sound/error.ogg').play()
+      new Audio('/static/sound/error.ogg').play()
       ui.showToast({ msg: '오류가 발생했습니다.' })
     })
   }

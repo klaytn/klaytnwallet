@@ -35,9 +35,12 @@ class MyToken extends Component<Props> {
     this.setState({ isShowAddToken: !this.state.isShowAddToken })
   }
 
+  intervalID = null
+
   componentDidMount() {
     if (this.wallet) {
       this.getTokenBalances()
+      this.intervalID = setInterval(this.getTokenBalances, 5000)
     }
   }
 
@@ -45,6 +48,10 @@ class MyToken extends Component<Props> {
     if (prevProps.tokenList.length !== this.props.tokenList.length) {
       this.getTokenBalances()
     }
+  }
+
+  componentWillUnmount() {
+    if (this.intervalID) clearInterval(this.intervalID)
   }
 
   selectToken = ({ name: tokenSymbol, tokenColorIdx }) => () => {

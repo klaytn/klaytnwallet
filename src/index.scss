@@ -2,28 +2,28 @@
   font-family: 'SFUIText';
   font-style: normal;
   font-weight: bold;
-  src: url('/fonts/SFUIText-Bold.ttf') format('truetype');
+  src: url('/static/fonts//SFUIText-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'SFUIText';
   font-style: normal;
   font-weight: normal;
-  src: url('/fonts/SFUIText-Regular.ttf') format('truetype');
+  src: url('/static/fonts//SFUIText-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'RobotoMono';
   font-style: normal;
   font-weight: bold;
-  src: url('/fonts/RobotoMono-Bold.ttf') format('truetype');
+  src: url('/static/fonts//RobotoMono-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'RobotoMono';
   font-style: normal;
   font-weight: normal;
-  src: url('/fonts/RobotoMono-Regular.ttf') format('truetype');
+  src: url('/static/fonts//RobotoMono-Regular.ttf') format('truetype');
 }
 
 html {
