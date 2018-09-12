@@ -68,3 +68,11 @@
     background-color: transparent;
   }
 }
+
+.Input__unit {
+  @include font-style('body');
+  color: $dark-grey;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+}

@@ -12,7 +12,8 @@ const EditButton = ({ onClick, className }) => (
     onClick={onClick}
     className={cx('EditButton', className)}
   >
-    Edit
+    <img className="EditButton__icon" src="/static/images/icon-setting.svg" />
+    <span>Edit</span>
   </button>
 )
 

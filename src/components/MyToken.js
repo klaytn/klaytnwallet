@@ -157,7 +157,6 @@ const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenNam
       </span>
       <span className="TokenItem__tokenName">{name}</span>
       <div className="TokenItem__decoration" />
-      <div className="TokenItem__arrow" />
     </div>
   )
 }

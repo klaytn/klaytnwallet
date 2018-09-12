@@ -63,6 +63,7 @@ class TransferForm extends Component<Props> {
         <Input
           name="value" onChange={onChange} className="TransferForm__input TransferForm__valueInput" label="Amount to Send" placeholder="0.000000"
           autoComplete="off"
+          unit={type}
         />
         <div className="TransferForm__feeLimit">
           <ReactTooltip

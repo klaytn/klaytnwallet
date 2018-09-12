@@ -21,6 +21,7 @@ class Input extends Component<Props> {
       onLabelClick,
       labelClassName,
       tooltip,
+      unit,
     } = this.props
 
     return (
@@ -50,6 +51,7 @@ class Input extends Component<Props> {
           type={type}
           value={value}
         />
+        {unit && <span className="Input__unit">{unit}</span>}
     </div>
     )
   }
