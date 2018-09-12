@@ -56,7 +56,7 @@ class TransferForm extends Component<Props> {
         <Input
           readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address"
         />
-        <Input 
+        <Input
           name="to" onChange={onChange} className="TransferForm__input" label="To Address" placeholder="Enter the address to send"
           autoComplete="off"
         />
@@ -79,7 +79,7 @@ class TransferForm extends Component<Props> {
               data-tip
               data-for='gas-tooltip'
               className="TransferForm__questionMark"
-              src="/images/icon-help-label.svg"
+              src="/static/images/icon-help-label.svg"
             />
           </p>
           <InputEdit

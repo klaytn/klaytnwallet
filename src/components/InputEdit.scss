@@ -46,8 +46,8 @@
   }
 
   &--active .InputEdit__eye {
-    &--show { background-image: url('/images/btn-show.svg'); }
-    &--hide { background-image: url('/images/btn-hide.svg'); }
+    &--show { background-image: url('/static/images/btn-show.svg'); }
+    &--hide { background-image: url('/static/images/btn-hide.svg'); }
   }
 }
 

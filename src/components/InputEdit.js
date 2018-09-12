@@ -56,7 +56,7 @@ class InputEdit extends Component<Props> {
                   tabIndex="-1"
                   onClick={pipe(handleEditCancel, this.toggleEdit)}
                 >
-                  <img src="/images/icon-x-black.svg" />
+                  <img src="/static/images/icon-x-black.svg" />
                   <span>Cancel</span>
                 </button>
                 <button
@@ -64,7 +64,7 @@ class InputEdit extends Component<Props> {
                   tabIndex="-1"
                   onClick={this.toggleEdit}
                 >
-                  <img src="/images/icon-success-check.svg" />
+                  <img src="/static/images/icon-success-check.svg" />
                   <span>Ok</span>
                 </button>
               </Fragment>

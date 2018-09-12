@@ -11,7 +11,7 @@
   outline: 0;
   cursor: pointer;
   background-color: $dark-blue-grey;
-  background-image: url(/images/icon-plus.svg);
+  background-image: url(/static/images/icon-plus.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 12px 12px;
@@ -31,5 +31,5 @@
 }
 
 .XButton {
-  background-image: url(/images/icon-x.svg);
+  background-image: url(/static/images/icon-x.svg);
 }

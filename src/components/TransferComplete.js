@@ -14,7 +14,7 @@ const TransferComplete = ({
   <div className="TransferComplete">
     <img
       className="TransferComplete__img"
-      src="/images/icon-transfer-complete.svg"
+      src="/static/images/icon-transfer-complete.svg"
     />
     <header className="TransferComplete__title">
       Complete<br />

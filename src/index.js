@@ -12,8 +12,6 @@ import WalletAccess2 from 'components/WalletAccess2'
 import WalletTransfer2 from 'components/WalletTransfer2'
 import KlayFaucet from 'components/KlayFaucet'
 import Landing from 'components/Landing'
-
-import WalletTransfer from 'components/WalletTransfer'
 import MyWallet from 'components/MyWallet'
 
 import './index.scss'

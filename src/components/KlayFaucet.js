@@ -76,7 +76,7 @@ class KlayFaucet extends Component<Props> {
     return (
       <div className="KlayFaucet">
         <div className="KlayFaucet__content">
-          <img className="KlayFaucet__img" src="/images/icon-faucet.svg" />
+          <img className="KlayFaucet__img" src="/static/images/icon-faucet.svg" />
           <header className="KlayFaucet__title">KLAY Faucet</header>
           <Input
             value={this.wallet && this.wallet.address}

@@ -25,7 +25,7 @@ if (isDeveloping) {
     },
   })
 
-  app.use('/', express.static(path.resolve(__dirname, 'static')))
+  app.use('/', express.static(path.resolve(__dirname)))
   app.use(middleware)
   app.use(webpackHotMiddleware(compiler))
   app.get('*', function response(req, res) {

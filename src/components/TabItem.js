@@ -34,7 +34,7 @@ class TabItem extends Component<Props> {
       >
         <img
           className="TabItem__icon"
-          src={`/images/${icon}${(isActive || isHovered) ? '-on' : '-off'}.svg`}
+          src={`/static/images/${icon}${(isActive || isHovered) ? '-on' : '-off'}.svg`}
         />
         {title}
         </Link>

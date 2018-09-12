@@ -75,7 +75,7 @@ class InputCopy extends Component<Props> {
             onClick={this.copy}
             tabIndex="-1"
           >
-            <img className="InputCopy__icon" src="/images/icon-copy.svg" />
+            <img className="InputCopy__icon" src="/static/images/icon-copy.svg" />
             Copy
           </button>
         </div>

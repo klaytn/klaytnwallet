@@ -37,7 +37,7 @@ class File extends Component<Props> {
       <div className={classNames('File', className)}>
         <input id="fileInput" className="File__input" type="file" onChange={onChange} />
         <Button className="File__button">
-          {icon && (<img className="File__icon" src={`/images/${icon}.svg`} />)}
+          {icon && (<img className="File__icon" src={`/static/images/${icon}.svg`} />)}
           <label htmlFor="fileInput" className="File__label">{title}</label>
         </Button>
       </div>
