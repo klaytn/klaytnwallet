@@ -17,6 +17,10 @@ class InputEdit extends Component<Props> {
       if (this.$input) {
         this.$input.focus()
       }
+
+      if (this.props.listen && typeof this.props.listen === 'function') {
+        this.props.listen(this.state.isEditing)
+      }
     })
   }
 
@@ -65,7 +69,7 @@ class InputEdit extends Component<Props> {
                   onClick={this.toggleEdit}
                 >
                   <img src="/static/images/icon-success-check.svg" />
-                  <span>Ok</span>
+                  <span>OK</span>
                 </button>
               </Fragment>
             )

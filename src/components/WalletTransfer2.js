@@ -11,6 +11,7 @@ import TransferForm from 'components/TransferForm'
 import TransferTotal from 'components/TransferTotal'
 import TransferComplete from 'components/TransferComplete'
 import { krc20ABI } from 'utils/crypto'
+import { limit6Decimal } from 'utils/misc'
 
 type Props = {
 
@@ -51,15 +52,20 @@ class WalletTransfer2 extends Component<Props> {
   }
 
   handleChange = (e) => {
-    if (e.target.name === 'totalGasFee') {
-      this.setState({
-        [e.target.name]: e.target.value,
-        gas: new BN(onit.utils.toWei(e.target.value, 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
-      })
-    } else {
-      this.setState({
-        [e.target.name]: e.target.value,
-      })
+    switch (e.target.name) {
+      case 'totalGasFee':
+        this.setState({
+          [e.target.name]: limit6Decimal(e.target.value),
+          gas: new BN(onit.utils.toWei(limit6Decimal(e.target.value) || '0', 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
+        })
+        break
+      case 'to':
+        this.setState({
+          [e.target.name]: e.target.value,
+        })
+        break
+      default:
+        this.setState({ [e.target.name]: limit6Decimal(e.target.value) })
     }
   }
 

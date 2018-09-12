@@ -96,3 +96,11 @@ export const getParsedLocalStorageItem = (item) => {
     return []
   }
 }
+
+export const limit6Decimal = (valueStr) => {
+  const [ integerValue, decimalValue ] = String(valueStr).split('.')
+  if (decimalValue && decimalValue.length > 6) {
+    return integerValue + '.' + decimalValue.slice(0, 6)
+  }
+  return valueStr
+}

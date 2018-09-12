@@ -7,6 +7,12 @@
   padding: 48px;
   border-left: 1px solid $solitude;
   height: 100%;
+
+  &--editing {
+    .TransferForm__title, .TransferForm__input {
+      opacity: 0.2;
+    }
+  }
 }
 
 .TransferForm__title {

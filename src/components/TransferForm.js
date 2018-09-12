@@ -7,6 +7,7 @@ import Input from 'components/Input'
 import Button from 'components/Button'
 import EditButton from 'components/EditButton'
 import InputEdit from 'components/InputEdit'
+import { pipe } from 'utils/Functional'
 
 type Props = {
 
@@ -16,17 +17,15 @@ import './TransferForm.scss'
 
 class TransferForm extends Component<Props> {
   state = {
-    isEditing: false,
+    listenedIsEditing: false,
   }
 
-  toggleEdit = () => {
-    this.setState({
-      isEditing: !this.state.isEditing
-    })
+  listenEditing = (listenedIsEditing) => {
+    this.setState({ listenedIsEditing })
   }
 
   render() {
-    const { isEditing } = this.state
+    const { listenedIsEditing } = this.state
     const {
       from,
       className,
@@ -42,8 +41,11 @@ class TransferForm extends Component<Props> {
       handleEditCancel,
       tokenColorIdx,
     } = this.props
+
     return (
-      <div className={cx('TransferForm', className)}>
+      <div className={cx('TransferForm', className, {
+        'TransferForm--editing': listenedIsEditing,
+      })}>
         <header className="TransferForm__title">
           Step2. Enter the infomation <span className={cx('TransferForm__tokenSymbol', {
             [`TransferForm__tokenSymbol--token-color-${tokenColorIdx}`]: tokenColorIdx,
@@ -54,16 +56,28 @@ class TransferForm extends Component<Props> {
         </header>
         <hr className="TransferForm__hr" />
         <Input
-          readOnly value={from} className="TransferForm__input TransferForm__input--readOnly" label="From Address"
+          readOnly
+          value={from}
+          className="TransferForm__input TransferForm__input--readOnly"
+          label="From Address"
         />
         <Input
-          name="to" onChange={onChange} className="TransferForm__input" label="To Address" placeholder="Enter the address to send"
+          name="to"
+          onChange={onChange}
+          className="TransferForm__input"
+          label="To Address"
+          placeholder="Enter the address to send"
           autoComplete="off"
         />
         <Input
-          name="value" onChange={onChange} className="TransferForm__input TransferForm__valueInput" label="Amount to Send" placeholder="0.000000"
+          name="value"
+          onChange={onChange}
+          className="TransferForm__input TransferForm__valueInput"
+          label="Amount to Send"
+          placeholder="0.000000"
           autoComplete="off"
           unit={type}
+          value={value}
         />
         <div className="TransferForm__feeLimit">
           <ReactTooltip
@@ -92,9 +106,10 @@ class TransferForm extends Component<Props> {
             handleEditCancel={handleEditCancel}
             unit="KLAY"
             autoComplete="off"
+            listen={this.listenEditing}
           />
         </div>
-        {!isEditing && (
+        {!listenedIsEditing && (
           <div className="TransferForm__gasInfo">
             <div className="TransferForm__gasPrice">
               <span>Gas Price</span>
@@ -110,7 +125,7 @@ class TransferForm extends Component<Props> {
           title="Send Transaction"
           className="TransferForm__sendTransactionButton"
           onClick={changeView('total')}
-          disabled={!from || !value || !to || !type}
+          disabled={listenedIsEditing || !from || !value || !to || !type}
         />
       </div>
     )
