@@ -23,7 +23,7 @@ class TabList extends Component<Props> {
                 link === '/'
                   ? link == window.location.pathname
                   : nextTo
-                    ? (`/${nextTo}` == link) 
+                    ? (`/${nextTo}` == link)
                     : new RegExp(link).test(window.location.pathname)
                 }
               icon={icon}
@@ -32,7 +32,6 @@ class TabList extends Component<Props> {
               link={link}
             />
           )
-        })
         })}
       </div>
     )
