@@ -71,7 +71,7 @@
 .TransferForm__gasTooltip {
   @include font-style('caption');
   padding: 20px 24px;
-  background-color: $dark;
+  background-color: $dark !important;
   border-radius: 10px;
 }
 

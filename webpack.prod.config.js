@@ -71,6 +71,7 @@ module.exports = {
       klaytn: path.resolve(__dirname, 'src/klaytn/'),
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
+      images: path.resolve(__dirname, 'static/images/'),
     },
   },
   optimization: {
