@@ -53,7 +53,7 @@ class WalletAccess2 extends Component<Props> {
     return (
       <div className="WalletAccess2">
         <div className="WalletAccess2__inner">
-          <header className="WalletAccess2__title">Access Exiciting Wallet</header>
+          <header className="WalletAccess2__title">Access Existing Wallet</header>
           <p className="WalletAccess2__description">
             You can access your wallet using your private key<br />
             or keystore file with password.
