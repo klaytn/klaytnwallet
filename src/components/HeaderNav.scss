@@ -1,0 +1,21 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.HeaderNav {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.HeaderNav__link {
+  @include font-style('menu');
+  color: $white;
+  margin-right: 55px;
+  display: inline-block;
+
+  &:hover {
+    color: $btn;
+  }
+}

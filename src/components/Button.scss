@@ -1,58 +1,37 @@
-@import "colors.scss";
-@import "fonts.scss";
+@import 'fonts.scss';
+@import 'colors.scss';
 
 .Button {
-  @include font-style('body');
-  display: inline-block;
+  @include font-style('button');
+  width: 100px;
+  height: 32px;
+  padding: 0;
+  outline: 0;
   border: 0;
-  background-color: $main-point;
+  background-color: $btn;
+  border-radius: 2px;
   color: $white;
   cursor: pointer;
-  padding: 16px 40px;
-  text-align: center;
-  outline: 0;
-  box-shadow: 0 4px 8px 0 rgba($main-point, .25);
 
-  &:disabled {
-    box-shadow: unset;
-    cursor: not-allowed;
-    background-color: $middle-blue-grey !important;
-  }
-
-  &:hover {
-    background-color: $breakerbay;
-  }
-
-  &:active {
-    background-color: $ming;
-    box-shadow: unset;
-  }
+  &:hover { background-color: #509FA0; }
+  &:active { background-color: #3B7778; }
 
   &--gray {
-    background-color: $dark-blue-grey;
-    box-shadow: 0 4px 8px 0 rgba($dark-blue-grey, 0.25);
-
-    &:hover {
-      background-color: $manatee;
-    }
-
-    &:active {
-      background-color: $nevada;
-      box-shadow: unset;
-    }
+    background-color: $silver-two;
+    &:hover { background-color: #ABABAC; }
+    &:active { background-color: #808181; }
   }
+}
 
-  &--red {
-    background-color: $light-red;
-    box-shadow: 0 4px 8px 0 rgba($light-red, 0.25);
+.Button__icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
 
-    &:hover {
-      background-color: $dark-red;
-    }
-
-    &:active {
-      background-color: $shiraz;
-      box-shadow: unset;
-    }
-  }
+.Button__title {
+  display: inline-block;
+  vertical-align: middle;
 }

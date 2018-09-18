@@ -1,0 +1,38 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.LatestTxTable {
+  display: inline-block;
+  width: 648px;
+
+  .rt-td {
+    padding: 29px 24px;
+  }
+}
+
+.LatestTxTable__from {
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.LatestTxTable__to {
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.rt-td:last-child {
+  text-align: center;
+}
+
+.LatestTxTable__categorySymbol {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  margin: 0 auto;
+
+  &--deploy { background-color: $sc-deployment; }
+  &--execution { background-color: $sc-execution; }
+  &--transfer { background-color: $value-transfer; }
+}

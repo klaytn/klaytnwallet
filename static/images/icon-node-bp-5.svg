@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54">
+    <defs>
+        <style>
+            .cls-1{fill:#2cc}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:#fff}
+        </style>
+        <clipPath id="clip-path">
+            <circle id="타원_751" cx="27" cy="27" r="27" data-name="타원 751"/>
+        </clipPath>
+    </defs>
+    <g id="icon_node_bp_05" transform="translate(-28.9 -5.4)">
+        <circle id="타원_718" cx="27" cy="27" r="27" class="cls-1" data-name="타원 718" transform="translate(28.9 5.4)"/>
+        <g id="그룹_1317" class="cls-2" data-name="그룹 1317" transform="translate(28.9 5.4)">
+            <circle id="타원_719" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 719" transform="translate(-.118 31.127)"/>
+            <circle id="타원_720" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 720" transform="translate(15.504 31.127)"/>
+            <circle id="타원_721" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 721" transform="translate(31.716 31.127)"/>
+            <circle id="타원_722" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 722" transform="translate(47.928 31.127)"/>
+            <circle id="타원_723" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 723" transform="translate(-8.519 38.79)"/>
+            <circle id="타원_724" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 724" transform="translate(7.104 38.79)"/>
+            <circle id="타원_725" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 725" transform="translate(23.316 38.79)"/>
+            <circle id="타원_726" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 726" transform="translate(39.527 38.79)"/>
+            <circle id="타원_727" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 727" transform="translate(-.118 47.486)"/>
+            <circle id="타원_728" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 728" transform="translate(15.504 47.486)"/>
+            <circle id="타원_729" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 729" transform="translate(31.716 47.486)"/>
+            <circle id="타원_730" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 730" transform="translate(47.928 47.486)"/>
+            <circle id="타원_731" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 731" transform="translate(-8.519 55.15)"/>
+            <circle id="타원_732" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 732" transform="translate(7.104 55.15)"/>
+            <circle id="타원_733" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 733" transform="translate(23.316 55.15)"/>
+            <circle id="타원_734" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 734" transform="translate(39.527 55.15)"/>
+            <circle id="타원_735" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 735" transform="translate(-.118 -1.592)"/>
+            <circle id="타원_736" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 736" transform="translate(15.504 -1.592)"/>
+            <circle id="타원_737" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 737" transform="translate(31.716 -1.592)"/>
+            <circle id="타원_738" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 738" transform="translate(47.928 -1.592)"/>
+            <circle id="타원_739" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 739" transform="translate(-8.519 6.072)"/>
+            <circle id="타원_740" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 740" transform="translate(7.104 6.072)"/>
+            <circle id="타원_741" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 741" transform="translate(23.316 6.072)"/>
+            <circle id="타원_742" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 742" transform="translate(39.527 6.072)"/>
+            <circle id="타원_743" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 743" transform="translate(-.118 14.767)"/>
+            <circle id="타원_744" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 744" transform="translate(15.504 14.767)"/>
+            <circle id="타원_745" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 745" transform="translate(31.716 14.767)"/>
+            <circle id="타원_746" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 746" transform="translate(47.928 14.767)"/>
+            <circle id="타원_747" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 747" transform="translate(-8.519 22.431)"/>
+            <circle id="타원_748" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 748" transform="translate(7.104 22.431)"/>
+            <circle id="타원_749" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 749" transform="translate(23.316 22.431)"/>
+            <circle id="타원_750" cx="3.242" cy="3.242" r="3.242" class="cls-3" data-name="타원 750" transform="translate(39.527 22.431)"/>
+        </g>
+    </g>
+</svg>

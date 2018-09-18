@@ -1,0 +1,58 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+.Stats {
+  position: relative;
+  padding: 56px;
+  background-image: linear-gradient(to bottom, #344bac, #3a51b1 23%, #3248a3);
+  height: 480px;
+  margin-bottom: 150px;
+
+  &::before {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    background-image: linear-gradient(to bottom, #344bac, #3a51b1 23%, #3248a3);
+    // top: 0;
+    // left: 0;
+    // width: 100vw;
+    // height: 45%;
+  }
+}
+
+.Stats__header {
+  overflow: hidden;
+  margin-bottom: 34px;
+}
+
+.Stats__title {
+  @include font-style('h1');
+  color: $white;
+  float: left;
+}
+
+.Stats__guide {
+  float: right;
+}
+
+.Stats__committeeStatus {
+  width: 47%;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 38px;
+
+  .CommitteeStatus__visualization {
+    position: relative;
+    top: 10px;
+  }
+
+  .CommitteeStatus__explanation {
+    top: 0;
+  }
+}
+
+.Stats__dailyTxStatus {
+  width: 47%;
+  display: inline-block;
+  vertical-align: top;
+}

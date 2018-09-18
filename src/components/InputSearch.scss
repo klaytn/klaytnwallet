@@ -1,0 +1,17 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.InputSearch {
+  @include font-style('label');
+  border: 0;
+  outline: 0;
+  height: 36px;
+  padding: 10px;
+  background-color: $ghost-white;
+  width: 348px;
+  color: $steel-grey;
+
+  &::placeholder {
+    color: $silver;
+  }
+}

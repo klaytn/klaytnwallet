@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54">
+    <defs>
+        <style>
+            .cls-1{fill:#edf0f1}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:#acb1b3}
+        </style>
+        <clipPath id="clip-path">
+            <circle id="타원_714" cx="27" cy="27" r="27" data-name="타원 714"/>
+        </clipPath>
+    </defs>
+    <g id="icon_node_c_04" transform="translate(-28.7 -25)">
+        <g id="그룹_1226" data-name="그룹 1226" transform="translate(28.7 25)">
+            <circle id="타원_713" cx="27" cy="27" r="27" class="cls-1" data-name="타원 713"/>
+            <g id="그룹_1225" class="cls-2" data-name="그룹 1225">
+                <path id="사각형_1943" d="M0 0h2.948v71.479H0z" class="cls-3" data-name="사각형 1943" transform="translate(25.526 -7.369)"/>
+                <path id="사각형_1944" d="M0 0h2.948v71.479H0z" class="cls-3" data-name="사각형 1944" transform="rotate(-19.999 -6.659 -40.326)"/>
+                <path id="사각형_1945" d="M0 0h2.948v71.479H0z" class="cls-3" data-name="사각형 1945" transform="rotate(-40.002 4.11 -3.005)"/>
+                <path id="사각형_1946" d="M0 0h2.948v71.479H0z" class="cls-3" data-name="사각형 1946" transform="rotate(-60 7.854 9.955)"/>
+                <path id="사각형_1947" d="M0 0h2.948v71.479H0z" class="cls-3" data-name="사각형 1947" transform="rotate(-80.003 9.842 16.85)"/>
+                <path id="사각형_1948" d="M0 0h71.479v2.948H0z" class="cls-3" data-name="사각형 1948" transform="rotate(-9.997 185.231 64.975)"/>
+                <path id="사각형_1949" d="M0 0h71.479v2.948H0z" class="cls-3" data-name="사각형 1949" transform="rotate(-30 81.588 31.26)"/>
+                <path id="사각형_1950" d="M0 0h71.479v2.948H0z" class="cls-3" data-name="사각형 1950" transform="rotate(-49.998 60.233 24.308)"/>
+                <path id="사각형_1951" d="M0 0h71.479v2.948H0z" class="cls-3" data-name="사각형 1951" transform="rotate(-70.001 50.592 21.17)"/>
+            </g>
+        </g>
+        <circle id="타원_715" cx="18.57" cy="18.57" r="18.57" class="cls-1" data-name="타원 715" transform="translate(37.13 33.43)"/>
+        <path id="패스_915" d="M91.6 99.893a12 12 0 1 1 12-12 12.026 12.026 0 0 1-12 12zm0-20.456a8.46 8.46 0 1 0 8.46 8.46 8.479 8.479 0 0 0-8.46-8.46z" class="cls-3" data-name="패스 915" transform="translate(-35.897 -35.897)"/>
+    </g>
+</svg>

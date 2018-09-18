@@ -1,0 +1,55 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.BlockList {
+  padding: 56px;
+
+  .rt-th {
+    position: relative;
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+    &:first-child { padding-left: 50px !important; }
+  }
+
+  .rt-td {
+    &:first-child { padding-left: 50px !important; }
+  }
+}
+
+.BlockList__title {
+  @include font-style('h1');
+  color: $main-color;
+  text-align: left;
+}
+
+.BlockList .rt-th div {
+  white-space: pre-wrap;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 20px;
+}
+
+.BlockList .rt-td {
+  padding: 27px 24px;
+}
+
+.BlockList .rt-td:last-child {
+  text-align: left;
+}
+
+.BlockList__symbol {
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 18px;
+    border-radius: 2px;
+  }
+
+  &--deployment { &::before { background-color: $sc-deployment; } }
+  &--execution { &::before { background-color: $sc-execution; } }
+  &--transfer { &::before { background-color: $value-transfer; } }
+  &--total { &::before { background-color: $value-transfer; } }
+}

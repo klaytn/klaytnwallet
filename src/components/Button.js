@@ -1,32 +1,24 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
+import cx from 'classnames'
 
 import './Button.scss'
 
+type Props = {
+
+}
+
 class Button extends Component<Props> {
   render() {
-    const {
-      children,
-      style,
-      disabled,
-      title,
-      className,
-      onClick,
-      gray,
-      red,
-     } = this.props
+    const { icon, title, onClick, className, disabled, gray } = this.props
     return (
       <button
-        style={{...style}}
-        className={classNames('Button', className, {
+        className={cx('Button', className, {
           'Button--gray': gray,
-          'Button--red': red,
         })}
         onClick={onClick}
-        disabled={disabled}
       >
-        {title}
-        {children}
+        {icon && <img className="Button__icon" src={`/static/images/${icon}.svg`} />}
+        <span className="Button__title">{title}</span>
       </button>
     )
   }

@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 
-import Popup from 'components/Popup'
 import Toast from 'components/Toast'
 import ui from 'utils/ui'
 
 import Header from 'components/Header'
-import Nav from 'components/Nav'
+import Footer from 'components/Footer'
+
+import * as blockActions from 'actions/block'
 
 import './App.scss'
 
@@ -15,23 +17,31 @@ type Props = {
 }
 
 class App extends Component<Props> {
+  componentDidMount() {
+    const { getValidators } = this.props
+    getValidators()
+  }
+
   render() {
     const { children } = this.props
 
     return [
-      <Popup key="Popup" />,
       <Toast key="Toast" />,
       <div className="App" key="App">
         <Header />
         <section className="App__section">
-          <Nav className="App__navSection" />
-          <div className="App__contentSection">
-            {children}
-          </div>
+          {children}
         </section>
+        <Footer />
       </div>
     ]
   }
 }
 
-export default App
+
+
+const mapDispatchToProps = dispatch => ({
+  getValidators: () => dispatch(blockActions.getValidators()),
+})
+
+export default connect(null, mapDispatchToProps)(App)

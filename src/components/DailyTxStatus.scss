@@ -1,0 +1,50 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.DailyTxStatus {
+  background-color: $white;
+  box-shadow: 0 3px 10px 0 rgba(58, 81, 178, 0.1);
+  border-radius: 2px;
+  padding: 36px;
+  height: 240px;
+}
+
+.DailyTxStatus__visualization {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60%;
+}
+
+.DailyTxStatus__explanation {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40%;
+}
+
+.DailyTxStatus__title {
+  @include font-style('button');
+  color: $slate-grey;
+  margin-bottom: 27px;
+}
+
+.DailyTxStatus__legend {
+  @include font-style('label');
+  color: $steel-grey;
+  display: inline-block;
+  margin-bottom: 25px;
+  vertical-align: middle;
+
+  &:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 13px;
+  }
+
+  &--deployment:before { background-color: $sc-deployment; }
+  &--execution:before { background-color: $sc-execution; }
+  &--transfer:before { background-color: $value-transfer; }
+}
