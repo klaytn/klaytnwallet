@@ -1,0 +1,70 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.InputFile {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid $middle-blue-grey;
+  padding: 0;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  outline: 0;
+  background-color: transparent;
+}
+
+.InputFile__input {
+  position: relative;
+  height: 40px;
+  color: $dark-blue-grey;
+
+  @include font-style('body');
+  color: $black;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 95%;
+  height: 100%;
+  display: block;
+  padding-bottom: 12px;
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+}
+
+.InputFile__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.InputFile__uploadButton {
+  @include font-style('label');
+  color: $dark-blue-grey;
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border: 1px solid $middle-blue-grey;
+  background-color: $light-blue-gray;
+  border-bottom: 0;
+}
+
+.InputFile__icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 12px;
+  margin-right: 4px;
+}

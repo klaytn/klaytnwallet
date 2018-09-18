@@ -1,0 +1,136 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.InputEdit {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  outline: 0;
+  background-color: transparent;
+  padding: 0;
+  padding-bottom: 12px;
+
+  &--isEditing {
+    border-bottom: 1px solid $middle-blue-grey;
+  }
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:focus-within {
+    border-color: $main-theme;
+  }
+}
+
+.InputEdit__inputWrapper {
+  position: relative;
+}
+
+.InputEdit__input {
+  @include font-style('body');
+  color: $dark-grey;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 95%;
+  height: 100%;
+  display: block;
+  text-align: right;
+  padding-right: 20px;
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+
+  &--active .InputEdit__eye {
+    &--show { background-image: url('/static/images/btn-show.svg'); }
+    &--hide { background-image: url('/static/images/btn-hide.svg'); }
+  }
+}
+
+.InputEdit__editButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  outline: none;
+  background: center / contain no-repeat transparent;
+  cursor: pointer;
+}
+
+.InputEdit__editOkButton {
+  @include font-style('label');
+  border: 1px solid $main-point;
+  position: absolute;
+  bottom: 0;
+  left: 104px;
+  outline: none;
+  background: center / contain no-repeat transparent;
+  cursor: pointer;
+  color: $main-point;
+  padding: 7px 20px;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    margin-right: 3px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.InputEdit__editCancelButton {
+  @include font-style('label');
+  border: 1px solid $solitude;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  outline: none;
+  background: center / contain no-repeat transparent;
+  cursor: pointer;
+  color: $dark-blue-grey;
+  padding: 7px 20px;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 8px;
+    margin-right: 3px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.InputEdit__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.InputEdit__tooltip {
+  background-color: $dark !important;
+  box-shadow: 0 3px 6px 0 rgba($dark, 0.25);
+  padding: 20px 24px;
+  border-radius: 10px;
+}
+
+.InputEdit__unit {
+  @include font-style('body');
+  color: $dark-grey;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}

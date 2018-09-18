@@ -1,0 +1,90 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.TransferTotal {
+  @include panelize;
+  padding: 56px 64px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.TransferTotal__title {
+  @include font-style('h2');
+  color: $main-theme;
+  margin-bottom: 4px;
+}
+
+.TransferTotal__totalToken {
+  @include font-family('roboto');
+  @include font-style('h1');
+  color: $black;
+  margin-bottom: 7px;
+}
+
+.TransferTotal__feeLimit {
+  @include font-style('button');
+  margin-bottom: 40px;
+  color: $main-theme;
+
+  &--light {
+    @include font-family('roboto');
+    color: $dark-blue-grey;
+  }
+}
+
+.TransferTotal__item {
+  overflow: hidden;
+  border-bottom: 1px solid $light-blue-gray;
+  padding: 20px 0;
+
+  &:first-of-type {
+    border-top: 1px solid $middle-blue-grey;
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid $middle-blue-grey;
+  }
+}
+
+.TransferTotal__itemTitle {
+  @include font-style('label');
+  color: $main-theme;
+  float: left;
+}
+
+.TransferTotal__itemValue {
+  @include font-style('body');
+  color: $dark-blue-grey;
+  float: right;
+}
+
+.TransferTotal__message {
+  @include font-style('h2');
+  color: $dolphin;
+  margin-top: 40px;
+  margin-bottom: 34px;
+}
+
+.TransferTotalItem__yesButton {
+  padding-left: 58px;
+  padding-right: 58px;
+  margin-left: 8px;
+}
+
+.TransferTotalItem__noButton {
+  padding-left: 58px;
+  padding-right: 58px;
+  margin-right: 8px;
+  background-color: $dark-blue-grey;
+  box-shadow: rgba($dark-blue-grey, .25);
+}
+
+.TransferTotal__valueDecimal {
+  color: $warm-grey;
+}
+
+.TransferTotal__tokenSymbol {
+  @include font-style('h2');
+  color: $warm-grey;
+}

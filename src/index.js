@@ -7,12 +7,12 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 
 import App from './App'
-
-import DashboardPage from 'pages/DashboardPage'
-
-import BlockList from 'components/BlockList'
-import BlockDetail from 'components/BlockDetail'
-import TransactionList from 'components/TransactionList'
+import WalletCreation2 from 'components/WalletCreation2'
+import WalletAccess2 from 'components/WalletAccess2'
+import WalletTransfer2 from 'components/WalletTransfer2'
+import KlayFaucet from 'components/KlayFaucet'
+import Landing from 'components/Landing'
+import MyWallet from 'components/MyWallet'
 
 import './index.scss'
 
@@ -22,10 +22,14 @@ export const renderRoutes = (rootComponent) => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={rootComponent}>
-        <IndexRoute component={DashboardPage} />
-        <Route path="/blocks" component={BlockList} />
-        <Route path="/block/:blockNumberOrHash" component={BlockDetail} />
-        <Route path="/transactions" component={TransactionList} />
+        <IndexRoute component={Landing} />
+        <Route path="/create" component={WalletCreation2} />
+        <Route path="/access" component={WalletAccess2} />
+        <Route path="/access/:id" component={MyWallet} />
+        <Route path="/transfer" component={WalletTransfer2} />
+        <Route path="/transfer/:id" component={WalletTransfer2} />
+        <Route path="/faucet" component={KlayFaucet} />
+        <Route path="/faucet/:address" component={KlayFaucet} />
       </Route>
     </Router>
   </Provider>

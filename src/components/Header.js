@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import cx from 'classnames'
 
 import { onit } from 'klaytn/onit'
-import HeaderNav from 'components/HeaderNav'
 
 import './Header.scss'
 
@@ -46,10 +45,9 @@ class Header extends Component<Props> {
     return (
       <div className="Header">
         <div className="Header__LogoWithLink">
-          <Link to="/" className="Header__logo" />
-          <Link to="/klaytnscope" className="Header__link">Klaytn wallet</Link>
+          <div className="Header__logo" />
+          <Link to="/klaytnscope" className="Header__link">Klaytnscope</Link>
         </div>
-        <HeaderNav />
         <div className={cx('Header__network', {
           'Header__network--disconnected': !network
         })}

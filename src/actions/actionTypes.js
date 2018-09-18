@@ -9,5 +9,3 @@ export const HIDE_TOAST = 'HIDE_TOAST'
 
 export const REGISTER_TOKEN = 'REGISTER_TOKEN'
 export const GET_ALL_TOKEN = 'GET_ALL_TOKEN'
-
-export const GET_VALIDATORS = 'GET_VALIDATORS'

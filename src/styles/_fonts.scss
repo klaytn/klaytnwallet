@@ -1,16 +1,13 @@
 @import 'colors.scss';
 
 @mixin font-style($type) {
-  @if $type == 'stats-number' { font-size: 38px; font-weight: 200; }
   @if $type == 'h1' { font-size: 32px; font-weight: bold; }
   @if $type == 'h2' { font-size: 20px; font-weight: bold; }
-  @if $type == 'block-number' { font-size: 20px; font-weight: normal; }
-  @if $type == 'menu-bold' { font-size: 16px; font-weight: bold; }
-  @if $type == 'menu' { font-size: 16px; font-weight: normal; }
-  @if $type == 'button' { font-size: 14px; font-weight: bold; }
+  @if $type == 'h3' { font-size: 16px; font-weight: normal; }
   @if $type == 'body' { font-size: 14px; font-weight: normal; }
-  @if $type == 'body-link' { font-size: 14px; font-weight: 300; }
-  @if $type == 'label' { font-size: 12px; font-weight: normal; }
+  @if $type == 'label' { font-size: 12px; font-weight: bold; }
+  @if $type == 'caption' { font-size: 12px; font-weight: normal; }
+  @if $type == 'button' { font-size: 14px; font-weight: bold; }
 }
 
 @mixin font-family($family) {

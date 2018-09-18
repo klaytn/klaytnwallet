@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+    <defs>
+        <style>
+            .cls-1{fill:rgba(255,255,255,0)}.cls-2{fill:#fff409}.cls-3{fill:none;stroke:#2d3241;stroke-miterlimit:10;stroke-width:3px}.cls-4{font-size:10px;font-family:SFUIText-Heavy,SF UI Text;font-weight:800}
+        </style>
+    </defs>
+    <g id="illust_saveKey" transform="translate(4 23)">
+        <path id="사각형_109" d="M0 0h150v150H0z" class="cls-1" data-name="사각형 109" transform="translate(-4 -23)"/>
+        <g id="그룹_51" data-name="그룹 51" transform="translate(-2 -5.5)">
+            <g id="그룹_49" data-name="그룹 49">
+                <path id="패스_549" d="M53.3 24L45.8 8.2c-2.1-3.8-3-6.7-6.7-6.7H6.7A6.7 6.7 0 0 0 0 8.2v63.3z" class="cls-2" data-name="패스 549"/>
+            </g>
+            <g id="그룹_50" data-name="그룹 50">
+                <path id="패스_550" d="M133 113.5h-29.3a12.035 12.035 0 0 1-12-12v-28H145v28a12.035 12.035 0 0 1-12 12z" class="cls-2" data-name="패스 550"/>
+            </g>
+            <path id="패스_551" d="M124.2 104.8H94.9a12.035 12.035 0 0 1-12-12v-28h53.3v28a11.971 11.971 0 0 1-12 12z" class="cls-3" data-name="패스 551"/>
+            <circle id="타원_413" cx="6.7" cy="6.7" r="6.7" class="cls-3" data-name="타원 413" transform="translate(102.9 78.1)"/>
+            <path id="패스_552" d="M92.9 64.8V52.2a16.73 16.73 0 0 1 16.7-16.7 16.73 16.73 0 0 1 16.7 16.7v12.5" class="cls-3" data-name="패스 552"/>
+            <path id="패스_553" d="M82.9 78.2H15.8a6.7 6.7 0 0 1-6.7-6.7V8.2a6.7 6.7 0 0 1 6.7-6.7h23.3c3.7 0 4.6 2.9 6.7 6.7L53.3 24h55.8" class="cls-3" data-name="패스 553"/>
+            <path id="패스_554" d="M47.5 11.5h55a6.7 6.7 0 0 1 6.7 6.7v16.2" class="cls-3" data-name="패스 554"/>
+            <g id="그룹">
+                <text id="KEYSTORE" class="cls-4" transform="translate(31.056 46.5)">
+                    <tspan x="0" y="0">KEYSTORE</tspan>
+                </text>
+                <text id="_.JSON_" class="cls-4" data-name="(.JSON)" transform="translate(38.656 58.5)">
+                    <tspan x="0" y="0">(.JSON)</tspan>
+                </text>
+            </g>
+            <path id="선_329" d="M0 0v16.7" class="cls-3" data-name="선 329" transform="translate(109.2 42.2)"/>
+        </g>
+    </g>
+</svg>

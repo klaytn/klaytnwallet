@@ -65,7 +65,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      constants: path.resolve(__dirname, 'src/constants/'),
       components: path.resolve(__dirname, 'src/components/'),
       utils: path.resolve(__dirname, 'src/utils/'),
       contracts: path.resolve(__dirname, 'contracts'),
@@ -73,7 +72,6 @@ module.exports = {
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
       images: path.resolve(__dirname, 'static/images/'),
-      pages: path.resolve(__dirname, 'src/pages/'),
     },
   },
   optimization: {
@@ -90,7 +88,6 @@ module.exports = {
       inject: 'body',
     }),
     extractCSS,
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'DEV': false,

@@ -1,0 +1,95 @@
+@import "mixins.scss";
+
+.Radio {
+  @include mobile {
+    box-sizing: border-box;
+  }
+  box-sizing: content-box;
+  position: relative;
+  height: auto;
+  padding: 20px;
+}
+
+.Radio__title {
+  color: #AAAAAA;
+  text-align: left;
+  margin-left: 14px;
+  font-size: 20px;
+}
+
+.Radio__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.Radio__listItem {
+  color: #AAAAAA;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  padding: 30px 15px;
+  width: 100%;
+  border-bottom: 1px solid #333;
+
+  &:hover {
+    .Radio__label { color: #fff; }
+    .Radio__check { border: 5px solid #FFFFFF; }
+  }
+}
+
+.Radio__hiddenInput {
+  position: absolute;
+  visibility: hidden;
+}
+
+.Radio__hiddenInput:checked ~ .Radio__check {
+  border: 5px solid #0DFF92;
+}
+
+.Radio__hiddenInput:checked ~ .Radio__check::before {
+  background: #0DFF92;
+}
+
+.Radio__hiddenInput:checked ~ .Radio__label {
+  color: #0DFF92;
+}
+
+.Radio__label {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: 20px;
+  position: relative;
+  font-weight: 300;
+  font-size: 1.8rem;
+  height: 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+}
+
+.Radio__check {
+  box-sizing: unset;
+  display: inline-block;
+  position: relative;
+  border: 5px solid #AAAAAA;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  transition: border .25s linear;
+  -webkit-transition: border .25s linear;
+
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+    top: 5px;
+    left: 5px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+  }
+}

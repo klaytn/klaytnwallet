@@ -1,0 +1,44 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.TransferComplete {
+  @include panelize;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.TransferComplete__title {
+  @include font-style('h1');
+  color: $black;
+  margin-bottom: 16px;
+  line-height: 36px;
+}
+
+.TransferComplete__img {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.TransferComplete__description {
+  @include font-style('body');
+  color: $dolphin;
+  margin-bottom: 52px;
+  line-height: 20px;
+}
+
+.TransferComplete__button {
+  &:first-of-type {
+    margin-right: 8px;
+  }
+
+  &:last-of-type {
+    margin-left: 8px;
+  }
+}

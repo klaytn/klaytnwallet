@@ -1,0 +1,35 @@
+@import "mixins.scss";
+
+.AlertHeader {
+  box-sizing: border-box;
+  background-color: #0DFF92;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  padding: 20px 40px;
+  color: #333;
+}
+
+.AlertHeader__title {
+  @include mobile {
+    font-size: 20px;
+  }
+  font-size: 22px;
+  color: #232323;
+  margin-top: 0;
+}
+
+.AlertHeader__content {
+  @include mobile {
+    font-size: 12px;
+  }
+  line-height: 1.6em;
+  font-size: 18px;
+}
+
+.AlertHeader__link {
+  color: #232323;
+  font-weight: bold;
+}

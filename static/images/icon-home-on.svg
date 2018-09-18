@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.5 15.5">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#3a51b2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:1.5px}
+        </style>
+    </defs>
+    <g id="icon_Home_On" transform="translate(-28.25 -242.25)">
+        <path id="icon_Home_On-2" d="M7.8.8l-7 6v8h5v-5h4v5h5v-8z" class="cls-1" data-name="icon_Home_On" transform="translate(28.2 242.2)"/>
+    </g>
+</svg>

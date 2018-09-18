@@ -1,0 +1,63 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.Landing {
+  @include panelize;
+  width: 992px;
+  padding: 110px 60px;
+  margin: 0 auto;
+}
+
+.Landing__title {
+  @include font-style('h1');
+  color: $black;
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.Landing__label {
+  @include font-style('label');
+  display: block;
+  padding: 6px;
+  color: $white;
+  background-color: $main-theme;
+  border-radius: 14px;
+  width: 94px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+
+.Landing__item {
+  width: 33.33%;
+  display: inline-block;
+  vertical-align: top;
+  width: 256px;
+  text-align: left;
+  margin-right: 40px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.Landing__image {
+  margin: 0 auto;
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 16px;
+}
+
+.Landing__itemTitle {
+  @include font-style('button');
+  color: $dark-grey;
+  margin-bottom: 16px;
+  line-height: 20px;
+}
+
+.Landing__itemDescription {
+  @include font-style('body');
+  color: $warm-grey;
+  line-height: 20px;
+}

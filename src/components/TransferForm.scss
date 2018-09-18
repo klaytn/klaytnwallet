@@ -1,0 +1,127 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.TransferForm {
+  // @include panelize;
+  padding: 48px;
+  border-left: 1px solid $solitude;
+  height: 100%;
+
+  &--editing {
+    .TransferForm__title, .TransferForm__input {
+      opacity: 0.2;
+    }
+  }
+}
+
+.TransferForm__title {
+  @include font-style('h2');
+  color: $black;
+}
+
+.TransferForm__hr {
+  border-color: $solitude;
+  border-style: dashed;
+  margin: 46px 0;
+}
+
+.TransferForm__input {
+  margin-bottom: 32px;
+  border-bottom: 1px solid $light-blue-gray;
+
+  &--readOnly {
+    .Input__input {
+      color: $dark-blue-grey;
+    }
+  }
+}
+
+.TransferForm__sendTransactionButton {
+  display: block;
+  margin: 0 auto;
+  width: 202px;
+  margin-top: 32px;
+  padding: 16px 40px;
+}
+
+.TransferForm__feeLimit {
+
+}
+
+.TransferForm__feeLimitLabel {
+  @include font-style('label');
+  color: $main-theme;
+  margin-bottom: 22px;
+}
+
+.TransferForm__questionMark {
+  font-size: 8px;
+  color: $white;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: help;
+}
+
+.TransferForm__gasTooltip {
+  @include font-style('caption');
+  padding: 20px 24px;
+  background-color: $dark !important;
+  border-radius: 10px;
+}
+
+.TransferForm__gasInfo {
+  margin-top: 18px;
+  background-color: $light-blue-gray;
+  border: 1px solid $solitude;
+  padding: 16px 20px;
+}
+
+.TransferForm__gasPrice {
+  margin-bottom: 13px;
+}
+
+.TransferForm__gasPrice, .TransferForm__gasLimit {
+  overflow: hidden;
+  color: $dark-blue-grey;
+
+  & span:first-child {
+    @include font-style('label');
+    float: left;
+  }
+
+  & span:last-child {
+    @include font-style('body');
+    float: right;
+  }
+}
+
+.TransferForm__totalGasFeeInput {
+  .InputEdit__input {
+    color: $dark-grey;
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+}
+
+.TransferForm__valueInput {
+  .Input__input {
+    color: $dark-grey;
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+}
+
+.TransferForm__tokenSymbol {
+  &--token-color-1 { color: $token-color-1-main; }
+  &--token-color-2 { color: $token-color-2-main; }
+  &--token-color-3 { color: $token-color-3-main; }
+  &--token-color-4 { color: $token-color-4-main; }
+}
