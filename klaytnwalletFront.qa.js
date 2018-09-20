@@ -9,7 +9,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const config = require('./webpack.prod.config.js')
 
-const port = process.env.PORT || 28888
+const port = 8888
 const app = express()
 
 
