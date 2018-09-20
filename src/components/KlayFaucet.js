@@ -61,7 +61,7 @@ class KlayFaucet extends Component<Props> {
 
   runFacuet = () => {
     this.setState({ isRunning: true, isRunningComplete: false })
-    fetch(`${APIEntry}/example/faucet/?address=${this.wallet && this.wallet.address}`, {
+    fetch(`${APIEntry}/faucet/?address=${this.wallet && this.wallet.address}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
