@@ -7,10 +7,16 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "node ./server.dev.js webpack.config.js --watch",
-    "dev:metamask": "METAMASK=true node ./server.dev.js webpack.config.js --watch",
-    "build": "webpack --config webpack.prod.config.js",
-    "start": "node ./server.prod.js webpack.prod.config.js --watch"
+    "build:local": "ENV=LOCAL webpack --config webpack.prod.config.js",
+    "build:dev": "ENV=DEV webpack --config webpack.prod.config.js",
+    "build:qa": "ENV=QA webpack --config webpack.prod.config.js",
+    "build:real": "ENV=REAL webpack --config webpack.prod.config.js",
+    "local": "ENV=LOCAL node ./klaytnwalletFront.js webpack.config.js --watch",
+    "dev": "ENV=DEV node ./klaytnwalletFront.js webpack.config.js --watch",
+    "qa": "ENV=QA node ./klaytnwalletFront.js webpack.prod.config.js --watch",
+    "real": "ENV=REAL node ./klaytnwalletFront.js webpack.prod.config.js --watch",
+    "start": "ENV=REAL node ./klaytnwalletFront.js webpack.prod.config.js --watch",
+    "start:local": "ENV=LOCAL node ./klaytnwalletFront.js webpack.prod.config.js --watch"
   },
   "repository": {
     "type": "git"
@@ -21,6 +27,7 @@
     "bignumber.js": "^7.2.1",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",
+    "dotenv-webpack": "^1.5.7",
     "ethereumjs-tx": "^1.3.4",
     "ethereumjs-util": "^5.2.0",
     "ethereumjs-wallet": "^0.6.0",

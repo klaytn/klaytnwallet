@@ -6,6 +6,7 @@ import Lottie from 'react-lottie'
 import { onit } from 'klaytn/onit'
 import Input from 'components/Input'
 import Button from 'components/Button'
+import APIEntry from 'constants/network'
 
 import * as animationData from '../../static/images/data.json'
 
@@ -60,7 +61,7 @@ class KlayFaucet extends Component<Props> {
 
   runFacuet = () => {
     this.setState({ isRunning: true, isRunningComplete: false })
-    fetch(`http://dev.blasq.com:8989/example/faucet/?address=${this.wallet && this.wallet.address}`, {
+    fetch(`${APIEntry}/faucet/?address=${this.wallet && this.wallet.address}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

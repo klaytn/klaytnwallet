@@ -2,11 +2,28 @@ const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
 
+const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 require('babel-polyfill')
 
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
+
+let envPath
+switch (process.env.ENV) {
+  case 'LOCAL':
+    envPath = './local.env'
+    break
+  case 'DEV':
+    envPath = './dev.env'
+    break
+  case 'QA':
+    envPath = './qa.env'
+    break
+  case 'REAL':
+    envPath = './real.env'
+    break
+}
 
 module.exports = {
   devtool: 'source-map',
@@ -60,6 +77,7 @@ module.exports = {
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
       images: path.resolve(__dirname, 'static/images/'),
+      constants: path.resolve(__dirname, 'src/constants/'),
     },
   },
   plugins: [
@@ -75,5 +93,8 @@ module.exports = {
       DEPLOYED_ADDRESS: JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
       METAMASK: process.env.METAMASK,
     }),
+    new Dotenv({
+      path: envPath,
+    })
   ],
 }

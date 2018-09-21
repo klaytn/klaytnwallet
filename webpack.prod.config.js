@@ -8,8 +8,25 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 require('babel-polyfill')
+
+let envPath
+switch (process.env.ENV) {
+  case 'LOCAL':
+    envPath = './local.env'
+    break
+  case 'DEV':
+    envPath = './dev.env'
+    break
+  case 'QA':
+    envPath = './qa.env'
+    break
+  case 'REAL':
+    envPath = './real.env'
+    break
+}
 
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
 
@@ -72,6 +89,7 @@ module.exports = {
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
       images: path.resolve(__dirname, 'static/images/'),
+      constants: path.resolve(__dirname, 'src/constants/'),
     },
   },
   optimization: {
@@ -100,5 +118,8 @@ module.exports = {
       to: 'static',
       toType: 'dir',
     }]),
+    new Dotenv({
+      path: envPath,
+    })
   ],
 }
