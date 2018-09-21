@@ -8,7 +8,12 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.config.js')
 
 const isDeveloping = process.env.NODE_ENV !== 'production'
-const port = isDeveloping ? 8888 : process.env.PORT
+
+require('dotenv').config({
+  path: './dev.env'
+})
+
+const port = process.env.PORT || 9000
 const app = express()
 
 const compiler = webpack(config)
