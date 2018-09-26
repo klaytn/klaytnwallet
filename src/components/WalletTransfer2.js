@@ -45,7 +45,6 @@ class WalletTransfer2 extends Component<Props> {
 
   componentWillMount() {
     if (!onit.klay.accounts || !onit.klay.accounts.wallet[0]) {
-      ui.showToast({ msg: '로그인을 해주세요.' })
       new Audio('/static/sound/error.ogg').play()
       browserHistory.replace('/access?next=transfer')
     }
