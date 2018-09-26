@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+import cx from 'classnames'
 import jsonFormat from 'json-format'
 import { onit } from 'klaytn/onit'
 
@@ -44,9 +46,13 @@ class MyWallet extends Component<Props> {
 
   render() {
     const { hidePrivateKey } = this.state
+    const { isTokenAddMode } = this.props
 
     return !!this.wallet && (
-      <div className="MyWallet">
+      <div className={cx('MyWallet', {
+        'MyWallet--addingToken': isTokenAddMode,
+      })}
+      >
         <div className="MyWallet__info">
           <header className="MyWallet__title">My Wallet Info</header>
           <hr className="MyWallet__hr" />
@@ -93,4 +99,10 @@ class MyWallet extends Component<Props> {
   }
 }
 
-export default MyWallet
+const mapStateToProps = state => ({
+  isTokenAddMode: state.token.isTokenAddMode,
+})
+
+export default connect(
+  mapStateToProps
+)(MyWallet)

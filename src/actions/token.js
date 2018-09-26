@@ -1,6 +1,7 @@
 import {
   GET_ALL_TOKEN,
   REGISTER_TOKEN,
+  TOGGLE_TOKEN_ADD_MODE,
 } from 'actions/actionTypes'
 
 import { getParsedLocalStorageItem } from 'utils/misc'
@@ -36,3 +37,7 @@ export const registerToken = (token) => (dispatch) => {
     },
   })
 }
+
+export const toggleTokenAddMode = () => ({
+  type: TOGGLE_TOKEN_ADD_MODE,
+})

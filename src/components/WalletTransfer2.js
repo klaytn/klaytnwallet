@@ -190,6 +190,8 @@ class WalletTransfer2 extends Component<Props> {
       transactionHash,
     } = this.state
 
+    const { isTokenAddMode } = this.props
+
     const from = this.wallet && this.wallet.address
 
     switch (view) {
@@ -217,6 +219,7 @@ class WalletTransfer2 extends Component<Props> {
               handleEditCancel={this.handleEditCancel}
               gas={gas}
               tokenColorIdx={tokenColorIdx}
+              isTokenAddMode={isTokenAddMode}
             />
           </div>
         )
@@ -254,6 +257,7 @@ const mapStateToProps = (state) => {
   return {
     tokenList: state.token.tokenList,
     tokenByName,
+    isTokenAddMode: state.token.isTokenAddMode,
   }
 }
 
