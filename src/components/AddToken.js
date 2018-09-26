@@ -37,6 +37,12 @@ class AddToken extends Component<Props> {
     })
   }
 
+  handleDecimalChange = (e) => {
+    const isNumberString = /^[0-9]*$/.test(e.target.value)
+    if (!isNumberString) return
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   add = async () => {
     const { name, address, decimal } = this.state
     const contractInstance = new onit.klay.Contract(krc20ABI, address)
@@ -121,7 +127,8 @@ class AddToken extends Component<Props> {
             label="Decimals"
             placeholder="Enter decimals"
             autoComplete="off"
-            onChange={this.handleChange}
+            value={decimal}
+            onChange={this.handleDecimalChange}
           />
           <Button
             title="Save"

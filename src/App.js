@@ -19,6 +19,7 @@ class App extends Component<Props> {
   state = {
     isCheckedSessionStorage: false,
   }
+
   componentDidMount() {
     if (sessionStorage.getItem('prv')) {
       onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
