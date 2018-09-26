@@ -22,6 +22,7 @@ class Input extends Component<Props> {
       labelClassName,
       tooltip,
       unit,
+      readOnly,
     } = this.props
 
     return (
@@ -50,6 +51,7 @@ class Input extends Component<Props> {
           onChange={onChange}
           type={type}
           value={value}
+          readOnly={readOnly}
         />
         {unit && <span className="Input__unit">{unit}</span>}
     </div>

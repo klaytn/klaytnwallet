@@ -31,6 +31,9 @@
   border-bottom: 1px solid $light-blue-gray;
 
   &--readOnly {
+    &:focus-within {
+      border-bottom: 1px solid #f9f9fc;
+    }
     .Input__input {
       color: $dark-blue-grey;
     }
