@@ -30,7 +30,7 @@ class WalletAccess2 extends Component<Props> {
 
   componentWillMount() {
     // Clear whole wallet instances when we get in '/access' route.
-    if (sessionStorage.getItem('prv') && onit.klay.accounts.wallet[0]) {  
+    if (sessionStorage.getItem('prv') && onit.klay.accounts.wallet[0]) {
       browserHistory.push(`/access/${onit.klay.accounts.wallet[0].address}`)
       return
     }
@@ -59,8 +59,8 @@ class WalletAccess2 extends Component<Props> {
         <div className="WalletAccess2__inner">
           <header className="WalletAccess2__title">Access Existing Wallet</header>
           <p className="WalletAccess2__description">
-            You can access your wallet using your private key<br />
-            or keystore file with password.
+            You can access your wallet either with your private key or <br />
+            with your keystore file and keystore file password.
           </p>
           <TabRadio
             className="WalletAcess2__tabRadio"

@@ -22,10 +22,10 @@ const FaucetHowItWork = () => (
       How does this work?
     </header>
     <p className="KlayFaucet__howItWorkDescription">
-      This Ether faucet is running on the Rinkeby network.
-      To prevent malicious actors from exhausting all available funds or
-      accumulating enough Ether to mount long running spam attacks, requests are
-       tied to common 3rd party social network accounts.
+      The Klay Faucet runs on Moso Network.
+      Please run the Klay Faucet to receive a small amount of Klay for testing.<br />
+      For the purpose of preserving enough Klay for its community users, Klays may not be further distributed if you have recently used the Klay Faucet. <br />
+      The Klay Faucet is replenished per every 900 blocks.
     </p>
   </div>
 )

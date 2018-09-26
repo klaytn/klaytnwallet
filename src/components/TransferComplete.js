@@ -23,8 +23,8 @@ const TransferComplete = ({
       Transaction Request
     </header>
     <p className="TransferComplete__description">
-      The transaction transfer request is complete. <br />
-      More information about this transaction can be found at Klaytnscope.
+      Your transaction transfer request is complete. <br />
+      More information regarding your transaction can be found on Klaytnscope.
     </p>
     <Button
       title="Send KLAY & Tokens"

@@ -76,8 +76,8 @@ class MyWallet extends Component<Props> {
           />
           <p className="MyWallet__transactionListTitle">Transaction List</p>
           <p className="MyWallet__transactionListDescription">
-            All transactions transferred or received<br />
-            via the currently active wallet can be viewed at Klaytnscope.
+            All transaction history occurring from<br />
+            active wallets can be found on Klaytnscope.
           </p>
           <a
             target="self"

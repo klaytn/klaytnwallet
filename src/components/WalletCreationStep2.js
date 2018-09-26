@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import jsonFormat from 'json-format'
 
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
@@ -37,13 +37,18 @@ class WalletCreationStep2 extends Component<Props> {
     return (
       <WalletCreationStepPlate
         stepName="STEP 2"
-        title="Keystore File Download"
-        description={`
-          Password setting of key store file for new wallet is completed.
-          Now click on the button below to download
-          the keystore to complete your wallet creation
-          and move on to the last step.
-        `}
+        title={(
+          <Fragment>
+            Please Download<br/>
+            Keystore File
+          </Fragment>
+        )}
+        description={(
+          <Fragment>
+            The password for your keystore file for a new wallet has been set.<br/>
+            Please click the tab below to download your keystore to setup your wallet and move on to the last step.
+          </Fragment>
+        )}
         nextStepButtons={[{ title: 'Download & Next Step', onClick: pipe(this.handleDownload, handleStepMove(3)) }]}
       />
     )

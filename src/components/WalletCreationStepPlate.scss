@@ -3,7 +3,7 @@
 @import "mixins.scss";
 
 .WalletCreationStepPlate {
-  width: 400px;
+  width: 435px;
   text-align: center;
   margin: 0 auto;
 }
@@ -20,7 +20,7 @@
 
 .WalletCreationStepPlate__title {
   @include font-style('h1');
-  width: 272px;
+  width: 100%;
   margin: 0 auto;
   color: $black;
   line-height: 36px;
