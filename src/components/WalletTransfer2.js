@@ -39,6 +39,7 @@ class WalletTransfer2 extends Component<Props> {
       gasPrice: KLAY_GAS_PRICE,
       totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`),
       tokenColorIdx: 1,
+      transactionHash: '',
     },
     this.wallet = onit.klay.accounts.wallet[0]
   }
@@ -118,9 +119,9 @@ class WalletTransfer2 extends Component<Props> {
       gas: gas || '21000',
       chainId: '2018',
     })
-      .once('transactionHash', () => {
+      .once('transactionHash', (transactionHash) => {
         new Audio('/static/sound/transfer.mp3').play()
-        this.changeView('complete')()
+        this.setState({ transactionHash }, this.changeView('complete'))
       })
       // .once('receipt', () => {
       // })
@@ -165,6 +166,7 @@ class WalletTransfer2 extends Component<Props> {
       gasPrice,
       totalGasFee,
       tokenColorIdx,
+      transactionHash,
     } = this.state
 
     const from = this.wallet && this.wallet.address
@@ -212,7 +214,7 @@ class WalletTransfer2 extends Component<Props> {
           />
         )
       case 'complete':
-        return <TransferComplete changeView={this.changeView} />
+        return <TransferComplete transactionHash={transactionHash} changeView={this.changeView} />
     }
   }
 

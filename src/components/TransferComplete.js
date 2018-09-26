@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from 'components/Button'
+import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './TransferComplete.scss'
 
@@ -10,6 +11,7 @@ type Props = {
 
 const TransferComplete = ({
   changeView,
+  transactionHash = '',
 }) => (
   <div className="TransferComplete">
     <img
@@ -30,10 +32,15 @@ const TransferComplete = ({
       gray
       onClick={changeView('form')}
     />
-    <Button
-      title="View Transaction Info"
-      className="TransferComplete__button"
-    />
+    <a
+      target="self"
+      href={`${KLAYTN_SCOPE_URL}/transaction/${transactionHash}`}
+    >
+      <Button
+        title="View Transaction Info"
+        className="TransferComplete__button"
+      />
+    </a>
   </div>
 )
 

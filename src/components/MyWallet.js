@@ -10,6 +10,7 @@ import Button from 'components/Button'
 import ui from 'utils/ui'
 import { RegisterTokenButton } from 'components/RegisterToken'
 import { download } from 'utils/misc'
+import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './MyWallet.scss'
 
@@ -72,11 +73,16 @@ class MyWallet extends Component<Props> {
             All transactions transferred or received<br />
             via the currently active wallet can be viewed at Klaytnscope.
           </p>
-          <Button
-            title="View Transaction List"
-            className="MyWallet__viewTransationListButton"
-            gray
-          />
+          <a
+            target="self"
+            href={`${KLAYTN_SCOPE_URL}/transactions?account=${this.wallet.address}`}
+          >
+            <Button
+              title="View Transaction List"
+              className="MyWallet__viewTransationListButton"
+              gray
+            />
+          </a>
         </div>
         <div className="MyWallet__token">
           <MyToken title="Balance" />

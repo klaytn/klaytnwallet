@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import cx from 'classnames'
 
 import { onit } from 'klaytn/onit'
+import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './Header.scss'
 
@@ -45,8 +46,10 @@ class Header extends Component<Props> {
     return (
       <div className="Header">
         <div className="Header__LogoWithLink">
-          <div className="Header__logo" />
-          <Link to="/klaytnscope" className="Header__link">Klaytnscope</Link>
+          <Link to="/" className="Header__logo" />
+          <a
+            target="self"
+            href={KLAYTN_SCOPE_URL} to="/klaytnscope" className="Header__link">Klaytnscope</a>
         </div>
         <div className={cx('Header__network', {
           'Header__network--disconnected': !network
