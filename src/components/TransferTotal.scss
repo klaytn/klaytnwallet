@@ -7,6 +7,7 @@
   padding: 56px 64px;
   text-align: center;
   margin: 0 auto;
+  position: relative;
 }
 
 .TransferTotal__title {
@@ -87,4 +88,27 @@
 .TransferTotal__tokenSymbol {
   @include font-style('h2');
   color: $warm-grey;
+}
+
+.TransferTotal__decoration {
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  border: 1px solid $solitude;
+  bottom: 170px;
+  background-color: $light-blue-gray;
+
+  &--left {
+    border-left-color: transparent;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    left: -1px;
+  }
+
+  &--right {
+    border-right-color: transparent;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    right: -1px;
+  }
 }

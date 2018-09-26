@@ -72,6 +72,8 @@ class TransferTotal extends Component<Props> {
           className="TransferTotalItem__yesButton"
           onClick={transfer}
         />
+        <div className="TransferTotal__decoration TransferTotal__decoration--left" />
+        <div className="TransferTotal__decoration TransferTotal__decoration--right" />
       </div>
     )
   }

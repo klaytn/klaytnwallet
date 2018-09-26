@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+import cx from 'classnames'
 import jsonFormat from 'json-format'
 import { onit } from 'klaytn/onit'
 
@@ -10,6 +12,7 @@ import Button from 'components/Button'
 import ui from 'utils/ui'
 import { RegisterTokenButton } from 'components/RegisterToken'
 import { download } from 'utils/misc'
+import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './MyWallet.scss'
 
@@ -43,9 +46,13 @@ class MyWallet extends Component<Props> {
 
   render() {
     const { hidePrivateKey } = this.state
+    const { isTokenAddMode } = this.props
 
     return !!this.wallet && (
-      <div className="MyWallet">
+      <div className={cx('MyWallet', {
+        'MyWallet--addingToken': isTokenAddMode,
+      })}
+      >
         <div className="MyWallet__info">
           <header className="MyWallet__title">My Wallet Info</header>
           <hr className="MyWallet__hr" />
@@ -69,14 +76,19 @@ class MyWallet extends Component<Props> {
           />
           <p className="MyWallet__transactionListTitle">Transaction List</p>
           <p className="MyWallet__transactionListDescription">
-            All transactions transferred or received<br />
-            via the currently active wallet can be viewed at Klaytnscope.
+            All transaction history occurring from<br />
+            active wallets can be found on Klaytnscope.
           </p>
-          <Button
-            title="View Transaction List"
-            className="MyWallet__viewTransationListButton"
-            gray
-          />
+          <a
+            target="self"
+            href={`${KLAYTN_SCOPE_URL}/transactions?account=${this.wallet.address}`}
+          >
+            <Button
+              title="View Transaction List"
+              className="MyWallet__viewTransationListButton"
+              gray
+            />
+          </a>
         </div>
         <div className="MyWallet__token">
           <MyToken title="Balance" />
@@ -87,4 +99,10 @@ class MyWallet extends Component<Props> {
   }
 }
 
-export default MyWallet
+const mapStateToProps = state => ({
+  isTokenAddMode: state.token.isTokenAddMode,
+})
+
+export default connect(
+  mapStateToProps
+)(MyWallet)

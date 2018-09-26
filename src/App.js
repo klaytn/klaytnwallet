@@ -6,6 +6,7 @@ import ui from 'utils/ui'
 
 import Header from 'components/Header'
 import Nav from 'components/Nav'
+import { onit } from 'klaytn/onit'
 
 import './App.scss'
 
@@ -15,10 +16,22 @@ type Props = {
 }
 
 class App extends Component<Props> {
+  state = {
+    isCheckedSessionStorage: false,
+  }
+
+  componentDidMount() {
+    if (sessionStorage.getItem('prv')) {
+      onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
+    }
+    this.setState({ isCheckedSessionStorage: true })
+  }
+
   render() {
+    const { isCheckedSessionStorage } = this.state
     const { children } = this.props
 
-    return [
+    return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,
       <Toast key="Toast" />,
       <div className="App" key="App">

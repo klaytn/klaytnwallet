@@ -13,6 +13,8 @@ import './MyToken.scss'
 
 const INIT_TOKEN_LISTING_INTERVAL = 3000
 
+import * as tokenActions from 'actions/token'
+
 type Props = {
 
 }
@@ -32,7 +34,8 @@ class MyToken extends Component<Props> {
   }
 
   toggleAddToken = () => {
-    this.setState({ isShowAddToken: !this.state.isShowAddToken })
+    const { toggleTokenAddMode } = this.props
+    this.setState({ isShowAddToken: !this.state.isShowAddToken }, toggleTokenAddMode)
   }
 
   intervalID = null
@@ -166,7 +169,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+  toggleTokenAddMode: () => dispatch(tokenActions.toggleTokenAddMode()),
 })
 
 export default connect(

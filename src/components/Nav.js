@@ -16,7 +16,6 @@ const navLinks = [
 const Nav = ({ className }) => (
   <div className={cx('Nav', className)}>
     <TabList tabItems={navLinks} />
-    <p className="Nav__copyright">©klaytnwallet.com</p>
   </div>
 )
 
