@@ -22,6 +22,7 @@ import './WalletTransfer2.scss'
 const KLAY_GAS_PRICE = onit.utils.toWei('25', 'shannon')
 const DEFAULT_KLAY_TRANSFER_GAS = 21000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
+const MAX_INTEGER_LENGTH = 14
 
 class WalletTransfer2 extends Component<Props> {
   constructor(props) {
@@ -37,23 +38,34 @@ class WalletTransfer2 extends Component<Props> {
       myTokenBalances: [],
       gas: '21000',
       gasPrice: KLAY_GAS_PRICE,
-      totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`),
+      totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
       tokenColorIdx: 1,
+      transactionHash: '',
     },
     this.wallet = onit.klay.accounts.wallet[0]
   }
 
   componentWillMount() {
     if (!onit.klay.accounts || !onit.klay.accounts.wallet[0]) {
-      ui.showToast({ msg: '로그인을 해주세요.' })
       new Audio('/static/sound/error.ogg').play()
       browserHistory.replace('/access?next=transfer')
     }
   }
 
   handleChange = (e) => {
+    const isStartWithZero = (inputValue) => inputValue == '' && e.target.value == '0'
+    const isNumberStringWithDot = /^\d+(\.)?\d{0,6}$/.test(e.target.value)
+
     switch (e.target.name) {
       case 'totalGasFee':
+        if (e.target.value !== '' && !isNumberStringWithDot) return
+        const [integer, decimal] = e.target.value && e.target.value.split('.')
+        if (integer && integer.length == MAX_INTEGER_LENGTH) return
+        // If input value starts with 0, should trail it with '.'
+        if (isStartWithZero(this.state.totalGasFee)) {
+          this.setState({ [e.target.name]: limit6Decimal(e.target.value + '.') })
+          return
+        }
         this.setState({
           [e.target.name]: limit6Decimal(e.target.value),
           gas: new BN(onit.utils.toWei(limit6Decimal(e.target.value) || '0', 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
@@ -63,6 +75,15 @@ class WalletTransfer2 extends Component<Props> {
         this.setState({
           [e.target.name]: e.target.value,
         })
+        break
+      case 'value':
+        if (e.target.value !== '' && !isNumberStringWithDot) return
+        // If input value starts with 0, should trail it with '.'
+        if (isStartWithZero(this.state.value)) {
+          this.setState({ [e.target.name]: limit6Decimal(e.target.value + '.') })
+          return
+        }
+        this.setState({ [e.target.name]: limit6Decimal(e.target.value) })
         break
       default:
         this.setState({ [e.target.name]: limit6Decimal(e.target.value) })
@@ -119,9 +140,9 @@ class WalletTransfer2 extends Component<Props> {
       gas: gas || '21000',
       chainId: '2018',
     })
-      .once('transactionHash', () => {
+      .once('transactionHash', (transactionHash) => {
         new Audio('/static/sound/transfer.mp3').play()
-        this.changeView('complete')()
+        this.setState({ transactionHash }, this.changeView('complete'))
       })
       // .once('receipt', () => {
       // })
@@ -166,7 +187,10 @@ class WalletTransfer2 extends Component<Props> {
       gasPrice,
       totalGasFee,
       tokenColorIdx,
+      transactionHash,
     } = this.state
+
+    const { isTokenAddMode } = this.props
 
     const from = this.wallet && this.wallet.address
 
@@ -195,6 +219,7 @@ class WalletTransfer2 extends Component<Props> {
               handleEditCancel={this.handleEditCancel}
               gas={gas}
               tokenColorIdx={tokenColorIdx}
+              isTokenAddMode={isTokenAddMode}
             />
           </div>
         )
@@ -213,7 +238,7 @@ class WalletTransfer2 extends Component<Props> {
           />
         )
       case 'complete':
-        return <TransferComplete changeView={this.changeView} />
+        return <TransferComplete transactionHash={transactionHash} changeView={this.changeView} />
     }
   }
 
@@ -232,6 +257,7 @@ const mapStateToProps = (state) => {
   return {
     tokenList: state.token.tokenList,
     tokenByName,
+    isTokenAddMode: state.token.isTokenAddMode,
   }
 }
 

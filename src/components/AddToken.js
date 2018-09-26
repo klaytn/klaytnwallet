@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import cx from 'classnames'
 import ReactTooltip from 'react-tooltip'
 
@@ -12,6 +13,8 @@ import { pipe } from 'utils/Functional'
 import ui from 'utils/ui'
 
 import store from '../store'
+
+import * as tokenActions from 'actions/token'
 
 type Props = {
 
@@ -35,6 +38,12 @@ class AddToken extends Component<Props> {
     this.setState({
       [e.target.name]: e.target.value,
     })
+  }
+
+  handleDecimalChange = (e) => {
+    const isNumberString = /^[0-9]*$/.test(e.target.value)
+    if (!isNumberString) return
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   add = async () => {
@@ -67,7 +76,7 @@ class AddToken extends Component<Props> {
 
   render() {
     const { name, address, decimal } = this.state
-    const { onClick, className } = this.props
+    const { onClick, className, toggleTokenAddMode } = this.props
     return (
       <div className={cx('AddToken', className)}>
         <div className="AddToken__topBlock">
@@ -121,7 +130,8 @@ class AddToken extends Component<Props> {
             label="Decimals"
             placeholder="Enter decimals"
             autoComplete="off"
-            onChange={this.handleChange}
+            value={decimal}
+            onChange={this.handleDecimalChange}
           />
           <Button
             title="Save"

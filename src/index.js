@@ -16,7 +16,15 @@ import MyWallet from 'components/MyWallet'
 
 import './index.scss'
 
+import * as tokenActions from 'actions/token'
+
 const history = syncHistoryWithStore(browserHistory, store)
+
+history.listen(() => {
+  if (store.getState().token.isTokenAddMode) {
+    store.dispatch(tokenActions.toggleTokenAddMode())
+  }
+})
 
 export const renderRoutes = (rootComponent) => (
   <Provider store={store}>

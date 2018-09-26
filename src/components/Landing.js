@@ -23,17 +23,17 @@ const Landing = () => (
     <label className="Landing__label">Moso net</label>
     <header className="Landing__title">Welcome to Klaytn Wallet</header>
     <LandingItem
-      title="We do not store the private key on the server."
-      description="Private key is stored only in the browser’s storage and is automatically deleted when you close the browser."
+      title="The Klaytn Network does not store your private key on the server."
+      description="Your private key is stored only in the browser’s storage and is automatically deleted when you close the browser."
       img="/static/images/illust-not-db.svg"
     />
     <LandingItem
-      title="We recommend that you download the Keystore file and save it securely."
-      description="Klaytn Wallet is not responsible for the loss of the password for the private key or keystore file."
+      title="The Klaytn Network recommends that you download the Keystore file and save it securely."
+      description="The Klaytn Wallet shall NOT BE HELD RESPONSIBLE for the loss of your password for the private key or keystore file."
       img="/static/images/illust-save-key.svg"
     />
     <LandingItem
-      title="We recommend that you use the Testnet-based Klaytn Wallet for testing purposes only."
+      title="The Klaytn Network recommends  that you use the Testnet-based Klaytn Wallet for testing purpose ONLY."
       description="Klaytn Wallet has no obligation to compensate or assume liability for any financial loss arising out of its use for any other purpose."
       img="/static/images/illust-never-send.svg"
     />
