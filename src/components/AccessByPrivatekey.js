@@ -33,6 +33,8 @@ class AccessByPrivateKey extends Component<Props> {
     const { accessTo } = this.props
     try {
       const wallet = onit.klay.accounts.wallet.add(privatekey)
+      // WARNING: sessionStorage has private key. it expired when window tab closed.
+      sessionStorage.setItem('prv', privatekey)
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {
       ui.showToast({ msg: '올바르지 않은 개인 키 입니다.' })
