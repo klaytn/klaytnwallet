@@ -1,17 +1,17 @@
-switch (process.env.ENV) {
-  case 'LOCAL':
+switch (process.env.NODE_ENV) {
+  case 'local':
     console.log('starting local...')
     require('./klaytnwalletFront.local.js')
     break
-  case 'DEV':
+  case 'dev':
     console.log('starting dev...')
     require('./klaytnwalletFront.dev.js')
     break
-  case 'QA':
+  case 'qa':
     console.log('starting qa...')
     require('./klaytnwalletFront.qa.js')
     break
-  case 'REAL':
+  case 'real':
     console.log('starting real...')
     require('./klaytnwalletFront.real.js')
     break

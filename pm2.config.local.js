@@ -7,19 +7,16 @@ module.exports = {
     args: 'webpack.config.js',
 
     env: {
-      ENV: 'LOCAL',
+      NODE_ENV: 'local',
     },
     env_dev: {
-      ENV: 'DEV',
+      NODE_ENV: 'dev',
     },
     env_qa: {
-      ENV: 'QA',
+      NODE_ENV: 'qa',
     },
     env_real: {
-      ENV: 'REAL',
+      NODE_ENV: 'real',
     },
-
-    output: process.env.PM2_OUTPUT_PATH,
-    error: process.env.PM2_ERROR_PATH,
   }],
 };
