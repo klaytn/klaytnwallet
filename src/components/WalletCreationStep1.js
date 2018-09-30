@@ -25,11 +25,11 @@ class WalletCreationStep1 extends Component<Props> {
     return (
       <WalletCreationStepPlate
         stepName="STEP 1"
-        title="Set Password for Keystore File"
+        title="Please Set Password for your Keystore File"
         description={(
           <Fragment>
-            This is the first step in creating a Klaytn Wallet.<br />
-            Set the password for the keystore file for the new wallet.
+            This is your first step in creating your Klaytn Wallet.<br />
+            Please set the password for the keystore file for your new wallet.
           </Fragment>
         )}
         render={() => (

@@ -40,11 +40,13 @@ class TransferForm extends Component<Props> {
       handleEdit,
       handleEditCancel,
       tokenColorIdx,
+      isTokenAddMode,
     } = this.props
 
     return (
       <div className={cx('TransferForm', className, {
         'TransferForm--editing': listenedIsEditing,
+        'TransferForm--tokenAdding': isTokenAddMode,
       })}>
         <header className="TransferForm__title">
           Step2. Enter the infomation <span className={cx('TransferForm__tokenSymbol', {
