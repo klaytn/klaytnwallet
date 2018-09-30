@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import classNames from 'classnames'
 
 import './Input.scss'
@@ -23,12 +23,15 @@ class Input extends Component<Props> {
       tooltip,
       unit,
       readOnly,
+      errorMessage,
     } = this.props
 
     return (
+    <Fragment>
       <div className={classNames('Input', className, {
         'Input--valid': isValid !== undefined && isValid !== null && isValid,
         'Input--invalid': isValid !== undefined && isValid !== null && !isValid,
+        'Input--error': errorMessage,
       })}
       >
         {label && (
@@ -54,7 +57,11 @@ class Input extends Component<Props> {
           readOnly={readOnly}
         />
         {unit && <span className="Input__unit">{unit}</span>}
-    </div>
+      </div>
+      {errorMessage !== undefined && (
+        <p className="Input__error">{errorMessage || ''}</p>
+      )}
+    </Fragment>
     )
   }
 }
