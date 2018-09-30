@@ -22,7 +22,7 @@ const FaucetHowItWork = () => (
       How does this work?
     </header>
     <p className="KlayFaucet__howItWorkDescription">
-      The Klay Faucet runs on Moso Network.
+      The Klay Faucet runs on Aspen Network.
       Please run the Klay Faucet to receive a small amount of Klay for testing.<br />
       For the purpose of preserving enough Klay for its community users, Klays may not be further distributed if you have recently used the Klay Faucet. <br />
       The Klay Faucet is replenished per every 900 blocks.

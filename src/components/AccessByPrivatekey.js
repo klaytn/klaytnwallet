@@ -55,6 +55,7 @@ class AccessByPrivateKey extends Component<Props> {
           onChange={this.handleChange}
           isValid={isValid}
           autocomplete="off"
+          errorMessage={isValid === false && 'Invalid key'}
         />
         <Button
           className="AccessByPrivatekey__button"

@@ -20,6 +20,7 @@ class AccessByKeystore extends Component<Props> {
     keystore: '',
     keystoreAddress: '',
     isValidPassword: null,
+    error: '',
   }
 
   handleImport = (e) => {
@@ -58,6 +59,7 @@ class AccessByKeystore extends Component<Props> {
     this.setState({
       [e.target.name]: e.target.value,
       isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
+      error: '',
     })
   }
 
@@ -71,12 +73,20 @@ class AccessByKeystore extends Component<Props> {
       sessionStorage.setItem('prv', wallet.privateKey)
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {
-      ui.showToast({ msg: '패스워드가 올바르지 않습니다.' })
+      this.setState({
+        error: 'Does not Match with your Keystore Account',
+      })
     }
   }
 
   render() {
-    const { fileName, keystore, keystoreAddress, isValidPassword } = this.state
+    const {
+        fileName,
+        keystore,
+        keystoreAddress,
+        isValidPassword,
+        error,
+       } = this.state
     return (
       <div className="AccessByKeystore">
         <InputFile
@@ -95,6 +105,7 @@ class AccessByKeystore extends Component<Props> {
           type="password"
           onChange={this.handleChange}
           isValid={isValidPassword}
+          errorMessage={error}
         />
         <Button
           className="AccessByKeystore__button"

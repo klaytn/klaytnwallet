@@ -13,17 +13,17 @@ const Dotenv = require('dotenv-webpack')
 require('babel-polyfill')
 
 let envPath
-switch (process.env.ENV) {
-  case 'LOCAL':
+switch (process.env.NODE_ENV) {
+  case 'local':
     envPath = './local.env'
     break
-  case 'DEV':
+  case 'dev':
     envPath = './dev.env'
     break
-  case 'QA':
+  case 'qa':
     envPath = './qa.env'
     break
-  case 'REAL':
+  case 'real':
     envPath = './real.env'
     break
 }
