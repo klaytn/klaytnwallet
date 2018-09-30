@@ -10,7 +10,7 @@ import './Header.scss'
 
 class Header extends Component<Props> {
   state = {
-    network: 'Moso Network',
+    network: 'Aspen Network',
     prevBlockNumber: null,
   }
 
@@ -37,7 +37,7 @@ class Header extends Component<Props> {
     this.sameBlockNumberCount = 0
     this.setState({
       prevBlockNumber: blockNumber,
-      network: 'Moso Network',
+      network: 'Aspen Network',
     })
   }
 

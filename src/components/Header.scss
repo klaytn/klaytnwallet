@@ -47,6 +47,7 @@
   float: right;
   line-height: 24px;
   cursor: pointer;
+  margin-right: 20px;
 
   &::after {
     content: '';
@@ -64,7 +65,7 @@
 .Header__network {
   @include font-style('caption');
   position: absolute;
-  padding: 2.5rem;
+  padding: 2.5rem 0;
   right: 0;
   top: 0;
   min-width: 148px;

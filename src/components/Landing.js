@@ -20,7 +20,7 @@ const LandingItem = ({ img, title, description }) => (
 
 const Landing = () => (
   <div className="Landing">
-    <label className="Landing__label">Moso net</label>
+    <label className="Landing__label">Aspen net</label>
     <header className="Landing__title">Welcome to Klaytn Wallet</header>
     <LandingItem
       title="The Klaytn Network does not store your private key on the server."
