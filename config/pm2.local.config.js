@@ -1,4 +1,3 @@
-// require('./config');
 
 module.exports = {
   apps: [{
@@ -8,15 +7,6 @@ module.exports = {
 
     env: {
       NODE_ENV: 'local',
-    },
-    env_dev: {
-      NODE_ENV: 'dev',
-    },
-    env_qa: {
-      NODE_ENV: 'qa',
-    },
-    env_real: {
-      NODE_ENV: 'real',
     },
   }],
 };

@@ -10,7 +10,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.prod.config.js')
 
 require('dotenv').config({
-  path: './real.env'
+  path: './config/real.env'
 })
 
 const port = process.env.PORT || 9000

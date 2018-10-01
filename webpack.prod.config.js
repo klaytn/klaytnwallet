@@ -15,16 +15,16 @@ require('babel-polyfill')
 let envPath
 switch (process.env.NODE_ENV) {
   case 'local':
-    envPath = './local.env'
+    envPath = './config/local.env'
     break
   case 'dev':
-    envPath = './dev.env'
+    envPath = './config/dev.env'
     break
   case 'qa':
-    envPath = './qa.env'
+    envPath = './config/qa.env'
     break
   case 'real':
-    envPath = './real.env'
+    envPath = './config/real.env'
     break
 }
 
