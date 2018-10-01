@@ -12,10 +12,10 @@
     "build:qa": "NODE_ENV=qa webpack --config webpack.prod.config.js",
     "build:real": "NODE_ENV=real webpack --config webpack.prod.config.js",
     "local": "NODE_ENV=local node ./klaytnwalletFront.js webpack.config.js --watch",
-    "dev": "NODE_ENV=dev node ./klaytnwalletFront.js webpack.config.js --watch",
-    "qa": "NODE_ENV=qa node ./klaytnwalletFront.js webpack.prod.config.js --watch",
-    "real": "NODE_ENV=real node ./klaytnwalletFront.js webpack.prod.config.js --watch",
-    "start": "NODE_ENV=real node ./klaytnwalletFront.js webpack.prod.config.js --watch",
+    "dev": "NODE_ENV=dev NEWRELIC_APP_NAME=KLAYTNWALLET_DEV_FRONT node --require newrelic ./klaytnwalletFront.js webpack.config.js --watch",
+    "qa": "NODE_ENV=qa NEWRELIC_APP_NAME=KLAYTNWALLET_QA_FRONT node --require newrelic ./klaytnwalletFront.js webpack.prod.config.js --watch",
+    "real": "NODE_ENV=real NEWRELIC_APP_NAME=KLAYTNWALLET_REAL_FRONT node --require newrelic ./klaytnwalletFront.js webpack.prod.config.js --watch",
+    "start": "NODE_ENV=real NEWRELIC_APP_NAME=KLAYTNWALLET_REAL_FRONT node --require newrelic ./klaytnwalletFront.js webpack.prod.config.js --watch",
     "start:local": "NODE_ENV=local node ./klaytnwalletFront.js webpack.prod.config.js --watch"
   },
   "repository": {
@@ -48,7 +48,13 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "rxjs": "^6.2.2",
-    "truffle-privatekey-provider": "^0.1.0"
+    "truffle-privatekey-provider": "^0.1.0",
+    "throng": "^4.0.0",
+    "winston": "^3.0.0",
+    "winston-daily-rotate-file": "^3.3.0",
+    "winston-raven-sentry": "^2.0.0",
+    "winston-sentry-raven-transport": "^1.0.0",
+    "newrelic": "^4.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

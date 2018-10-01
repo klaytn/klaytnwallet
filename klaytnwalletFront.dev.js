@@ -33,16 +33,60 @@ app.use(webpackHotMiddleware(compiler))
 app.get('*', function response(req, res) {
   res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
   res.end()
-})
+});
 
-app.listen(port, '0.0.0.0', function onStart(err) {
-  if (err) {
-    console.log(err)
-  }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port)
-  opn(`http://localhost:${port}`)
-    .catch(err => {
-      // cli(linux)환경에서는 opn이 작동하지 않는다.
-      console.log('can\'t open in your pc');
-    });
-})
+
+/** LOGGER **/
+const winston = require('winston');
+const dailyRotate = require('winston-daily-rotate-file');
+const sentry = require('winston-sentry-raven-transport');
+
+const replaceErrors = (key, value) => {
+    if (value instanceof Buffer) {
+        return value.toString('base64');
+    } else if (value instanceof Error) {
+        const error = {};
+
+        Object.getOwnPropertyNames(value).forEach((key) => {
+            error[key] = value[key];
+        });
+
+        return error;
+    }
+
+    return value;
+};
+
+const logger = winston.createLogger({
+    level            : 'debug',
+    format           : winston.format.combine(
+        winston.format.label({label: 'main'}),
+        winston.format.timestamp({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        }),
+        winston.format.json({ replacer: replaceErrors }),
+    ),
+
+    transports       : [
+        new sentry({
+            dsn     : 'https://138f4c4bfadf46f9867a43a1b9632d8a@sentry.io/1292019',
+            level   : 'debug',
+        }),
+        new winston.transports.Console({handleExceptions: true}),
+        new dailyRotate({
+            filename         : '/var/log/nodejs/ground-x/app/klaytnwallet/front-access.',
+            datePattern      : 'YYYYMMDD',
+            zippedArchive    : true,
+            handleExceptions : true
+        })
+    ]
+});
+
+
+app.listen(port, '0.0.0.0', (err) => {
+    if (err) {
+        logger.log(err);
+    }
+
+    logger.info('==> 🌎 KLAYTN WALLET FRONT DEV Listening on port %s.', port);
+});
