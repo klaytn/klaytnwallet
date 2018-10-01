@@ -3,7 +3,7 @@ module.exports = {
   apps: [{
     name: 'klaytnwallet-frontend',
     script: './klaytnwalletFront.js',
-    args: 'webpack.prod.config.js',
+    args: 'webpack.config.js',
 
     env: {
       NODE_ENV: 'dev',
