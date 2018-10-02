@@ -19,7 +19,8 @@ class AccessByKeystore extends Component<Props> {
   state = {
     keystore: '',
     keystoreAddress: '',
-    isValidPassword: null,
+    // isValidPassword: null,
+    isValidPassword: true,
     error: '',
   }
 
@@ -58,7 +59,7 @@ class AccessByKeystore extends Component<Props> {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
+      // isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
       error: '',
     })
   }

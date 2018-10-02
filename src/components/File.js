@@ -35,7 +35,7 @@ class File extends Component<Props> {
     const { icon, title, onChange, className } = this.props
     return (
       <div className={classNames('File', className)}>
-        <input id="fileInput" className="File__input" type="file" accept=".json,application/json" onChange={onChange} />
+        <input id="fileInput" className="File__input" type="file" onChange={onChange} />
         <Button className="File__button">
           {icon && (<img className="File__icon" src={`/static/images/${icon}.svg`} />)}
           <label htmlFor="fileInput" className="File__label">{title}</label>
