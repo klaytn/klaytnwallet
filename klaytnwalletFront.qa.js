@@ -9,9 +9,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const config = require('./webpack.prod.config.js')
 
-require('dotenv').config({
-  path: './config/qa.env'
-})
+require('dotenv').config({ path: './config/qa.env' })
 
 const port = process.env.PORT || 9000
 const app = express()
