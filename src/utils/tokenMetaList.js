@@ -2,19 +2,19 @@ const tokenMetaList = [
   {
     name: 'RAS',
     fullname: 'RASPUTIN',
-    contractAddress: '0x17a24b90ad7defde7f02628dde1d7221738c9686',
+    contractAddress: '0x3594275786df82e0748a1968165bfe99209668e0',
     decimal: 18,
   },
   {
     name: 'IRE',
     fullname: 'IRENE',
-    contractAddress: '0x52f9a9b73f49feb330a99f2c8faa747189840ea7',
+    contractAddress: '0x82b318dddf87324cde43861d70622ccc926b6dad',
     decimal: 18,
   },
   {
     name: 'OKA',
     fullname: 'OKAKA',
-    contractAddress: '0x3f80f1267b1ba31f93207dcec1870eb01c9509de',
+    contractAddress: '0xc8cc6b6e278a8d02da709372140fd6524248b1fa',
     decimal: 18,
   },
 ]
