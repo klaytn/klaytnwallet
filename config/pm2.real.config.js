@@ -7,6 +7,7 @@ module.exports = {
 
     env: {
       NODE_ENV: 'real',
+      NEWRELIC_APP_NAME   : 'KLAYTNWALLET_REAL_FRONT'
     },
 
     output: '/var/log/nodejs/ground-x/app/klaytnwallet-frontend/out.log',

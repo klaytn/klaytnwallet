@@ -1,3 +1,4 @@
+require('newrelic')
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
