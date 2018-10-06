@@ -29,7 +29,8 @@
 }
 
 .KlayFaucet__howItWork {
-  width: 300px;
+  padding-top: 100px;
+  width: 340px;
   margin-left: 48px;
   display: inline-block;
   vertical-align: middle;
@@ -46,7 +47,6 @@
   @include font-style('body');
   color: $dark-blue-grey;
   line-height: 20px;
-  word-break: break-all;
 }
 
 .KlayFaucet__address {

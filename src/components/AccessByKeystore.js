@@ -39,7 +39,7 @@ class AccessByKeystore extends Component<Props> {
 
         if (!isValidKeystore) {
           this.setState({
-            error: 'Invalid keystore.'
+            error: 'Keystore file is invalid.'
           })
           return
         }
@@ -51,7 +51,7 @@ class AccessByKeystore extends Component<Props> {
         }, () => document.querySelector('#input-password').focus())
       } catch (e) {
         this.setState({
-          error: 'Invalid keystore file.',
+          error: 'Keystore file is invalid.',
         })
         return
       }
