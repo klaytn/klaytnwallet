@@ -69,3 +69,22 @@
 .KlayFaucet__button {
 
 }
+
+.KlayFaucet__faucetableBlock {
+  &--visible {
+    visibility: visible;
+  }
+  visibility: hidden;
+  margin-top: 96px;
+}
+
+.KlayFaucet__faucetableBlockTitle {
+  @include font-style('body');
+  color: $dolphin;
+  margin-bottom: 10px;
+}
+
+.KlayFaucet__faucetableBlockNumber {
+  @include font-style('h3');
+  color: $light-red;
+}
