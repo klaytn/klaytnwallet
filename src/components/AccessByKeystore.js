@@ -6,7 +6,6 @@ import InputFile from 'components/InputFile'
 import Input from 'components/Input'
 import File from 'components/File'
 import Button from 'components/Button'
-import ui from 'utils/ui'
 import { checkValidPassword } from 'utils/crypto'
 
 import './AccessByKeystore.scss'
@@ -39,18 +38,21 @@ class AccessByKeystore extends Component<Props> {
           parsedKeystore.crypto
 
         if (!isValidKeystore) {
-          ui.showToast({ msg: '올바르지 않은 키스토어입니다.' })
+          this.setState({
+            error: 'Invalid keystore.'
+          })
           return
         }
 
-        ui.showToast({ msg: '올바른 키스토어 파일입니다. 패스워드를 입력해주세요.' })
         this.setState({
           fileName,
           keystore: target.result,
           keystoreAddress: parsedKeystore.address,
         }, () => document.querySelector('#input-password').focus())
       } catch (e) {
-        ui.showToast({ msg: '올바른 키스토어 파일 (JSON)이 아닙니다.' })
+        this.setState({
+          error: 'Invalid keystore file.',
+        })
         return
       }
     }

@@ -4,7 +4,6 @@ import { onit } from 'klaytn/onit'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
-import ui from 'utils/ui'
 import { isValidPrivateKey } from 'utils/crypto'
 
 import './AccessByPrivatekey.scss'
@@ -31,14 +30,10 @@ class AccessByPrivateKey extends Component<Props> {
   access = () => {
     const { privatekey } = this.state
     const { accessTo } = this.props
-    try {
-      const wallet = onit.klay.accounts.wallet.add(privatekey)
-      // WARNING: sessionStorage has private key. it expired when window tab closed.
-      sessionStorage.setItem('prv', privatekey)
-      if (typeof accessTo === 'function') accessTo(wallet.address)
-    } catch (e) {
-      ui.showToast({ msg: '올바르지 않은 개인 키 입니다.' })
-    }
+    const wallet = onit.klay.accounts.wallet.add(privatekey)
+    // WARNING: sessionStorage has private key. it expired when window tab closed.
+    sessionStorage.setItem('prv', privatekey)
+    if (typeof accessTo === 'function') accessTo(wallet.address)
   }
 
   render() {
