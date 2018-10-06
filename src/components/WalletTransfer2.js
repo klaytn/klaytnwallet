@@ -149,7 +149,7 @@ class WalletTransfer2 extends Component<Props> {
       .on('error', (e) => {
         console.log(e)
         new Audio('/static/sound/error.ogg').play()
-        ui.showToast({ msg: '오류가 발생했습니다.' })
+        ui.showToast({ msg: 'Error occurred.' })
       })
   }
 
@@ -172,7 +172,7 @@ class WalletTransfer2 extends Component<Props> {
     .on('error', (e) => {
       console.log(e)
       new Audio('/static/sound/error.ogg').play()
-      ui.showToast({ msg: '오류가 발생했습니다.' })
+      ui.showToast({ msg: 'Error occurred.' })
     })
   }
 

@@ -54,7 +54,7 @@ class AddToken extends Component<Props> {
     contractInstance.methods.balanceOf(this.wallet && this.wallet.address).call()
       .then(balance => {
         if (typeof balance === 'undefined') {
-          ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})
+          ui.showToast({ msg: `Invalid token contract.`})
           return
         }
         store.dispatch(
@@ -66,10 +66,9 @@ class AddToken extends Component<Props> {
           })
         )
         ui.closePopup()
-        ui.showToast({ msg: `${name} 토큰이 등록되었습니다.`})
       })
       .catch((e) => {
-        ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})
+        ui.showToast({ msg: `Invalid token contract.`})
         console.log(e)
       })
   }
