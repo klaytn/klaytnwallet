@@ -7,6 +7,7 @@ import Input from 'components/Input'
 import Button from 'components/Button'
 import EditButton from 'components/EditButton'
 import InputEdit from 'components/InputEdit'
+import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
 
 type Props = {
@@ -45,8 +46,10 @@ class TransferForm extends Component<Props> {
     } = this.props
 
     const isInvalidAddress = to && !onit.utils.isAddress(to)
-    const isInvalidAmount = Number(myBalance) <= Number(value)
-    const hasError = isInvalidAddress || isInvalidAmount
+    const isInvalidAmount = value && (Number(myBalance) <= Number(value) + Number(totalGasFee))
+    // show invalid tx fee error message only when selected token is not 'KLAY'
+    const isInvalidTxFee = type !== 'KLAY' && Number(myBalance) <= Number(totalGasFee)
+    const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee
 
     return (
       <div className={cx('TransferForm', className, {
@@ -117,7 +120,11 @@ class TransferForm extends Component<Props> {
             unit="KLAY"
             autoComplete="off"
             listen={this.listenEditing}
+            errorMessage={isInvalidTxFee}
           />
+          {isInvalidTxFee && (
+            <ErrorMessage msg="Insufficienct balance." />
+          )}
         </div>
         {!listenedIsEditing && (
           <div className="TransferForm__gasInfo">

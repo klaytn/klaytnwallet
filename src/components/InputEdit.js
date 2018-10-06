@@ -39,6 +39,7 @@ class InputEdit extends Component<Props> {
       handleEdit,
       handleEditCancel,
       unit,
+      errorMessage,
     } = this.props
 
     const { isEditing } = this.state
@@ -47,6 +48,7 @@ class InputEdit extends Component<Props> {
       <div
         className={cx('InputEdit', className, {
           'InputEdit--isEditing': isEditing,
+          'InputEdit--error': errorMessage,
         })}
         style={{ width: `${width}` }}
       >

@@ -16,6 +16,10 @@
     border-bottom: 1px solid $middle-blue-grey;
   }
 
+  &--error {
+    border-bottom: 1px solid $token-color-2-main;
+  }
+
   &::placeholder {
     color: $middle-blue-grey;
   }
