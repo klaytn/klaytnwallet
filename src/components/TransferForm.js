@@ -70,6 +70,8 @@ class TransferForm extends Component<Props> {
           label="To Address"
           placeholder="Enter the address to send"
           autoComplete="off"
+          value={to}
+          errorMessage={to && !onit.utils.isAddress(to) && 'Invalid address'}
         />
         <Input
           name="value"
