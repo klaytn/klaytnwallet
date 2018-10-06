@@ -22,6 +22,7 @@ class AccessByKeystore extends Component<Props> {
     // isValidPassword: null,
     isValidPassword: true,
     error: '',
+    password: '',
   }
 
   handleImport = (e) => {
@@ -87,6 +88,7 @@ class AccessByKeystore extends Component<Props> {
         keystoreAddress,
         isValidPassword,
         error,
+        password,
        } = this.state
     return (
       <div className="AccessByKeystore">
@@ -111,7 +113,7 @@ class AccessByKeystore extends Component<Props> {
         <Button
           className="AccessByKeystore__button"
           onClick={this.access}
-          disabled={!isValidPassword}
+          disabled={!keystore || !password}
           title="Access"
         />
       </div>
