@@ -2,6 +2,7 @@ import {
   GET_ALL_TOKEN,
   REGISTER_TOKEN,
   TOGGLE_TOKEN_ADD_MODE,
+  SET_MY_TOKEN_BALANCES_BY_NAME,
 } from 'actions/actionTypes'
 
 import { getParsedLocalStorageItem } from 'utils/misc'
@@ -40,4 +41,11 @@ export const registerToken = (token) => (dispatch) => {
 
 export const toggleTokenAddMode = () => ({
   type: TOGGLE_TOKEN_ADD_MODE,
+})
+
+export const setMyTokenBalancesByName = (balancesByName) => ({
+  type: SET_MY_TOKEN_BALANCES_BY_NAME,
+  payload: {
+    balancesByName,
+  }
 })

@@ -41,7 +41,12 @@ class TransferForm extends Component<Props> {
       handleEditCancel,
       tokenColorIdx,
       isTokenAddMode,
+      myBalance,
     } = this.props
+
+    const isInvalidAddress = to && !onit.utils.isAddress(to)
+    const isInvalidAmount = Number(myBalance) <= Number(value)
+    const hasError = isInvalidAddress || isInvalidAmount
 
     return (
       <div className={cx('TransferForm', className, {
@@ -71,7 +76,7 @@ class TransferForm extends Component<Props> {
           placeholder="Enter the address to send"
           autoComplete="off"
           value={to}
-          errorMessage={to && !onit.utils.isAddress(to) && 'Invalid address'}
+          errorMessage={isInvalidAddress && 'Recipient address is invalid'}
         />
         <Input
           name="value"
@@ -82,6 +87,7 @@ class TransferForm extends Component<Props> {
           autoComplete="off"
           unit={type}
           value={value}
+          errorMessage={isInvalidAmount && 'Insufficienct balance'}
         />
         <div className="TransferForm__feeLimit">
           <ReactTooltip
@@ -129,7 +135,7 @@ class TransferForm extends Component<Props> {
           title="Send Transaction"
           className="TransferForm__sendTransactionButton"
           onClick={changeView('total')}
-          disabled={listenedIsEditing || !from || !value || !to || !type}
+          disabled={listenedIsEditing || !from || !value || !to || !type || hasError}
         />
       </div>
     )
