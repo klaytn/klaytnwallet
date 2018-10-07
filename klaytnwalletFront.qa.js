@@ -1,17 +1,20 @@
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
+const uuid = require('uuid')
 const fs = require('fs')
 
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
+const logger = require('./src/utils/logger')
 const config = require('./webpack.prod.config.js')
 
 require('dotenv').config({ path: './config/qa.env' })
 
 const port = process.env.PORT || 9000
+const instanceUuid = uuid.v4();
 const app = express()
 
 
@@ -45,58 +48,14 @@ app.get('*', function response(req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'))
 });
 
-
-/** LOGGER **/
-const winston = require('winston');
-const dailyRotate = require('winston-daily-rotate-file');
-const sentry = require('winston-sentry-raven-transport');
-
-const replaceErrors = (key, value) => {
-    if (value instanceof Buffer) {
-        return value.toString('base64');
-    } else if (value instanceof Error) {
-        const error = {};
-
-        Object.getOwnPropertyNames(value).forEach((key) => {
-            error[key] = value[key];
-        });
-
-        return error;
-    }
-
-    return value;
-};
-
-const logger = winston.createLogger({
-    level            : 'debug',
-    format           : winston.format.combine(
-        winston.format.label({label: 'main'}),
-        winston.format.timestamp({
-            format: 'YYYY-MM-DD HH:mm:ss'
-        }),
-        winston.format.json({ replacer: replaceErrors }),
-    ),
-
-    transports       : [
-        new sentry({
-            dsn     : 'https://1fc633133952448788271cd6fbc9801e@sentry.io/1292022',
-            level   : 'debug',
-        }),
-        new winston.transports.Console({handleExceptions: true}),
-        new dailyRotate({
-            filename         : '/var/log/nodejs/ground-x/app/klaytnwallet/front-access.',
-            datePattern      : 'YYYYMMDD',
-            zippedArchive    : true,
-            handleExceptions : true
-        })
-    ]
-});
-
+app.use((err, req, res, next) => {
+  logger.log(err)
+})
 
 app.listen(port, '0.0.0.0', (err) => {
     if (err) {
         logger.log(err);
     }
 
-    logger.info('==> 🌎 KLAYTN WALLET FRONT QA Listening on port %s.', port);
+    logger.info(`==> 🌎 KLAYTN WALLET FRONT REAL running --> ID : ${instanceId} / UUID : ${instanceUuid} / BIND : ${port}.`);
 });

@@ -4,3 +4,5 @@ dist/
 package-lock.json
 truffle.js
 /klaytnWallet.iml
+newrelic_agent.log
+logs/*

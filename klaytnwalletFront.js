@@ -1,3 +1,8 @@
+// NEWRELIC_APP_NAME이 있다면 실행한다.
+if (process.env.NEWRELIC_APP_NAME) {
+  require('newrelic');
+}
+
 switch (process.env.NODE_ENV) {
   case 'local':
     console.log('starting local...')
