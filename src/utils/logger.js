@@ -37,7 +37,7 @@ const logger = winston.createLogger({
         }),
         new winston.transports.Console({handleExceptions: true}),
         new dailyRotate({
-            filename         : process.env.LOGGER_PATH,
+            filename         : process.env.LOGGER_PATH || './logs/api-access',
             datePattern      : 'YYYYMMDD',
             zippedArchive    : true,
             handleExceptions : true
