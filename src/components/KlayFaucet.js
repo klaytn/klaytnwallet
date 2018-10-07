@@ -76,11 +76,15 @@ class KlayFaucet extends Component<Props> {
     })
       .then(res => res.json())
       .then(({ result }) => {
+        if (this.intervalId) clearInterval(this.intervalId)
         // set interval for checking left block to run faucet.
         this.intervalId = setInterval(
           () => this.showLeftBlockToFaucet(result && result.nextBlockNumber),
           1000
         )
+        this.setState({
+          isLoadingFaucetableBlock: false,
+        })
       })
   }
 
