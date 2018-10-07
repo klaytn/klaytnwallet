@@ -64,7 +64,7 @@ class MyToken extends Component<Props> {
   }
 
   getTokenBalances = () => {
-    const { tokenList } = this.props
+    const { tokenList, setMyTokenBalancesByName } = this.props
     Promise.all(
       [
         onit.klay.getBalance(this.wallet.address),
@@ -96,8 +96,10 @@ class MyToken extends Component<Props> {
         this.setState({
           isLoading: false,
           myTokenBalances: myTokenBalances,
-          tokenBalanceByName: keyBy(myTokenBalances, ({ value }) => value),
         })
+
+        // For broadcasting my token balances through redux store.
+        setMyTokenBalancesByName(keyBy(myTokenBalances, ({ name }) => name))
       })
       .catch((e) => {
         console.log(e)
@@ -170,6 +172,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleTokenAddMode: () => dispatch(tokenActions.toggleTokenAddMode()),
+  setMyTokenBalancesByName: (balancesByName) => dispatch(tokenActions.setMyTokenBalancesByName(balancesByName)),
 })
 
 export default connect(

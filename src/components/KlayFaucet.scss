@@ -29,7 +29,8 @@
 }
 
 .KlayFaucet__howItWork {
-  width: 300px;
+  padding-top: 100px;
+  width: 340px;
   margin-left: 48px;
   display: inline-block;
   vertical-align: middle;
@@ -46,7 +47,6 @@
   @include font-style('body');
   color: $dark-blue-grey;
   line-height: 20px;
-  word-break: break-all;
 }
 
 .KlayFaucet__address {
@@ -68,4 +68,23 @@
 
 .KlayFaucet__button {
 
+}
+
+.KlayFaucet__faucetableBlock {
+  &--visible {
+    visibility: visible;
+  }
+  visibility: hidden;
+  margin-top: 96px;
+}
+
+.KlayFaucet__faucetableBlockTitle {
+  @include font-style('body');
+  color: $dolphin;
+  margin-bottom: 10px;
+}
+
+.KlayFaucet__faucetableBlockNumber {
+  @include font-style('h3');
+  color: $light-red;
 }

@@ -149,7 +149,7 @@ class WalletTransfer2 extends Component<Props> {
       .on('error', (e) => {
         console.log(e)
         new Audio('/static/sound/error.ogg').play()
-        ui.showToast({ msg: '오류가 발생했습니다.' })
+        ui.showToast({ msg: 'Error occurred.' })
       })
   }
 
@@ -172,7 +172,7 @@ class WalletTransfer2 extends Component<Props> {
     .on('error', (e) => {
       console.log(e)
       new Audio('/static/sound/error.ogg').play()
-      ui.showToast({ msg: '오류가 발생했습니다.' })
+      ui.showToast({ msg: 'Error occurred.' })
     })
   }
 
@@ -190,7 +190,7 @@ class WalletTransfer2 extends Component<Props> {
       transactionHash,
     } = this.state
 
-    const { isTokenAddMode } = this.props
+    const { isTokenAddMode, myBalancesByName } = this.props
 
     const from = this.wallet && this.wallet.address
 
@@ -211,6 +211,9 @@ class WalletTransfer2 extends Component<Props> {
               to={to}
               value={value}
               type={type}
+              myBalance={myBalancesByName
+                  && myBalancesByName[type]
+                  && myBalancesByName[type].balance}
               changeView={this.changeView}
               onChange={this.handleChange}
               totalGasFee={totalGasFee}
@@ -258,6 +261,7 @@ const mapStateToProps = (state) => {
     tokenList: state.token.tokenList,
     tokenByName,
     isTokenAddMode: state.token.isTokenAddMode,
+    myBalancesByName: state.token.balancesByName,
   }
 }
 

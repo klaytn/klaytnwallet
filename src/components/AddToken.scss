@@ -41,6 +41,7 @@
 
 .AddToken__input {
   margin-bottom: 32px;
+  height: 60px;
 
   .Input__label {
     color: $white;
@@ -51,6 +52,10 @@
     &::placeholder {
       color: $dark-blue-grey;
     }
+  }
+
+  .Input__error {
+    color: #ff7499;
   }
 
   &.Input {
