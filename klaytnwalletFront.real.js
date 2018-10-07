@@ -8,10 +8,9 @@ const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
+require('dotenv').config({ path: './config/real.env' })
 const logger = require('./src/utils/logger')
 const config = require('./webpack.prod.config.js')
-
-require('dotenv').config({ path: './config/real.env' })
 
 const port = process.env.PORT || 9000
 const instanceId = process.env.NODE_APP_INSTANCE || 0;
