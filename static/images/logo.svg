@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162 24">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 159 24">
     <defs>
         <style>
-            .cls-1,.cls-3{fill:#fff}.cls-1{font-size:10px;font-family:SFUIText-LightItalic,SF UI Text;font-weight:300;font-style:italic;opacity:.7}.cls-2{opacity:.8}
+            .cls-1{fill:#2cc;font-size:10px;font-family:SFUIText-LightItalic,SF UI Text;font-weight:300;font-style:italic}.cls-1,.cls-2{opacity:.7}.cls-3{fill:#fff}
         </style>
     </defs>
     <g id="logo" transform="translate(-35 -27)">
-        <text id="Beta" class="cls-1" transform="translate(175 41)">
+        <text id="Beta" class="cls-1" transform="translate(172 41)">
             <tspan x="0" y="0">Beta</tspan>
         </text>
         <g id="그룹_66" data-name="그룹 66" transform="translate(35 27)">
