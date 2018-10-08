@@ -56,6 +56,6 @@ app.listen(port, '0.0.0.0', (err) => {
         logger.log(err);
     }
 
-    const env = process.env.NODE_ENV || 'local';
+    const env = process.env.NODE_ENV
     logger.info(`==> 🌎 KLAYTN WALLET FRONT ${env} running --> ID : ${instanceId} / UUID : ${instanceUuid} / BIND : ${port}.`);
 });
