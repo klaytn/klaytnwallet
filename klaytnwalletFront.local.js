@@ -49,7 +49,8 @@ app.listen(port, '0.0.0.0', (err) => {
       logger.log(err)
   }
   
-  logger.info(`==> 🌎 KLAYTN WALLET FRONT REAL running --> ID : ${instanceId} / UUID : ${instanceUuid} / BIND : ${port}.`);
+  const env = process.env.NODE_ENV || 'local';
+  logger.info(`==> 🌎 KLAYTN WALLET FRONT ${env} running --> ID : ${instanceId} / UUID : ${instanceUuid} / BIND : ${port}.`);
 
   opn(`http://localhost:${port}`)
     .catch(err => {
