@@ -6,19 +6,17 @@ module.exports = {
     args: 'webpack.prod.config.js',
 
     /**
-     * 실행모드
-     * - 클러스터 모드로 구동
-     * - 인스턴스 갯수는 최리
+     * 실행모대
+     * - 인스턴스 갯수는 최대
      * - 로그파일은 하나로 관리
      */
-    exec_mode: 'cluster',
     instances: 'max',
     merge_logs: true,
 
     env: {
       NODE_ENV: 'real',
-      NEWRELIC_APP_NAME   : 'KLAYTNWALLET_REAL_FRONT',
-      RAVEN_KEY : 'https://30fcc5f962e644b2b104477838997e4c@sentry.io/1292023'
+      NEWRELIC_APP_NAME: 'KLAYTNWALLET_REAL_FRONT',
+      RAVEN_KEY: 'https://30fcc5f962e644b2b104477838997e4c@sentry.io/1292023',
     },
 
     output: '/var/log/nodejs/ground-x/app/klaytnwallet-frontend/out.log',
