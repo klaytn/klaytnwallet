@@ -13,7 +13,7 @@
     "airbnb"
   ],
   "rules": {
-    "arrow-parens": ["error", "always"],
+    "arrow-parens": 0,
     "comma-dangle": ["error", "always-multiline"],
     "global-require": 0,
     "func-names": 0,
@@ -39,6 +39,5 @@
     "no-return-assign": 0,
     "default-case": 0,
     "consistent-return": 0,
-    "arrow-parens": 0,
   }
 }
