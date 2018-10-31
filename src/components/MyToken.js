@@ -12,7 +12,7 @@ import numeral from 'numeral'
 
 import './MyToken.scss'
 
-const INIT_TOKEN_LISTING_INTERVAL = 3000
+const INIT_TOKEN_LISTING_INTERVAL = 7000
 
 import * as tokenActions from 'actions/token'
 
@@ -44,7 +44,7 @@ class MyToken extends Component<Props> {
   componentDidMount() {
     if (this.wallet) {
       this.getTokenBalances()
-      this.intervalID = setInterval(this.getTokenBalances, 5000)
+      this.intervalID = setInterval(this.getTokenBalances, INIT_TOKEN_LISTING_INTERVAL)
     }
   }
 
@@ -159,7 +159,7 @@ const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenNam
     >
       <header className="TokenItem__title">{fullname}</header>
       <span className="TokenItem__balance">
-        <span className="TokenItem__balanceInteger">{numeral(integerPoints).format('0,0')}</span>
+        <span className="TokenItem__balanceInteger">{new BN(integerPoints).toFormat()}</span>
         {decimalPoints && <span className="TokenItem__balanceDecimal">.{decimalPoints.slice(0, 6)}</span>}
       </span>
       <span className="TokenItem__tokenName">{name}</span>

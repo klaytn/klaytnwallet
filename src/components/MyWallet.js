@@ -16,8 +16,6 @@ import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './MyWallet.scss'
 
-const GET_BALANCE_INTERVAL = 3000
-
 type Props = {
 
 }
@@ -26,7 +24,6 @@ class MyWallet extends Component<Props> {
   constructor() {
     super()
     this.wallet = onit.klay.accounts.wallet[0]
-    this.getBalanceInterval = null
   }
 
   state = {
