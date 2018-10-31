@@ -157,7 +157,7 @@ class WalletTransfer2 extends Component<Props> {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
     const contractInstance = new onit.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
-    const decimalProcessedTokenAmount = new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString()
+    const decimalProcessedTokenAmount = new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
     contractInstance.accounts = onit.klay.accounts
     contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
       from: this.wallet.address,
