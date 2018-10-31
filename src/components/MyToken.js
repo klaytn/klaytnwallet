@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { connect } from 'react-redux'
 import { keyBy } from 'lodash'
 
+import BN from 'bignumber.js'
 import { onit } from 'klaytn/onit'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
@@ -70,7 +71,7 @@ class MyToken extends Component<Props> {
         onit.klay.getBalance(this.wallet.address),
         ...tokenList
           .filter(({ contractAddress }) => contractAddress)
-          .map(({ name, contractAddress }) => {
+          .map(({ name, contractAddress, decimal }) => {
             const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
             contractInstance.accounts = onit.klay.accounts
             return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
@@ -86,10 +87,11 @@ class MyToken extends Component<Props> {
               balance: onit.utils.fromWei(balance, 'ether'),
             }
           } else {
+            const tokenMetaInfo = tokenList[idx - 1]
             return {
-              fullname: tokenList[idx - 1].fullname,
-              name: tokenList[idx - 1].name,
-              balance,
+              fullname: tokenMetaInfo.fullname,
+              name: tokenMetaInfo.name,
+              balance: new BN(balance).dividedBy(10 ** tokenMetaInfo.decimal).toString(),
             }
           }
         })
