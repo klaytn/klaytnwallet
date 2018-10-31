@@ -5,7 +5,7 @@ import Onit from 'onit-js'
 // const intervalId = setInterval(() =>
 // onitSocket.klay.getBlockNumber().then(console.log), PING_TIME)
 
-const protocol = window ? window.location.protocol : 'http';
+const protocol = window ? window.location.protocol : 'http:';
 export const config = {
   rpcURL: `${protocol}//aspen.klaytn.com`,
   wsURL: 'ws://devnet.klaytn.io:8546', // You can access websocket only with VPN.

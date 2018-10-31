@@ -11,12 +11,9 @@ export const getRandomBytes = () => randombytes(32)
 
 export const isValidPrivateKey = (privateKey) => {
   let privateKeyCandidate = privateKey
-  console.log(privateKey.slice(0, 2), 'sliced')
   if (privateKey.slice(0, 2) === '0x') {
     privateKeyCandidate = privateKey.slice(2)
   }
-
-  console.log(privateKeyCandidate)
 
   return String(privateKeyCandidate)
     .split('')

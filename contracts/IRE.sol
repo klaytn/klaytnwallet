@@ -67,8 +67,8 @@ contract IRE is KRC20Interface {
 
     constructor() {
       owner = msg.sender;
-      balances[msg.sender] = 100000000;
-      balances[address(0x12481e7584B0899Be6b8DA7E265D1284e9F41793)] = 100000000;
+      balances[msg.sender] = 100000000 * 10 ** decimals;
+      balances[address(0x12481e7584B0899Be6b8DA7E265D1284e9F41793)] = 100000000 * 10 ** decimals;
     }
 
     modifier isOwner() {
@@ -77,7 +77,7 @@ contract IRE is KRC20Interface {
     }
 
     function dictatorMint() public isOwner {
-      balances[owner] += 100000000;
+      balances[owner] += 100000000 * 10 ** decimals;
     }
 
     // Owner of account approves the transfer of an amount to another account
