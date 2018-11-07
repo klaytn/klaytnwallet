@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { checkValidPassword } from '../../src/utils/crypto';
+import { checkValidPassword } from '../../src/utils/crypto'
 
 describe('check valid password', () => {
     test('it requires more than 7 characters', () => {
