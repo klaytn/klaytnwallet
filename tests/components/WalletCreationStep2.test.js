@@ -1,10 +1,30 @@
-import { onit } from '../../src/klaytn/onit';
+import { onit } from '../../src/klaytn/onit'
+
+test('generates valid privatekey', () => {
+    const dataForPrivateKey = onit.klay.accounts.create()
+    /*
+        expected account data structure is like below: 
+        {
+            address: "0xb8CE9ab6943e0eCED004cDe8e3bBed6568B2Fa01",
+            privateKey: "0x348ce564d427a3311b6536bbcff9390d69395b06ed6c486954e971d960fe8709",
+            signTransaction: function(tx){...},
+            sign: function(data){...},
+            encrypt: function(password){...}
+        }
+    */
+
+    expect(dataForPrivateKey).toEqual(
+        expect.objectContaining({
+            privateKey: expect.any(String)
+        })
+    )
+})
 
 //To test a function that generates keystore by checking the forms of the data from it
 test('generates valid data for keystore', () => {
-    const { privateKey } = onit.klay.accounts.create();
-    const password = "1234!@#$";
-    const keystore = onit.klay.accounts.encrypt(privateKey, password); 
+    const { privateKey } = onit.klay.accounts.create()
+    const password = "1234!@#$"
+    const keystore = onit.klay.accounts.encrypt(privateKey, password)
     /*
         expected keystore structure is like below:
         { version: 3,
