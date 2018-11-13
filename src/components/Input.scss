@@ -4,6 +4,9 @@
 
 .Input {
   width: 100%;
+}
+
+.Input__inner {
   border: 0;
   border-bottom: 1px solid $middle-blue-grey;
   padding: 0;
@@ -37,6 +40,10 @@
 
   &--noFocus {
     border-bottom: 1px solid #333 !important;
+  }
+
+  &--error {
+    border-bottom: 1px solid #d64a70 !important;
   }
 }
 
@@ -75,4 +82,12 @@
   position: absolute;
   right: 0;
   bottom: 12px;
+}
+
+.Input__error {
+  @include font-style('caption');
+  text-align: left;
+  color: #d64a70;
+  margin-top: 10px;
+  height: 14px;
 }

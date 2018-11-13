@@ -7,6 +7,7 @@ import Input from 'components/Input'
 import Button from 'components/Button'
 import EditButton from 'components/EditButton'
 import InputEdit from 'components/InputEdit'
+import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
 
 type Props = {
@@ -41,7 +42,14 @@ class TransferForm extends Component<Props> {
       handleEditCancel,
       tokenColorIdx,
       isTokenAddMode,
+      myBalance,
     } = this.props
+
+    const isInvalidAddress = to && !onit.utils.isAddress(to)
+    const isInvalidAmount = value && (Number(myBalance) <= Number(value) + Number(totalGasFee))
+    // show invalid tx fee error message only when selected token is not 'KLAY'
+    const isInvalidTxFee = type !== 'KLAY' && Number(myBalance) <= Number(totalGasFee)
+    const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee
 
     return (
       <div className={cx('TransferForm', className, {
@@ -70,6 +78,8 @@ class TransferForm extends Component<Props> {
           label="To Address"
           placeholder="Enter the address to send"
           autoComplete="off"
+          value={to}
+          errorMessage={isInvalidAddress && 'Recipient address is invalid'}
         />
         <Input
           name="value"
@@ -80,6 +90,7 @@ class TransferForm extends Component<Props> {
           autoComplete="off"
           unit={type}
           value={value}
+          errorMessage={isInvalidAmount && 'Insufficienct balance'}
         />
         <div className="TransferForm__feeLimit">
           <ReactTooltip
@@ -109,7 +120,11 @@ class TransferForm extends Component<Props> {
             unit="KLAY"
             autoComplete="off"
             listen={this.listenEditing}
+            errorMessage={isInvalidTxFee}
           />
+          {isInvalidTxFee && (
+            <ErrorMessage msg="Insufficienct balance." />
+          )}
         </div>
         {!listenedIsEditing && (
           <div className="TransferForm__gasInfo">
@@ -127,7 +142,7 @@ class TransferForm extends Component<Props> {
           title="Send Transaction"
           className="TransferForm__sendTransactionButton"
           onClick={changeView('total')}
-          disabled={listenedIsEditing || !from || !value || !to || !type}
+          disabled={listenedIsEditing || !from || !value || !to || !type || hasError}
         />
       </div>
     )

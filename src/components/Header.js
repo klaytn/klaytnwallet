@@ -7,17 +7,19 @@ import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './Header.scss'
 
+const HEALTHCHECK_INTERVAL = 1000
 
 class Header extends Component<Props> {
   state = {
-    network: 'Moso Network',
+    network: 'Aspen Network',
     prevBlockNumber: null,
   }
 
   sameBlockNumberCount = 0
 
   componentDidMount() {
-    setInterval(this.healthCheck, 3000)
+    // TODO: Turn on health check after health checking policy defined.
+    // setInterval(this.healthCheck, HEALTHCHECK_INTERVAL)
   }
 
   healthCheck = async () => {
@@ -37,7 +39,7 @@ class Header extends Component<Props> {
     this.sameBlockNumberCount = 0
     this.setState({
       prevBlockNumber: blockNumber,
-      network: 'Moso Network',
+      network: 'Aspen Network',
     })
   }
 

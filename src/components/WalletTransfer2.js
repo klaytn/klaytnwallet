@@ -138,7 +138,7 @@ class WalletTransfer2 extends Component<Props> {
       to,
       value: onit.utils.toWei(value, 'ether'),
       gas: gas || '21000',
-      chainId: '2018',
+      chainId: '1000',
     })
       .once('transactionHash', (transactionHash) => {
         new Audio('/static/sound/transfer.mp3').play()
@@ -149,7 +149,7 @@ class WalletTransfer2 extends Component<Props> {
       .on('error', (e) => {
         console.log(e)
         new Audio('/static/sound/error.ogg').play()
-        ui.showToast({ msg: '오류가 발생했습니다.' })
+        ui.showToast({ msg: 'Error occurred.' })
       })
   }
 
@@ -157,11 +157,12 @@ class WalletTransfer2 extends Component<Props> {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
     const contractInstance = new onit.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
+    const decimalProcessedTokenAmount = new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
     contractInstance.accounts = onit.klay.accounts
-    contractInstance.methods.transfer(to, value).send({
+    contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
       from: this.wallet.address,
       gas: gas || '21000',
-      chainId: '2018',
+      chainId: '1000',
     })
     .once('transactionHash', () => {
       new Audio('/static/sound/transfer.mp3').play()
@@ -172,7 +173,7 @@ class WalletTransfer2 extends Component<Props> {
     .on('error', (e) => {
       console.log(e)
       new Audio('/static/sound/error.ogg').play()
-      ui.showToast({ msg: '오류가 발생했습니다.' })
+      ui.showToast({ msg: 'Error occurred.' })
     })
   }
 
@@ -190,7 +191,7 @@ class WalletTransfer2 extends Component<Props> {
       transactionHash,
     } = this.state
 
-    const { isTokenAddMode } = this.props
+    const { isTokenAddMode, myBalancesByName } = this.props
 
     const from = this.wallet && this.wallet.address
 
@@ -211,6 +212,9 @@ class WalletTransfer2 extends Component<Props> {
               to={to}
               value={value}
               type={type}
+              myBalance={myBalancesByName
+                  && myBalancesByName[type]
+                  && myBalancesByName[type].balance}
               changeView={this.changeView}
               onChange={this.handleChange}
               totalGasFee={totalGasFee}
@@ -258,6 +262,7 @@ const mapStateToProps = (state) => {
     tokenList: state.token.tokenList,
     tokenByName,
     isTokenAddMode: state.token.isTokenAddMode,
+    myBalancesByName: state.token.balancesByName,
   }
 }
 

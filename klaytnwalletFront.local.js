@@ -1,15 +1,22 @@
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
+const uuid = require('uuid')
+
+
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
+require('dotenv').config({ path: './config/local.env' })
+const logger = require('./src/utils/logger')
 const config = require('./webpack.config.js')
 
-const isDeveloping = process.env.NODE_ENV !== 'production'
-const port = isDeveloping ? 8888 : process.env.PORT
+const port = process.env.PORT || 9000
+const instanceId = process.env.NODE_APP_INSTANCE || 0;
+const instanceUuid = uuid.v4();
 const app = express()
+
 
 const compiler = webpack(config)
 const middleware = webpackMiddleware(compiler, {
@@ -32,14 +39,21 @@ app.get('*', function response(req, res) {
   res.end()
 })
 
-app.listen(port, '0.0.0.0', function onStart(err) {
+app.use((err, req, res, next) => {
+  logger.log(err)
+})
+
+app.listen(port, '0.0.0.0', (err) => {
   if (err) {
-    console.log(err)
+    logger.log(err)
   }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port)
+
+  const env = process.env.NODE_ENV
+  logger.info(`==> 🌎 KLAYTN WALLET FRONT ${env} running --> ID : ${instanceId} / UUID : ${instanceUuid} / BIND : ${port}.`);
+
   opn(`http://localhost:${port}`)
     .catch(err => {
       // cli(linux)환경에서는 opn이 작동하지 않는다.
       console.log('can\'t open in your pc');
     });
-})
+});

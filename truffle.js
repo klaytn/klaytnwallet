@@ -3,16 +3,14 @@ const Onit = require('onit-js')
 /**
  * truffle network variables
  */
+const FROM = '0xe5639793e20ee4a6b23e691bbe9e2c9186137d36'
 const HOST = 'localhost'
-const PORT = '22000'
-const NETWORK_ID = '2017'
+const PORT = '8551'
+const URL = `${HOST}:${PORT}`
+const NETWORK_ID = '1000'
 const GASLIMIT = 20000000
-const GASPRICE = 0
 
-const onit = new Onit(new Onit.providers.HttpProvider(`${HOST}:${PORT}`))
-
-// Unlock account before deploying contract. (personal.unlockAccount(...))
-const FROM = onit.klay.accounts[0]
+const caver = new Onit(new Onit.providers.HttpProvider(URL))
 
 /**
  * network description
@@ -20,13 +18,13 @@ const FROM = onit.klay.accounts[0]
  */
 module.exports = {
   networks: {
-    groundx: {
-      host: HOST || '172.31.21.128',
-      port: PORT || 22000,
+    klaytn: {
+      host: HOST,
+      port: PORT,
+      network_id: NETWORK_ID,
       from: FROM,
-      network_id: NETWORK_ID || '2017',
-      gas: GASLIMIT || 20000000,
-      gasPrice: GASPRICE || 0,
+      gas: GASLIMIT,
+      gasPrice: null,
     },
   },
 }

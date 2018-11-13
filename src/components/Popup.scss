@@ -1,7 +1,9 @@
+@import 'colors.scss';
+
 .Popup {
   position: fixed;
   left: 0;
-  z-index: 1000;
+  z-index: 98;
   overflow: auto;
   width: 100vw;
   bottom: 0;
@@ -12,17 +14,21 @@
 .Popup__background {
   width: 100%;
   height: 100%;
-  background-color: rgba(49,50,61,.4);
+  background-color: rgba($light-blue-gray, 0.6);
 }
 
 .Popup__content {
   position: absolute;
-  padding-top: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 60px;
   bottom: 0;
-  height: 90vh;
-  width: 100%;
+  height: 640px;
+  width: 620px;
   background-color: #fff;
   overflow: auto;
+  box-shadow: 0 10px 20px 0 rgba(172, 178, 206, 0.25);
   
   &--tx {
     color: #A0A3B6;
@@ -81,39 +87,22 @@
   }
 }
 
+//'ok button' for temporary warning popup 
 .Popup__closeButton {
-  position: absolute;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-  top: 30px;
-  right: 30px;
   cursor: pointer;
-  
-  &::before {
-    content: '';
-    transform: rotate(45deg);
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    margin-top: -2px;
-    background: #000;
-  }
-  
-  &::after {
-    content: '';
-    transform: rotate(-45deg);
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    background: #000;
-    height: 4px;
-    margin-top: -2px;
-  }
+  background-color: $light-red;
+  color: #ffffff;
+  font-size: 14px;
+  width: 168px;
+  height: 48px;
+  box-shadow: 0 4px 8px 0 rgba(250, 38, 95, 0.25);
+  line-height: 1.14;
+  padding: 16px;
+  text-align: center;
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 40px;
 }
 
 .Popup__continueButton {

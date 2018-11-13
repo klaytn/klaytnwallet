@@ -9,7 +9,6 @@ import { XButton } from 'components/PlusButton'
 import { krc20ABI } from 'utils/crypto'
 import { onit } from 'klaytn/onit'
 import { registerToken } from 'actions/token'
-import { pipe } from 'utils/Functional'
 import ui from 'utils/ui'
 
 import store from '../store'
@@ -37,6 +36,9 @@ class AddToken extends Component<Props> {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+      errorMessage: e.target.name === 'address'
+        && !onit.utils.isAddress(e.target.value)
+        && 'Invalid address'
     })
   }
 
@@ -46,15 +48,20 @@ class AddToken extends Component<Props> {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  add = async () => {
+  add = (callback) => {
     const { name, address, decimal } = this.state
     const contractInstance = new onit.klay.Contract(krc20ABI, address)
-    console.log(contractInstance)
-    const fullname = await contractInstance.methods.name().call()
+    let fullname
+    contractInstance.methods.name().call()
+      .then((fullname) => fullname = fullname)
+      .catch(e => {
+        this.setState({ errorMessage: 'Token contract address is invalid' })
+        return
+      })
     contractInstance.methods.balanceOf(this.wallet && this.wallet.address).call()
       .then(balance => {
         if (typeof balance === 'undefined') {
-          ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})
+          this.setState({ errorMessage: 'Token contract address is invalid' })
           return
         }
         store.dispatch(
@@ -65,17 +72,17 @@ class AddToken extends Component<Props> {
             decimal,
           })
         )
+        typeof callback === 'function' && callback()
         ui.closePopup()
-        ui.showToast({ msg: `${name} 토큰이 등록되었습니다.`})
       })
       .catch((e) => {
-        ui.showToast({ msg: `올바르지 않은 토큰 컨트랙트입니다.`})
+        this.setState({ errorMessage: 'Token contract address is invalid' })
         console.log(e)
       })
   }
 
   render() {
-    const { name, address, decimal } = this.state
+    const { name, address, decimal, errorMessage } = this.state
     const { onClick, className, toggleTokenAddMode } = this.props
     return (
       <div className={cx('AddToken', className)}>
@@ -123,6 +130,7 @@ class AddToken extends Component<Props> {
             placeholder="Enter token contract address"
             autoComplete="off"
             onChange={this.handleChange}
+            errorMessage={address && errorMessage}
           />
           <Input
             name="decimal"
@@ -136,7 +144,7 @@ class AddToken extends Component<Props> {
           <Button
             title="Save"
             className="AddToken__saveButton"
-            onClick={pipe(this.add, onClick)}
+            onClick={() => this.add(onClick)}
             disabled={!name || !address || !decimal}
           />
         </div>

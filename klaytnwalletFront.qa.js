@@ -1,19 +1,19 @@
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
+const uuid = require('uuid')
 const fs = require('fs')
 
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
+require('dotenv').config({ path: './config/qa.env' })
+const logger = require('./src/utils/logger')
 const config = require('./webpack.prod.config.js')
 
-require('dotenv').config({
-  path: './qa.env'
-})
-
 const port = process.env.PORT || 9000
+const instanceUuid = uuid.v4();
 const app = express()
 
 
@@ -45,15 +45,17 @@ app.use(express.static(path.join(__dirname, '/dist')))
 
 app.get('*', function response(req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'))
+});
+
+app.use((err, req, res, next) => {
+  logger.log(err)
 })
 
-app.listen(port, '0.0.0.0', function onStart(err) {
-  if (err) {
-    console.log(err)
-  }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port)
-  opn(`http://localhost:${port}`)
-    .catch(err => {
-      console.log('can\'t open in your pc');
-    });
-})
+app.listen(port, '0.0.0.0', (err) => {
+    if (err) {
+        logger.log(err);
+    }
+
+    const env = process.env.NODE_ENV
+    logger.info(`==> 🌎 KLAYTN WALLET FRONT ${env} running --> ID : ${instanceId} / UUID : ${instanceUuid} / BIND : ${port}.`);
+});

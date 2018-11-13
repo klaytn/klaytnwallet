@@ -9,19 +9,14 @@ require('babel-polyfill')
 
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
 
+const ENV_DIR = './config/'
 let envPath
-switch (process.env.ENV) {
-  case 'LOCAL':
-    envPath = './local.env'
-    break
-  case 'DEV':
-    envPath = './dev.env'
-    break
-  case 'QA':
-    envPath = './qa.env'
-    break
-  case 'REAL':
-    envPath = './real.env'
+switch (process.env.NODE_ENV) {
+  case 'local':
+  case 'dev':
+  case 'qa':
+  case 'real':
+    envPath = ENV_DIR + `${process.env.NODE_ENV}`.toLowerCase() + '.env'
     break
 }
 

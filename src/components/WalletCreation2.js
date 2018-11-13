@@ -31,7 +31,6 @@ class WalletCreation2 extends Component<Props> {
             handleStepMove={this.handleStepMove}
           />
         )
-        break
       case 2:
         return (
           <WalletCreationStep2
@@ -40,14 +39,12 @@ class WalletCreation2 extends Component<Props> {
             password={prevRefComponentState.password}
           />
         )
-        break
       case 3:
         return (
           <WalletCreationStep3
             privateKey={prevRefComponentState.privateKey}
           />
         )
-        break
     }
   }
 
