@@ -26,6 +26,20 @@
   src: url('/static/fonts//RobotoMono-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'NotoSansCJKkr';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/static/fonts/NotoSansCJKkr-Regular.otf');
+}
+
+@font-face {
+  font-family: 'NotoSansCJKkr';
+  font-style: normal;
+  font-weight: bold;
+  src: url('/static/fonts/NotoSansCJKkr-Bold.otf');
+}
+
 html {
   font-size: 10px;
 }
