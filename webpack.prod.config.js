@@ -95,7 +95,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       inject: 'body',

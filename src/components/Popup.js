@@ -19,18 +19,20 @@ const Popup = ({
       'Popup__content--login': popup.login,
     })}
     >
+      {popup.content}
       <div
         className="Popup__closeButton"
         onClick={() => ui.closePopup()}
-      />
-      {popup.content}
+      >
+        OK
+      </div>
     </div>
   </div>
 )
 
 
 const mapStateToProps = (state) => ({
-  popup: state.ui.popup,
+  popup: state.ui.popup, 
 })
 
 export default connect(mapStateToProps, null)(Popup)

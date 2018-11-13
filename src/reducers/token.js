@@ -1,6 +1,7 @@
 import {
   REGISTER_TOKEN,
   TOGGLE_TOKEN_ADD_MODE,
+  SET_MY_TOKEN_BALANCES_BY_NAME,
 } from 'actions/actionTypes'
 
 import { getParsedLocalStorageItem } from 'utils/misc'
@@ -22,6 +23,11 @@ const tokenReducer = (state = initialState, action) => {
       return {
         ...state,
         isTokenAddMode: !state.isTokenAddMode,
+      }
+    case SET_MY_TOKEN_BALANCES_BY_NAME:
+      return {
+        ...state,
+        balancesByName: action.payload.balancesByName,
       }
     default:
       return state

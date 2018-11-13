@@ -13,7 +13,7 @@
     "airbnb"
   ],
   "rules": {
-    "arrow-parens": ["error", "always"],
+    "arrow-parens": 0,
     "comma-dangle": ["error", "always-multiline"],
     "global-require": 0,
     "func-names": 0,
@@ -36,5 +36,8 @@
     "import/extensions": false,
     "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": false,
+    "no-return-assign": 0,
+    "default-case": 0,
+    "consistent-return": 0,
   }
 }

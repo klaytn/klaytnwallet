@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { connect } from 'react-redux'
 import { keyBy } from 'lodash'
 
+import BN from 'bignumber.js'
 import { onit } from 'klaytn/onit'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
@@ -11,7 +12,7 @@ import numeral from 'numeral'
 
 import './MyToken.scss'
 
-const INIT_TOKEN_LISTING_INTERVAL = 3000
+const INIT_TOKEN_LISTING_INTERVAL = 7000
 
 import * as tokenActions from 'actions/token'
 
@@ -43,7 +44,7 @@ class MyToken extends Component<Props> {
   componentDidMount() {
     if (this.wallet) {
       this.getTokenBalances()
-      this.intervalID = setInterval(this.getTokenBalances, 5000)
+      this.intervalID = setInterval(this.getTokenBalances, INIT_TOKEN_LISTING_INTERVAL)
     }
   }
 
@@ -64,13 +65,13 @@ class MyToken extends Component<Props> {
   }
 
   getTokenBalances = () => {
-    const { tokenList } = this.props
+    const { tokenList, setMyTokenBalancesByName } = this.props
     Promise.all(
       [
         onit.klay.getBalance(this.wallet.address),
         ...tokenList
           .filter(({ contractAddress }) => contractAddress)
-          .map(({ name, contractAddress }) => {
+          .map(({ name, contractAddress, decimal }) => {
             const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
             contractInstance.accounts = onit.klay.accounts
             return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
@@ -86,18 +87,21 @@ class MyToken extends Component<Props> {
               balance: onit.utils.fromWei(balance, 'ether'),
             }
           } else {
+            const tokenMetaInfo = tokenList[idx - 1]
             return {
-              fullname: tokenList[idx - 1].fullname,
-              name: tokenList[idx - 1].name,
-              balance,
+              fullname: tokenMetaInfo.fullname,
+              name: tokenMetaInfo.name,
+              balance: new BN(balance).dividedBy(10 ** tokenMetaInfo.decimal).toString(),
             }
           }
         })
         this.setState({
           isLoading: false,
           myTokenBalances: myTokenBalances,
-          tokenBalanceByName: keyBy(myTokenBalances, ({ value }) => value),
         })
+
+        // For broadcasting my token balances through redux store.
+        setMyTokenBalancesByName(keyBy(myTokenBalances, ({ name }) => name))
       })
       .catch((e) => {
         console.log(e)
@@ -155,7 +159,7 @@ const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenNam
     >
       <header className="TokenItem__title">{fullname}</header>
       <span className="TokenItem__balance">
-        <span className="TokenItem__balanceInteger">{numeral(integerPoints).format('0,0')}</span>
+        <span className="TokenItem__balanceInteger">{new BN(integerPoints).toFormat()}</span>
         {decimalPoints && <span className="TokenItem__balanceDecimal">.{decimalPoints.slice(0, 6)}</span>}
       </span>
       <span className="TokenItem__tokenName">{name}</span>
@@ -170,6 +174,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleTokenAddMode: () => dispatch(tokenActions.toggleTokenAddMode()),
+  setMyTokenBalancesByName: (balancesByName) => dispatch(tokenActions.setMyTokenBalancesByName(balancesByName)),
 })
 
 export default connect(

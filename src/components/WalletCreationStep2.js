@@ -23,6 +23,8 @@ class WalletCreationStep2 extends Component<Props> {
     const { privateKey } = this.state
     const { password } = this.props
     const keystore = onit.klay.accounts.encrypt(privateKey, password)
+    // If user clicked download, clear previous wallet instance.
+    onit.klay.accounts.wallet.clear() && sessionStorage.removeItem('prv')
     this.downloadKeystore(keystore)
   }
 
