@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { onit } from 'klaytn/onit'
 
 import Input from 'components/Input'
+import AccessReminder from 'components/AccessReminder'
 import Button from 'components/Button'
 import { isValidPrivateKey } from 'utils/crypto'
 
@@ -16,6 +17,7 @@ class AccessByPrivateKey extends Component<Props> {
   state = {
     privatekey: '',
     isValid: null,
+    isReminderChecked: false
   }
 
   handleChange = (e) => {
@@ -24,6 +26,12 @@ class AccessByPrivateKey extends Component<Props> {
       isValid: e.target.value.length === 0
         ? null
         : isValidPrivateKey(e.target.value),
+    })
+  }
+
+  toggleChecking = () => {
+    this.setState({
+      isReminderChecked: !this.state.isReminderChecked
     })
   }
 
@@ -37,7 +45,10 @@ class AccessByPrivateKey extends Component<Props> {
   }
 
   render() {
-    const { isValid } = this.state
+    const { 
+      isValid,
+      isReminderChecked,
+    } = this.state
     return (
       <div className="AccessByPrivatekey">
         <Input
@@ -52,9 +63,13 @@ class AccessByPrivateKey extends Component<Props> {
           autocomplete="off"
           errorMessage={isValid === false && 'Invalid key'}
         />
+        <AccessReminder 
+          isChecked={isReminderChecked}
+          onClick={this.toggleChecking}
+        />
         <Button
           className="AccessByPrivatekey__button"
-          disabled={!isValid}
+          disabled={!isValid || !isReminderChecked}
           onClick={this.access}
           title="Access"
         />

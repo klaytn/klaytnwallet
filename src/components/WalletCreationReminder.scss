@@ -1,0 +1,28 @@
+@import 'colors.scss';
+
+.WalletCreationReminder {
+  width: 496px;
+  text-align: left;
+  margin-bottom: 34px;
+  margin-top: 24px;
+  height: 32px;
+  font-size: 11px;
+  line-height: 16px;
+  color: $token-color-2-main;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.WalletCreationReminder::before {
+  content: "";
+  background-image: url(/static/images/icon-warning.svg);
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  float: left;
+  margin-bottom: 18px;
+  margin-right: 8px;
+  vertical-align: top;
+}

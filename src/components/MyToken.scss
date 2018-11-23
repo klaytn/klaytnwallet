@@ -54,10 +54,6 @@
   background-color: $white;
   cursor: pointer;
 
-  &:first-of-type {
-    border-top: 1px solid $light-blue-gray;
-  }
-
   &:last-of-type {
     .TokenItem__decoration { height: 100%; }
   }

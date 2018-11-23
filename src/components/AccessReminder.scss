@@ -1,0 +1,33 @@
+@import 'colors.scss';
+
+.AccessReminder {
+  width: 496px;
+  text-align: left;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.AccessReminder__checkbox {
+  background-image: url(/static/images/checkbox-default.svg);
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+
+  &--checked {
+    background-image: url(/static/images/checkbox-checked.svg);
+  }
+}
+
+.AccessReminder__description {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 16px;
+  color: $token-color-2-main;
+
+  span {
+    font-weight: bold;
+  }
+}

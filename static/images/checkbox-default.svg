@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-1{fill:#f9f9fc}.cls-1,.cls-2{stroke:#e9ebf4}.cls-2,.cls-4{fill:none}.cls-2{stroke-width:2px}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <g id="Checkbox_default" transform="translate(-509 -516)">
+        <g id="사각형_121" class="cls-1" data-name="사각형 121">
+            <path d="M0 0h20v20H0z" class="cls-3" transform="translate(509 516)"/>
+            <path d="M.5.5h19v19H.5z" class="cls-4" transform="translate(509 516)"/>
+        </g>
+        <g id="icon_Success_Check" transform="translate(-574.5 197)">
+            <path id="icon_Success_Check-2" d="M788 332.5l3.333 3 6.667-6" class="cls-2" data-name="icon_Success_Check" transform="translate(300.5 -3.5)"/>
+        </g>
+    </g>
+</svg>

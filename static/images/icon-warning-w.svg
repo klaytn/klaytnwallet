@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}
+        </style>
+    </defs>
+    <path id="icon_warning_w" d="M6 0a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm.58 8.87H5.42V7.74h1.17v1.13zm.03-4.28l-.32 2.69h-.58l-.32-2.69V3.13h1.22v1.46z" class="cls-1"/>
+</svg>

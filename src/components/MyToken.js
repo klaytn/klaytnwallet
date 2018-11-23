@@ -7,6 +7,7 @@ import BN from 'bignumber.js'
 import { onit } from 'klaytn/onit'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
+import MyTokenReminder from 'components/MyTokenReminder'
 import { krc20ABI } from 'utils/crypto'
 import numeral from 'numeral'
 
@@ -120,6 +121,7 @@ class MyToken extends Component<Props> {
             onClick={this.toggleAddToken}
           />
         </header>
+        <MyTokenReminder />
         <div className="MyToken__list">
           {isLoading
             ? 'loading...'
