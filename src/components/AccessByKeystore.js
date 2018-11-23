@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import InputFile from 'components/InputFile'
 import Input from 'components/Input'
 import File from 'components/File'
+import AccessReminder from 'components/AccessReminder'
 import Button from 'components/Button'
 import { checkValidPassword } from 'utils/crypto'
 
@@ -22,6 +23,7 @@ class AccessByKeystore extends Component<Props> {
     isValidPassword: true,
     error: '',
     password: '',
+    isReminderChecked: false,
   }
 
   handleImport = (e) => {
@@ -67,6 +69,12 @@ class AccessByKeystore extends Component<Props> {
     })
   }
 
+  toggleChecking = () => {
+    this.setState({
+      isReminderChecked: !this.state.isReminderChecked
+    })
+  }
+
   access = () => {
     const { fileName, keystore, password } = this.state
     const { accessTo } = this.props
@@ -91,7 +99,8 @@ class AccessByKeystore extends Component<Props> {
         isValidPassword,
         error,
         password,
-       } = this.state
+        isReminderChecked
+       } = this.state 
     return (
       <div className="AccessByKeystore">
         <InputFile
@@ -112,10 +121,14 @@ class AccessByKeystore extends Component<Props> {
           isValid={isValidPassword}
           errorMessage={error}
         />
-        <Button
+        <AccessReminder 
+          isChecked={isReminderChecked}
+          onClick={this.toggleChecking}
+        />
+        <Button 
           className="AccessByKeystore__button"
           onClick={this.access}
-          disabled={!keystore || !password}
+          disabled={!keystore || !password || !isReminderChecked}
           title="Access"
         />
       </div>

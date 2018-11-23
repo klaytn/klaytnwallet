@@ -1,12 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import Popup from 'components/Popup'
-// this is temporary popup content
-import PopupWarningContent from 'components/PopupWarningContent'
 import Toast from 'components/Toast'
 import Header from 'components/Header'
 import Nav from 'components/Nav'
-import ui from 'utils/ui'
 import { onit } from 'klaytn/onit'
 
 import './App.scss'
@@ -22,9 +19,6 @@ class App extends Component<Props> {
   }
 
   componentDidMount() {
-    //this is temporary warning popup
-    ui.openPopup({ content: <PopupWarningContent /> })  
-
     if (sessionStorage.getItem('prv')) {
       onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
     }

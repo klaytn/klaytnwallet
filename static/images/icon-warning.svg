@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="icon_warning" viewBox="0 0 50 50">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
     <defs>
         <style>
-            .cls-1{fill:#fa265f}
+            .cls-1{fill:#d64a70}
         </style>
     </defs>
-    <path id="패스_598" d="M11.82 25v16.46a4.387 4.387 0 0 0-2.93 4.14V50h32.23v-4.39a4.387 4.387 0 0 0-2.93-4.14V25a13.185 13.185 0 0 0-26.37 0zm26.36 22.07H11.82v-1.46a1.462 1.462 0 0 1 1.46-1.46h23.44a1.462 1.462 0 0 1 1.46 1.46zM25 14.75A10.264 10.264 0 0 1 35.25 25v16.21h-20.5V25A10.264 10.264 0 0 1 25 14.75zm0 0" class="cls-1" data-name="패스 598"/>
-    <path id="사각형_121" d="M0 0h2.93v8.79H0z" class="cls-1" data-name="사각형 121" transform="translate(23.54 20.61)"/>
-    <path id="사각형_122" d="M0 0h2.93v2.93H0z" class="cls-1" data-name="사각형 122" transform="translate(23.54 32.32)"/>
-    <path id="사각형_123" d="M0 0h5.96v2.93H0z" class="cls-1" data-name="사각형 123" transform="translate(0 23.54)"/>
-    <path id="사각형_124" d="M0 0h5.96v2.93H0z" class="cls-1" data-name="사각형 124" transform="translate(44.04 23.54)"/>
-    <path id="패스_599" d="M41.57 6.36l2.07 2.07-4.14 4.14-2.07-2.07zm0 0" class="cls-1" data-name="패스 599"/>
-    <path id="패스_600" d="M10.5 12.57L6.36 8.43l2.07-2.07 4.14 4.14zm0 0" class="cls-1" data-name="패스 600"/>
-    <path id="사각형_125" d="M0 0h2.93v5.96H0z" class="cls-1" data-name="사각형 125" transform="translate(23.54)"/>
+    <path id="icon_warning" d="M6 0a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm.58 8.87H5.42V7.74h1.17v1.13zm.03-4.28l-.32 2.69h-.58l-.32-2.69V3.13h1.22v1.46z" class="cls-1"/>
 </svg>

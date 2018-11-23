@@ -16,6 +16,7 @@ class WalletCreationStepPlate extends Component<Props> {
         title,
         description,
         render,
+        reminder,
         nextStepButtons = [],
         className,
       } = this.props
@@ -27,6 +28,7 @@ class WalletCreationStepPlate extends Component<Props> {
           {description}
         </p>
         {render && render()}
+        {reminder && reminder()}
         <div className="WalletCreationStepPlate__nextButtons">
           {nextStepButtons.map(({
               title,

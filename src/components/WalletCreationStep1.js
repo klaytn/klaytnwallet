@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import InputPassword from 'components/InputPassword'
+import WalletCreationReminder from 'components/WalletCreationReminder'
 
 import { checkValidPassword } from 'utils/crypto'
 
@@ -40,6 +41,9 @@ class WalletCreationStep1 extends Component<Props> {
             label="Password"
             onChange={this.handleChange}
           />
+        )}
+        reminder={() => (
+          <WalletCreationReminder />
         )}
         nextStepButtons={[{ title: 'Next Step', onClick: handleStepMove(2), disabled: !isValidPassword }]}
       />

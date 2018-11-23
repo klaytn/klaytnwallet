@@ -1,0 +1,23 @@
+@import 'colors.scss';
+
+.MyTokenReminder {
+  width: 100%;
+  text-align: left;
+  padding: 16px 41px;
+  background-color: $token-color-2-main;
+  font-size: 11px;
+  line-height: 16px;
+  color: $white;
+}
+
+.MyTokenReminder::before {
+  content: "";
+  background-image: url(/static/images/icon-warning-w.svg);
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  margin-bottom: 20px;
+  vertical-align: top;
+  display: inline-block;
+  float: left;
+}
