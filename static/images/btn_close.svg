@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="btn_close" viewBox="0 0 60 26">
+    <defs>
+        <style>
+            .cls-1{fill:#c4c4c4;opacity:0}.cls-2{fill:#999;font-size:12px;font-family:Avenir-Medium,Avenir;font-weight:500}.cls-3{fill:none;stroke:#999}
+        </style>
+    </defs>
+    <path id="사각형_65" d="M0 0h60v26H0z" class="cls-1" data-name="사각형 65"/>
+    <text id="Close" class="cls-2" transform="translate(8 17)">
+        <tspan x="0" y="0">Close</tspan>
+    </text>
+    <g id="icon_close" transform="translate(44 9)">
+        <path id="선_332" d="M0 0l8 8" class="cls-3" data-name="선 332"/>
+        <path id="선_333" d="M8 0L0 8" class="cls-3" data-name="선 333"/>
+    </g>
+</svg>
