@@ -4,6 +4,7 @@ import Popup from 'components/Popup'
 import Toast from 'components/Toast'
 import Header from 'components/Header'
 import Nav from 'components/Nav'
+
 import { onit } from 'klaytn/onit'
 
 import './App.scss'
@@ -40,7 +41,7 @@ class App extends Component<Props> {
             {children}
           </div>
         </section>
-      </div>
+      </div>,
     ]
   }
 }
