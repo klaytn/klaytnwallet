@@ -1,7 +1,5 @@
 import React from 'react'
 
-import './Landing.scss'
-
 const LandingItem = ({ img, title, description }) => (
   <div className="Landing__item">
     <img className="Landing__image" src={img} />

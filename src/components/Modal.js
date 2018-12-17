@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 
 import cookie from 'utils/cookie'
+
 import './Modal.scss'
 
 class Modal extends Component {
