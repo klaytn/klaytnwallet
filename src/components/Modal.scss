@@ -1,0 +1,69 @@
+@import "mixins.scss";
+@import "colors.scss";
+
+.Modal {
+  width: 280px;
+  height: 477px;
+  position: absolute;
+  top: 48px;
+  right: 50px;
+  font-family: 'SFUIText';
+  font-size: 14px;
+  line-height: 20px;
+  background-color: $white;
+  border: 1px solid #e9ebf4;
+  box-shadow: 0 10px 20px 0 rgba(172, 178, 206, 0.25);
+}
+
+.Modal__header {
+  font-weight: bold;
+  color: $light-red;
+  margin: 26px 18px 6px 18px;
+}
+
+.Modal__message {
+  color: $dark-grey;
+  margin: 18px;
+  margin-top: 0px;
+}
+
+.Modal__footer {
+  height: 50px;
+  background-color: #e9ebf4;
+  padding: 0px 18px;
+  position: relative;
+}
+
+.Modal__footerCheckBox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  background-color: $white;
+  border: 1px solid #c4c4c4;
+  margin: 16px 6px 16px 0px;
+  &--checked {
+    @include background-image('/static/images/checkbox_active.svg');
+    background-size: 8px 5px;
+  }
+}
+
+.Modal__footerMessage {
+  vertical-align: middle;
+  font-family: 'Avenir';
+  font-size: 12px;
+  display: inline-block;
+  color: #666666;
+  margin: 14.1px 23px 14.1px 0px;
+}
+
+.Modal__footerCloseButton {
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+  width: 60px;
+  height: 26px;
+  @include background-image('/static/images/btn_close.svg');
+}
+

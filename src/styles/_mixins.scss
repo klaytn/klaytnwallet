@@ -40,6 +40,12 @@
   }
 }
 
+@mixin background-image($imagePath) {
+  background-image: url($imagePath);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 @mixin panelize() {
   width: 600px;
   height: 672px;
