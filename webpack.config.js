@@ -73,6 +73,7 @@ module.exports = {
       actions: path.resolve(__dirname, 'src/actions'),
       images: path.resolve(__dirname, 'static/images/'),
       constants: path.resolve(__dirname, 'src/constants/'),
+      enhancers: path.resolve(__dirname, 'src/enhancers/'),
     },
   },
   plugins: [
