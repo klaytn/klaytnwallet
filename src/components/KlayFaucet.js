@@ -1,44 +1,24 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
-import cx from 'classnames'
-import BN from 'bignumber.js'
 import Lottie from 'react-lottie'
 
 import { onit } from 'klaytn/onit'
 import Input from 'components/Input'
 import Button from 'components/Button'
+import FaucetHowItWork from 'components/FaucetHowItWork'
+import FaucetWarningModal from 'components/FaucetWarningModal'
 import APIEntry from 'constants/network'
 
 import * as animationData from '../../static/images/data.json'
 
 import './KlayFaucet.scss'
 
+const FAUCET_SUCCESS = 0
+const FAUCET_FAILED = 900
+
 type Props = {
 
 }
-
-const FaucetHowItWork = ({
-  leftBlock,
-}) => (
-  <div className="KlayFaucet__howItWork">
-    <header className="KlayFaucet__howItWorkTitle">
-      How does this work?
-    </header>
-    <p className="KlayFaucet__howItWorkDescription">
-      The Klay Faucet runs on Aspen Network.<br />
-      Please run the Klay Faucet to receive a small amount of Klay for testing.<br />
-      For the purpose of preserving enough Klay for its community users, Klays may not be further distributed if you have recently used the Klay Faucet.
-      The Klay Faucet is replenished per every 900 blocks.
-    </p>
-    <div className={cx('KlayFaucet__faucetableBlock', {
-      'KlayFaucet__faucetableBlock--visible': leftBlock,
-    })}
-    >
-      <p className="KlayFaucet__faucetableBlockTitle">You can run faucet after</p>
-      <p className="KlayFaucet__faucetableBlockNumber">{leftBlock} blocks.</p>
-    </div>
-  </div>
-)
 
 class KlayFaucet extends Component<Props> {
   constructor() {
@@ -50,6 +30,7 @@ class KlayFaucet extends Component<Props> {
       isRunningComplete: true,
       leftBlock: null,
       isLoadingFaucetableBlock: true,
+      isShowingModal: false,
     }
   }
 
@@ -93,7 +74,7 @@ class KlayFaucet extends Component<Props> {
     this.setState({
       leftBlock: (faucetableBlockNumber > currentBlockNumber)
         ? faucetableBlockNumber - currentBlockNumber
-        : 0
+        : 0,
     })
   }
 
@@ -114,16 +95,29 @@ class KlayFaucet extends Component<Props> {
     })
       .then(res => res.json())
       .then(({ code }) => {
-        if (code == 0) {
+        if (code === FAUCET_FAILED) {
+          this.setState({
+            isShowingModal: true,
+          })
+        }
+
+        if (code === FAUCET_SUCCESS) {
           this.getFaucetableBlock()
           this.updateBalance()
         }
+
         return code
       })
       .catch(err => console.log(`Error catch: ${err}`))
       .finally(() => {
         this.setState({ isRunning: false })
       })
+  }
+
+  closeModal = () => {
+    this.setState({
+      isShowingModal: false,
+    })
   }
 
   render() {
@@ -133,6 +127,7 @@ class KlayFaucet extends Component<Props> {
       isRunningComplete,
       leftBlock,
       isLoadingFaucetableBlock,
+      isShowingModal,
     } = this.state
 
     const defaultOptions = {
@@ -146,8 +141,10 @@ class KlayFaucet extends Component<Props> {
 
     return (
       <div className="KlayFaucet">
+        {isShowingModal && <FaucetWarningModal closeModal={this.closeModal} />}
         <div className="KlayFaucet__content">
-          <Lottie options={defaultOptions}
+          <Lottie
+            options={defaultOptions}
             className="KlayFaucet__img"
             height={160}
             width={160}
@@ -158,7 +155,7 @@ class KlayFaucet extends Component<Props> {
                 if (!isRunning) {
                   this.setState({ isRunningComplete: true })
                 }
-              }
+              },
             }]}
           />
           <header className="KlayFaucet__title">KLAY Faucet</header>

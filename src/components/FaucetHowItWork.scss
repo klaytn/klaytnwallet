@@ -1,0 +1,42 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.FaucetHowItWork {
+  padding-top: 100px;
+  width: 300px;
+  margin-left: 48px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.FaucetHowItWork__howItWorkTitle {
+  @include font-style('h3');
+  color: $dolphin;
+  margin-bottom: 12px;
+}
+
+.FaucetHowItWork__howItWorkDescription {
+  @include font-style('body');
+  color: $dark-blue-grey;
+  line-height: 20px;
+}
+
+.FaucetHowItWork__faucetableBlock {
+  &--visible {
+    visibility: visible;
+  }
+  visibility: hidden;
+  margin-top: 96px;
+}
+
+.FaucetHowItWork__faucetableBlockTitle {
+  @include font-style('body');
+  color: $dolphin;
+  margin-bottom: 10px;
+}
+
+.FaucetHowItWork__faucetableBlockNumber {
+  @include font-style('h3');
+  color: $light-red;
+}

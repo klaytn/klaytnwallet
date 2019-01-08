@@ -5,6 +5,7 @@ import cookie from 'utils/cookie'
 
 import './Modal.scss'
 
+// TODO: Refactoring using withModal enhancer.
 class Modal extends Component {
   state = {
     isCheckedHideForAWeek: false,

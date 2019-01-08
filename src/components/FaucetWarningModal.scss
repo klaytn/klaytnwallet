@@ -1,0 +1,52 @@
+@import 'colors.scss';
+@import 'mixins.scss';
+@import 'fonts.scss';
+
+.FaucetWarningModal {
+  text-align: center;
+  padding: 6rem 8rem 3.9rem;
+}
+
+.FaucetWarningModal__title {
+  color: $light-red;
+  font-size: 28px;
+  line-height: 1.21;
+}
+
+.FaucetWarningModal__content {
+  color: $dark-grey;
+  font-size: 14px;
+  line-height: 1.43;
+  margin-top: 1.6rem;
+}
+
+.FaucetWarningModal__mailAddress {
+  color: $token-color-1-main;
+  font-weight: bold;
+}
+
+.FaucetWarningModal__sendMailButton {
+  @include font-style('body');
+  display: inline-block;
+  border: 0;
+  background-color: $light-red;
+  color: $white;
+  cursor: pointer;
+  padding: 16px 40px;
+  text-align: center;
+  outline: 0;
+  box-shadow: 0 4px 8px 0 rgba($main-point, .25);
+  margin: 30px auto 0;
+}
+
+.FaucetWarningModal__closeButton {
+  background-color: transparent;
+  box-shadow: none;
+  color: $dark-blue-grey;
+  display: block;
+  margin: 1rem auto 0;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
