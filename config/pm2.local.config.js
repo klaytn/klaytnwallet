@@ -1,7 +1,7 @@
 
 module.exports = {
   apps: [{
-    name: 'klaytnwallet-frontend',
+    name: 'klaytnwallet-baobab-frontend',
     script: './klaytnwalletFront.js',
     args: 'webpack.config.js',
 

@@ -7,7 +7,7 @@ import Onit from 'onit-js'
 
 const protocol = window ? window.location.protocol : 'http:';
 export const config = {
-  rpcURL: `${protocol}//aspen.klaytn.com`,
+  rpcURL: `${protocol}//${process.env.KLAYTN_HOST}`,
   wsURL: 'ws://devnet.klaytn.io:8546', // You can access websocket only with VPN.
 }
 

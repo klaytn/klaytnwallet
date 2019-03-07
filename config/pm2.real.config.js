@@ -1,7 +1,7 @@
 
 module.exports = {
   apps: [{
-    name: 'klaytnwallet-frontend',
+    name: 'klaytnwallet-baobab-Frontend',
     script: './klaytnwalletFront.js',
     args: 'webpack.prod.config.js',
 
@@ -16,10 +16,10 @@ module.exports = {
     env: {
       NODE_ENV: 'real',
       NEWRELIC_APP_NAME: 'KLAYTNWALLET_REAL_FRONT',
-      RAVEN_KEY: 'https://30fcc5f962e644b2b104477838997e4c@sentry.io/1292023',
+      RAVEN_KEY: '',
     },
 
-    output: '/var/log/nodejs/ground-x/app/klaytnwallet-frontend/out.log',
-    error: '/var/log/nodejs/ground-x/app/klaytnwallet-frontend/error.log',
+    output: '/var/log/nodejs/ground-x/app/klaytnwallet-baobab-frontend/out.log',
+    error: '/var/log/nodejs/ground-x/app/klaytnwallet-baobab-frontend/error.log',
   }],
 };

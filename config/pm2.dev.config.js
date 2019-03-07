@@ -1,7 +1,7 @@
 
 module.exports = {
   apps: [{
-    name: 'klaytnwallet-frontend',
+    name: 'klaytnwallet-baobab-frontend',
     script: './klaytnwalletFront.js',
     args: 'webpack.config.js',
 
@@ -17,7 +17,7 @@ module.exports = {
       NODE_ENV: 'dev',
     },
 
-    output: '/var/log/nodejs/ground-x/app/klaytnwallet-frontend/out.log',
-    error: '/var/log/nodejs/ground-x/app/klaytnwallet-frontend/error.log',
+    output: '/var/log/nodejs/ground-x/app/klaytnwallet-baobab-frontend/out.log',
+    error: '/var/log/nodejs/ground-x/app/klaytnwallet-baobab-frontend/error.log',
   }],
 };
