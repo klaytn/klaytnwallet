@@ -138,7 +138,6 @@ class WalletTransfer2 extends Component<Props> {
       to,
       value: onit.utils.toWei(value, 'ether'),
       gas: gas || '21000',
-      chainId: '1000',
     })
       .once('transactionHash', (transactionHash) => {
         new Audio('/static/sound/transfer.mp3').play()
@@ -162,7 +161,6 @@ class WalletTransfer2 extends Component<Props> {
     contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
       from: this.wallet.address,
       gas: gas || '21000',
-      chainId: '1000',
     })
     .once('transactionHash', () => {
       new Audio('/static/sound/transfer.mp3').play()
