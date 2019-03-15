@@ -20,7 +20,7 @@ type Props = {
 import './WalletTransfer2.scss'
 
 const KLAY_GAS_PRICE = onit.utils.toWei('25', 'shannon')
-const DEFAULT_KLAY_TRANSFER_GAS = 21000
+const DEFAULT_KLAY_TRANSFER_GAS = 25000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 const MAX_INTEGER_LENGTH = 14
 
@@ -36,7 +36,7 @@ class WalletTransfer2 extends Component<Props> {
       fee: 0,
       isValidTransaction: false,
       myTokenBalances: [],
-      gas: '21000',
+      gas: DEFAULT_KLAY_TRANSFER_GAS,
       gasPrice: KLAY_GAS_PRICE,
       totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
       tokenColorIdx: 1,
@@ -137,7 +137,7 @@ class WalletTransfer2 extends Component<Props> {
       from: this.wallet.address,
       to,
       value: onit.utils.toWei(value, 'ether'),
-      gas: gas || '21000',
+      gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
     })
       .once('transactionHash', (transactionHash) => {
         new Audio('/static/sound/transfer.mp3').play()
@@ -160,7 +160,7 @@ class WalletTransfer2 extends Component<Props> {
     contractInstance.accounts = onit.klay.accounts
     contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
       from: this.wallet.address,
-      gas: gas || '21000',
+      gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
     })
     .once('transactionHash', () => {
       new Audio('/static/sound/transfer.mp3').play()
