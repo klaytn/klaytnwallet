@@ -34,7 +34,7 @@ const TransferComplete = ({
     />
     <a
       target="self"
-      href={`${KLAYTN_SCOPE_URL}/transaction/${transactionHash}`}
+      href={`${KLAYTN_SCOPE_URL}/tx/${transactionHash}`}
     >
       <Button
         title="View Transaction Info"

@@ -34,7 +34,7 @@ class Landing extends Component {
           isShowingModal={isShowingModal}
         />
         <div className="Landing">
-          <label className="Landing__label">Aspen net</label>
+          <label className="Landing__label">Baobab network</label>
           <header className="Landing__title">Welcome to Klaytn Wallet</header>
           <LandingItem
             title="The Klaytn Network does not store your private key on the server."

@@ -11,7 +11,7 @@ const HEALTHCHECK_INTERVAL = 1000
 
 class Header extends Component<Props> {
   state = {
-    network: 'Aspen Network',
+    network: 'Baobab Network',
     prevBlockNumber: null,
   }
 
@@ -39,7 +39,7 @@ class Header extends Component<Props> {
     this.sameBlockNumberCount = 0
     this.setState({
       prevBlockNumber: blockNumber,
-      network: 'Aspen Network',
+      network: 'Baobab Network',
     })
   }
 

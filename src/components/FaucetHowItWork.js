@@ -9,7 +9,7 @@ const FaucetHowItWork = ({ leftBlock }) => (
       How does this work?
     </header>
     <p className="FaucetHowItWork__howItWorkDescription">
-      The Klay Faucet runs on Aspen Network.<br />
+      The Klay Faucet runs on Baobab Network.<br />
       Please run the Klay Faucet to receive a small amount of Klay for testing.<br />
       For the purpose of preserving enough Klay for its community users, Klays may not be further distributed if you have recently used the Klay Faucet.
       The Klay Faucet is replenished per every 900 blocks.
