@@ -43,7 +43,7 @@
   height: 100%;
   display: block;
   text-align: right;
-  padding-right: 75px;
+  padding-right: 76px;
 
   &:-webkit-autofill {
     background-color: transparent;
@@ -137,4 +137,5 @@
   top: 50%;
   transform: translateY(-50%);
   right: 0;
+  margin-top: 2px;
 }
