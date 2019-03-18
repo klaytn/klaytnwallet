@@ -9,6 +9,7 @@ import EditButton from 'components/EditButton'
 import InputEdit from 'components/InputEdit'
 import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
+import { addCommas } from 'utils/misc'
 
 type Props = {
 
@@ -130,11 +131,11 @@ class TransferForm extends Component<Props> {
           <div className="TransferForm__gasInfo">
             <div className="TransferForm__gasPrice">
               <span>Gas Price</span>
-              <span>{onit.utils.fromWei(gasPrice, 'shannon')} Test_ston</span>
+              <span>{addCommas(onit.utils.fromWei(gasPrice, 'shannon'))} Test_ston</span>
             </div>
             <div className="TransferForm__gasLimit">
               <span>Gas Limit</span>
-              <span>{onit.utils.toWei(totalGasFee) / gasPrice}</span>
+              <span>{addCommas(onit.utils.toWei(totalGasFee) / gasPrice)}</span>
             </div>
           </div>
         )}

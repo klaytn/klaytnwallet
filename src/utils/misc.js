@@ -104,3 +104,15 @@ export const limit6Decimal = (valueStr) => {
   }
   return valueStr
 }
+
+export const addCommas = (num: number | string): string => {
+  const numString = typeof num === 'number' ? num.toString() : num
+  const splitedNum = numString.split('.')
+  let int = splitedNum[0]
+  const decimal = splitedNum.length > 1 ? `.${splitedNum[1]}` : ''
+  const rgx = /(\d+)(\d{3})/
+  while (rgx.test(int)) {
+    int = int.replace(rgx, '$1,$2')
+  }
+  return int + decimal
+}
