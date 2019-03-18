@@ -168,7 +168,7 @@ class KlayFaucet extends Component<Props> {
           <Input
             value={onit.utils.fromWei(balance, 'ether')}
             readOnly
-            label="KLAY Balance"
+            label="Test_KLAY Balance"
             className="KlayFaucet__input KlayFaucet__balance"
             unit="Test_KLAY"
           />

@@ -4,7 +4,7 @@ import './MyTokenReminder.scss'
 
 const MyTokenReminder = () => (
   <div className="MyTokenReminder">
-    The Klaytn Wallet is for testing, and the KLAY has no
+    The Klaytn Wallet is for testing, and the Test_KLAY has no
     financial value.
   </div>
 )
