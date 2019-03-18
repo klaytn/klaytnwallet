@@ -25,7 +25,7 @@
 .Header__LogoWithLink {
   padding: 2.5rem 2.8rem;
   display: inline-block;
-  width: 90%;
+  width: calc(100% - 170px);
   float: left;
 }
 
