@@ -18,12 +18,13 @@
 
 .Landing__label {
   @include font-style('label');
+  width: 150px;
+  font-size: 14px;
   display: block;
-  padding: 6px;
+  padding: 6px 17px;
   color: $white;
   background-color: $main-theme;
   border-radius: 14px;
-  width: 94px;
   text-align: center;
   margin: 0 auto;
   margin-bottom: 16px;

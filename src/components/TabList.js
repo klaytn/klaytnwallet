@@ -33,6 +33,9 @@ class TabList extends Component<Props> {
             />
           )
         })}
+        <footer className="TabList__footer">
+            &copy; klaytnwallet
+        </footer>
       </div>
     )
   }

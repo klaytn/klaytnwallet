@@ -1,3 +1,12 @@
 .TabList {
+  position: relative;
   height: 100%;
+}
+
+.TabList__footer {
+  position: absolute;
+  bottom: 40px;
+  left: 28px;
+  color: #ccc;
+  font-size: 12px;
 }
