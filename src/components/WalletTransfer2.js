@@ -32,7 +32,7 @@ class WalletTransfer2 extends Component<Props> {
       isLoading: false,
       to: '',
       value: '',
-      type: 'KLAY', // default type is KLAY.
+      type: 'Test_KLAY', // default type is KLAY.
       fee: 0,
       isValidTransaction: false,
       myTokenBalances: [],
@@ -92,7 +92,7 @@ class WalletTransfer2 extends Component<Props> {
 
   handleSelect = ({ tokenSymbol, tokenColorIdx }) => {
     const _totalGasFee = onit.utils.fromWei(
-      `${(tokenSymbol === 'KLAY'
+      `${(tokenSymbol === 'Test_KLAY'
         ? DEFAULT_KLAY_TRANSFER_GAS
         : DEFAULT_TOKEN_TRANSFER_GAS
       ) * KLAY_GAS_PRICE}`)
@@ -122,7 +122,7 @@ class WalletTransfer2 extends Component<Props> {
   transfer = () => {
     const { type } = this.state
     switch (type) {
-      case 'KLAY':
+      case 'Test_KLAY':
         this.transferCoin()
         break
       default:

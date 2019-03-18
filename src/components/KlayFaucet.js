@@ -158,7 +158,7 @@ class KlayFaucet extends Component<Props> {
               },
             }]}
           />
-          <header className="KlayFaucet__title">KLAY Faucet</header>
+          <header className="KlayFaucet__title">Test_KLAY Faucet</header>
           <Input
             value={this.wallet && this.wallet.address}
             readOnly
@@ -170,7 +170,7 @@ class KlayFaucet extends Component<Props> {
             readOnly
             label="KLAY Balance"
             className="KlayFaucet__input KlayFaucet__balance"
-            unit="KLAY"
+            unit="Test_KLAY"
           />
           <Button
             title="Run Faucet"

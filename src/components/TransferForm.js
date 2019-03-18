@@ -35,7 +35,7 @@ class TransferForm extends Component<Props> {
       fee,
       value,
       to,
-      type = 'KLAY',
+      type = 'Test_KLAY',
       totalGasFee,
       gasPrice,
       handleEdit,
@@ -47,8 +47,8 @@ class TransferForm extends Component<Props> {
 
     const isInvalidAddress = to && !onit.utils.isAddress(to)
     const isInvalidAmount = value && (Number(myBalance) <= Number(value) + Number(totalGasFee))
-    // show invalid tx fee error message only when selected token is not 'KLAY'
-    const isInvalidTxFee = type !== 'KLAY' && Number(myBalance) <= Number(totalGasFee)
+    // show invalid tx fee error message only when selected token is not 'Test_KLAY'
+    const isInvalidTxFee = type !== 'Test_KLAY' && Number(myBalance) <= Number(totalGasFee)
     const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee
 
     return (
@@ -117,7 +117,7 @@ class TransferForm extends Component<Props> {
             onChange={onChange}
             handleEdit={handleEdit}
             handleEditCancel={handleEditCancel}
-            unit="KLAY"
+            unit="Test_KLAY"
             autoComplete="off"
             listen={this.listenEditing}
             errorMessage={isInvalidTxFee}
@@ -130,7 +130,7 @@ class TransferForm extends Component<Props> {
           <div className="TransferForm__gasInfo">
             <div className="TransferForm__gasPrice">
               <span>Gas Price</span>
-              <span>{onit.utils.fromWei(gasPrice, 'shannon')} ston</span>
+              <span>{onit.utils.fromWei(gasPrice, 'shannon')} Test_ston</span>
             </div>
             <div className="TransferForm__gasLimit">
               <span>Gas Limit</span>

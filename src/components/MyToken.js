@@ -83,8 +83,8 @@ class MyToken extends Component<Props> {
           const isNativeCoin = idx === 0
           if (isNativeCoin) {
             return {
-              fullname: 'KLAY',
-              name: 'KLAY',
+              fullname: 'Test_KLAY',
+              name: 'Test_KLAY',
               balance: onit.utils.fromWei(balance, 'ether'),
             }
           } else {
