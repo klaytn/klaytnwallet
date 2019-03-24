@@ -47,7 +47,6 @@ class WalletTransfer2 extends Component<Props> {
 
   componentWillMount() {
     if (!onit.klay.accounts || !onit.klay.accounts.wallet[0]) {
-      new Audio('/static/sound/error.ogg').play()
       browserHistory.replace('/access?next=transfer')
     }
   }
@@ -140,14 +139,12 @@ class WalletTransfer2 extends Component<Props> {
       gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
     })
       .once('transactionHash', (transactionHash) => {
-        new Audio('/static/sound/transfer.mp3').play()
         this.setState({ transactionHash }, this.changeView('complete'))
       })
       // .once('receipt', () => {
       // })
       .on('error', (e) => {
         console.log(e)
-        new Audio('/static/sound/error.ogg').play()
         ui.showToast({ msg: 'Error occurred.' })
       })
   }
@@ -163,14 +160,12 @@ class WalletTransfer2 extends Component<Props> {
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
     })
     .once('transactionHash', () => {
-      new Audio('/static/sound/transfer.mp3').play()
       this.changeView('complete')()
     })
     // .once('receipt', () => {
     // })
     .on('error', (e) => {
       console.log(e)
-      new Audio('/static/sound/error.ogg').play()
       ui.showToast({ msg: 'Error occurred.' })
     })
   }
