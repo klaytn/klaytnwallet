@@ -31,8 +31,8 @@ const logger = winston.createLogger({
 
     transports       : [
         new sentry({
-            // RAVEN_KEY가 undefined여도 동작 이상 없음.
-            dsn     : process.env.RAVEN_KEY, 
+            // SENTRY_DSN가 undefined여도 동작 이상 없음.
+            dsn     : process.env.SENTRY_DSN, 
             level   : 'debug',
         }),
         new winston.transports.Console({handleExceptions: true}),

@@ -15,8 +15,8 @@ module.exports = {
 
     env: {
       NODE_ENV: 'real',
-      NEWRELIC_APP_NAME: 'KLAYTNWALLET_REAL_FRONT',
-      RAVEN_KEY: '',
+      NEWRELIC_APP_NAME: 'KLAYTNWALLET_BAOBAB_REAL_FRONT',
+      SENTRY_DSN: 'https://30fcc5f962e644b2b104477838997e4c@sentry.io/1292023',
     },
 
     output: '/var/log/nodejs/ground-x/app/klaytnwallet-baobab-frontend/out.log',
