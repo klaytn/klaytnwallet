@@ -78,7 +78,7 @@ class MyWallet extends Component<Props> {
           </p>
           <a
             target="self"
-            href={`${KLAYTN_SCOPE_URL}/transactions?account=${this.wallet.address}`}
+            href={`${KLAYTN_SCOPE_URL}/account/${this.wallet.address}`}
           >
             <Button
               title="View Transaction List"
