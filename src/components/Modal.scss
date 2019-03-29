@@ -1,31 +1,32 @@
 @import "mixins.scss";
 @import "colors.scss";
 
+$modal-width: 640px;
+
 .Modal {
-  width: 640px;
+  width: $modal-width;
   height: 580px;
   position: absolute;
   top: 78px;
   left: 50%;
-  margin-left:-320px;
+  margin-left: -320px;
   font-family: 'SFUIText';
   font-size: 14px;
   line-height: 20px;
   background-color: $white;
   border: 1px solid #e9ebf4;
   box-shadow: 0 10px 20px 0 rgba(172, 178, 206, 0.25);
-  .set{ display:none;}
   .languageChange__button {
     position: absolute;
-    top:42px;
-    right:40px;
+    top: 42px;
+    right: 40px;
   }
 }
 
 .Modal__header {
   font-weight: bold;
   color: $light-red;
-  font-size:18px;
+  font-size: 18px;
   margin: 42px 40px 22px 40px;
 }
 
@@ -37,9 +38,9 @@
     font-size: 14px;
     line-height: 1.43;
     color: #7a7b83;
-    margin-bottom:13px;
+    margin-bottom: 13px;
     .Modal__text__bold{
-      font-weight:bold;
+      font-weight: bold;
       color: #2c2c2c;
     }
   }
@@ -47,18 +48,18 @@
     position: relative;
     background: $light-blue-gray;
     padding: 14px 24px 14px 30px;
-    margin-bottom:14px;
+    margin-bottom: 14px;
     .Modal__line__text:last-child{margin-bottom:0px;}
   }
   .Model__danger__box:after{
-    content:'';
-    display:block;
-    position:absolute;
-    top:0;
-    left:0;
-    width:6px;
-    height:100%;
-    background:$light-red;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: $light-red;
   }
 
 }
@@ -110,11 +111,12 @@
     @include background-image('/static/images/btn_close_kr.svg');
   }
 }
+
 .languageChange__button {
   padding:0;
   width: 74px;
   height: 32px;
-  line-height:32px; 
-  font-size:12px;
+  line-height: 32px; 
+  font-size: 12px;
   text-align: center;
 }

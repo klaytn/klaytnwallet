@@ -13,6 +13,7 @@ class Modal extends Component {
     isCheckedHideForAWeek: false,
     setLanguageName: 'Korean',
   }
+
   notShowingForAWeek = () => {
     cookie.setExpired('hideWalletScamPopup', true, 7)
     this.props.closeModal()
@@ -27,7 +28,7 @@ class Modal extends Component {
       this.setState({ setLanguageName: 'English'})
     }
   }
-  
+
   render() {
     const { isCheckedHideForAWeek, setLanguageName } = this.state
     const { closeModal, isShowingModal } = this.props
@@ -39,7 +40,7 @@ class Modal extends Component {
           onClick={this.setlLanguageNameChange}
           title={setLanguageName}
         />
-        {setLanguageName =='Korean'? (
+        {setLanguageName === 'Korean' ? (
             <div className="Modal__inner">
               <div className="Modal__header">
               Fraud Alert:<br />
