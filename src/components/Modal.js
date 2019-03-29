@@ -113,10 +113,10 @@ class Modal extends Component {
                   <b className="Modal__text__bold">개인</b>은 KLAY를 어떠한 방법으로도 <b className="Modal__text__bold">구매나 투자</b>할 수 없음을 안내드립니다.
                 </p>
                 <p className="Modal__line__text">
-                  <b className="Modal__text__bold">KLAY</b>는 개인에 대한 재판매를 포함한 <b className="Modal__text__bold">모든 유형의 판매에 사용할 수 없습니다.</b>
+                누구든지<b className="Modal__text__bold">KLAY를 재판매하는 것은 현재 금지</b>되어 있습니다.
                 </p>
                 <p className="Modal__line__text">
-                  KLAY are <b className="Modal__text__bold">not able for any type of sales</b> including resale to individuals. 
+                  <b className="Modal__text__bold">KLAY</b>는 개인에 대한 재판매를 포함한 <b className="Modal__text__bold">모든 유형의 판매에 사용할 수 없습니다.</b>
                 </p>
                 <p className="Modal__line__text">
                 공식 홈페이지에서 별도로 통지하지 않는 한, Klaytn은 <b className="Modal__text__bold">대리인 또는 제3자를 통해 KLAY를 판매하지 않으며</b> 앞으로도 판매하지 않을 것 입니다.
