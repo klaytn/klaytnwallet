@@ -74,7 +74,7 @@ class Modal extends Component {
                   Any solicitation of individual investors for the sale of KLAY is an obvious fraud, so please beware of potential financial damage.
                 </p>
                 <p className="Modal__line__text">
-                  We are considering to take any possible civil and/or criminal actions against those incurring damage to our value, reputation. and products.
+                  We are considering to take any possible civil and/or criminal actions against those incurring damage to our value, reputation, and products.
                 </p>
               </div>
               <div className="Modal__footer">
