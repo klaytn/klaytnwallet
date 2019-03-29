@@ -5,7 +5,7 @@
   width: 640px;
   height: 580px;
   position: absolute;
-  top: 48px;
+  top: 78px;
   left: 50%;
   margin-left:-320px;
   font-family: 'SFUIText';
@@ -106,6 +106,9 @@
   width: 60px;
   height: 26px;
   @include background-image('/static/images/btn_close.svg');
+  &_kr {
+    @include background-image('/static/images/btn_close_kr.svg');
+  }
 }
 .languageChange__button {
   padding:0;

@@ -19,8 +19,7 @@ class Modal extends Component {
   }
 
   setlLanguageNameChange = () => {
-    const { setLanguageName } = this.state   
-    console.log(this.state)
+    const { setLanguageName } = this.state  
 
     if (setLanguageName === 'English') {
       this.setState({ setLanguageName: 'Korean'})
@@ -138,7 +137,7 @@ class Modal extends Component {
               />
               <p className="Modal__footerMessage">일주일 동안 다시 열지 않음</p>
               <div
-                className="Modal__footerCloseButton"
+                className="Modal__footerCloseButton Modal__footerCloseButton_kr"
                 onClick={closeModal}
               />
             </div>
