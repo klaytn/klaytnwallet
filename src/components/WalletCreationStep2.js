@@ -22,7 +22,9 @@ class WalletCreationStep2 extends Component<Props> {
   handleDownload = () => {
     const { privateKey } = this.state
     const { password } = this.props
-    const keystore = onit.klay.accounts.encrypt(privateKey, password)
+    const keystore = onit.klay.accounts.encrypt(privateKey, password, {
+      // address: 'satoshi', // If the target address of keystore is human-readable address.
+    })
     // If user clicked download, clear previous wallet instance.
     onit.klay.accounts.wallet.clear() && sessionStorage.removeItem('prv')
     this.downloadKeystore(keystore)
