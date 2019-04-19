@@ -52,50 +52,65 @@ class InputEdit extends Component<Props> {
         })}
         style={{ width: `${width}` }}
       >
+      {isEditing
+        ? (
+          <div className="InputEdit__Popup">
+            <div className="InputEdit__Popup--inner">
+              <label className="InputEdit__label" >Transaction Fee Limit Edit</label>
+                <div className="InputEdit__box">
+                  <input
+                      ref={($input) => this.$input = $input}
+                      id={name}
+                      name={name}
+                      value={value}
+                      onChange={onChange}
+                      onKeyPress={onKeyPress}
+                      placeholder={placeholder}
+                      disabled={disabled}
+                      className={cx('InputEdit__input', { 'InputEdit--err': err })}
+                      autofoucs="true"
+                      autoComplete="off"
+                    />
+                    {unit && <span className="InputEdit__unit">{unit}</span>}
+                </div>
+                <div className="InputEdit__ButtonBox">
+                  <Fragment>
+                      <button
+                        className="Button Button--gray InputEdit__editCancelButton"
+                        tabIndex="-1"
+                        onClick={pipe(handleEditCancel, this.toggleEdit)}
+                      >
+                        <span>Cancel</span>
+                      </button>
+                      <button
+                        className="Button InputEdit__editOkButton"
+                        tabIndex="-1"
+                        onClick={this.toggleEdit}
+                      >
+                        <span>Confirm</span>
+                      </button>
+                    </Fragment>
+                </div>
+              </div>
+          </div>
+        )
+        : ('')}
+      
         {label && <label className="InputEdit__label" htmlFor={name}>{label}</label>}
         <div className="InputEdit__inputWrapper">
-          {isEditing
-            ? (
-              <Fragment>
-                <button
-                  className="InputEdit__editCancelButton"
-                  tabIndex="-1"
-                  onClick={pipe(handleEditCancel, this.toggleEdit)}
-                >
-                  <img src="/static/images/icon-x-black.svg" />
-                  <span>Cancel</span>
-                </button>
-                <button
-                  className="InputEdit__editOkButton"
-                  tabIndex="-1"
-                  onClick={this.toggleEdit}
-                >
-                  <img src="/static/images/icon-success-check.svg" />
-                  <span>OK</span>
-                </button>
-              </Fragment>
-            )
-            : (
-              <EditButton
+          <EditButton
                 className="InputEdit__editButton"
                 tabIndex="-1"
                 onClick={this.toggleEdit}
               />
-            )
-          }
           <input
-            ref={($input) => this.$input = $input}
-            id={name}
+            id={name+'Show'}
             name={name}
             value={value}
-            onChange={onChange}
-            onKeyPress={onKeyPress}
             placeholder={placeholder}
-            disabled={disabled}
+            disabled={true}
             className={cx('InputEdit__input', { 'InputEdit--err': err })}
-            readOnly={!isEditing}
-            autoFoucs
-            autoComplete="off"
+            readOnly
           />
           {unit && <span className="InputEdit__unit">{unit}</span>}
         </div>

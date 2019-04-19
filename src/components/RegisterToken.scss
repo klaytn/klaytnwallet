@@ -25,7 +25,8 @@
   cursor: pointer;
   width: 80%;
   text-align: right;
-
+  visibility: hidden;
+  
   &::before {
     content: '';
     vertical-align: middle;

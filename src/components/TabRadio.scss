@@ -14,8 +14,8 @@
   margin: 0;
   border: 1px solid $solitude;
   border-left: 0;
-  color: $middle-blue-grey;
-  background-color: $light-blue-gray;
+  color: #cacbd8;
+  background-color: $Wallet-bg;
   padding: 16px;
   text-align: center;
   cursor: pointer;
@@ -25,8 +25,8 @@
   }
 
   &--active {
-    border-bottom: 1px solid $white;
-    background-color: $white;
-    color: $black;
+    border-bottom: 1px solid $White-one;
+    background-color: $White-one;
+    color: $Scope-blue;
   }
 }

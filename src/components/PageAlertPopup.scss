@@ -1,5 +1,81 @@
 @import 'colors.scss';
 @import 'fonts.scss';
+@import "mixins.scss";
+.createMainPopup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 240px;
+  background: rgba(255, 255, 255, .7);
+  z-index: 2;
+  &.show { 
+    display: block;
+   }
+  .createMainPopup__inner {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -80px;
+    padding: 45px 40px 0;
+    @include popupStyle();
+    
+    &.widthType {
+      width: 430px;
+      margin: -150px 0 0 -95px;
+      padding-top: 72px;
+    }
+    .popup__title {
+      display: block;
+      @include font-style('label');
+      color: $Scope-blue;
+      margin-bottom: 16px;
+    }
+    .Input__inner--error {
+      border-bottom: 1px solid $Scope-blue !important;
+    }
+    .TransferForm__input {
+      margin-bottom: 33px;
+    }
+    .Input__error {
+      color: $Scope-blue;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 4px;
+        background-image: url('/static/images/icon-alert-03.svg'); 
+      }
+
+    }
+    .popup__message {
+      @include font-style('text-small');
+      color: $Grey-two;
+      margin-bottom: 28px;
+    }
+    .popup__message2 {
+      @include font-style('body');
+      color: $Blue-five;
+      margin-bottom: 40px;
+      .info_link {
+        display: inline-block;
+        margin-left: 4px;
+        text-decoration: underline;
+      }
+    }
+    .popup__bottom__box{
+      text-align: center;
+    }
+  }
+}
+
+
+
 
 .InputEdit {
   width: 100%;

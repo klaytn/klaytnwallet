@@ -7,9 +7,7 @@
   @include mobile {
     padding: 10px;
   }
-  width: 100%;
-  height: 672px;
-  margin-top: 30px;
+  margin: 0 auto;
   text-align: center;
   font-size: 16px;
   padding: 0;
@@ -19,9 +17,10 @@
   }
 }
 
-.MyWallet__title {
+.Contents__title {
   @include font-style('h2');
-  margin-bottom: 46px;
+  margin: 20px 0 25px;
+
 }
 
 .MyWallet__hr {
@@ -31,7 +30,7 @@
 }
 
 .MyWallet__Input {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .MyWallet__info {
@@ -39,22 +38,25 @@
     display: block;
     width: 100%;
   }
-  padding: 48px;
-  border-right: 1px solid $solitude;
   text-align: left;
   height: 100%;
   display: inline-block;
   vertical-align: middle;
-  width: 55%;
+  width: 640px;
+  margin-right: 16px;
+  .Inner__Box {
+    @include boxColor;
+    padding: 40px;
+    height: 640px;
+  }
 }
 
 .MyWallet__token {
   height: 100%;
   display: inline-block;
   vertical-align: middle;
-  width: 45%;
+  width: 328px;
   padding: 0;
-  overflow: hidden;
 }
 
 .MyWallet__hideButton {
@@ -74,7 +76,7 @@
 
 .MyWallet__transactionListTitle {
   @include font-style('button');
-  margin-top: 64px;
+  margin-top: 60px;
   color: $main-theme;
   margin-bottom: 10px;
 }
@@ -88,8 +90,4 @@
 
 .MyWallet__viewTransationListButton {
   @include font-style('body');
-  padding: 16px 40px;
-  box-shadow: unset;
-  background-color: $dark-blue-grey;
-  box-shadow: 0 4px 8px 0 rgba($dark-blue-grey, 0.25);
 }

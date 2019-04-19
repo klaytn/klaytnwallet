@@ -82,8 +82,8 @@ class AccessByKeystore extends Component<Props> {
     try {
       const wallet = onit.klay.accounts.decrypt(keystore, password)
       onit.klay.accounts.wallet.add(wallet)
-      
       // WARNING: sessionStorage has private key. it expired when window tab closed.
+      sessionStorage.setItem('address', onit.utils.hexToUtf8(wallet.address))
       sessionStorage.setItem('prv', wallet.privateKey)
       if (typeof accessTo === 'function') accessTo(wallet.address)
     } catch (e) {

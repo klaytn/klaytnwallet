@@ -4,24 +4,29 @@
 
 .TransferForm {
   // @include panelize;
-  padding: 48px;
-  border-left: 1px solid $solitude;
+  width: 640px;
+  margin-left: 16px;
   height: 100%;
 
   &--editing {
-    .TransferForm__title, .TransferForm__input {
-      opacity: 0.2;
-    }
+
   }
 
   &--tokenAdding {
     opacity: 0.2;
+  }
+  .Inner__Box {
+    @include boxColor();
+    width: 640px;
+    height: 640px;
+    padding: 40px; 
   }
 }
 
 .TransferForm__title {
   @include font-style('h2');
   color: $black;
+  margin: 20px 0 25px;
 }
 
 .TransferForm__hr {
@@ -31,7 +36,8 @@
 }
 
 .TransferForm__input {
-  margin-bottom: 32px;
+  position: relative;
+  margin-bottom: 50px;
 
   &--readOnly {
     .Input__input {
@@ -43,9 +49,7 @@
 .TransferForm__sendTransactionButton {
   display: block;
   margin: 0 auto;
-  width: 202px;
-  margin-top: 32px;
-  padding: 16px 40px;
+  margin-top: 40px;
 }
 
 .TransferForm__feeLimit {
@@ -55,12 +59,12 @@
 .TransferForm__feeLimitLabel {
   @include font-style('label');
   color: $main-theme;
-  margin-bottom: 22px;
+  margin-bottom: 11px;
 }
 
 .TransferForm__questionMark {
   font-size: 8px;
-  color: $white;
+  color: $White-one;
   display: inline-block;
   vertical-align: top;
   margin-left: 6px;
@@ -79,14 +83,13 @@
 }
 
 .TransferForm__gasInfo {
-  margin-top: 18px;
   background-color: $light-blue-gray;
   border: 1px solid $solitude;
   padding: 16px 20px;
 }
 
 .TransferForm__gasPrice {
-  margin-bottom: 13px;
+  margin-bottom: 12px;
 }
 
 .TransferForm__gasPrice, .TransferForm__gasLimit {
@@ -110,6 +113,9 @@
     @include font-family('roboto');
     @include font-style('h2');
     font-weight: normal;
+  }
+  &.InputEdit:focus-within{
+    border-bottom: 1px solid $Grey-four;
   }
 }
 

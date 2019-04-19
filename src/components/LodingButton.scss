@@ -1,0 +1,44 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.LodingButton {
+  position: relative;
+  padding: 0 25px;
+  &.Loading {
+    background-color: rgba(106, 209, 186, 0.6);
+  }
+  .LodingBar + span {
+    margin-left: 20px;
+  }
+}
+
+
+
+.LodingBar {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  margin-top: -7px;
+  width: 14px;
+    animation: loading 3s linear infinite;
+    .LoadingInner {
+      stroke: {
+        dashoffset: 0;
+        dasharray: 28;
+        width: 2;
+        miterlimit: 4;
+      }
+      animation: loading-circle 2s linear infinite;
+      stroke: $White-one;
+      fill: transparent;
+    }
+}
+
+@keyframes loading {
+0% { 
+      transform: rotate(0); 
+    }
+100% { 
+      transform: rotate(360deg);
+    }
+}

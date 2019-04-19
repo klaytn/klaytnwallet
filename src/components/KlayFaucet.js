@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import Lottie from 'react-lottie'
+import cx from 'classnames'
 
 import { onit } from 'klaytn/onit'
 import Input from 'components/Input'
-import Button from 'components/Button'
+import LodingButton from 'components/LodingButton'
 import FaucetHowItWork from 'components/FaucetHowItWork'
 import FaucetWarningModal from 'components/FaucetWarningModal'
 import APIEntry from 'constants/network'
 
-import * as animationData from '../../static/images/data.json'
 
 import './KlayFaucet.scss'
 
@@ -24,6 +24,7 @@ class KlayFaucet extends Component<Props> {
   constructor() {
     super()
     this.wallet = onit.klay.accounts.wallet[0]
+    
     this.state = {
       balance: '0',
       isRunning: false,
@@ -94,23 +95,26 @@ class KlayFaucet extends Component<Props> {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(res => res.json())
-      .then(({ code }) => {
-        if (code === FAUCET_FAILED) {
-          this.setState({
-            isShowingModal: true,
-          })
-        }
+      .then(({ status }) => {
+        console.log('status', status)
+        // if (code === FAUCET_FAILED) {
+        //   this.setState({
+        //     isShowingModal: true,
+        //   })
+        // }
 
-        if (code === FAUCET_SUCCESS) {
+        if (status === 'success') {
           this.getFaucetableBlock()
           this.updateBalance()
         }
 
-        return code
+        return status
       })
       .catch(err => console.log(`Error catch: ${err}`))
       .finally(() => {
         this.setState({ isRunning: false })
+        // loding end
+
       })
   }
 
@@ -133,7 +137,6 @@ class KlayFaucet extends Component<Props> {
     const defaultOptions = {
       loop: true,
       autoplay: false,
-      animationData,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice',
       }
@@ -143,22 +146,13 @@ class KlayFaucet extends Component<Props> {
       <div className="KlayFaucet">
         {isShowingModal && <FaucetWarningModal closeModal={this.closeModal} />}
         <div className="KlayFaucet__content">
-          <Lottie
-            options={defaultOptions}
-            className="KlayFaucet__img"
-            height={160}
-            width={160}
-            isStopped={!isRunning && isRunningComplete}
-            eventListeners={[{
-              eventName: 'loopComplete',
-              callback: () => {
-                if (!isRunning) {
-                  this.setState({ isRunningComplete: true })
-                }
-              },
-            }]}
-          />
-          <header className="KlayFaucet__title">Test_KLAY Faucet</header>
+          
+          <div className="KlayFaucet__head">
+            <div className="KlayFaucet__point">Only for Baobab</div>
+            <header className="KlayFaucet__title">Test_KLAY Faucet</header>
+            <p className="KlayFaucet__text">The Test_KLAY Faucet runs on Baobab Network.</p>
+          </div>
+          
           <Input
             value={this.wallet && this.wallet.address}
             readOnly
@@ -171,15 +165,18 @@ class KlayFaucet extends Component<Props> {
             label="Test_KLAY Balance"
             className="KlayFaucet__input KlayFaucet__balance"
             unit="Test_KLAY"
+            leftBlock={leftBlock}
           />
-          <Button
+          <LodingButton
             title="Run Faucet"
             className="KlayFaucet__button"
             onClick={this.runFacuet}
             disabled={isLoadingFaucetableBlock || leftBlock !== 0}
+            loadingSet={isRunning}
           />
+          <FaucetHowItWork leftBlock={leftBlock} />
         </div>
-        <FaucetHowItWork leftBlock={leftBlock} />
+        
       </div>
     )
   }

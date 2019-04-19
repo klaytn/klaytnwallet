@@ -4,18 +4,22 @@
 
 .TransferComplete {
   @include panelize;
+  @include boxColor;
   margin: 0 auto;
   width: 100%;
-  text-align: center;
-  padding-top: 120px;
+  text-align: left;
+  padding-top: 270px;
   padding-bottom: 120px;
+  .Inner__Box {
+    width: 560px;
+    margin: 0 auto;
+  }
 }
 
 .TransferComplete__title {
   @include font-style('h1');
-  color: $black;
-  margin-bottom: 16px;
-  line-height: 36px;
+  color: $Scope-blue;
+  margin-bottom: 8px;
 }
 
 .TransferComplete__img {
@@ -28,17 +32,14 @@
 
 .TransferComplete__description {
   @include font-style('body');
-  color: $dolphin;
-  margin-bottom: 52px;
+  color: $Blue-five;
+  margin-bottom: 40px;
   line-height: 20px;
 }
-
+.TransferComplete__link {
+  display: inline-block;
+  margin-left: 8px;
+}
 .TransferComplete__button {
-  &:first-of-type {
-    margin-right: 8px;
-  }
-
-  &:last-of-type {
-    margin-left: 8px;
-  }
+  width: 176px;
 }

@@ -46,6 +46,16 @@ class InputCopy extends Component<Props> {
       <div className={cx('InputCopy', className)}>
         {label && <label className="InputCopy__label" htmlFor={name}>{label}</label>}
         <div className="InputCopy__inputWrapper">
+        {eye && (
+            <button
+              className={cx('InputCopy__eye', {
+                'InputCopy__eye--show': !showPassword,
+                'InputCopy__eye--hide': showPassword,
+              })}
+              onClick={this.toggleShowPassword}
+              tabIndex="-1"
+            />
+          )}
           <input
             ref={($input) => this.$input = $input}
             name={name}
@@ -60,32 +70,26 @@ class InputCopy extends Component<Props> {
             className={cx('InputCopy__input', { 'InputCopy--err': err })}
             readOnly
           />
-          {eye && (
-            <button
-              className={cx('InputCopy__eye', {
-                'InputCopy__eye--show': !showPassword,
-                'InputCopy__eye--hide': showPassword,
-              })}
-              onClick={this.toggleShowPassword}
-              tabIndex="-1"
-            />
-          )}
+          
           <button
-            className="InputCopy__copyButton"
+            className={cx('InputCopy__copyButton', {
+              'InputCopy__copyButton--copied': isCopied,
+            })}
             onClick={this.copy}
             tabIndex="-1"
           >
+            {isCopied ? 'COPIED!': 'COPY'}
             <img className="InputCopy__icon" src="/static/images/icon-copy.svg" />
-            Copy
+            
           </button>
         </div>
-        <p
+        {/* <p
           className={cx('InputCopy__copiedText', {
             'InputCopy__copiedText--copied': isCopied,
           })}
         >
           Copied to clipboard
-        </p>
+        </p> */}
       </div>
     )
   }

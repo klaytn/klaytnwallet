@@ -89,6 +89,7 @@ class MyToken extends Component<Props> {
             }
           } else {
             const tokenMetaInfo = tokenList[idx - 1]
+            console.log(tokenMetaInfo)
             return {
               fullname: tokenMetaInfo.fullname,
               name: tokenMetaInfo.name,
@@ -111,35 +112,38 @@ class MyToken extends Component<Props> {
 
   render() {
     const { isLoading, myTokenBalances, isShowAddToken } = this.state
-    const { title, className, selectedTokenName, selectable } = this.props
+    const { title, className, selectedTokenName, selectable, addClassName } = this.props
     return (
       <div className={cx('MyToken', className)}>
         <header className="MyToken__header">
-          <p className="MyToken__title">{title}</p>
+          <p className="Contents__title">{title}</p>
           <PlusButton
             className="MyToken__addTokenButton"
             onClick={this.toggleAddToken}
           />
         </header>
-        <MyTokenReminder />
-        <div className="MyToken__list">
-          {isLoading
-            ? 'loading...'
-            : myTokenBalances.map(({ fullname, name, balance }, idx) => (
-              <TokenItem
-                selectable={selectable}
-                key={name}
-                fullname={fullname}
-                name={name}
-                balance={balance}
-                tokenColor={(idx % 4) + 1}
-                selectedTokenName={selectedTokenName}
-                onClick={this.selectToken({ name, tokenColorIdx: (idx % 4) + 1})}
-              />
-            ))
-          }
+        <div className="Inner__Box">
+          <MyTokenReminder />
+          <div className={cx('MyToken__list', addClassName)}>
+            {isLoading
+              ? 'loading...'
+              : myTokenBalances.map(({ fullname, name, balance }, idx) => (
+                <TokenItem
+                  selectable={selectable}
+                  key={name}
+                  fullname={fullname}
+                  name={name}
+                  balance={balance}
+                  tokenColor={(idx % 4) + 1}
+                  selectedTokenName={selectedTokenName}
+                  onClick={this.selectToken({ name, tokenColorIdx: (idx % 4) + 1})}
+                />
+              ))
+            }
+          </div>
+        
+          {isShowAddToken && <AddToken onClick={this.toggleAddToken} className="MyToken__addToken" />}
         </div>
-        {isShowAddToken && <AddToken onClick={this.toggleAddToken} className="MyToken__addToken" />}
       </div>
     )
   }

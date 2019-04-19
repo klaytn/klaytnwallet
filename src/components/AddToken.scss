@@ -3,23 +3,27 @@
 @import "mixins.scss";
 
 .AddToken {
-  background-color: $dolphin;
+  background-color: $Blue-five;
   padding-bottom: 100px;
 }
 
 .AddToken__topBlock {
-  background-color: $bluezodiac;
-  padding: 48px;
+  padding: 24px 40px 0;
+
+  .AddToken__message{
+    font-size: 11px; 
+    line-height: 1.55;
+    color: $Blue-five;
+  }
 }
 
 .AddToken__header {
-  position: relative;
   margin-bottom: 8px;
 }
 
 .AddToken__title {
   @include font-style('h2');
-  color: $white;
+  color: $White-one;
 }
 
 .AddToken__description {
@@ -29,48 +33,45 @@
 }
 
 .AddToken__downBlock {
-  padding: 48px;
+  padding: 40px 40px 0;
 }
 
 .AddToken__xButton {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
+  bottom: 24px;
+  right: 24px;
 }
 
 .AddToken__input {
   margin-bottom: 32px;
   height: 60px;
-
   .Input__label {
-    color: $white;
+    color: $White-one;
   }
 
   .Input__input {
-    color: $white;
+    color: $White-one;
     &::placeholder {
-      color: $dark-blue-grey;
+      color: $Blue-four;
     }
   }
 
   .Input__error {
-    color: #ff7499;
+    color: red;
   }
 
-  &.Input {
-    border-color: $dark-blue-grey;
+  .Input__inner {
+    border-color: $Blue-four;
 
     &:focus-within {
-      border-color: $white;
+      border-color: $White-one;
     }
   }
+
 }
 
 .AddToken__saveButton {
   display: block;
-  width: 114px;
-  padding: 16px 40px;
   margin: 0 auto;
   margin-top: 40px;
 }

@@ -8,7 +8,7 @@
 
 .Input__inner {
   border: 0;
-  border-bottom: 1px solid $middle-blue-grey;
+  border-bottom: 1px solid $Grey-four;
   padding: 0;
   transition: border-width 100ms linear, border-color 300ms linear;
   position: relative;
@@ -35,7 +35,7 @@
   }
 
   &:focus-within {
-    border-color: $main-theme;
+    border-color: $Scope-blue;
   }
 
   &--noFocus {
@@ -53,12 +53,12 @@
   cursor: text;
   display: block;
   text-align: left;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .Input__input {
   @include font-style('body');
-  color: $black;
+  color: $Scope-blue;
   background-color: transparent;
   outline: 0;
   border: 0;
@@ -68,9 +68,9 @@
   padding-bottom: 12px;
 
   &::placeholder {
-    color: $middle-blue-grey;
+    color: $Grey-four;
   }
-
+  
   &:-webkit-autofill {
     background-color: transparent;
   }
@@ -78,7 +78,7 @@
 
 .Input__unit {
   @include font-style('body');
-  color: $dark-grey;
+  color: $Blue-five;
   position: absolute;
   right: 0;
   bottom: 12px;
@@ -86,6 +86,7 @@
 
 .Input__error {
   @include font-style('caption');
+  @include textPosition();
   text-align: left;
   color: #d64a70;
   margin-top: 10px;

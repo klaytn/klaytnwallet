@@ -36,9 +36,22 @@ class MyWallet extends Component<Props> {
       browserHistory.replace('/access')
     }
   }
-
+  
+  // HRAChange(address) {
+  //   console.log(address)
+  //   return onit.utils.hexToUtf8(address)
+  // }
   togglePrivateKey = () => {
     this.setState({ hidePrivateKey: !this.state.hidePrivateKey })
+  }
+  HRADataChange = () => {
+    const address = sessionStorage.getItem('address')
+    if(address){
+      return address
+    }else if(this.wallet && this.wallet.address){
+      return this.wallet.address
+    }
+    return ''
   }
 
   render() {
@@ -51,44 +64,46 @@ class MyWallet extends Component<Props> {
       })}
       >
         <div className="MyWallet__info">
-          <header className="MyWallet__title">My Wallet Info</header>
-          <hr className="MyWallet__hr" />
-          <InputCopy
-            className="MyWallet__Input"
-            label="Wallet Address"
-            name="address"
-            value={this.wallet.address}
-          />
-          <InputCopy
-            className="MyWallet__Input"
-            name="privateKey"
-            label="Private Key"
-            onLabelClick={this.togglePrivateKey}
-            labelClassName="MyWallet__hideButton"
-            type={hidePrivateKey ? 'password' : 'text'}
-            value={this.wallet.privateKey}
-            readOnly
-            autoFocus
-            eye
-          />
-          <p className="MyWallet__transactionListTitle">Transaction List</p>
-          <p className="MyWallet__transactionListDescription">
-            All transaction history occurring from<br />
-            active wallets can be found on Klaytnscope.
-          </p>
-          <a
-            target="self"
-            href={`${KLAYTN_SCOPE_URL}/account/${this.wallet.address}`}
-          >
-            <Button
-              title="View Transaction List"
-              className="MyWallet__viewTransationListButton"
-              gray
+          <header className="Contents__title">My Wallet Info</header>
+          <div className="Inner__Box">
+            <InputCopy
+              className="MyWallet__Input"
+              label="Wallet Address"
+              name="address"
+              value={this.HRADataChange() }
             />
-          </a>
+            <InputCopy
+              className="MyWallet__Input"
+              name="privateKey"
+              label="Private Key"
+              onLabelClick={this.togglePrivateKey}
+              labelClassName="MyWallet__hideButton"
+              type={hidePrivateKey ? 'password' : 'text'}
+              value={this.wallet.privateKey}
+              readOnly
+              autoFocus
+              eye
+            />
+            <p className="MyWallet__transactionListTitle">Transaction List</p>
+            <p className="MyWallet__transactionListDescription">
+              All transaction history occurring from<br />
+              active wallets can be found on Klaytnscope.
+            </p>
+            <a
+              target="self"
+              href={`${KLAYTN_SCOPE_URL}/account/${this.wallet.address}`}
+            >
+              <Button
+                title="View Transaction List"
+                className="MyWallet__viewTransationListButton"
+                gray
+              />
+            </a>
+          </div>
+          
         </div>
         <div className="MyWallet__token">
-          <MyToken title="Balance" />
+          <MyToken title="Balance" addClassName="infoList"/>
           <RegisterTokenButton />
         </div>
       </div>

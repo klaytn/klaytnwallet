@@ -24,6 +24,7 @@ class Input extends Component<Props> {
       unit,
       readOnly,
       errorMessage,
+      leftBlock,
     } = this.props
 
     return (
@@ -61,6 +62,9 @@ class Input extends Component<Props> {
         {errorMessage !== undefined && (
           <p className="Input__error">{errorMessage || ''}</p>
         )}
+        {leftBlock ? <p className="Input__error">You can run faucet after {leftBlock} blocks.</p> :
+          ''
+        }
     </div>
     )
   }

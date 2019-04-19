@@ -12,7 +12,7 @@ const StepIndicatorItem = ({ stepValue, currentStep }) => {
   return (
     <div className={cx('StepIndicator__item', {
       'StepIndicator__item--active': currentStep == stepValue,
-      'StepIndicator__item--checked': isChecked,
+      'StepIndicator__item--checked': isChecked
     })}
     >
       {!isChecked && stepValue}
@@ -20,24 +20,29 @@ const StepIndicatorItem = ({ stepValue, currentStep }) => {
   )
 }
 
-const StepIndicatorBorder = ({ stepValue, currentStep }) => {
+const StepIndicatorBorder = ({ stepValue, currentStep,endStep }) => {
   const isChecked = currentStep > stepValue
+  const isHide = endStep === stepValue
+
   return (
     <div
       className={cx('StepIndicator__border', {
         'StepIndicator__border--checked': isChecked,
+        'StepIndicator__border--hide': isHide
       })}
     />
   )
 }
-
-const StepIndicator = ({ currentStep, className }) => (
+const StepIndicator = ({ StepIndicatorList, currentStep, endStep, className }) => (
   <div className={cx('StepIndicator', className)}>
-    <StepIndicatorItem stepValue={1} currentStep={currentStep} />
-    <StepIndicatorBorder stepValue={1} currentStep={currentStep} />
-    <StepIndicatorItem stepValue={2} currentStep={currentStep} />
-    <StepIndicatorBorder stepValue={2} currentStep={currentStep} />
-    <StepIndicatorItem stepValue={3} currentStep={currentStep} />
+    {StepIndicatorList.map(({ showStep }) => {
+      return (
+        <div  key={showStep} >
+        <StepIndicatorItem stepValue={showStep} currentStep={currentStep} endStep={endStep} />
+        <StepIndicatorBorder stepValue={showStep} currentStep={currentStep} endStep={endStep} />
+        </div>
+      )
+    })}
   </div>
 )
 

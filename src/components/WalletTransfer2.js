@@ -128,12 +128,20 @@ class WalletTransfer2 extends Component<Props> {
         this.transferToken()
     }
   }
-
+  HRADataChange = () => {
+    const address = sessionStorage.getItem('address')
+    if(address){
+      return address
+    }else if(this.wallet && this.wallet.address){
+      return this.wallet.address
+    }
+    return ''
+  }
   transferCoin = () => {
     const { to, value, gas } = this.state
 
     onit.klay.sendTransaction({
-      from: this.wallet.address,
+      from: this.HRADataChange(),
       to,
       value: onit.utils.toWei(value, 'ether'),
       gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
@@ -156,7 +164,7 @@ class WalletTransfer2 extends Component<Props> {
     const decimalProcessedTokenAmount = new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
     contractInstance.accounts = onit.klay.accounts
     contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
-      from: this.wallet.address,
+      from: this.HRADataChange(),
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
     })
     .once('transactionHash', () => {
@@ -186,8 +194,6 @@ class WalletTransfer2 extends Component<Props> {
 
     const { isTokenAddMode, myBalancesByName } = this.props
 
-    const from = this.wallet && this.wallet.address
-
     switch (view) {
       case 'form':
         return (
@@ -201,7 +207,7 @@ class WalletTransfer2 extends Component<Props> {
             />
             <TransferForm
               className="WalletTransfer2__transferForm"
-              from={from}
+              from={this.HRADataChange()}
               to={to}
               value={value}
               type={type}
@@ -224,7 +230,7 @@ class WalletTransfer2 extends Component<Props> {
         return (
           <TransferTotal
             transfer={this.transfer}
-            from={from}
+            from={this.HRADataChange()}
             to={to}
             value={value}
             type={type}

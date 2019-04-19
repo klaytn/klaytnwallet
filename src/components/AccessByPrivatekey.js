@@ -5,7 +5,7 @@ import { onit } from 'klaytn/onit'
 import Input from 'components/Input'
 import AccessReminder from 'components/AccessReminder'
 import Button from 'components/Button'
-import { isValidPrivateKey } from 'utils/crypto'
+import { isValidPrivateKey, klayKeyDecomulation } from 'utils/crypto'
 
 import './AccessByPrivatekey.scss'
 
@@ -21,11 +21,21 @@ class AccessByPrivateKey extends Component<Props> {
   }
 
   handleChange = (e) => {
+    let walletData = e.target.value
+    let inputValue, address
+    if(walletData.indexOf('.') >=0){
+      walletData = walletData.split('.')
+      inputValue = walletData[0]
+      address = walletData[1].length === 42 ? walletData[1] : null
+      sessionStorage.setItem('address', onit.utils.hexToUtf8(address))
+    }else{
+      inputValue = walletData
+    }
     this.setState({
-      [e.target.name]: e.target.value,
-      isValid: e.target.value.length === 0
+      [e.target.name]: inputValue,
+      isValid: inputValue.length === 0
         ? null
-        : isValidPrivateKey(e.target.value),
+        : isValidPrivateKey(inputValue),
     })
   }
 
@@ -34,11 +44,11 @@ class AccessByPrivateKey extends Component<Props> {
       isReminderChecked: !this.state.isReminderChecked
     })
   }
-
   access = () => {
     const { privatekey } = this.state
     const { accessTo } = this.props
     const wallet = onit.klay.accounts.wallet.add(privatekey)
+
     // WARNING: sessionStorage has private key. it expired when window tab closed.
     sessionStorage.setItem('prv', privatekey)
     if (typeof accessTo === 'function') accessTo(wallet.address)

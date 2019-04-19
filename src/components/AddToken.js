@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import cx from 'classnames'
-import ReactTooltip from 'react-tooltip'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -86,34 +85,7 @@ class AddToken extends Component<Props> {
     const { onClick, className, toggleTokenAddMode } = this.props
     return (
       <div className={cx('AddToken', className)}>
-        <div className="AddToken__topBlock">
-          <header className="AddToken__header">
-            <span className="AddToken__title">Add Tokens</span>
-            <XButton onClick={onClick} className="AddToken__xButton" />
-          </header>
-          <p className="AddToken__description">
-            Tokens registered in Testnet are<br />
-            only visible in the currently<br />
-            active wallet. &nbsp;
-            <span
-              className="AddToken__more"
-              data-tip
-              data-for="more-tooltip"
-            >
-              more
-            </span>
-          </p>
-          <ReactTooltip
-            id="more-tooltip"
-            className="AddToken__moreTooltip"
-            effect="solid"
-            place="bottom"
-          >
-            The registered token is stored in the browser repository,
-            so when you delete the cookie, the records of all registered tokens
-            are also deleted.
-          </ReactTooltip>
-        </div>
+        
         <div className="AddToken__downBlock">
           <Input
             name="name"
@@ -147,6 +119,17 @@ class AddToken extends Component<Props> {
             onClick={() => this.add(onClick)}
             disabled={!name || !address || !decimal}
           />
+        </div>
+        <div className="AddToken__topBlock">
+
+          <div className="AddToken__message">
+            Tokens registered on Testnet are only visible at your currently active wallet.<br/>
+            Official registration of tokens are not supported on testnet at the moment. (to be provided soon)<br/>
+            Your registered token is stored in the browser repository; all registration history for your token shall be deleted if you delete your cookie.
+
+          </div>
+          <XButton onClick={onClick} className="AddToken__xButton" />
+          
         </div>
       </div>
     )
