@@ -17,18 +17,33 @@ class WalletCreationStepPlate extends Component<Props> {
         description,
         render,
         reminder,
+        dimRender,
+        accountRender,
         nextStepButtons = [],
+        TransferTotalItem=[],
         className,
       } = this.props
     return (
       <div className={cx('WalletCreationStepPlate', className)}>
         <div className="WalletCreationStepPlate__stepName">{stepName}</div>
-        <header className="WalletCreationStepPlate__title">{title}</header>
+        <div className="WalletCreationStepPlate__title">{title}</div>
         <p className="WalletCreationStepPlate__description">
           {description}
         </p>
         {render && render()}
         {reminder && reminder()}
+        {accountRender && accountRender()}
+        <div className="WalletCreationStepPlate__list">
+          {TransferTotalItem.map(({
+              title,
+              value
+            }) =>
+            <div className="TransferTotal__item">
+              <span className="TransferTotal__itemTitle">{title}</span>
+              <span className="TransferTotal__itemValue">{value}</span>
+            </div>
+            )}
+        </div>
         <div className="WalletCreationStepPlate__nextButtons">
           {nextStepButtons.map(({
               title,
@@ -39,9 +54,6 @@ class WalletCreationStepPlate extends Component<Props> {
               className,
             }) =>
             <Button
-              style={{
-                width: `${nextStepButtons.length > 1 && (100 / nextStepButtons.length) - 2}%`,
-              }}
               className={className}
               gray={gray}
               red={red}
@@ -52,6 +64,7 @@ class WalletCreationStepPlate extends Component<Props> {
             />
           )}
         </div>
+        {dimRender && dimRender()}
       </div>
     )
   }

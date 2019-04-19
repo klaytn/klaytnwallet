@@ -1,0 +1,14 @@
+@import "mixins.scss";
+@import "colors.scss";
+
+.WalletCreation2 {
+  @include panelize;
+  @include boxColor;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 984px;
+}
+
+.WalletCreation2__stepIndicator {
+  margin-bottom: 80px;
+}

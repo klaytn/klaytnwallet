@@ -1,49 +1,59 @@
 import React, { Component, Fragment } from 'react'
-import { browserHistory } from 'react-router'
-import jsonFormat from 'json-format'
 
-import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-
-type Props = {
-
-}
-
-import './WalletCreationStep3.scss'
+import InputPassword from 'components/InputPassword'
+import WalletCreationReminder from 'components/WalletCreationReminder'
+import { closeBrowser } from 'utils/ui'
+import { checkValidPassword } from 'utils/crypto'
 
 class WalletCreationStep3 extends Component<Props> {
+  state = {
+    password: '',
+    isValidPassword: null,
+  }
+  constructor() {
+    super()
+    this.state = {
+      password: '',
+      isValidPassword: null,
+    }
+    window.addEventListener("beforeunload", closeBrowser);
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
+    })
+  }
+
   render() {
-    const { privateKey } = this.props
+    const { password, isValidPassword } = this.state
+    const { handleStepMove } = this.props
+
     return (
       <WalletCreationStepPlate
-        className="WalletCreationStep3"
-        stepName="FINAL"
-        title="Please Save your Private Key"
+        stepName="STEP 3"
+        title="Please Set Password for your Keystore File"
         description={(
           <Fragment>
-            Your new wallet has been created.<br />
-            Make sure to COPY the private key below and SAVE it.
+            This is your first step in creating your Klaytn Wallet.<br />
+            Please set the password for the keystore file for your new wallet.
           </Fragment>
         )}
         render={() => (
-          <InputCopy
-            value={privateKey}
-            label="Private Key"
+          <InputPassword
+            value={password}
+            name="password"
+            placeholder="Enter the password"
+            label="Password"
+            onChange={this.handleChange}
           />
         )}
-        nextStepButtons={[
-          {
-            title: 'View Wallet Info',
-            onClick: () => browserHistory.push('/access'),
-            className: 'WalletCreationStep3__button',
-            gray: true,
-          },
-          {
-            title: 'Send KLAY & Tokens',
-            onClick: () => browserHistory.push('/transfer'),
-            className: 'WalletCreationStep3__button',
-          },
-        ]}
+        reminder={() => (
+          <WalletCreationReminder />
+        )}
+        nextStepButtons={[{ title: 'Next Step', onClick: handleStepMove(4), disabled: !isValidPassword }]}
       />
     )
   }
