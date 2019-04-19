@@ -20,5 +20,9 @@ export const ui = {
 if (DEV) {
   window.ui = ui
 }
+export const closeBrowser = (event)=> {
+  event.returnValue = 'Leave Page?';
+}
 
 export default ui
+

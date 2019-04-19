@@ -1,25 +1,50 @@
+
+@import 'colors.scss';
+
 .App {
   min-width: 1280px;
   min-height: 800px;
   height: 100vh;
+  
 }
 
 .App__section {
-  padding-top: 72px;
   height: 100%;
+  background-image: linear-gradient(122deg, #f8f9fa, #eaeef7);
+  &__mainPage {
+    background: $Blue-zero;
+  }
 }
 
 
 .App__navSection {
   display: inline-block;
-  width: 20%;
+  width: 240px;
+  position: absolute;
+  top: 0;
+  left: 0;
   vertical-align: top;
+  z-index: 10;
 }
 
 .App__contentSection {
-  padding: 28px;
   display: inline-block;
-  width: 80%;
+  width: 100%;
   vertical-align: top;
+  padding: 0 28px 0 268px;
   position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.main__model {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  display: none;
+  padding: 0 0 0 240px;
+}
+.model__show {
+  display: block;
 }

@@ -1,7 +1,8 @@
 import randombytes from 'randombytes'
 
 const MINIMUM_PASSWORD_LENGTH = 8
-
+const MINIMUM_NAME_LENGTH = 5
+const MAXIMUM_NAME_LENGTH = 13
 export const getRandomBytes = () => randombytes(32)
   .reduce((acc, cur) => {
     return acc += (cur.toString(16).length == 2)
@@ -22,8 +23,13 @@ export const isValidPrivateKey = (privateKey) => {
 }
 
 export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH
+export const has5and13Characters = (name) => (name.length >= MINIMUM_NAME_LENGTH && name.length <= MAXIMUM_NAME_LENGTH)
 
 export const hasSpecialCharacters = (password) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(password))
+export const hasNoSpecialCharacters = (name) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(name) !== true )
+export const onlyAlphabetAndNumbers = (name) => (/^[A-Za-z0-9+]*$/i.test(name))
+
+export const hasNoFirstNumber = (name) => (/^[A-za-z]/g.test(name))
 
 export const hasAtLeastOneNumber = (password) => (/[0-9]/.test(password))
 
@@ -31,6 +37,35 @@ export const checkValidPassword = (password) => {
   return has8MoreCharacters(password)
     && hasSpecialCharacters(password)
     && hasAtLeastOneNumber(password)
+}
+export const checkValidName = (name) => {
+  return has5and13Characters(name)
+    && onlyAlphabetAndNumbers(name)
+    && hasNoFirstNumber(name)
+    && hasNoSpecialCharacters(name)
+    
+    
+}
+
+export const klayKeyMade = (privateKey, address) => {
+  return privateKey+'.'+address
+}
+
+export const klayKeyDecomulation = (klayKey) => {
+  let klayKeyObj, returnObj
+  if(klayKey.indexOf('.') > 0){
+    klayKeyObj= klayKey.split('.')
+    returnObj = {
+      privateKey : Number(klayKeyObj[0]),
+      address : Number(klayKeyObj[1]),
+    }
+  }else{
+    returnObj = {
+      privateKey : Number(klayKey),
+    }
+  }
+
+  return returnObj
 }
 
 export const krc20ABI = [

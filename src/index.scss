@@ -1,43 +1,37 @@
 @font-face {
-  font-family: 'SFUIText';
-  font-style: normal;
-  font-weight: bold;
-  src: url('/static/fonts//SFUIText-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'SFUIText';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/static/fonts//SFUIText-Regular.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'RobotoMono';
   font-style: normal;
   font-weight: bold;
-  src: url('/static/fonts//RobotoMono-Bold.ttf') format('truetype');
+  src: url('/fonts/roboto_bold.eot'); // IE
+  src: url('/fonts/roboto_bold.eot#iefix') format('embedded-opentype'), // IE 6 ~ 8
+       url('/fonts/roboto_mono_bold.woff') format('woff'), // Modern browser
+       url('/fonts/roboto_mono_bold.woff2') format('woff2'), // Modern browser
+       url('/fonts/roboto_mono_bold.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'RobotoMono';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: normal;
-  src: url('/static/fonts//RobotoMono-Regular.ttf') format('truetype');
+  src: url('/fonts/roboto_regular.eot'); // IE
+  src: url('/fonts/roboto_regular.eot#iefix') format('embedded-opentype'), // IE 6 ~ 8
+       url('/fonts/Roboto-Regular.woff') format('woff'), // Modern browser
+       url('/fonts/Roboto-Regular.woff2') format('woff2'), // Modern browser
+       url('/fonts/Roboto-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'NotoSansCJKkr';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/static/fonts/NotoSansCJKkr-Regular.otf');
-}
-
-@font-face {
-  font-family: 'NotoSansCJKkr';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: bold;
-  src: url('/static/fonts/NotoSansCJKkr-Bold.otf');
+  src: url('/fonts/Roboto-Bold.eot'); // IE
+  src: url('/fonts/Roboto-Bold.eot#iefix') format('embedded-opentype'), // IE 6 ~ 8
+       url('/fonts/Roboto-Bold.woff') format('woff'), // Modern browser
+       url('/fonts/Roboto-Bold.woff2') format('woff2'), // Modern browser
+       url('/fonts/Roboto-Bold.ttf') format('truetype');
+  font-display: swap;
 }
 
 html {
@@ -47,8 +41,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: SFUIText;
-  background-color: #f9f9fc;
+  font-family: 'Roboto';
+
 
   * {
     box-sizing: border-box;
@@ -65,5 +59,10 @@ body {
 
   p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
+  }
+  ul {
+    padding:0;
+    margin:0;
+    list-style: none;
   }
 }
