@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:#fff}.cls-1{opacity:0}
+        </style>
+    </defs>
+    <g id="icon_link_off" transform="translate(-1017 -1002)">
+        <path id="사각형_4241" d="M0 0h20v20H0z" class="cls-1" data-name="사각형 4241" transform="translate(1017 1002)"/>
+        <path id="scale_1_up" d="M65.225 681.8A1.228 1.228 0 0 1 64 680.572v-7.348A1.228 1.228 0 0 1 65.225 672h2.449a.612.612 0 0 1 0 1.224h-2.449v7.348h7.347v-2.449a.612.612 0 1 1 1.224 0v2.449a1.227 1.227 0 0 1-1.224 1.224zm7.347-6.122v-1.584l-2.016 2.016a.612.612 0 0 1-.865-.866l2.015-2.016h-1.583a.612.612 0 1 1 0-1.224h3.062a.612.612 0 0 1 .611.612v3.062a.612.612 0 0 1-1.224 0z" class="cls-2" transform="translate(958.131 335.073)"/>
+    </g>
+</svg>

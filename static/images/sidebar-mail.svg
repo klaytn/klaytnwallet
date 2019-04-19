@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{opacity:.4}.cls-3{fill:#fff}.cls-4{fill:#aaacb9}
+        </style>
+    </defs>
+    <g id="footer_mail_off" transform="translate(-48 -833.309)">
+        <path id="사각형_4089" d="M0 0h24v24H0z" class="cls-1" data-name="사각형 4089" transform="translate(48 833.309)"/>
+        <g id="mail-envelope-email-newsletter-letter" class="cls-2" transform="translate(52 839)">
+            <path id="패스_572" d="M1 17.943v.77h15.617V7H1zm.651-8.973l5.076 3.972-5.076 4.432zm.2 9.093l5.4-4.712 1.56 1.221 1.56-1.221 5.4 4.712zm14.114-.688l-5.076-4.433 5.076-3.972z" class="cls-3" data-name="패스 572" transform="translate(-1 -7)"/>
+        </g>
+        <path id="패스_2081" d="M0 0h15.635v1.469L7.784 7.544 0 1.469z" class="cls-4" data-name="패스 2081" transform="translate(52 839)"/>
+    </g>
+</svg>
