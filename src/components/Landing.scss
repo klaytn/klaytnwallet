@@ -3,31 +3,26 @@
 @import "colors.scss";
 
 .Landing {
-  @include panelize;
-  width: 992px;
-  padding: 110px 60px;
-  margin: 0 auto;
+  width: 674px;
+  margin: 72px auto 0;
 }
 
 .Landing__title {
   @include font-style('h1');
-  color: $black;
-  margin-bottom: 64px;
+  color: $White-one;
+  margin-bottom: 8px;
   text-align: center;
 }
 
 .Landing__label {
-  @include font-style('label');
-  width: 150px;
-  font-size: 14px;
+  @include font-style('h3');
+  font-weight: normal;
   display: block;
-  padding: 6px 17px;
-  color: $white;
-  background-color: $main-theme;
-  border-radius: 14px;
+  
+  color: $Blue-five;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 16px;
+  margin-bottom: 70px;
 }
 
 .Landing__item {
@@ -61,4 +56,79 @@
   @include font-style('body');
   color: $warm-grey;
   line-height: 20px;
+}
+.main__link_list{
+  margin-bottom: 90px;
+  ul {
+    margin-left: -16px;
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  li {
+    padding-left: 16px;
+    width: 33.3334%;
+    float: left;
+  }  
+  button {
+    @include font-style('button')
+    width: 100%;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    border: none;
+    color: $White-one;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    &.create {
+      background-color: $Purple-blue-one;
+    }
+    &.info {
+      background-color: $Blue-green-one;
+    }
+    &.send {
+      background-color: $Red;
+    }
+  }
+}
+
+.main__text__box{
+  padding: 30px;
+  height: 276px;
+  background-color: $Scope-blue;
+  .main__text__title {
+    @include font-style('body');
+    color: $Grey-four;
+    margin-bottom: 24px;
+  }
+  .main__text__list {
+    @include font-style('caption');
+    color: $Blue-five;
+    li {
+      position: relative;
+      padding-left: 20px; 
+    }
+    li:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      vertical-align: middle;
+      background-image: url(/static/images/icon-check-off.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 6px;
+      opacity: .5;
+    }
+    li+li {
+      margin-top: 16px;
+    }
+
+  }
 }
