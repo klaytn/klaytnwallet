@@ -2,16 +2,14 @@
 @import "fonts.scss";
 
 .Nav {
-  position: relative;
-  background-color: $white;
-  padding-top: 24px;
+  position: absolute;
+  background-color: $Scope-blue;
   top: 0;
   left: 0;
   min-width: 236px;
   min-height: 800px;
   color: $warm-grey;
   height: 100%;
-  border-right: 1px solid $solitude;
 }
 
 .Nav__copyright {
@@ -20,4 +18,15 @@
   position: absolute;
   left: 28px;
   bottom: 40px;
+}
+.Header__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 72px;
+  display: inline-block;
+  background: url(/static/images/logo-wallet.svg) no-repeat 24px 26px;
+  background-size: 132.5px 24px;
+  z-index: 10;
 }

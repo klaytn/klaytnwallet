@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import TabItem from 'components/TabItem'
-
+import SidebarFooter from 'components/SidebarFooter'
 import './TabList.scss'
 
 type Props = {
@@ -16,7 +16,7 @@ class TabList extends Component<Props> {
 
     return (
       <div className="TabList">
-        {tabItems.map(({ title, link, icon }) => {
+        {tabItems.map(({ title, link, icon, menu , dropDown}) => {
           return (
             <TabItem
               isActive={
@@ -30,12 +30,13 @@ class TabList extends Component<Props> {
               key={title}
               title={title}
               link={link}
+              menus={menu}
+              dropDown={dropDown}
             />
           )
         })}
-        <footer className="TabList__footer">
-            &copy; klaytnwallet
-        </footer>
+
+        <SidebarFooter />
       </div>
     )
   }
