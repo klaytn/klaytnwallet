@@ -1,0 +1,85 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.Header {
+  width: 984px;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 15px 0px;
+  text-align: right;
+  clear: both;
+  margin: 0 auto;
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.Header__link {
+  @include font-style('caption')
+  color: $steel-blue;
+  font-size: 12px;
+  float: right;
+  line-height: 24px;
+  cursor: pointer;
+  margin-right: 20px;
+
+  &::after {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 8px;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-outlink.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.Header__network {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Roboto;
+  line-height: 37px;
+  width: 174px;
+  height: 38px;
+  padding-left: 42px;
+  border: 1px solid #d9ddf5;
+  border-radius: 10rem;
+  background: left 22px center/9px no-repeat url(/static/images/icon-network.svg);
+  color: $Scope-blue;
+  
+  &::after {
+    content: "";
+    width: 0px;
+    position: absolute;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    right: 1.6rem;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid $Scope-blue;
+  }
+
+  &--disconnected {
+    color: #ff7499;
+    &::before {
+      background-color: #ff7499;
+    }
+  }
+}
+
+.App__section__mainPage .Header__network {
+  background: left 22px center/9px no-repeat url(/static/images/icon-network-white.svg);
+  border: 1px solid rgba(255,255, 255, .2);
+  color: $White-one;
+  &::after {
+    border-top: 4px solid $White-one;
+  }
+}

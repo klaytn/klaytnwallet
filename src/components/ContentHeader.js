@@ -5,7 +5,7 @@ import cx from 'classnames'
 import { onit } from 'klaytn/onit'
 import { KLAYTN_SCOPE_URL } from 'constants/url'
 
-import './Header.scss'
+import './ContentHeader.scss'
 
 const HEALTHCHECK_INTERVAL = 1000
 
@@ -47,13 +47,6 @@ class Header extends Component<Props> {
     const { network } = this.state
     return (
       <div className="Header">
-        <button className="remove__sessionStorage">Remove sessionStorage</button>
-        <div className="Header__LogoWithLink">
-          <Link to="/" className="Header__logo" />
-          <a
-            target="self"
-            href={KLAYTN_SCOPE_URL} to="/klaytnscope" className="Header__link">Klaytnscope</a>
-        </div>
         <div className={cx('Header__network', {
           'Header__network--disconnected': !network
         })}
