@@ -14,33 +14,32 @@ const TransferComplete = ({
   transactionHash = '',
 }) => (
   <div className="TransferComplete">
-    <img
-      className="TransferComplete__img"
-      src="/static/images/icon-transfer-complete.svg"
-    />
-    <header className="TransferComplete__title">
-      Complete<br />
-      Transaction Request
-    </header>
-    <p className="TransferComplete__description">
-      Your transaction transfer request is complete. <br />
-      More information regarding your transaction can be found on Klaytnscope.
-    </p>
-    <Button
-      title="Send KLAY & Tokens"
-      className="TransferComplete__button"
-      gray
-      onClick={changeView('form')}
-    />
-    <a
-      target="self"
-      href={`${KLAYTN_SCOPE_URL}/tx/${transactionHash}`}
-    >
+    <div className="Inner__Box">
+      <header className="TransferComplete__title">
+        Transaction Request Complete
+      </header>
+      <p className="TransferComplete__description">
+        Your transaction transfer request is complete. <br />
+        More information regarding your transaction can be found on Klaytnscope.
+      </p>
       <Button
-        title="View Transaction Info"
+        title="Send KLAY & Tokens"
         className="TransferComplete__button"
+        gray
+        onClick={changeView('form')}
       />
-    </a>
+      <a 
+        className="TransferComplete__link"
+        target="self"
+        href={`${KLAYTN_SCOPE_URL}/tx/${transactionHash}`}
+      >
+        <Button
+          title="View Transaction Info"
+          className="TransferComplete__button"
+        />
+      </a>
+    </div>  
+    
   </div>
 )
 

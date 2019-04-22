@@ -1,0 +1,96 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.InputCheck {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  outline: 0;
+  background-color: transparent;
+  border-bottom: 1px solid $middle-blue-grey;
+}
+
+.InputCheck__input {
+  position: relative;
+  height: 40px;
+  color: $dark-blue-grey;
+
+  @include font-style('body');
+  color: $Scope-blue;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 79%;
+  height: 100%;
+  display: block;
+  padding-bottom: 12px;
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+}
+
+.InputCheck__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.InputCheck__Button {
+  @include font-style('button-small');
+  color: $Blue-three;
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  border: 1px solid #f0f2fc;
+  background-color: $White-one;
+  transition: all 300ms;
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 9px;
+    margin: -1px 0 0 3px;
+    vertical-align: middle;
+    background-image: url(/static/images/icon-success-check-blue.svg);
+    
+  }
+  &.isChecked {
+    background: $Blue-green-one;
+    border: $Blue-green-one;
+    color: $White-one;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.InputCheck__icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 12px;
+  margin-right: 4px;
+}
+.KlayText {
+  @include font-style('body');
+  color: $Blue-five;
+  position: absolute;
+  display: inline-block;
+  top: 35px;
+}

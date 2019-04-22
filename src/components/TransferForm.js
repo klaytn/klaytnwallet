@@ -65,86 +65,88 @@ class TransferForm extends Component<Props> {
           ({type})
         </span>
         </header>
-        <hr className="TransferForm__hr" />
-        <Input
-          readOnly
-          value={from}
-          className="TransferForm__input TransferForm__input--readOnly"
-          label="From Address"
-        />
-        <Input
-          name="to"
-          onChange={onChange}
-          className="TransferForm__input"
-          label="To Address"
-          placeholder="Enter the address to send"
-          autoComplete="off"
-          value={to}
-          errorMessage={isInvalidAddress && 'Recipient address is invalid'}
-        />
-        <Input
-          name="value"
-          onChange={onChange}
-          className="TransferForm__input TransferForm__valueInput"
-          label="Amount to Send"
-          placeholder="0.000000"
-          autoComplete="off"
-          unit={type}
-          value={value}
-          errorMessage={isInvalidAmount && 'Insufficienct balance'}
-        />
-        <div className="TransferForm__feeLimit">
-          <ReactTooltip
-            id="gas-tooltip"
-            className="TransferForm__gasTooltip"
-            effect="solid"
-            place="bottom"
-          >
-            Gas Price X Gas Limit
-          </ReactTooltip>
-          <p className="TransferForm__feeLimitLabel">
-            Transction Fee Limit
-            <img
-              data-tip
-              data-for='gas-tooltip'
-              className="TransferForm__questionMark"
-              src="/static/images/icon-help-label.svg"
-            />
-          </p>
-          <InputEdit
-            className="TransferForm__totalGasFeeInput"
-            name="totalGasFee"
-            value={totalGasFee}
-            onChange={onChange}
-            handleEdit={handleEdit}
-            handleEditCancel={handleEditCancel}
-            unit="Test_KLAY"
-            autoComplete="off"
-            listen={this.listenEditing}
-            errorMessage={isInvalidTxFee}
+        <div className="Inner__Box">
+          <Input
+            readOnly
+            value={from}
+            className="TransferForm__input TransferForm__input--readOnly"
+            label="From Address"
           />
-          {isInvalidTxFee && (
-            <ErrorMessage msg="Insufficienct balance." />
-          )}
-        </div>
-        {!listenedIsEditing && (
-          <div className="TransferForm__gasInfo">
-            <div className="TransferForm__gasPrice">
-              <span>Gas Price</span>
-              <span>{addCommas(onit.utils.fromWei(gasPrice, 'shannon'))} Test_ston</span>
-            </div>
-            <div className="TransferForm__gasLimit">
-              <span>Gas Limit</span>
-              <span>{addCommas(onit.utils.toWei(totalGasFee) / gasPrice)}</span>
-            </div>
+          <Input
+            name="to"
+            onChange={onChange}
+            className="TransferForm__input"
+            label="To Address"
+            placeholder="Enter the address to send"
+            autoComplete="off"
+            value={to}
+            errorMessage={isInvalidAddress && 'Recipient address is invalid'}
+          />
+          <Input
+            name="value"
+            onChange={onChange}
+            className="TransferForm__input TransferForm__valueInput"
+            label="Amount to Send"
+            placeholder="0.000000"
+            autoComplete="off"
+            unit={type}
+            value={value}
+            errorMessage={isInvalidAmount && 'Insufficienct balance'}
+          />
+          <div className="TransferForm__feeLimit">
+            <ReactTooltip
+              id="gas-tooltip"
+              className="TransferForm__gasTooltip"
+              effect="solid"
+              place="bottom"
+            >
+              Gas Price X Gas Limit
+            </ReactTooltip>
+            <p className="TransferForm__feeLimitLabel">
+              Transction Fee Limit
+              <img
+                data-tip
+                data-for='gas-tooltip'
+                className="TransferForm__questionMark"
+                src="/static/images/icon-help-label.svg"
+              />
+            </p>
+            <InputEdit
+              className="TransferForm__totalGasFeeInput"
+              name="totalGasFee"
+              value={totalGasFee}
+              onChange={onChange}
+              handleEdit={handleEdit}
+              handleEditCancel={handleEditCancel}
+              unit="Test_KLAY"
+              autoComplete="off"
+              listen={this.listenEditing}
+              errorMessage={isInvalidTxFee}
+            />
+            {isInvalidTxFee && (
+              <ErrorMessage msg="Insufficienct balance." />
+            )}
           </div>
-        )}
-        <Button
-          title="Send Transaction"
-          className="TransferForm__sendTransactionButton"
-          onClick={changeView('total')}
-          disabled={listenedIsEditing || !from || !value || !to || !type || hasError}
-        />
+          {!listenedIsEditing && (
+            <div className="TransferForm__gasInfo">
+              <div className="TransferForm__gasPrice">
+                <span>Gas Price</span>
+                <span>{addCommas(onit.utils.fromWei(gasPrice, 'shannon'))} Test_ston</span>
+              </div>
+              <div className="TransferForm__gasLimit">
+                <span>Gas Limit</span>
+                <span>{addCommas(onit.utils.toWei(totalGasFee) / gasPrice)}</span>
+              </div>
+            </div>
+          )}
+          <Button
+            title="Send Transaction"
+            className="TransferForm__sendTransactionButton"
+            onClick={changeView('total')}
+            disabled={listenedIsEditing || !from || !value || !to || !type || hasError}
+          />
+        </div>
+        
       </div>
     )
   }

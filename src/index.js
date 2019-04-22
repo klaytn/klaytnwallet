@@ -7,13 +7,14 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 
 import App from './App'
+import WalletCreation1 from 'components/WalletCreation1'
 import WalletCreation2 from 'components/WalletCreation2'
 import WalletAccess2 from 'components/WalletAccess2'
 import WalletTransfer2 from 'components/WalletTransfer2'
 import KlayFaucet from 'components/KlayFaucet'
 import Landing from 'components/Landing'
 import MyWallet from 'components/MyWallet'
-
+import { closeBrowser } from 'utils/ui'
 import './index.scss'
 
 import * as tokenActions from 'actions/token'
@@ -24,6 +25,7 @@ history.listen(() => {
   if (store.getState().token.isTokenAddMode) {
     store.dispatch(tokenActions.toggleTokenAddMode())
   }
+  window.removeEventListener('beforeunload', closeBrowser ,false)
 })
 
 export const renderRoutes = (rootComponent) => (
@@ -31,12 +33,13 @@ export const renderRoutes = (rootComponent) => (
     <Router history={history}>
       <Route path="/" component={rootComponent}>
         <IndexRoute component={Landing} />
-        <Route path="/create" component={WalletCreation2} />
+        <Route path="/create" component={WalletCreation1} />
+        <Route path="/create2" component={WalletCreation2} />
         <Route path="/access" component={WalletAccess2} />
         <Route path="/access/:id" component={MyWallet} />
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
-        <Route path="/faucet" component={KlayFaucet} />
+        {/* <Route path="/faucet" component={KlayFaucet} /> */}
         <Route path="/faucet/:address" component={KlayFaucet} />
       </Route>
     </Router>

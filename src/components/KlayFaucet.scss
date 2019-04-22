@@ -3,17 +3,33 @@
 @import "mixins.scss";
 
 .KlayFaucet {
-  text-align: center;
+  @include boxColor();
+  @include panelize();
+  padding: 80px 40px;
+  margin: 0 auto;
 }
 
 .KlayFaucet__content {
-  @include panelize;
-  display: inline-block;
+  
+  width: 504px;
   vertical-align: middle;
-  text-align: center;
-  padding: 64px 48px;
+  text-align: left;
   margin: 0 auto;
 }
+
+.KlayFaucet__point {
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 28px;
+  color: $White-one;
+  background-color: $main-theme;
+  height: 28px;
+  width: 118px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
 
 .KlayFaucet__img {
   width: 160px;
@@ -21,11 +37,17 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
-
+.KlayFaucet__head {
+  margin-bottom: 40px
+}
 .KlayFaucet__title {
   @include font-style('h1');
-  color: $black;
-  margin-bottom: 64px;
+  color: $Scope-blue;
+  margin-bottom: 8px;
+}
+.KlayFaucet__text {
+  @include font-style('body');
+  color: $Grey-two;
 }
 
 .KlayFaucet__address {
@@ -35,6 +57,10 @@
 }
 
 .KlayFaucet__balance {
+  &.KlayFaucet__input { 
+    margin-bottom: 40px;
+  }
+  
   .Input__input {
     @include font-family('roboto');
     @include font-style('h2');
@@ -42,5 +68,6 @@
 }
 
 .KlayFaucet__input {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  position: relative;
 }

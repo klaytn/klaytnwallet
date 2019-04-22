@@ -2,10 +2,13 @@
 @import 'fonts.scss';
 
 .StepIndicator {
-  width: 400px;
+  width: 100%;
   display: block;
-  text-align: center;
+  text-align: left;
   margin: 0 auto;
+  > div{
+    display: inline-block;
+  }
 }
 
 .StepIndicator__item {
@@ -14,6 +17,7 @@
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
+  text-align: center;
   width: 32px;
   height: 32px;
   color: $middle-blue-grey;
@@ -21,7 +25,7 @@
 
   &--active, &--checked {
     border: 0;
-    color: $white;
+    color: $White-one;
     background-color: $dark-blue-grey;
     padding: 8px;
   }
@@ -37,10 +41,15 @@
 .StepIndicator__border {
   display: inline-block;
   vertical-align: middle;
-  width: 128px;
+  width: 60px;
+  margin: 0 10px;
   border-bottom: 2px dashed $middle-blue-grey;
 
   &--checked {
     border-bottom: 2px solid $middle-blue-grey;
   }
+  &--hide {
+    display: none;
+  }
+  
 }

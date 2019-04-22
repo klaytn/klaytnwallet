@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{opacity:.7}.cls-3{fill:#cfd2d3}.cls-4{fill:#a5a8ab}.cls-5{fill:#797979}.cls-6{fill:#6a6a6a}
+        </style>
+    </defs>
+    <g id="footer_medium" transform="translate(-168 -833.309)">
+        <path id="사각형_4091" d="M0 0h24v24H0z" class="cls-1" data-name="사각형 4091" transform="translate(168 833.309)"/>
+        <g id="medium-m-2-logo-svg-vector" class="cls-2" transform="translate(172 837.969)">
+            <path id="XMLID_103_" d="M193.951.046a.1.1 0 0 0-.151.1v11.366L198.782 14a.286.286 0 0 0 .448-.28V2.775a.137.137 0 0 0-.078-.129z" class="cls-3" transform="translate(-182.939)"/>
+            <path id="XMLID_102_" d="M96.9 8.81l5.341-8.681a.187.187 0 0 1 .241-.067l5.161 2.578a.124.124 0 0 1 .05.174l-5.363 8.709z" class="cls-4" transform="translate(-91.47 -.01)"/>
+            <path id="XMLID_101_" d="M4.917 3.133c-.331-.168-.443-.045-.247.275l5.077 8.249 5.43 2.718L9.782 5.6a.245.245 0 0 0-.1-.09z" class="cls-5" transform="translate(-4.318 -2.857)"/>
+            <path id="XMLID_100_" d="M5.43 14.751a.287.287 0 0 1-.448.28L.3 12.689A.6.6 0 0 1 0 12.2V1.335a.192.192 0 0 1 .3-.185l5.063 2.533a.126.126 0 0 1 .067.106v10.962z" class="cls-6" transform="translate(0 -1.025)"/>
+        </g>
+    </g>
+</svg>

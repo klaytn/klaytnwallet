@@ -71,8 +71,8 @@
   min-width: 148px;
   display: inline-block;
   width: 172px;
-  color: $fluro-green;
-  border-left: 1px solid rgba($white, .1);
+  color: $Neon-green;
+  border-left: 1px solid rgba($White-one, .1);
   text-align: center;
   line-height: 24px;
 
@@ -82,7 +82,7 @@
     height: 8px;
     display: inline-block;
     vertical-align: middle;
-    background-color: $fluro-green;
+    background-color: $Neon-green;
     border-radius: 50%;
     margin-right: 6px;
   }
@@ -93,4 +93,20 @@
       background-color: #ff7499;
     }
   }
+}
+.remove__sessionStorage{
+ 
+  color: $Scope-blue;
+  width: 64px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  width: 64px;
+  border-radius: 2px;
+  border: solid 1px $Scope-blue;
+  background-color: $White-one;
 }

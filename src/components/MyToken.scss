@@ -7,32 +7,23 @@
     padding-left: 0;
     height: 100px;
   }
-  padding-top: 48px;
   position: relative;
   text-align: left;
   overflow-x: visible;
 }
 
 .MyToken__header {
-  position: relative;
-  margin-bottom: 46px;
-  margin-left: 48px;
-  margin-right: 48px;
-}
-
-.MyToken__title {
-  @include font-style('h2');
 }
 
 .MyToken__addTokenButton {
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 24px;
+  bottom: 24px;
 }
 
 .MyToken__list {
-  height: 553px;
+  @include boxColor();
+  height: 550px;
   overflow-y: scroll;
 }
 
@@ -42,49 +33,67 @@
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
+  background-color: $Scope-blue;
+  overflow: hidden;
 }
 
 .TokenItem {
   @include font-style('button');
   position: relative;
-  padding: 28px 42px;
+  padding: 20px 40px;
   border-bottom: 1px solid $light-blue-gray;
   border-left: 0;
-  height: 100px;
-  background-color: $white;
+  background-color: $White-one;
+  opacity: .3;
   cursor: pointer;
 
   &:last-of-type {
-    .TokenItem__decoration { height: 100%; }
+    .TokenItem__decoration { }
   }
 
   &--active {
-    color: $white;
-    border-top: 0;
-    border-bottom: 0;
     .TokenItem__arrow { display: inline-block; }
-    .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    opacity: 1;
   }
 
   &--readOnly {
     cursor: default;
-    background-color: $white;
+    background-color: $White-one;
     .TokenItem__arrow { border-left: 0; }
+    opacity: 1;
     &.TokenItem--active, &:hover {
-      .TokenItem__balance, .TokenItem__tokenName { color: $dark-blue-grey !important; }
-      color: inherit !important;
-      background-color: $white !important;
-    }
-  }
+      opacity: 1;
 
+     // .TokenItem__balance, .TokenItem__tokenName { color: $dark-blue-grey !important; }
+      // color: inherit !important;
+      // background-color: $white !important;
+    }
+
+  }
+  &.TokenItem--active:after, &:hover:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    margin-top: -4px;
+    border-left-color: $Scope-blue;
+
+  }
   &--token-color-1 {
     .TokenItem__decoration { background-color: #AD6AF0; }
     .TokenItem__arrow { border-left: 20px solid #8B55C0; }
     &.TokenItem--active, &:hover {
-      background-color: #8B55C0;
-      color: $white;
+      opacity: 1;
+      // background-color: #8B55C0;
+      // color: $white;
 
-      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+      //.TokenItem__balance, .TokenItem__tokenName { color: $white; }
     }
   }
 
@@ -92,9 +101,10 @@
     .TokenItem__decoration { background-color: #FA265F; }
     .TokenItem__arrow { border-left: 20px solid #C81E4C; }
     &.TokenItem--active, &:hover {
-      background-color: #C81E4C;
-      color:$white;
-      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+      opacity: 1;
+      // background-color: #C81E4C;
+      // color:$white;
+      //.TokenItem__balance, .TokenItem__tokenName { color: $white; }
     }
   }
 
@@ -102,9 +112,10 @@
     .TokenItem__decoration { background-color: #ffd800; }
     .TokenItem__arrow { border-left: 20px solid #ccad00; }
     &.TokenItem--active, &:hover {
-      background-color: #ccad00;
-      color:$white;
-      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+      opacity: 1;
+      // background-color: #ccad00;
+      // color:$white;
+     // .TokenItem__balance, .TokenItem__tokenName { color: $white; }
     }
   }
 
@@ -112,9 +123,10 @@
     .TokenItem__decoration { background-color: #9cce2c; }
     .TokenItem__arrow { border-left: 20px solid #7da523; }
     &.TokenItem--active, &:hover {
-      background-color: #7da523;
-      color:$white;
-      .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+      opacity: 1;
+      // background-color: #7da523;
+      // color:$white;
+      //.TokenItem__balance, .TokenItem__tokenName { color: $white; }
     }
   }
 }
@@ -139,11 +151,12 @@
 
 .TokenItem__decoration {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
+  top: 23px;
+  left: 22px;
+  width: 10px;
   background-color: #ad6af0;
-  height: 102%;
+  height: 10px;
+  border-radius: 50%
 }
 
 .TokenItem__arrow {
@@ -153,7 +166,7 @@
   height: 0px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right:10px solid $white;
+  border-right:10px solid $White-one;
   top: 50%;
   transform: translateY(-50%);
   right: 0;

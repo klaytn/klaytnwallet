@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+    <defs>
+        <style>
+            .cls-1{fill:#6ad1ba}.cls-2{fill:none;stroke:#fff}
+        </style>
+    </defs>
+    <g id="icon-check-g" transform="translate(-508 -511)">
+        <circle id="타원_1423" cx="5" cy="5" r="5" class="cls-1" data-name="타원 1423" transform="translate(508 511)"/>
+        <path id="icon_Success_Check" d="M788 331.3l2 1.8 4-3.6" class="cls-2" transform="translate(-278 184.5)"/>
+    </g>
+</svg>

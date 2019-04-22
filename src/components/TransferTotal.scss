@@ -4,81 +4,80 @@
 
 .TransferTotal {
   @include panelize;
+  @include boxColor;
   padding: 56px 64px;
   text-align: center;
   margin: 0 auto;
   position: relative;
+  .Inner__Box {
+    width: 560px;
+    margin: 0 auto;
+  }
 }
 
 .TransferTotal__title {
   @include font-style('h2');
   color: $main-theme;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 
 .TransferTotal__totalToken {
-  @include font-family('roboto');
-  @include font-style('h1');
-  color: $black;
+  @include font-style('number-big');
+  color: $Scope-blue;
   margin-bottom: 7px;
 }
 
 .TransferTotal__feeLimit {
-  @include font-style('button');
+  @include font-style('body');
   margin-bottom: 40px;
-  color: $main-theme;
+  color: $Blue-five;
 
   &--light {
-    @include font-family('roboto');
-    color: $dark-blue-grey;
+    font-weight: bold;
   }
 }
 
 .TransferTotal__item {
   overflow: hidden;
-  border-bottom: 1px solid $light-blue-gray;
-  padding: 20px 0;
+  border-bottom: 2px dotted #d9dcea;
+  padding: 16px 0;
 
   &:first-of-type {
-    border-top: 1px solid $middle-blue-grey;
+    border-top: 1px solid rgba(0, 0, 0, .2);
   }
 
   &:last-of-type {
-    border-bottom: 1px solid $middle-blue-grey;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
   }
 }
-
 .TransferTotal__itemTitle {
   @include font-style('label');
-  color: $main-theme;
+  color: $Blue-three;
   float: left;
 }
 
 .TransferTotal__itemValue {
   @include font-style('body');
-  color: $dark-blue-grey;
+  color: $Blue-five;
   float: right;
 }
 
 .TransferTotal__message {
-  @include font-style('h2');
-  color: $dolphin;
+  @include font-style('h3');
+  color: $Scope-blue;
   margin-top: 40px;
-  margin-bottom: 34px;
+  margin-bottom: 24px;
 }
 
 .TransferTotalItem__yesButton {
-  padding-left: 58px;
-  padding-right: 58px;
+  width: 152px;
+  padding: 0 10px;
   margin-left: 8px;
 }
 
 .TransferTotalItem__noButton {
-  padding-left: 58px;
-  padding-right: 58px;
-  margin-right: 8px;
-  background-color: $dark-blue-grey;
-  box-shadow: rgba($dark-blue-grey, .25);
+  width: 152px;
+  padding: 0 10px;
 }
 
 .TransferTotal__valueDecimal {
@@ -86,8 +85,9 @@
 }
 
 .TransferTotal__tokenSymbol {
-  @include font-style('h2');
-  color: $warm-grey;
+  @include font-style('body');
+  color: $Scope-blue;
+  vertical-align: middle;
 }
 
 .TransferTotal__decoration {

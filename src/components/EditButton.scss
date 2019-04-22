@@ -3,10 +3,10 @@
 
 .EditButton {
   @include font-style('label');
-  background-color: $white;
+  background-color: $White-one;
   color: $dark-blue-grey;
-  width: 60px;
-  padding: 8px;
+  width: 64px;
+  height: 30px;
   border: 1px solid $solitude;
 
   span {

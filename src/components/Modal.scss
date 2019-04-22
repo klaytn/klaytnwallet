@@ -1,65 +1,115 @@
 @import "mixins.scss";
 @import "colors.scss";
+@import "fonts.scss";
 
 $modal-width: 640px;
 
 .Modal {
-  width: $modal-width;
-  height: 580px;
+  width: 100%;
   position: absolute;
-  top: 78px;
-  left: 50%;
-  margin-left: -320px;
-  font-family: 'SFUIText';
+  bottom: 0;
+  left: 0;
   font-size: 14px;
   line-height: 20px;
-  background-color: $white;
-  border: 1px solid #e9ebf4;
-  box-shadow: 0 10px 20px 0 rgba(172, 178, 206, 0.25);
+  padding-left: 240px;
+  
   .languageChange__button {
-    position: absolute;
-    top: 42px;
-    right: 40px;
+    @include font-style('button-small');
+    min-width: 64px;
+    width: 64px;
+    background: #cacbd8;
+    box-shadow: 0 4px 8px 0 rgba(202, 203, 216, 0.25);
   }
-}
-
-.Modal__header {
-  font-weight: bold;
-  color: $light-red;
-  font-size: 18px;
-  margin: 42px 40px 22px 40px;
-}
-
-.Modal__message {
-  color: $dark-grey;
-  margin: 0px 40px 42px;
-
-  .Modal__line__text {
-    font-size: 14px;
-    line-height: 1.43;
-    color: #7a7b83;
-    margin-bottom: 13px;
-    .Modal__text__bold{
-      font-weight: bold;
-      color: #2c2c2c;
-    }
+  .languageChange__button +.languageChange__button {
+    margin-left: 5px;
   }
-  .Model__danger__box{
-    position: relative;
-    background: $light-blue-gray;
-    padding: 14px 24px 14px 30px;
-    margin-bottom: 14px;
-    .Modal__line__text:last-child{margin-bottom:0px;}
+  .languageChange__button.on {
+    background-color: #6AD1BA;
+    box-shadow: 0 4px 8px 0 rgba(106, 209, 186, 0.25);
   }
-  .Model__danger__box:after{
+  &:after {
     content: '';
     display: block;
     position: absolute;
     top: 0;
     left: 0;
-    width: 6px;
+    width: 100%;
     height: 100%;
-    background: $light-red;
+  }
+  .Modal__inner {
+    width: 670px;
+    margin: 0 auto;
+  }
+  .languageChange__button_list {
+    padding-top: 45px;
+    width: 670px;
+    margin: 0 auto;
+  }
+}
+.klay__alertPopup__button {
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  font-size: 13px;
+  font-weight: bold;
+  background: $Shade-blue-one;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  border: none;
+  padding: 0 0 0 240px;
+  color: $White-one;
+  cursor: pointer;
+  .button__link__icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: -1px 0 0  8px;
+    vertical-align: middle;
+  }
+}
+.klay__alertPopup {
+  height: 580px;
+  background-color: $Shade-blue-one;
+  position: absolute;
+  bottom: -580px;
+  left: 0px;
+  width: 100%;
+  border: none;
+  padding: 0 0 0 240px;
+  z-index: 2;
+  transition: bottom 500ms;
+}
+.klay__alertPopup.open {
+  bottom: 0px;
+} 
+.Modal__header {
+  @include font-style('h1');
+  color: $White-one;
+  margin: 24px 0 16px;
+}
+
+.Modal__message {
+  color: $dark-grey;
+  margin: 0px 0 42px;
+
+  .Modal__line__text {
+    font-size: 14px;
+    line-height: 1.43;
+    color: $Grey-four;
+    margin-bottom: 8px;
+    .Modal__text__bold{
+      font-weight: bold;
+      color: $White-one;
+    }
+  }
+  .Model__danger__box{
+    position: relative;
+    padding: 12px 0px 12px 0px;
+    margin-bottom: 14px;
+    border-top: 2px dotted $White-one;
+    border-bottom: 2px dotted $White-one;
+    .Modal__line__text:last-child{margin-bottom:0px;}
   }
 
 }
@@ -80,7 +130,7 @@ $modal-width: 640px;
   width: 18px;
   height: 18px;
   cursor: pointer;
-  background-color: $white;
+  background-color: $White-one;
   border: 1px solid #c4c4c4;
   margin: 16px 6px 16px 0px;
   &--checked {
@@ -119,4 +169,30 @@ $modal-width: 640px;
   line-height: 32px; 
   font-size: 12px;
   text-align: center;
+}
+.close__button {
+  position: absolute;
+  top: 40px;
+  right: 28px;
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  @include background-image('/static/images/btn-close-popup.svg');
+}
+.popup__dim {
+
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .4);
+  z-index: 1;
+  &.open {
+    display: block;
+  }
 }

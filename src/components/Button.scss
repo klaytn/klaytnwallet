@@ -5,18 +5,22 @@
   @include font-style('body');
   display: inline-block;
   border: 0;
-  background-color: $main-point;
-  color: $white;
+  background-color: $Blue-green-one;
+  color: $White-one;
   cursor: pointer;
-  padding: 16px 40px;
+  padding: 0px 20px;
+  min-width: 140px;
+  height: 48px;
+  line-height: 48px;
   text-align: center;
   outline: 0;
-  box-shadow: 0 4px 8px 0 rgba($main-point, .25);
+  box-shadow: 0 4px 8px 0 rgba($Blue-green-one, .25);
+  transition: background 300ms;
 
   &:disabled {
     box-shadow: unset;
     cursor: not-allowed;
-    background-color: $middle-blue-grey !important;
+    background-color: $Grey-four !important;
   }
 
   &:hover {
@@ -29,15 +33,15 @@
   }
 
   &--gray {
-    background-color: $dark-blue-grey;
-    box-shadow: 0 4px 8px 0 rgba($dark-blue-grey, 0.25);
+    background-color: $Blue-three;
+    box-shadow: 0 4px 8px 0 rgba($Blue-three, 0.25);
 
     &:hover {
-      background-color: $manatee;
+      background-color: $Blue-two;
     }
 
     &:active {
-      background-color: $nevada;
+      background-color: $Scope-blue;
       box-shadow: unset;
     }
   }
@@ -55,4 +59,24 @@
       box-shadow: unset;
     }
   }
+
+  &--size1,
+  &--size2,
+  &--size3,
+  &--size4 {
+    padding: 0 10px;
+  }
+  &--size1 {
+    width: 150px;
+  }
+  &--size2 {
+    width: 160px;
+  }
+  &--size3 {
+    width: 170px;
+  }
+  &--size4 {
+    width: 180px;
+  }
 }
+.Button + .Button { margin-left: 16px; }

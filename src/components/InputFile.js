@@ -40,7 +40,7 @@ class InputFile extends Component<Props> {
           <File
             className="InputFile__uploadButton"
             onChange={onChange}
-            title="Upload"
+            title="UPLOAD"
             icon="icon-upload"
           />
         </div>

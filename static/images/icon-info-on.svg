@@ -1,14 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
     <defs>
         <style>
-            .cls-1{fill:#fff;opacity:0}.cls-2{fill:none;stroke:#4E5379;stroke-miterlimit:10;stroke-width:1.5px}
+            .cls-1{fill:none;opacity:.5}.cls-2{fill:#d6ac71}.cls-3{fill:#f8d881}.cls-4{fill:#fff}
         </style>
     </defs>
-    <g id="icon_Info_On" transform="translate(-28 -242)">
-        <path id="size" d="M0 0h16v16H0z" class="cls-1" transform="translate(28 242)"/>
-        <g id="wallet" transform="translate(28.2 244.3)">
-            <path id="패스_31" d="M13.8 7.9v3.6c0 .72-.4 1.2-.9 1.2H1.7c-.5 0-.9-.48-.9-1.2V1.9c0-.72.4-1.2.9-1.2h11.1c.5 0 .9.48.9 1.2v3.6" class="cls-2" data-name="패스 31" transform="translate(0 -1)"/>
-            <path id="패스_32" d="M14.8 7.2h-4a.945.945 0 0 1-1-1v-1a.945.945 0 0 1 1-1h4z" class="cls-2" data-name="패스 32"/>
-        </g>
+    <g id="icon-menu-view-on" transform="translate(-46 -242)">
+        <path id="사각형_3996" d="M0 0h30v30H0z" class="cls-1" data-name="사각형 3996" transform="translate(46 242)"/>
+        <path id="사각형_4239" d="M2 0h14a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" class="cls-2" data-name="사각형 4239" transform="translate(50 247)"/>
+        <path id="사각형_4240" d="M2 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2z" class="cls-3" data-name="사각형 4240" transform="translate(63 255)"/>
+        <circle id="타원_1430" cx="2" cy="2" r="2" class="cls-4" data-name="타원 1430" transform="translate(63 255)"/>
     </g>
 </svg>

@@ -4,20 +4,91 @@
 .TabItem {
   @include font-style('body');
   display: block;
-  padding: 22px 28px;
+  position: relative;
+  padding: 33px 0px 33px 46px;
   text-align: left;
-  color: $warm-grey;
-
-  &:hover, &--active {
-    background-color: $light-blue-gray;
-    color: $main-theme;
+  color: $Blue-four;
+  transition: all 200ms ease;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 26px;
+    margin-top: -2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #5a5e79; 
   }
+  &:hover, &--active, &.menuOpen {
+    color: $White-one;
+    &:after {
+      background-color: $White-one; 
+    }
+  }
+
 }
 
 .TabItem__icon {
   display: inline-block;
   vertical-align: middle;
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
   margin-right: 8px;
+}
+
+.SidebarNav__dropDownMenu {
+  padding-left: 9.4rem;
+  
+  li {
+    margin-top: 1.8rem;
+  }
+
+  li:first-child {
+    margin-top: -1rem;
+  }
+
+}
+.dropDownMenu { display: none; }
+.menuOpen { display: block; }
+.SidebarNav__dropDownLink {
+  display: inline-block;
+  height: 100%;
+  color: $Blue-five;
+  position: relative;
+  padding-left: 18px;
+  padding-right: 15px;
+  @include font-style('body');
+
+
+  
+  &::before {
+    content: '';
+    position: absolute;
+    border-left: 1px solid #73768d;
+    border-bottom: 1px solid #73768d;
+    width: .8rem;
+    height: .8rem;
+    left: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-image: url('/static/images/icon-link-on.svg');
+    width: 10px;
+    height: 10px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .5;
+  }
+  &:hover {
+    text-decoration: underline;
+    color: $White-one;
+    &::after {
+      opacity: 1;
+    }
+  }
 }

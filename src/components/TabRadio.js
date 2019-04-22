@@ -30,6 +30,7 @@ class TabRadio extends Component<Props> {
             value={value}
             onClick={onClick(value)}
             active={selectedValue == value}
+            key={title}
           />
         ))}
       </div>

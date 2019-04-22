@@ -47,6 +47,7 @@ class Header extends Component<Props> {
     const { network } = this.state
     return (
       <div className="Header">
+        <button className="remove__sessionStorage">Remove sessionStorage</button>
         <div className="Header__LogoWithLink">
           <Link to="/" className="Header__logo" />
           <a

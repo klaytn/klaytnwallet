@@ -3,29 +3,31 @@
 
 .WalletAccess2 {
   @include panelize;
-  width: 100%;
+  @include boxColor;
   text-align: center;
   padding: 54px;
+  margin:0 auto;
 }
 
 .WalletAccess2__title {
   @include font-style('h1');
-  color: $black;
-  margin-bottom: 12px;
+  color: $Scope-blue;
+  margin-bottom: 8px;
 }
 
 .WalletAccess2__description {
   @include font-style('body');
-  color: $warm-grey;
-  margin-bottom: 48px;
+  color: $Blue-five;
+  margin-bottom: 40px;
   line-height: 20px;
 }
 
 .WalletAccess2__inner {
-  width: 496px;
+  width: 504px;
   margin: 0 auto;
+  text-align: left;
 }
 
 .WalletAcess2__tabRadio {
-  margin-bottom: 49px;
+  margin-bottom: 40px;
 }

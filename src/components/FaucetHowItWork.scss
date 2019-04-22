@@ -2,22 +2,22 @@
 @import "colors.scss";
 
 .FaucetHowItWork {
-  padding-top: 100px;
-  width: 300px;
-  margin-left: 48px;
-  display: inline-block;
+  padding-top: 80px;
   vertical-align: middle;
   text-align: left;
 }
 
 .FaucetHowItWork__howItWorkTitle {
-  @include font-style('h3');
-  color: $dolphin;
-  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.55;
+  text-align: left;
+  color: $Scope-blue;
+  margin-bottom: 8px;
 }
 
 .FaucetHowItWork__howItWorkDescription {
-  @include font-style('body');
+  @include font-style('text-small');
   color: $dark-blue-grey;
   line-height: 20px;
 }
@@ -27,12 +27,11 @@
     visibility: visible;
   }
   visibility: hidden;
-  margin-top: 96px;
 }
 
 .FaucetHowItWork__faucetableBlockTitle {
   @include font-style('body');
-  color: $dolphin;
+  color: $Blue-five;
   margin-bottom: 10px;
 }
 

@@ -4,12 +4,12 @@
 .InputFile {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid $middle-blue-grey;
   padding: 0;
   transition: border-width 100ms linear, border-color 300ms linear;
   position: relative;
   outline: 0;
   background-color: transparent;
+  border-bottom: 1px solid $middle-blue-grey;
 }
 
 .InputFile__input {
@@ -18,17 +18,17 @@
   color: $dark-blue-grey;
 
   @include font-style('body');
-  color: $black;
+  color: $Scope-blue;
   background-color: transparent;
   outline: 0;
   border: 0;
-  width: 95%;
+  width: 79%;
   height: 100%;
   display: block;
   padding-bottom: 12px;
 
   &::placeholder {
-    color: $middle-blue-grey;
+    color: $Grey-four;
   }
 
   &:-webkit-autofill {
@@ -48,17 +48,16 @@
 .InputFile__uploadButton {
   @include font-style('label');
   color: $dark-blue-grey;
-  width: 100px;
-  height: 40px;
+  width: 76px;
+  height: 30px;
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   right: 0;
   outline: none;
   cursor: pointer;
   padding: 0;
-  border: 1px solid $middle-blue-grey;
-  background-color: $light-blue-gray;
-  border-bottom: 0;
+  border: 1px solid #f0f2fc;
+  background-color: $White-one;
 }
 
 .InputFile__icon {

@@ -40,40 +40,43 @@ class TransferTotal extends Component<Props> {
 
     return (
       <div className="TransferTotal">
-        <header className="TransferTotal__title">Total</header>
-        <p className="TransferTotal__totalToken">
-          {integerPoints}{!!decimalPoints && '.'}
-          {decimalPoints && <span className="TransferTotal__valueDecimal">{decimalPoints.slice(0, 6)}</span>}&nbsp;
-          <span className="TransferTotal__tokenSymbol">{tokenSymbol}</span>
-        </p>
-        <p className="TransferTotal__feeLimit">
-          (Transaction Fee Limit&nbsp;&nbsp;
-            <span className={cx('TransferTotal__feeLimit', 'TransferTotal__feeLimit--light')}>
-              {new BN(totalGasFee).toString()} KLAY
-            </span>
-          )
-        </p>
-        <TransferTotalItem title="From" value={from} />
-        <TransferTotalItem title="To" value={to} />
-        <TransferTotalItem title="Amount" value={`${value} ${tokenSymbol}`} />
-        <TransferTotalItem title="Gas Price" value="25 ston" />
-        <TransferTotalItem title="Gas Limit" value={gas} />
-        <p className="TransferTotal__message">
-          Are you sure you want to do this?
-        </p>
-        <Button
-          gray
-          title="No, I want to back"
-          className="TransferTotalItem__noButton"
-          onClick={changeView('form')}
-        />
-        <Button
-          title={`Yes, I\'m sure`}
-          className="TransferTotalItem__yesButton"
-          onClick={transfer}
-        />
-        <div className="TransferTotal__decoration TransferTotal__decoration--left" />
-        <div className="TransferTotal__decoration TransferTotal__decoration--right" />
+        <div className="Inner__Box">
+          <header className="TransferTotal__title">Total</header>
+          <p className="TransferTotal__totalToken">
+            {integerPoints}{!!decimalPoints && '.'}
+            {decimalPoints && <span className="TransferTotal__valueDecimal">{decimalPoints.slice(0, 6)}</span>}&nbsp;
+            <span className="TransferTotal__tokenSymbol">{tokenSymbol}</span>
+          </p>
+          <p className="TransferTotal__feeLimit">
+            (Transaction Fee Limit&nbsp;&nbsp;
+              <span className={cx('TransferTotal__feeLimit', 'TransferTotal__feeLimit--light')}>
+                {new BN(totalGasFee).toString()}
+              </span>
+              KLAY
+            )
+          </p>
+          <TransferTotalItem title="From" value={from} />
+          <TransferTotalItem title="To" value={to} />
+          <TransferTotalItem title="Amount" value={`${value} ${tokenSymbol}`} />
+          <TransferTotalItem title="Gas Price" value="25 ston" />
+          <TransferTotalItem title="Gas Limit" value={gas} />
+          <p className="TransferTotal__message">
+            Are you sure you want to do this?
+          </p>
+          <Button
+            gray
+            title="No, I want to back"
+            className="TransferTotalItem__noButton"
+            onClick={changeView('form')}
+          />
+          <Button
+            title={`Yes, I\'m sure`}
+            className="TransferTotalItem__yesButton"
+            onClick={transfer}
+          />
+          <div className="TransferTotal__decoration TransferTotal__decoration--left" />
+          <div className="TransferTotal__decoration TransferTotal__decoration--right" />
+          </div>
       </div>
     )
   }

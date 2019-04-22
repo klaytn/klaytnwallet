@@ -3,18 +3,21 @@
 @import "mixins.scss";
 
 .WalletCreationStepPlate {
-  width: 435px;
-  text-align: center;
+  width: 100%;
+  text-align: left;
   margin: 0 auto;
 }
 
 .WalletCreationStepPlate__stepName {
-  @include font-style('button');
+  font-size: 12px;
   display: inline-block;
-  border-radius: 30px;
-  color: $white;
+  border-radius: 28px;
+  color: $White-one;
   background-color: $main-theme;
-  padding: 6px 14px;
+  height: 28px;
+  width: 78px;
+  line-height: 29px;
+  text-align: center;
   margin-bottom: 16px;
 }
 
@@ -22,18 +25,27 @@
   @include font-style('h1');
   width: 100%;
   margin: 0 auto;
-  color: $black;
-  line-height: 36px;
-  margin-bottom: 12px;
+  color: $Scope-blue;
+  margin-bottom: 8px;
 }
 
 .WalletCreationStepPlate__description {
   @include font-style('body');
-  color: $warm-grey;
+  color: $Blue-five;
   line-height: 20px;
-  margin-bottom: 72px;
+  margin-bottom: 40px;
 }
 
 .WalletCreationStepPlate__nextButtons {
   margin-top: 40px;
+}
+
+.WalletCreationStepPlate__skip {
+  padding-top:10px;
+  button {
+    background: none;
+    border: none;
+    color: $Grey-four;
+    padding: 0px;
+  }
 }

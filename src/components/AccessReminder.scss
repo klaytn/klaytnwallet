@@ -3,15 +3,14 @@
 .AccessReminder {
   width: 496px;
   text-align: left;
-  margin-bottom: 40px;
-  margin-top: 20px;
+  margin: 40px 0;
 }
 
 .AccessReminder__checkbox {
   background-image: url(/static/images/checkbox-default.svg);
   width: 20px;
   height: 20px;
-  margin-right: 8px;
+  margin: 2px 8px 0 0;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;
@@ -25,8 +24,8 @@
   display: inline-block;
   font-size: 11px;
   line-height: 16px;
-  color: $token-color-2-main;
-
+  color: $Blue-five;
+  cursor: pointer;
   span {
     font-weight: bold;
   }

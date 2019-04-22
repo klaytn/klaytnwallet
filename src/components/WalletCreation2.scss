@@ -1,13 +1,207 @@
 @import "mixins.scss";
 @import "colors.scss";
+@import "fonts.scss";
 
 .WalletCreation2 {
   @include panelize;
+  @include boxColor;
   margin: 0 auto;
   width: 100%;
-  max-width: 992px;
+  max-width: 984px;
 }
 
 .WalletCreation2__stepIndicator {
-  margin-bottom: 88px;
+  margin-bottom: 80px;
+}
+
+.HRAMadeBox{  
+  position: relative;
+  .Input__error {
+    &::before {
+      content: "";
+      background-image: url(/static/images/icon-warning.svg);
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      float: left;
+      margin-right: 4px;
+      margin-top: 1px;
+    }
+    &--end {
+      color: $Blue-green-one;
+    }
+    &--end::before {
+      background-image: url(/static/images/icon-check-end.svg);
+      width: 10px;
+      height: 10px;
+      margin-top: 2px;
+    }
+  }
+  
+}
+
+.account__creation {
+  display: none;
+  position: relative;
+  margin: 40px 0;
+  padding-right: 72px;
+  &.show {
+    display: block;
+  }
+  .account__creation__title {
+    @include font-style('button');
+    color: $Scope-blue;
+    margin-bottom: 8px;
+  }
+  .account__creation__text {
+    @include font-style('body');
+    color: $Blue-five;
+    
+
+  }
+  .account__creation__link {
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+    .account__creation__button {
+      @include font-style('button-small');
+      color: $Blue-three;
+      width: 64px;
+      height: 30px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      outline: none;
+      cursor: pointer;
+      padding: 0;
+      width: 64px;
+      border-radius: 2px;
+      border: solid 1px #f0f2fc;
+      background-color: $White-one;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    
+      &:active {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      &:after{
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 10px;
+        height: 10px;
+        margin-left: 10px;
+        background-image: url(/static/images/icon-link.svg);
+      }
+    }
+  }
+}
+.all__loding{ 
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  padding-left: 240px;
+  z-index: 100;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  &.show {
+    display: block;
+  }
+  .left__dim {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    background: rgba(0, 0, 0,.5);
+  }
+  .right__dim {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255,.5);
+  }
+}
+.transaction__alert__popup {
+  @include popupStyle();
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 430px;
+  height: 300px;
+  padding: 73px 40px;
+  margin: -150px 0 0 -195px;
+  background: $White-one;
+  &.disNone {
+    display: none;
+  }
+  &.show{
+    display: block;
+  }
+  .transaction__alert__title {
+    @include font-style('h3');
+    display: block;
+    color: $Scope-blue;
+    margin-bottom: 12px;
+  }
+  .transaction__alert__text {
+    @include font-style('body');
+    color: $Blue-five;
+  }
+  .popup__bottom__box{
+    margin-top: 38px;
+    text-align: center;
+  }
+  .wait__text { 
+    display: block;
+    text-align: center;
+    @include font-style('caption');
+    color: $Blue-green-one;
+    margin-top: 6px;
+  }
+
+}
+
+.page__load {
+  display: inline-block;
+  width: 44px;
+  animation: loading 4s linear infinite;
+  .page__loading__inner {
+    stroke: {
+      dashoffset: 0;
+      dasharray: 100;
+      width: 4;
+      miterlimit: 10;
+      linecap: round;
+    }
+    animation: loading-circle 7s linear infinite;
+    stroke: #6AD1BA;
+    fill: transparent;
+  }
+}
+@keyframes loading {
+  0% { 
+    transform: rotate(0); 
+  }
+  100% { 
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-circle {
+  0% { 
+    stroke-dashoffset: 0
+  }
+  100% { 
+    stroke-dashoffset: -600;
+  }
 }
