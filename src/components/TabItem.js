@@ -87,7 +87,7 @@ class TabItem extends Component<Props> {
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}
                   onMouseLeave={this.innerToggleHover(false)}
-                  className="SidebarNav__dropDownLink"
+                  className="SidebarNav__dropDownLink pageLink"
                   >{name}</a>
 
                  )

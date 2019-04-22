@@ -73,7 +73,7 @@
     left: 0;
   }
 
-  &::after {
+  &.pageLink::after {
     content: '';
     position: absolute;
     background-image: url('/static/images/icon-link-on.svg');
