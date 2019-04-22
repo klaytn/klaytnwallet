@@ -12,7 +12,8 @@ require('dotenv').config({ path: './config/qa.env' })
 const logger = require('./src/utils/logger')
 const config = require('./webpack.prod.config.js')
 
-const port = process.env.PORT || 9000
+const port = process.env.PORT || 9000;
+const instanceId = process.env.NODE_APP_INSTANCE || 0;
 const instanceUuid = uuid.v4();
 const app = express()
 
