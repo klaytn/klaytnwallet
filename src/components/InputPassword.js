@@ -43,6 +43,7 @@ class InputPassword extends Component<Props> {
       disabled,
       err,
       activeAlways,
+      onKeyUp,
     } = this.props
 
     const { active, showPassword } = this.state
@@ -79,6 +80,7 @@ class InputPassword extends Component<Props> {
             onKeyPress={onKeyPress}
             placeholder={placeholder}
             disabled={disabled}
+            onKeyUp={onKeyUp}
             className={cx('InputPassword__input', { 'InputPassword--err': err })}
           />
           <button

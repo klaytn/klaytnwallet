@@ -26,6 +26,15 @@ class WalletCreationStep3 extends Component<Props> {
       isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
     })
   }
+  enterKeySelcet = (e)=>{
+    const { handleStepMove } = this.props
+    const { isValidPassword } = this.state
+    const handleStepMoveSet = handleStepMove(4)
+    if(e.keyCode ===13 && isValidPassword){
+      handleStepMoveSet()
+      
+    }
+  }
 
   render() {
     const { password, isValidPassword } = this.state
@@ -48,6 +57,7 @@ class WalletCreationStep3 extends Component<Props> {
             placeholder="Enter the password"
             label="Password"
             onChange={this.handleChange}
+            onKeyUp={this.enterKeySelcet}
           />
         )}
         reminder={() => (
