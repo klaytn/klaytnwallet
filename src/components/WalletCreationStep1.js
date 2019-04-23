@@ -14,30 +14,27 @@ type Props = {
 
 class WalletCreationStep1 extends Component<Props> {
 
-
   constructor() {
     super()
     this.state = {
       checkEnd: false,
       humanReadableData : '',
       HRAid: '',
-      isValidName: null,
+      isValidName: false,
       isChecked: false,
       checkValidAlert: false,
       klayWallet: onit.klay.accounts.wallet[0],
       isHRAMade: false,
       isLoding: false,
       pageOutAction: false,
+      isDuplicateName: false,
     }
   }
   dataChange = (e)=>{
-    this.setState({ checkEnd: false })
-    this.setState({ HRAid: e.target.value })
-    
-    // 데이터 체크
     this.setState({
+      checkEnd: false,
       HRAid: e.target.value,
-      isValidName: e.target.value.length === 0 ? null : checkValidName(e.target.value),
+      isValidName: e.target.value.length === 0 ? false : checkValidName(e.target.value),
     })
   }
 
@@ -59,10 +56,13 @@ class WalletCreationStep1 extends Component<Props> {
     }
     
   }
-
+  resetAccount = () => {
+    const { isDuplicateName,isLoding } = this.state
+    this.setState({ HRAid: '', isDuplicateName: false, isLoding: false, isValidName: false })
+  }
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
-    const { klayWallet, HRAid, isLoding } = this.state
+    const { klayWallet, HRAid, isLoding, isDuplicateName } = this.state
     let setHandleStepMove = handleStepMove(2)
     this.setState({ isLoding: true })
     //기본 보낼 객체 생성
@@ -71,7 +71,7 @@ class WalletCreationStep1 extends Component<Props> {
       from: klayWallet.address, // 보내는 주소 
       to: HRAid, //humanReadable 생성할 이름 
       humanReadable: true,// humanReadable로 생성할지 여부
-      publicKey: onit.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //퍼블릭키
+      publicKey: onit.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
       gas: '300000', // 가스양 ( 계정 생성시에 드는 비용 )
       value: 1,// value 가 없으면 계정 생성이 실패함
     }
@@ -100,13 +100,14 @@ class WalletCreationStep1 extends Component<Props> {
       .on('error', (error) => {
         console.log(error)
         //기존 페이지 유지 및 alert 팝업 호출 및 input value 삭제
+        this.setState({ isDuplicateName: true })
         
       })
   }
   
   render() {
     const { handleStepMove, dataChange } = this.props
-    const { checkEnd, HRAid, isChecked, HRACheck, isLoding, checkValidAlert, isValidName, HRACreate, inputWidth,pageOutAction } = this.state
+    const { checkEnd, HRAid, isChecked, isLoding, checkValidAlert, isValidName, pageOutAction, isDuplicateName } = this.state
  
     return (
       <WalletCreationStepPlate
@@ -152,9 +153,9 @@ class WalletCreationStep1 extends Component<Props> {
             <div className="right__dim">
 
               <div className={cx('transaction__alert__popup',{'show':isLoding && pageOutAction})}>
-                <span className="transaction__alert__title">Sending Transaction</span>
+                <span className="transaction__alert__title">Sending transaction to create your custom account</span>
                 <p className="transaction__alert__text">
-                Please wait while the document is being prepared for reading.
+                  Please wait while we collect the transaction results.
                 </p>
                 <div className="popup__bottom__box">
                   <svg className="page__load" id="loading" x="0px" y="0px" viewBox="0 0 44 44">
@@ -163,7 +164,8 @@ class WalletCreationStep1 extends Component<Props> {
                   <span className="wait__text">Please wait…</span>
                 </div>
               </div>
-              <div className={cx('transaction__alert__popup disNone',{'show': !isLoding && pageOutAction})}>
+              
+              {/* <div className={cx('transaction__alert__popup disNone',{'show': !isLoding && pageOutAction})}>
                 <span className="transaction__alert__title">Leave Page?</span>
                 <p className="transaction__alert__text">
                 You haven’t finished creating your Klaytn account yet. <br />Do you want to leave without finishing? 
@@ -172,9 +174,18 @@ class WalletCreationStep1 extends Component<Props> {
                   <button className="Button">Leave</button>
                   <button className="Button">Stay</button>
                 </div>
-              </div>
+              </div> */}
+
+              <div className={cx('transaction__alert__popup disNone',{'show': isDuplicateName})}>
+                <span className="transaction__alert__title">Uh-oh, this address is already taken</span>
+                <p className="transaction__alert__text">
+                  We are sorry, the address you requested for has just been taken by someone else. Please try a different address.
+                </p>
+                <div className="popup__bottom__box">
+                  <button className="Button" onClick={this.resetAccount}>Go Back</button>
+                </div>
+              </div>             
             </div>
-            
           </div>
         )}
         nextStepButtons={[{ title: 'Next Step', onClick: this.HRACreate, disabled : !checkEnd }]}

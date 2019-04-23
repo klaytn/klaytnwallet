@@ -56,7 +56,7 @@ class PageAlertPopup extends Component<Props> {
 
 
     return (
-      <div className className={cx('createMainPopup', {
+      <div className={cx('createMainPopup', {
         'show': !this.wallet || balance == '0'
       })}>
         {!this.wallet && (
