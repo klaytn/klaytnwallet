@@ -3,7 +3,6 @@ import cx from 'classnames'
 
 import {
     has5and13Characters,
-    hasNoSpecialCharacters,
     onlyAlphabetAndNumbers,
     hasNoFirstNumber
 
@@ -34,12 +33,6 @@ const AccountNameTooltip = ({ value = '' }) => {
       })}
       >
         First character must be an alphabet (not a number)
-      </p>
-      <p className={cx('PasswordTooltip__item', {
-        'PasswordTooltip__item--active': hasNoSpecialCharacters(value),
-      })}
-      >
-        No special characters allowed
       </p>
     </div>
   )
