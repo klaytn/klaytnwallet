@@ -6,7 +6,6 @@ import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { pipe } from 'utils/Functional'
 import { download } from 'utils/misc'
 import { onit } from 'klaytn/onit'
-import { closeBrowser } from 'utils/ui'
 type Props = {
 
 }
@@ -18,7 +17,6 @@ class WalletCreationStep4 extends Component<Props> {
     this.state = {
       privateKey,
     }
-    window.addEventListener("beforeunload", closeBrowser);
   }
 
 

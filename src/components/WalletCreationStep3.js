@@ -3,7 +3,6 @@ import React, { Component, Fragment } from 'react'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import InputPassword from 'components/InputPassword'
 import WalletCreationReminder from 'components/WalletCreationReminder'
-import { closeBrowser } from 'utils/ui'
 import { checkValidPassword } from 'utils/crypto'
 
 class WalletCreationStep3 extends Component<Props> {
@@ -17,7 +16,7 @@ class WalletCreationStep3 extends Component<Props> {
       password: '',
       isValidPassword: null,
     }
-    window.addEventListener("beforeunload", closeBrowser);
+    
   }
 
   handleChange = e => {

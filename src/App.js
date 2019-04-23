@@ -15,7 +15,6 @@ type Props = {
 class App extends Component<Props> {
   state = {
     isCheckedSessionStorage: false,
-    isMainPage: browserHistory.getCurrentLocation().pathname === '/',
   }
 
   
@@ -24,11 +23,11 @@ class App extends Component<Props> {
       onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
     }
     this.setState({ isCheckedSessionStorage: true })
-
+    console.log('app componentDidMount')
   }
 
   render() {
-    const { isCheckedSessionStorage, isMainPage } = this.state
+    const { isCheckedSessionStorage } = this.state
     const { children } = this.props
     return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,

@@ -6,7 +6,7 @@ import { download } from 'utils/misc'
 import { onit } from 'klaytn/onit'
 import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-import { closeBrowser } from 'utils/ui'
+
 type Props = {
 
 }
@@ -30,7 +30,6 @@ class WalletCreationStep2 extends Component<Props> {
     this.state = {
       receiptWallet,
     }
-    window.addEventListener("beforeunload", closeBrowser);
   }
 
   render() {

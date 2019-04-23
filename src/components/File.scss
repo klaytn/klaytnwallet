@@ -27,7 +27,7 @@
   // cursor: pointer;
 }
 
-.File__button {
+.Button.File__button {
   @include font-style('button-small');
   color: $Blue-three;
   box-shadow: unset;
