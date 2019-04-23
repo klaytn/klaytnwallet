@@ -39,16 +39,16 @@ class WalletCreationStep2 extends Component<Props> {
       <WalletCreationStepPlate
         className="WalletCreationStep2"
         stepName="STEP 2"
-        title="Account Create Transaction"
+        title="Your Custom Address Has Been Reserved"
         description={(
           <Fragment>
-            Your new wallet has been created.<br />
-            Make sure to COPY the private key below and SAVE it.
+            Below is the custom Klaytn account address you created.<br />
+            Now download your keystore file to secure your account.
           </Fragment>
         )}
         TransferTotalItem={[
             { title:"Account Name", value: onit.utils.hexToUtf8(receiptWallet.to)},
-            { title:"Gas Fee", value: (receiptWallet.gasUsed*0.001)+' ston'}   
+            { title:"Transaction Fee", value: (receiptWallet.gasUsed*0.001)+' ston'}   
         ]}
         nextStepButtons={[{ title: 'Next Step', onClick: handleStepMove(3)}]}
       />

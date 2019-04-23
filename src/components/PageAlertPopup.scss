@@ -59,7 +59,7 @@
       margin-bottom: 28px;
     }
     .popup__message2 {
-      @include font-style('body');
+      @include font-style('caption');
       color: $Blue-five;
       margin-bottom: 40px;
       .info_link {

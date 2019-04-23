@@ -61,9 +61,9 @@ class PageAlertPopup extends Component<Props> {
       })}>
         {!this.wallet && (
           <div className="createMainPopup__inner widthType">
-            <span  className="popup__title">You need to Access Your Account for This Action</span>
-            <p className="popup__message2">Please check your Test_KLAY balance at
-              <Link to="/access" className="info_link" >View Account Info</Link>
+            <span  className="popup__title">Please check your account balance first</span>
+            <p className="popup__message2">Creating a custom address account requires KLAY. You can check your KLAY balance at
+              <Link to="/access" className="info_link" >View Account Info.</Link>
             </p>
             <div className="popup__bottom__box">
             <Link to="/access" className="info_link" ><Button
@@ -77,9 +77,9 @@ class PageAlertPopup extends Component<Props> {
         )}
         {this.wallet && balance == '0' && mainNetSite && (
           <div className="createMainPopup__inner widthType">
-            <span  className="popup__title">You Need More KLAY to Customize Address</span>
-            <p className="popup__message2">Creating a custom address account requires KLAY. You can check your KLAY balance at View Account Info.
-              <Link to="/access" className="info_link" >View Account Info</Link>
+            <span  className="popup__title">You need more KLAY for this action</span>
+            <p className="popup__message2">Please check your Test_KLAY balance at
+              <Link to="/access" className="info_link" >View Account Info.</Link>
             </p>
             
             <div className="popup__bottom__box">

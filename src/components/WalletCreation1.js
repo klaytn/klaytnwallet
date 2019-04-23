@@ -42,6 +42,7 @@ class WalletCreation1 extends Component<Props> {
             privateKey={prevRefComponentState.privateKey}
             handleStepMove={this.handleStepMove}
             password={prevRefComponentState.password}
+            pageType={pageType}
           />
         )
       case 4:     
@@ -51,6 +52,7 @@ class WalletCreation1 extends Component<Props> {
             privateKey={prevRefComponentState.privateKey}
             password={prevRefComponentState.password}
             handleStepMove={this.handleStepMove}
+            pageType={pageType}
 
           />
         )

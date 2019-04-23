@@ -121,14 +121,14 @@ class WalletCreationStep1 extends Component<Props> {
           <Fragment>
             Klaytn lets you customize your own account address, so here’s a chance to be creative.
             Please note that you can only use alphabet and numbers, no special characters allowed.
-            The maximum length of your address is 15 characters.
+            Your address length should be 5~13 characters.
           </Fragment>
         )}
         render={() => (
           <div className="HRAMadeBox">
           <InputCheck
             name="Account Name"
-            placeholder="Enter the Account Name"
+            placeholder="yourname"
             label="Account Name"
             value={HRAid}
             onClick={this.HRACheck}

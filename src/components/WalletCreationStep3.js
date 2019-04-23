@@ -6,15 +6,20 @@ import WalletCreationReminder from 'components/WalletCreationReminder'
 import { checkValidPassword } from 'utils/crypto'
 
 class WalletCreationStep3 extends Component<Props> {
-  state = {
-    password: '',
-    isValidPassword: null,
-  }
+
   constructor() {
     super()
     this.state = {
       password: '',
       isValidPassword: null,
+      nameSet: {
+        'normal': {
+          stepName:'STEP 1',
+        },
+        'HRAType': {
+          stepName:'STEP 3',
+        }
+      },
     }
     
   }
@@ -36,12 +41,12 @@ class WalletCreationStep3 extends Component<Props> {
   }
 
   render() {
-    const { password, isValidPassword } = this.state
-    const { handleStepMove } = this.props
-
+    const { password, isValidPassword, nameSet } = this.state
+    const { handleStepMove, pageType } = this.props
+    const { stepName } = nameSet[pageType]
     return (
       <WalletCreationStepPlate
-        stepName="STEP 3"
+        stepName={stepName}
         title="Please Set Password for your Keystore File"
         description={(
           <Fragment>

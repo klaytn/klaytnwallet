@@ -16,13 +16,22 @@ class WalletCreationStep4 extends Component<Props> {
     const { privateKey } = onit.klay.accounts.create()
     this.state = {
       privateKey,
+      nameSet: {
+        'normal': {
+          stepName:'STEP 2',
+        },
+        'HRAType': {
+          stepName:'STEP 4',
+        }
+      },
     }
   }
 
 
   handleDownload = () => {
-    const { privateKey } = this.state
+    const { privateKey} = this.state
     const { password, receiptWallet,walletDataUpdate, pageType, madePrivateKey} = this.props
+    
     const HRAaddress = {}
     if(pageType == 'HRAType'){
       this.setState({privateKey: madePrivateKey  })
@@ -49,10 +58,12 @@ class WalletCreationStep4 extends Component<Props> {
   }
 
   render() {
-    const { handleStepMove } = this.props
+    const { nameSet} = this.state
+    const { handleStepMove, pageType } = this.props
+    const { stepName } = nameSet[pageType]
     return (
       <WalletCreationStepPlate
-        stepName="STEP 2"
+        stepName={stepName}
         title={(
           <Fragment>
             Please Download Keystore File

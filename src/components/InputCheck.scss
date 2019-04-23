@@ -87,9 +87,20 @@
   height: 12px;
   margin-right: 4px;
 }
-.KlayText {
+.KlayTextSizeChack {
+  font: 400 11px system-ui;
   @include font-style('body');
   color: $Blue-five;
+  position: absolute;
+  display: inline-block;
+  top: 0px;
+  right: 0px;
+  visibility: hidden;
+  text-rendering: auto;
+}
+.KlayText {
+  @include font-style('body');
+  color: $Grey-four;
   position: absolute;
   display: inline-block;
   top: 35px;
