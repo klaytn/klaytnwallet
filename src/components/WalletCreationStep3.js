@@ -3,21 +3,25 @@ import React, { Component, Fragment } from 'react'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import InputPassword from 'components/InputPassword'
 import WalletCreationReminder from 'components/WalletCreationReminder'
-import { closeBrowser } from 'utils/ui'
 import { checkValidPassword } from 'utils/crypto'
 
 class WalletCreationStep3 extends Component<Props> {
-  state = {
-    password: '',
-    isValidPassword: null,
-  }
+
   constructor() {
     super()
     this.state = {
       password: '',
       isValidPassword: null,
+      nameSet: {
+        'normal': {
+          stepName:'STEP 1',
+        },
+        'HRAType': {
+          stepName:'STEP 3',
+        }
+      },
     }
-    window.addEventListener("beforeunload", closeBrowser);
+    
   }
 
   handleChange = e => {
@@ -26,14 +30,23 @@ class WalletCreationStep3 extends Component<Props> {
       isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
     })
   }
+  enterKeySelcet = (e)=>{
+    const { handleStepMove } = this.props
+    const { isValidPassword } = this.state
+    const handleStepMoveSet = handleStepMove(4)
+    if(e.keyCode ===13 && isValidPassword){
+      handleStepMoveSet()
+      
+    }
+  }
 
   render() {
-    const { password, isValidPassword } = this.state
-    const { handleStepMove } = this.props
-
+    const { password, isValidPassword, nameSet } = this.state
+    const { handleStepMove, pageType } = this.props
+    const { stepName } = nameSet[pageType]
     return (
       <WalletCreationStepPlate
-        stepName="STEP 3"
+        stepName={stepName}
         title="Please Set Password for your Keystore File"
         description={(
           <Fragment>
@@ -48,6 +61,7 @@ class WalletCreationStep3 extends Component<Props> {
             placeholder="Enter the password"
             label="Password"
             onChange={this.handleChange}
+            onKeyUp={this.enterKeySelcet}
           />
         )}
         reminder={() => (

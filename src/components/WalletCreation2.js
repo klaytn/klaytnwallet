@@ -7,7 +7,6 @@ import WalletCreationStep4 from 'components/WalletCreationStep4'
 import WalletCreationStep5 from 'components/WalletCreationStep5'
 import PageAlertPopup from 'components/PageAlertPopup'
 import StepIndicator from 'components/StepIndicator'
-
 import './WalletCreation2.scss'
 
 class WalletCreation2 extends Component<Props> {
@@ -52,7 +51,6 @@ class WalletCreation2 extends Component<Props> {
   }
   renderWalletCreationStep = (step) => {
     const { prevRefComponentState, pageType, walletData, privateKey, HRAaddress } = this.state
-    
     switch (step) {
       case 1:
         return (
@@ -71,6 +69,7 @@ class WalletCreation2 extends Component<Props> {
           />
         )
       case 3:
+      
         return (
           <WalletCreationStep3
             ref={(step3Component) => this.prevRefComponent = step3Component}

@@ -8,6 +8,22 @@ import { copy } from 'utils/misc'
 import './InputCheck.scss'
 
 class InputCheck extends Component<Props> {
+  state = {
+    accountName: '',
+    KlayTextWidth: 65,
+  }
+
+  onKeyUpAction = () => {
+    const { value } = this.props
+    this.setState({ accountName: value })
+    const KlayTextObj = document.getElementsByClassName('KlayTextSizeChack')[0]
+    KlayTextObj.innerHTML = value
+    let textWidth = KlayTextObj.offsetWidth  
+    if(value == ''){
+      textWidth = 65
+    }
+    this.setState({ KlayTextWidth: textWidth })
+  }
   render() {
     const {
       className,
@@ -25,10 +41,11 @@ class InputCheck extends Component<Props> {
       err,
       isChecked,
     } = this.props
-    
+    const { accountName, KlayTextWidth } = this.state
     return (
       <div className={cx('InputCheck', className)}>
-        
+        <span className="KlayTextSizeChack"></span>
+        <span className="KlayText" style={{'left': KlayTextWidth+3+'px'}}>.klay</span>
         {label && <label className="InputCheck__label" htmlFor={name}>{label}</label>}
         <div className="InputCheck__inputWrapper">
           <input
@@ -45,7 +62,8 @@ class InputCheck extends Component<Props> {
             placeholder={placeholder}
             disabled={disabled}
             className={cx('InputCheck__input', { 'InputCheck--err': err })}
-
+            onKeyUp={this.onKeyUpAction}
+            onKeyDown={this.onKeyDownAction}
           />
           
           <ReactTooltip

@@ -60,7 +60,7 @@
   padding-left: 18px;
   padding-right: 15px;
   @include font-style('body');
-
+  opacity: .5;
 
   
   &::before {
@@ -73,7 +73,7 @@
     left: 0;
   }
 
-  &::after {
+  &.pageLink::after {
     content: '';
     position: absolute;
     background-image: url('/static/images/icon-link-on.svg');
@@ -87,8 +87,19 @@
   &:hover {
     text-decoration: underline;
     color: $White-one;
+    opacity: 1;
     &::after {
       opacity: 1;
     }
   }
+  &--active {
+    opacity: 1;
+  }  
+}
+.menu-create .SidebarNav__dropDownLink {
+  color: $Blue-green-one;
+}
+.menu-more .SidebarNav__dropDownLink {
+  color: $Purple-blue-one;
+  opacity: 1;
 }

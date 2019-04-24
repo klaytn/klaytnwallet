@@ -14,7 +14,6 @@ import WalletTransfer2 from 'components/WalletTransfer2'
 import KlayFaucet from 'components/KlayFaucet'
 import Landing from 'components/Landing'
 import MyWallet from 'components/MyWallet'
-import { closeBrowser } from 'utils/ui'
 import './index.scss'
 
 import * as tokenActions from 'actions/token'
@@ -39,8 +38,8 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/access/:id" component={MyWallet} />
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
-        {/* <Route path="/faucet" component={KlayFaucet} /> */}
-        <Route path="/faucet/:address" component={KlayFaucet} />
+        {/* <Route path="/faucet" component={KlayFaucet} />
+        <Route path="/faucet/:address" component={KlayFaucet} /> */}
       </Route>
     </Router>
   </Provider>

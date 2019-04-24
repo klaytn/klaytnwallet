@@ -7,7 +7,6 @@ import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { klayKeyMade } from 'utils/crypto'
 import { KLAYTN_SCOPE_URL } from 'constants/url'
 import cx from 'classnames'
-import { closeBrowser } from 'utils/ui'
 type Props = {
 
 }
@@ -37,7 +36,6 @@ class WalletCreationStep5 extends Component<Props> {
         }
       }
     }
-    window.removeEventListener('beforeunload', closeBrowser ,false)
   }
   render() {
     const { privateKey, pageType, receiptWallet } = this.props

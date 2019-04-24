@@ -16,7 +16,7 @@ class TabList extends Component<Props> {
 
     return (
       <div className="TabList">
-        {tabItems.map(({ title, link, icon, menu , dropDown}) => {
+        {tabItems.map(({ title, link, icon, menu , dropDown, menuClass}) => {
           return (
             <TabItem
               isActive={
@@ -32,6 +32,7 @@ class TabList extends Component<Props> {
               link={link}
               menus={menu}
               dropDown={dropDown}
+              menuClass={menuClass}
             />
           )
         })}

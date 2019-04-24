@@ -24,7 +24,7 @@ class App extends Component<Props> {
       onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
     }
     this.setState({ isCheckedSessionStorage: true })
-
+    console.log('app componentDidMount')
   }
 
   render() {

@@ -34,27 +34,27 @@ class TabItem extends Component<Props> {
   }
   render() {
     const { isHovered, menuOpen } = this.state
-    const { title, link, isActive, icon, menus, isMenuActive, dropDown } = this.props
+    const { title, link, isActive, icon, menus, isMenuActive, menuClass, dropDown } = this.props
     return (
-      <div>
-      <Link
-        className={classNames('TabItem', {
-          'TabItem--active': isActive || isHovered,
-          'menuOpen' : dropDown && menuOpen
-        })}
-        to={link}
-        onClick={() => {
-          if(menuOpen){
-            this.setState({menuOpen:false})
-          }else{
-            this.setState({menuOpen:true})
-          }
-          if (sessionStorage.getItem('prv')) return
-          onit.klay.accounts.wallet.clear()
-        }}
-        onMouseEnter={this.toggleHover(true)}
-        onMouseLeave={this.toggleHover(false)}
-      >
+      <div className={menuClass}>
+        <Link
+          className={classNames('TabItem', {
+            'TabItem--active': isActive || isHovered,
+            'menuOpen' : dropDown && menuOpen
+          })}
+          to={link}
+          onClick={() => {
+            if(menuOpen){
+              this.setState({menuOpen:false})
+            }else{
+              this.setState({menuOpen:true})
+            }
+            if (sessionStorage.getItem('prv')) return
+            onit.klay.accounts.wallet.clear()
+          }}
+          onMouseEnter={this.toggleHover(true)}
+          onMouseLeave={this.toggleHover(false)}
+        >
         <img
           className="TabItem__icon"
           src={`/static/images/${icon}${( isActive || isHovered || (menuOpen && dropDown)) ? '-on' : '-off'}.svg`}
@@ -64,7 +64,7 @@ class TabItem extends Component<Props> {
           {      
             menus && 
             <ul className={cx('SidebarNav__dropDownMenu',{'dropDownMenu' : dropDown,'menuOpen' : menuOpen})}>
-              {(menus.map(({ id, name,subLink }) => (
+              {(menus.map(({ id, name, subLink }) => (
                 <li key={name}>
                 {!dropDown ?(
                     <Link
@@ -75,7 +75,9 @@ class TabItem extends Component<Props> {
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}
                   onMouseLeave={this.innerToggleHover(false)}
-                  className="SidebarNav__dropDownLink"
+                  className={classNames('SidebarNav__dropDownLink', {
+                    'SidebarNav__dropDownLink--active': window.location.pathname == subLink,
+                  })}
                   >{name}</Link>
                   ):(
                   <a
@@ -87,7 +89,7 @@ class TabItem extends Component<Props> {
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}
                   onMouseLeave={this.innerToggleHover(false)}
-                  className="SidebarNav__dropDownLink"
+                  className="SidebarNav__dropDownLink pageLink"
                   >{name}</a>
 
                  )

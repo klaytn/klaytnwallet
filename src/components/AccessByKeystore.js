@@ -24,6 +24,7 @@ class AccessByKeystore extends Component<Props> {
     error: '',
     password: '',
     isReminderChecked: false,
+    fileName: '',
   }
 
   handleImport = (e) => {
@@ -79,13 +80,15 @@ class AccessByKeystore extends Component<Props> {
     const { fileName, keystore, password } = this.state
     const { accessTo } = this.props
     // Wallet instance will be addded to onit.klay.accounts.wallet
+      // WARNING: sessionStorage has private key. it expired when window tab closed.
+     
     try {
       const wallet = onit.klay.accounts.decrypt(keystore, password)
-      onit.klay.accounts.wallet.add(wallet)
+      onit.klay.accounts.wallet.add(wallet.privateKey)
       // WARNING: sessionStorage has private key. it expired when window tab closed.
-      sessionStorage.setItem('address', onit.utils.hexToUtf8(wallet.address))
       sessionStorage.setItem('prv', wallet.privateKey)
       if (typeof accessTo === 'function') accessTo(wallet.address)
+      if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', onit.utils.hexToUtf8(wallet.address))
     } catch (e) {
       this.setState({
         error: 'Does not Match with your Keystore Account',
