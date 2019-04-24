@@ -15,6 +15,7 @@ type Props = {
 class App extends Component<Props> {
   state = {
     isCheckedSessionStorage: false,
+    isMainPage: browserHistory.getCurrentLocation().pathname === '/',
   }
 
   
@@ -27,7 +28,7 @@ class App extends Component<Props> {
   }
 
   render() {
-    const { isCheckedSessionStorage } = this.state
+    const { isCheckedSessionStorage, isMainPage } = this.state
     const { children } = this.props
     return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,

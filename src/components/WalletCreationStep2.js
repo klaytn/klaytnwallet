@@ -6,7 +6,6 @@ import { download } from 'utils/misc'
 import { onit } from 'klaytn/onit'
 import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-
 type Props = {
 
 }

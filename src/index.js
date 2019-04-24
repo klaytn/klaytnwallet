@@ -24,6 +24,7 @@ history.listen(() => {
   if (store.getState().token.isTokenAddMode) {
     store.dispatch(tokenActions.toggleTokenAddMode())
   }
+  window.removeEventListener('beforeunload', closeBrowser ,false)
 })
 
 export const renderRoutes = (rootComponent) => (
