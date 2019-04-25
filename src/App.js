@@ -7,36 +7,73 @@ import Nav from 'components/Nav'
 import cx from 'classnames'
 import { onit } from 'klaytn/onit'
 import './App.scss'
+import { syncHistoryWithStore } from 'react-router-redux'
+
+
 
 type Props = {
   isLoading: boolean,
   children: React.DOM,
 }
+
 class App extends Component<Props> {
   state = {
     isCheckedSessionStorage: false,
+    removeSessionStorageButton: false,
+    showSessionStoragePopup: false,
   }
 
-  
   componentDidMount() {
+    const root = this
     if (sessionStorage.getItem('prv')) {
       onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
+      this.setState({ removeSessionStorageButton: true })
     }
     this.setState({ isCheckedSessionStorage: true })
-    console.log('app componentDidMount')
+    const history = syncHistoryWithStore(browserHistory, store)
+    history.listen(() => {
+      if (sessionStorage.getItem('prv')) {
+        root.setState({ removeSessionStorageButton: true })
+      }
+    })
+  }
+
+  cancelAction = () => {
+    this.setState({ showSessionStoragePopup: false })
+  }
+
+  confirmAction = () => {
+    sessionStorage.removeItem('prv')
+    sessionStorage.removeItem('address')
+    browserHistory.push('/')
+    this.setState({ showSessionStoragePopup: false, removeSessionStorageButton:false })
+  }
+
+  navClick = () => { 
+    this.setState({ showSessionStoragePopup: false })
+  }
+  
+  popupOpen = () => { 
+    this.setState({ showSessionStoragePopup: true })
   }
 
   render() {
-    const { isCheckedSessionStorage } = this.state
+    const { isCheckedSessionStorage,  removeSessionStorageButton, showSessionStoragePopup } = this.state
     const { children } = this.props
     return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,
       <Toast key="Toast" />,
       <div className="App" key="App">      
         <section className={cx('App__section', {'App__section__mainPage': browserHistory.getCurrentLocation().pathname === '/'})}>
-          <Nav className="App__navSection" />
+          <Nav className="App__navSection" onClick={this.navClick} />
           <div className="App__contentSection">
-            <ContentHeader />
+            <ContentHeader 
+              cancelAction={this.cancelAction} 
+              confirmAction={this.confirmAction}
+              removeSessionStorageButton={removeSessionStorageButton} 
+              showSessionStoragePopup={showSessionStoragePopup}
+              popupOpen={this.popupOpen}
+               />
             {children}
           </div>
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 import ReactTooltip from 'react-tooltip'
 import AccountNameTooltip from 'components/AccountNameTooltip'
-
 import { copy } from 'utils/misc'
 
 import './InputCheck.scss'
@@ -45,7 +44,7 @@ class InputCheck extends Component<Props> {
     return (
       <div className={cx('InputCheck', className)}>
         <span className="KlayTextSizeChack"></span>
-        <span className="KlayText" style={{'left': KlayTextWidth+3+'px'}}>.klay</span>
+        <span className="KlayText" style={{'left': KlayTextWidth+3+'px'}}>.klaytn</span>
         {label && <label className="InputCheck__label" htmlFor={name}>{label}</label>}
         <div className="InputCheck__inputWrapper">
           <input

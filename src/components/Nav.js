@@ -14,8 +14,8 @@ const navLinks = [
   { title: 'more', menuClass: 'menu-more',  link: null, icon: 'icon-more', dropDown: true , menu: [{name: 'Klaytnscope', subLink: KLAYTN_SCOPE_URL}, {name: 'Klaytn IDE', subLink: KLAYTN_IDE_URL },{name: 'Klaytn Docs', subLink: KLAYTN_DOCS_URL }]},
 ]
 console.log(KLAYTN_SCOPE_URL)
-const Nav = ({ className }) => (
-  <div className={cx('Nav', className)}>
+const Nav = ({ className, onClick }) => (
+  <div className={cx('Nav', className)} onClick={onClick}>
     <Link to="/" className="Header__logo" />
     <TabList tabItems={navLinks} />
   </div>

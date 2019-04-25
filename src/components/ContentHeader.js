@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 import cx from 'classnames'
 
 import { onit } from 'klaytn/onit'
-import { KLAYTN_SCOPE_URL } from 'constants/url'
-
+import Button from 'components/Button'
 import './ContentHeader.scss'
 
 const HEALTHCHECK_INTERVAL = 1000
@@ -16,11 +14,6 @@ class Header extends Component<Props> {
   }
 
   sameBlockNumberCount = 0
-
-  componentDidMount() {
-    // TODO: Turn on health check after health checking policy defined.
-    // setInterval(this.healthCheck, HEALTHCHECK_INTERVAL)
-  }
 
   healthCheck = async () => {
     const blockNumber = await onit.klay.getBlockNumber()
@@ -45,13 +38,37 @@ class Header extends Component<Props> {
 
   render() {
     const { network } = this.state
+    const { cancelAction, confirmAction, removeSessionStorageButton, showSessionStoragePopup, popupOpen } = this.props
+    
     return (
       <div className="Header">
+        <button className={cx('remove__sessionStorage', {'show': removeSessionStorageButton })} onClick={popupOpen}>Clear Private Key</button>
         <div className={cx('Header__network', {
           'Header__network--disconnected': !network
         })}
         >
           {network || 'Disconnected'}
+        </div>
+        <div className={cx('createMainPopup', { 'show': showSessionStoragePopup })}>
+          <div className="createMainPopup__inner">
+            <span  className="popup__title">Do you really want to clear your private key from your browser?</span>
+            <p className="popup__message2">
+              This action will delete your private key stored in your browser’s storage.
+              You’ll need to type in your private key again to check your balance or send KLAY / token.</p>
+            <div className="popup__bottom__box">
+              <Button
+                className="popup__btn"
+                title={'Cancel'}
+                onClick={cancelAction}
+                gray={true}
+              />
+              <Button
+                className="popup__btn"
+                onClick={confirmAction}
+                title={'Confirm'}
+              />
+            </div>
+          </div>
         </div>
       </div>
     )

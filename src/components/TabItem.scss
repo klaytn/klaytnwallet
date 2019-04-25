@@ -2,7 +2,9 @@
 @import "colors.scss";
 
 .TabItem {
-  @include font-style('body');
+  font-size: 13px; 
+  font-weight: bold; 
+  line-height: 17px;
   display: block;
   position: relative;
   padding: 33px 0px 33px 46px;
@@ -59,7 +61,7 @@
   position: relative;
   padding-left: 18px;
   padding-right: 15px;
-  @include font-style('body');
+  @include font-style('caption');
   opacity: .5;
 
   
@@ -94,6 +96,7 @@
   }
   &--active {
     opacity: 1;
+    font-weight: bold;
   }  
 }
 .menu-create .SidebarNav__dropDownLink {

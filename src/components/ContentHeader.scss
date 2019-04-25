@@ -1,5 +1,21 @@
 @import "fonts.scss";
 @import "colors.scss";
+%header-button {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Roboto;
+  line-height: 37px;
+  
+  height: 38px;
+  padding-left: 42px;
+  border: 1px solid #d9ddf5;
+  border-radius: 10rem;
+  color: $Scope-blue;
+  outline: none;
+}
 
 .Header {
   width: 984px;
@@ -39,20 +55,9 @@
 }
 
 .Header__network {
-  display: inline-block;
-  position: relative;
-  text-align: left;
-  font-size: 12px;
-  font-weight: 700;
-  font-family: Roboto;
-  line-height: 37px;
-  width: 174px;
-  height: 38px;
-  padding-left: 42px;
-  border: 1px solid #d9ddf5;
-  border-radius: 10rem;
+  @extend  %header-button;
   background: left 22px center/9px no-repeat url(/static/images/icon-network.svg);
-  color: $Scope-blue;
+  width: 174px;
   
   &::after {
     content: "";
@@ -82,4 +87,26 @@
   &::after {
     border-top: 4px solid $White-one;
   }
+}
+
+.App__section__mainPage .Header__network {
+  background: left 22px center/9px no-repeat url(/static/images/icon-network-white.svg);
+  border: 1px solid rgba(255,255, 255, .2);
+  color: $White-one;
+  &::after {
+    border-top: 4px solid $White-one;
+  }
+}
+.remove__sessionStorage {
+  @extend  %header-button;
+  background: left 20px center/20px no-repeat url(/static/images/icon-clear.svg);
+  width: 154px;
+  margin-right: 20px;
+  display: none;
+  &.show { display: inline-block; }
+}
+.App__section__mainPage .remove__sessionStorage {
+  background: left 20px center/14px 15px no-repeat url(/static/images/icon-clear-w.svg);
+  border: 1px solid rgba(255,255, 255, .2);
+  color: $White-one;
 }
