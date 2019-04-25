@@ -33,6 +33,7 @@ class App extends Component<Props> {
     this.setState({ isCheckedSessionStorage: true })
     const history = syncHistoryWithStore(browserHistory, store)
     history.listen(() => {
+      const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
       if (privateKeyDecrypt) {
         root.setState({ removeSessionStorageButton: true })
       }
