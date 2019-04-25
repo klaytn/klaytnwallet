@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import classNames from 'classnames'
 import cx from 'classnames'
 import { onit } from 'klaytn/onit'
-
+import { decryptAction } from 'utils/crypto'
 import './TabItem.scss'
 
 type Props = {
@@ -35,6 +35,7 @@ class TabItem extends Component<Props> {
   render() {
     const { isHovered, menuOpen } = this.state
     const { title, link, isActive, icon, menus, isMenuActive, menuClass, dropDown } = this.props
+    const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
     return (
       <div className={menuClass}>
         <Link
@@ -49,7 +50,7 @@ class TabItem extends Component<Props> {
             }else{
               this.setState({menuOpen:true})
             }
-            if (sessionStorage.getItem('prv')) return
+            if (privateKeyDecrypt) return
             onit.klay.accounts.wallet.clear()
           }}
           onMouseEnter={this.toggleHover(true)}
@@ -70,7 +71,7 @@ class TabItem extends Component<Props> {
                     <Link
                   to={subLink}
                   onClick={() => {
-                    if (sessionStorage.getItem('prv')) return
+                    if (privateKeyDecrypt) return
                     onit.klay.accounts.wallet.clear()
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}
@@ -84,7 +85,7 @@ class TabItem extends Component<Props> {
                   href={subLink}
                   target="_blank"
                   onClick={() => {
-                    if (sessionStorage.getItem('prv')) return
+                    if (privateKeyDecrypt) return
                     onit.klay.accounts.wallet.clear()
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}

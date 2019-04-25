@@ -87,9 +87,6 @@ class WalletCreationStep1 extends Component<Props> {
       .on('transactionHash', console.log)
       .on('receipt', async (receipt) => {
         
-        //const toshiAccountBalance = await onit.klay.getBalance('sparrow22')
-        console.log(toshiAccountBalance)
-        console.log('caver.klay.getBalance("sparrow"): ' +onit.utils.fromPeb(toshiAccountBalance, 'KLAY') +' KLAY')
         //페이지 이동
         walletDataUpdate({
           walletData: receipt,

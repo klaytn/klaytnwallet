@@ -8,7 +8,7 @@ import cx from 'classnames'
 import { onit } from 'klaytn/onit'
 import './App.scss'
 import { syncHistoryWithStore } from 'react-router-redux'
-
+import { decryptAction } from 'utils/crypto'
 
 
 type Props = {
@@ -25,14 +25,15 @@ class App extends Component<Props> {
 
   componentDidMount() {
     const root = this
-    if (sessionStorage.getItem('prv')) {
-      onit.klay.accounts.wallet.add(sessionStorage.getItem('prv'))
+    const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
+    if (privateKeyDecrypt) {
+      onit.klay.accounts.wallet.add(privateKeyDecrypt)
       this.setState({ removeSessionStorageButton: true })
     }
     this.setState({ isCheckedSessionStorage: true })
     const history = syncHistoryWithStore(browserHistory, store)
     history.listen(() => {
-      if (sessionStorage.getItem('prv')) {
+      if (privateKeyDecrypt) {
         root.setState({ removeSessionStorageButton: true })
       }
     })
@@ -43,7 +44,7 @@ class App extends Component<Props> {
   }
 
   confirmAction = () => {
-    sessionStorage.removeItem('prv')
+    sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
     browserHistory.push('/')
     this.setState({ showSessionStoragePopup: false, removeSessionStorageButton:false })

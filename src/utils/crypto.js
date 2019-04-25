@@ -1,8 +1,23 @@
 import randombytes from 'randombytes'
+const CRYPO_PASSWORD = process && process.env.CRYPO_PASSWORD
+
+const CryptoJS = require('crypto-js')
 
 const MINIMUM_PASSWORD_LENGTH = 8
 const MINIMUM_NAME_LENGTH = 5
 const MAXIMUM_NAME_LENGTH = 13
+
+export const encryptAction = (myKey) => {
+  return CryptoJS.AES.encrypt(myKey, CRYPO_PASSWORD).toString()
+}
+
+export const decryptAction = (myKey) => {
+  if(myKey){
+    return CryptoJS.AES.decrypt(myKey, CRYPO_PASSWORD).toString(CryptoJS.enc.Utf8);
+  }
+  return null
+}
+
 export const getRandomBytes = () => randombytes(32)
   .reduce((acc, cur) => {
     return acc += (cur.toString(16).length == 2)
@@ -67,6 +82,7 @@ export const klayKeyDecomulation = (klayKey) => {
 
   return returnObj
 }
+
 
 export const krc20ABI = [
   {

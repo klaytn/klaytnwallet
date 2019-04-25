@@ -29,6 +29,7 @@
     "caver-js": "0.0.2-v",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",
+    "crypto-js": "^3.1.9-1",
     "dotenv": "^6.0.0",
     "dotenv-webpack": "^1.5.7",
     "ethereumjs-tx": "^1.3.4",
