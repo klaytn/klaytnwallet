@@ -12,8 +12,8 @@
 .SidebarFooter__copyright {
   color: rgba(202,203,216,.5);
   text-align: left;
-  line-height: 1.7rem;
-  margin-bottom: 2rem;
+  line-height: 17px;
+  margin-bottom: 16px;
   font-size: 12px;
 
 }
@@ -37,11 +37,11 @@
 }
 
 .SidebarFooter__link {
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 52px;
+  height: 52px;
   background-color: rgba(#c4c4e8, .05);
-  border-radius: 100%;
-  margin-right: 12px;
+  border-radius: 4px;
+  margin-right: 6px;
   display: inline-block;
   vertical-align: top;
   transition: background 200ms ease;
