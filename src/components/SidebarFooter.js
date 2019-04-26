@@ -12,8 +12,8 @@ import {
 } from 'constants/url'
 
 const externalLinks = [{
-  type: 'mail',
-  to: KLAYTN_MAIL_URL,
+  type: 'klaytn',
+  to: KLAYTN_HOMEPAGE_URL,
 }, {
   type: 'twitter',
   to: KLAYTN_TWITTER_URL,
@@ -25,14 +25,6 @@ const externalLinks = [{
 const SidebarFooter = () => (
   <footer className="SidebarFooter">
     <div className="SidebarFooter__copyright showDesktopTablet">
-      <a
-        className="SidebarFooter__copyrightLink"
-        href={`${KLAYTN_HOMEPAGE_URL}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        link to klaytn hompage
-      </a>
       Copyright © 2019 Klaytn.
       <br />
       All Rights Reserved.
@@ -42,7 +34,6 @@ const SidebarFooter = () => (
         <li
           key={type}
           className={cx('SidebarFooter__link', {
-            showMobile: type === 'klaytn',
           })}
         >
           <a
