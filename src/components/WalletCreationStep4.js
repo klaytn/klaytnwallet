@@ -46,7 +46,7 @@ class WalletCreationStep4 extends Component<Props> {
     
     // If user clicked download, clear previous wallet instance.
     onit.klay.accounts.wallet.clear()
-    sessionStorage.removeItem('prv')
+    sessionStorage.removeItem('was')
     this.downloadKeystore(keystore)
     sessionStorage.removeItem('address')
   }

@@ -30,7 +30,7 @@ class WalletAccess2 extends Component<Props> {
 
   componentWillMount() {
     // Clear whole wallet instances when we get in '/access' route.
-    if (sessionStorage.getItem('prv') && onit.klay.accounts.wallet[0]) {
+    if (sessionStorage.getItem('was') && onit.klay.accounts.wallet[0]) {
       browserHistory.push(`/access/${onit.klay.accounts.wallet[0].address}`)
       return
     }

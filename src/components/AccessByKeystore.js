@@ -7,8 +7,7 @@ import Input from 'components/Input'
 import File from 'components/File'
 import AccessReminder from 'components/AccessReminder'
 import Button from 'components/Button'
-import { checkValidPassword } from 'utils/crypto'
-
+import { checkValidPassword, encryptAction } from 'utils/crypto'
 import './AccessByKeystore.scss'
 
 type Props = {
@@ -86,7 +85,8 @@ class AccessByKeystore extends Component<Props> {
       const wallet = onit.klay.accounts.decrypt(keystore, password)
       onit.klay.accounts.wallet.add(wallet.privateKey)
       // WARNING: sessionStorage has private key. it expired when window tab closed.
-      sessionStorage.setItem('prv', wallet.privateKey)
+      const privateKeyencrypt = encryptAction(wallet.privateKey)
+      sessionStorage.setItem('was', privateKeyencrypt)
       if (typeof accessTo === 'function') accessTo(wallet.address)
       if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', onit.utils.hexToUtf8(wallet.address))
     } catch (e) {

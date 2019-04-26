@@ -5,8 +5,7 @@ import { onit } from 'klaytn/onit'
 import Input from 'components/Input'
 import AccessReminder from 'components/AccessReminder'
 import Button from 'components/Button'
-import { isValidPrivateKey, klayKeyDecomulation } from 'utils/crypto'
-
+import { isValidPrivateKey, klayKeyDecomulation, encryptAction } from 'utils/crypto'
 import './AccessByPrivatekey.scss'
 
 type Props = {
@@ -50,7 +49,8 @@ class AccessByPrivateKey extends Component<Props> {
     const wallet = onit.klay.accounts.wallet.add(privatekey)
 
     // WARNING: sessionStorage has private key. it expired when window tab closed.
-    sessionStorage.setItem('prv', privatekey)
+    const privateKeyencrypt = encryptAction(wallet.privateKey)
+    sessionStorage.setItem('was', privateKeyencrypt)
     if (typeof accessTo === 'function') accessTo(wallet.address)
   }
 

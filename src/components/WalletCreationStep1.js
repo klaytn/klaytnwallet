@@ -59,6 +59,7 @@ class WalletCreationStep1 extends Component<Props> {
   resetAccount = () => {
     const { isDuplicateName,isLoding } = this.state
     this.setState({ HRAid: '', isDuplicateName: false, isLoding: false, isValidName: false })
+    document.getElementsByClassName('KlayText')[0].style.left = '65px'
   }
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
@@ -86,9 +87,6 @@ class WalletCreationStep1 extends Component<Props> {
       .on('transactionHash', console.log)
       .on('receipt', async (receipt) => {
         
-        const toshiAccountBalance = await onit.klay.getBalance('sparrow22')
-        console.log(toshiAccountBalance)
-        console.log('caver.klay.getBalance("sparrow"): ' +onit.utils.fromPeb(toshiAccountBalance, 'KLAY') +' KLAY')
         //페이지 이동
         walletDataUpdate({
           walletData: receipt,

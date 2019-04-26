@@ -15,6 +15,7 @@
     display: block;
    }
   .createMainPopup__inner {
+    text-align: left;
     width: 400px;
     height: 300px;
     position: absolute;
@@ -31,7 +32,8 @@
     }
     .popup__title {
       display: block;
-      @include font-style('label');
+      @include font-style('body');
+      font-weight: bold; 
       color: $Scope-blue;
       margin-bottom: 16px;
     }
@@ -59,7 +61,7 @@
       margin-bottom: 28px;
     }
     .popup__message2 {
-      @include font-style('caption');
+      @include font-style('body');
       color: $Blue-five;
       margin-bottom: 40px;
       .info_link {
@@ -73,7 +75,9 @@
     }
   }
 }
-
+.App__section__mainPage .createMainPopup {
+  background: rgba(0, 0, 0, .5);
+}
 
 
 
