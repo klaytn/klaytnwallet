@@ -9,7 +9,7 @@ import { onit } from 'klaytn/onit'
 import './App.scss'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { decryptAction } from 'utils/crypto'
-
+import store from './store'
 
 type Props = {
   isLoading: boolean,
