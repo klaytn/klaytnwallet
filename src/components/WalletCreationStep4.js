@@ -53,7 +53,8 @@ class WalletCreationStep4 extends Component<Props> {
 
   downloadKeystore = (keystore) => {
     const date = new Date()
-    const fileName = `keystore-${keystore.address}-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}.json`
+    const address = keystore.addressAsHumanReadableString ? keystore.addressAsHumanReadableString : keystore.address
+    const fileName = `keystore-${address}-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}.json`
     download(jsonFormat(keystore), fileName)
   }
 
