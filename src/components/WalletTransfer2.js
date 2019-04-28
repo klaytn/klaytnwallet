@@ -5,7 +5,7 @@ import { keyBy } from 'lodash'
 import BN from 'bignumber.js'
 import ui from 'utils/ui'
 
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import MyToken from 'components/MyToken'
 import TransferForm from 'components/TransferForm'
 import TransferTotal from 'components/TransferTotal'
@@ -19,7 +19,7 @@ type Props = {
 
 import './WalletTransfer2.scss'
 
-const KLAY_GAS_PRICE = onit.utils.toWei('25', 'shannon')
+const KLAY_GAS_PRICE = caver.utils.toWei('25', 'shannon')
 const DEFAULT_KLAY_TRANSFER_GAS = 25000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 const MAX_INTEGER_LENGTH = 14
@@ -38,15 +38,15 @@ class WalletTransfer2 extends Component<Props> {
       myTokenBalances: [],
       gas: DEFAULT_KLAY_TRANSFER_GAS,
       gasPrice: KLAY_GAS_PRICE,
-      totalGasFee: onit.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+      totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
       tokenColorIdx: 1,
       transactionHash: '',
     },
-    this.wallet = onit.klay.accounts.wallet[0]
+    this.wallet = caver.klay.accounts.wallet[0]
   }
 
   componentWillMount() {
-    if (!onit.klay.accounts || !onit.klay.accounts.wallet[0]) {
+    if (!caver.klay.accounts || !caver.klay.accounts.wallet[0]) {
       browserHistory.replace('/access?next=transfer')
     }
   }
@@ -67,7 +67,7 @@ class WalletTransfer2 extends Component<Props> {
         }
         this.setState({
           [e.target.name]: limit6Decimal(e.target.value),
-          gas: new BN(onit.utils.toWei(limit6Decimal(e.target.value) || '0', 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
+          gas: new BN(caver.utils.toWei(limit6Decimal(e.target.value) || '0', 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
         })
         break
       case 'to':
@@ -90,7 +90,7 @@ class WalletTransfer2 extends Component<Props> {
   }
 
   handleSelect = ({ tokenSymbol, tokenColorIdx }) => {
-    const _totalGasFee = onit.utils.fromWei(
+    const _totalGasFee = caver.utils.fromWei(
       `${(tokenSymbol === 'Test_KLAY'
         ? DEFAULT_KLAY_TRANSFER_GAS
         : DEFAULT_TOKEN_TRANSFER_GAS
@@ -99,7 +99,7 @@ class WalletTransfer2 extends Component<Props> {
     this.setState({
       type: tokenSymbol,
       totalGasFee: _totalGasFee,
-      gas: new BN(onit.utils.toWei(_totalGasFee, 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
+      gas: new BN(caver.utils.toWei(_totalGasFee, 'ether')).dividedBy(new BN(this.state.gasPrice)).toString(),
       tokenColorIdx,
     })
   }
@@ -140,10 +140,10 @@ class WalletTransfer2 extends Component<Props> {
   transferCoin = () => {
     const { to, value, gas } = this.state
 
-    onit.klay.sendTransaction({
+    caver.klay.sendTransaction({
       from: this.HRADataChange(),
       to,
-      value: onit.utils.toWei(value, 'ether'),
+      value: caver.utils.toWei(value, 'ether'),
       gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
     })
       .once('transactionHash', (transactionHash) => {
@@ -160,9 +160,9 @@ class WalletTransfer2 extends Component<Props> {
   transferToken = () => {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
-    const contractInstance = new onit.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
+    const contractInstance = new caver.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
     const decimalProcessedTokenAmount = new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
-    contractInstance.accounts = onit.klay.accounts
+    contractInstance.accounts = caver.klay.accounts
     contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
       from: this.HRADataChange(),
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,

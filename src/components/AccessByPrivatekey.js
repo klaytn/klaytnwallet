@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 
 import Input from 'components/Input'
 import AccessReminder from 'components/AccessReminder'
@@ -26,7 +26,7 @@ class AccessByPrivateKey extends Component<Props> {
       walletData = walletData.split('.')
       inputValue = walletData[0]
       address = walletData[1].length === 42 ? walletData[1] : null
-      sessionStorage.setItem('address', onit.utils.hexToUtf8(address))
+      sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
     }else{
       inputValue = walletData
     }
@@ -46,7 +46,7 @@ class AccessByPrivateKey extends Component<Props> {
   access = () => {
     const { privatekey } = this.state
     const { accessTo } = this.props
-    const wallet = onit.klay.accounts.wallet.add(privatekey)
+    const wallet = caver.klay.accounts.wallet.add(privatekey)
 
     // WARNING: sessionStorage has private key. it expired when window tab closed.
     const privateKeyencrypt = encryptAction(wallet.privateKey)

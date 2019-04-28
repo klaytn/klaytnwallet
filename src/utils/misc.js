@@ -1,4 +1,4 @@
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import copyToClipboard from 'copy-to-clipboard'
 
 String.prototype.lpad = function(padString, length) {

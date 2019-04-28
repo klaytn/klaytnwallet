@@ -6,7 +6,7 @@ import Input from 'components/Input'
 import Button from 'components/Button'
 import { XButton } from 'components/PlusButton'
 import { krc20ABI } from 'utils/crypto'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import { registerToken } from 'actions/token'
 import ui from 'utils/ui'
 
@@ -24,7 +24,7 @@ class AddToken extends Component<Props> {
   constructor() {
     super()
 
-    this.wallet = onit.klay.accounts && onit.klay.accounts.wallet[0]
+    this.wallet = caver.klay.accounts && caver.klay.accounts.wallet[0]
   }
   state = {
     name: '',
@@ -36,7 +36,7 @@ class AddToken extends Component<Props> {
     this.setState({
       [e.target.name]: e.target.value,
       errorMessage: e.target.name === 'address'
-        && !onit.utils.isAddress(e.target.value)
+        && !caver.utils.isAddress(e.target.value)
         && 'Invalid address'
     })
   }
@@ -49,7 +49,7 @@ class AddToken extends Component<Props> {
 
   add = (callback) => {
     const { name, address, decimal } = this.state
-    const contractInstance = new onit.klay.Contract(krc20ABI, address)
+    const contractInstance = new caver.klay.Contract(krc20ABI, address)
     let fullname
     contractInstance.methods.name().call()
       .then((fullname) => fullname = fullname)

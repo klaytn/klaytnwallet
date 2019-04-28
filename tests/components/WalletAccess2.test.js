@@ -1,5 +1,5 @@
 import { isValidPrivateKey } from '../../src/utils/crypto'
-import { onit } from '../../src/klaytn/onit'
+import { caver } from '../../src/klaytn/caver'
 
 describe('checks if the possible privatekey is valid or not', () => {
     test(`should start with the prefix "0x"`, () => {
@@ -28,8 +28,8 @@ describe('checks if the possible privatekey is valid or not', () => {
 
 
 test('checks if it holds the right address for the account', () => {
-    const { privateKey, address } = onit.klay.accounts.create()
-    const wallet = onit.klay.accounts.wallet.add(privateKey) 
+    const { privateKey, address } = caver.klay.accounts.create()
+    const wallet = caver.klay.accounts.wallet.add(privateKey) 
 
     expect(wallet.address).toEqual(address)    
 })

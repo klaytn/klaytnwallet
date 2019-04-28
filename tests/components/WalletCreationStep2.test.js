@@ -1,7 +1,7 @@
-import { onit } from '../../src/klaytn/onit'
+import { caver } from '../../src/klaytn/caver'
 
 test('generates valid privatekey', () => {
-    const dataForPrivateKey = onit.klay.accounts.create()
+    const dataForPrivateKey = caver.klay.accounts.create()
     /*
         expected account data structure is like below: 
         {
@@ -22,9 +22,9 @@ test('generates valid privatekey', () => {
 
 //To test a function that generates keystore by checking the forms of the data from it
 test('generates valid data for keystore', () => {
-    const { privateKey } = onit.klay.accounts.create()
+    const { privateKey } = caver.klay.accounts.create()
     const password = "1234!@#$"
-    const keystore = onit.klay.accounts.encrypt(privateKey, password)
+    const keystore = caver.klay.accounts.encrypt(privateKey, password)
     /*
         expected keystore structure is like below:
         { version: 3,

@@ -5,7 +5,7 @@ import Toast from 'components/Toast'
 import ContentHeader from 'components/ContentHeader'
 import Nav from 'components/Nav'
 import cx from 'classnames'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import './App.scss'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { decryptAction } from 'utils/crypto'
@@ -27,7 +27,7 @@ class App extends Component<Props> {
     const root = this
     const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
     if (privateKeyDecrypt) {
-      onit.klay.accounts.wallet.add(privateKeyDecrypt)
+      caver.klay.accounts.wallet.add(privateKeyDecrypt)
       this.setState({ removeSessionStorageButton: true })
     }
     this.setState({ isCheckedSessionStorage: true })

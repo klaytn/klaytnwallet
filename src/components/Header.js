@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import cx from 'classnames'
 
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import { KLAYTN_SCOPE_URL } from 'constants/url'
 
 import './Header.scss'
@@ -23,7 +23,7 @@ class Header extends Component<Props> {
   }
 
   healthCheck = async () => {
-    const blockNumber = await onit.klay.getBlockNumber()
+    const blockNumber = await caver.klay.getBlockNumber()
 
     if (this.sameBlockNumberCount > 5) {
       this.setState({ network: false })

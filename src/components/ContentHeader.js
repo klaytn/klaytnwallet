@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
 
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import Button from 'components/Button'
 import './ContentHeader.scss'
 
@@ -16,7 +16,7 @@ class Header extends Component<Props> {
   sameBlockNumberCount = 0
 
   healthCheck = async () => {
-    const blockNumber = await onit.klay.getBlockNumber()
+    const blockNumber = await caver.klay.getBlockNumber()
 
     if (this.sameBlockNumberCount > 5) {
       this.setState({ network: false })

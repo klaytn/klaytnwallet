@@ -4,7 +4,7 @@ import jsonFormat from 'json-format'
 import { pipe } from 'utils/Functional'
 import { download } from 'utils/misc'
 import cx from 'classnames'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import InputCheck from 'components/InputCheck'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { checkValidName } from 'utils/crypto'
@@ -23,7 +23,7 @@ class WalletCreationStep1 extends Component<Props> {
       isValidName: false,
       isChecked: false,
       checkValidAlert: false,
-      klayWallet: onit.klay.accounts.wallet[0],
+      klayWallet: caver.klay.accounts.wallet[0],
       isHRAMade: false,
       isLoding: false,
       pageOutAction: false,
@@ -43,7 +43,7 @@ class WalletCreationStep1 extends Component<Props> {
     const { HRAid, isChecked, setKlaytn, isHRAMade } = this.state
 
     try {
-      let isHRAMadeSet = await onit.klay.accountCreated(HRAid+setKlaytn)
+      let isHRAMadeSet = await caver.klay.accountCreated(HRAid+setKlaytn)
       this.setState({ isHRAMade: isHRAMadeSet })
     } catch (e) {
 
@@ -74,21 +74,21 @@ class WalletCreationStep1 extends Component<Props> {
       from: klayWallet.address, // 보내는 주소 
       to: HRAid+setKlaytn, //humanReadable 생성할 이름 
       humanReadable: true,// humanReadable로 생성할지 여부
-      publicKey: onit.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
+      publicKey: caver.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
       gas: '300000', // 가스양 ( 계정 생성시에 드는 비용 )
       value: 1,// value 가 없으면 계정 생성이 실패함
     }
     this.setState({ privateKey: klayWallet.privateKey })
     
-    console.log(sender_transaction)
+    
     //메모리 상에 월렛 privateKey를 등록함으로서 sendTransaction시에 확인이 가능하도록 한다.
-    onit.klay.accounts.wallet.add(klayWallet.privateKey) 
+    caver.klay.accounts.wallet.add(klayWallet.privateKey) 
 
     // 아이디 전송 작업 진행
-    onit.klay.sendTransaction(sender_transaction)
+    caver.klay.sendTransaction(sender_transaction)
       .on('transactionHash', console.log)
       .on('receipt', async (receipt) => {
-        
+        console.log(receipt)
         //페이지 이동
         walletDataUpdate({
           walletData: receipt,

@@ -5,7 +5,7 @@ import jsonFormat from 'json-format'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { pipe } from 'utils/Functional'
 import { download } from 'utils/misc'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 type Props = {
 
 }
@@ -13,7 +13,7 @@ type Props = {
 class WalletCreationStep4 extends Component<Props> {
   constructor(props) {
     super(props)
-    const { privateKey } = onit.klay.accounts.create()
+    const { privateKey } = caver.klay.accounts.create()
     this.state = {
       privateKey,
       nameSet: {
@@ -35,9 +35,9 @@ class WalletCreationStep4 extends Component<Props> {
     const HRAaddress = {}
     if(pageType == 'HRAType'){
       this.setState({privateKey: madePrivateKey  })
-      HRAaddress.address = onit.utils.hexToUtf8(receiptWallet.to)
+      HRAaddress.address = caver.utils.hexToUtf8(receiptWallet.to)
     }
-    const keystore = onit.klay.accounts.encrypt(privateKey, password, HRAaddress)
+    const keystore = caver.klay.accounts.encrypt(privateKey, password, HRAaddress)
     if(HRAaddress.address){
       walletDataUpdate({
         HRAaddress: HRAaddress.address
@@ -45,7 +45,7 @@ class WalletCreationStep4 extends Component<Props> {
     }
     
     // If user clicked download, clear previous wallet instance.
-    onit.klay.accounts.wallet.clear()
+    caver.klay.accounts.wallet.clear()
     sessionStorage.removeItem('was')
     this.downloadKeystore(keystore)
     sessionStorage.removeItem('address')
