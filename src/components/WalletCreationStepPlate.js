@@ -38,7 +38,7 @@ class WalletCreationStepPlate extends Component<Props> {
               title,
               value
             }) =>
-            <div className="TransferTotal__item">
+            <div className="TransferTotal__item" key={title}>
               <span className="TransferTotal__itemTitle">{title}</span>
               <span className="TransferTotal__itemValue">{value}</span>
             </div>

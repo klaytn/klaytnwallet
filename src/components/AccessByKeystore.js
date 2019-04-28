@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import classNames from 'classnames'
 
 import InputFile from 'components/InputFile'
@@ -78,17 +78,17 @@ class AccessByKeystore extends Component<Props> {
   access = () => {
     const { fileName, keystore, password } = this.state
     const { accessTo } = this.props
-    // Wallet instance will be addded to onit.klay.accounts.wallet
+    // Wallet instance will be addded to caver.klay.accounts.wallet
       // WARNING: sessionStorage has private key. it expired when window tab closed.
      
     try {
-      const wallet = onit.klay.accounts.decrypt(keystore, password)
-      onit.klay.accounts.wallet.add(wallet.privateKey)
+      const wallet = caver.klay.accounts.decrypt(keystore, password)
+      caver.klay.accounts.wallet.add(wallet.privateKey)
       // WARNING: sessionStorage has private key. it expired when window tab closed.
       const privateKeyencrypt = encryptAction(wallet.privateKey)
       sessionStorage.setItem('was', privateKeyencrypt)
       if (typeof accessTo === 'function') accessTo(wallet.address)
-      if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', onit.utils.hexToUtf8(wallet.address))
+      if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
     } catch (e) {
       this.setState({
         error: 'Does not Match with your Keystore Account',

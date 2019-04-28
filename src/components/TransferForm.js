@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 import ReactTooltip from 'react-tooltip'
 
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import EditButton from 'components/EditButton'
@@ -46,7 +46,7 @@ class TransferForm extends Component<Props> {
       myBalance,
     } = this.props
 
-    const isInvalidAddress = to && !onit.utils.isAddress(to)
+    const isInvalidAddress = to && !caver.utils.isAddress(to)
     const isInvalidAmount = value && (Number(myBalance) <= Number(value) + Number(totalGasFee))
     // show invalid tx fee error message only when selected token is not 'Test_KLAY'
     const isInvalidTxFee = type !== 'Test_KLAY' && Number(myBalance) <= Number(totalGasFee)
@@ -131,11 +131,11 @@ class TransferForm extends Component<Props> {
             <div className="TransferForm__gasInfo">
               <div className="TransferForm__gasPrice">
                 <span>Gas Price</span>
-                <span>{addCommas(onit.utils.fromWei(gasPrice, 'shannon'))} Test_ston</span>
+                <span>{addCommas(caver.utils.fromWei(gasPrice, 'shannon'))} Test_ston</span>
               </div>
               <div className="TransferForm__gasLimit">
                 <span>Gas Limit</span>
-                <span>{addCommas(onit.utils.toWei(totalGasFee) / gasPrice)}</span>
+                <span>{addCommas(caver.utils.toWei(totalGasFee) / gasPrice)}</span>
               </div>
             </div>
           )}

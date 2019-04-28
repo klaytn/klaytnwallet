@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import jsonFormat from 'json-format'
 import { pipe } from 'utils/Functional'
 import { download } from 'utils/misc'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 type Props = {
@@ -46,7 +46,7 @@ class WalletCreationStep2 extends Component<Props> {
           </Fragment>
         )}
         TransferTotalItem={[
-            { title:"Account Name", value: onit.utils.hexToUtf8(receiptWallet.to)},
+            { title:"Account Name", value: caver.utils.hexToUtf8(receiptWallet.to)},
             { title:"Transaction Fee", value: (receiptWallet.gasUsed*0.001)+' ston'}   
         ]}
         nextStepButtons={[{ title: 'Next Step', onClick: handleStepMove(3)}]}

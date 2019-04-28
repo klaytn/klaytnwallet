@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import cx from 'classnames'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import { decryptAction } from 'utils/crypto'
 import './TabItem.scss'
 
@@ -51,7 +51,7 @@ class TabItem extends Component<Props> {
               this.setState({menuOpen:true})
             }
             if (privateKeyDecrypt) return
-            onit.klay.accounts.wallet.clear()
+            caver.klay.accounts.wallet.clear()
           }}
           onMouseEnter={this.toggleHover(true)}
           onMouseLeave={this.toggleHover(false)}
@@ -72,7 +72,7 @@ class TabItem extends Component<Props> {
                   to={subLink}
                   onClick={() => {
                     if (privateKeyDecrypt) return
-                    onit.klay.accounts.wallet.clear()
+                    caver.klay.accounts.wallet.clear()
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}
                   onMouseLeave={this.innerToggleHover(false)}
@@ -86,7 +86,7 @@ class TabItem extends Component<Props> {
                   target="_blank"
                   onClick={() => {
                     if (privateKeyDecrypt) return
-                    onit.klay.accounts.wallet.clear()
+                    caver.klay.accounts.wallet.clear()
                   }} 
                   onMouseEnter={this.innerToggleHover(true)}
                   onMouseLeave={this.innerToggleHover(false)}

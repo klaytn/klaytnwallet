@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import classNames from 'classnames'
 
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import TabRadio from 'components/TabRadio'
 import AccessByKeystore from 'components/AccessByKeystore'
 import AccessByPrivatekey from 'components/AccessByPrivatekey'
@@ -30,11 +30,11 @@ class WalletAccess2 extends Component<Props> {
 
   componentWillMount() {
     // Clear whole wallet instances when we get in '/access' route.
-    if (sessionStorage.getItem('was') && onit.klay.accounts.wallet[0]) {
-      browserHistory.push(`/access/${onit.klay.accounts.wallet[0].address}`)
+    if (sessionStorage.getItem('was') && caver.klay.accounts.wallet[0]) {
+      browserHistory.push(`/access/${caver.klay.accounts.wallet[0].address}`)
       return
     }
-    onit.klay.accounts.wallet.clear()
+    caver.klay.accounts.wallet.clear()
   }
 
   handleAccess = (accessMethod) => () => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { onitSocket } from 'klaytn/onit'
+import { caverSocket } from 'klaytn/caver'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -25,7 +25,7 @@ class RegisterToken extends Component<Props> {
 
   register = () => {
     const { name, address, decimal } = this.state
-    const contractInstance = new onitSocket.klay.Contract(krc20ABI, address)
+    const contractInstance = new caverSocket.klay.Contract(krc20ABI, address)
     contractInstance.methods.balanceOf('0x006056d2F4C68233F1AE99364445D7b587ef6642').call()
       .then(balance => {
         if (typeof balance === 'undefined') {

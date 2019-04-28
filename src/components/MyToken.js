@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { keyBy } from 'lodash'
 
 import BN from 'bignumber.js'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
 import MyTokenReminder from 'components/MyTokenReminder'
@@ -24,7 +24,7 @@ type Props = {
 class MyToken extends Component<Props> {
   constructor() {
     super()
-    this.wallet = onit.klay.accounts.wallet[0]
+    this.wallet = caver.klay.accounts.wallet[0]
   }
 
   state = {
@@ -67,15 +67,19 @@ class MyToken extends Component<Props> {
 
   getTokenBalances = () => {
     const { tokenList, setMyTokenBalancesByName } = this.props
+    let address = sessionStorage.getItem('address')
+    if(!address) {
+      address = this.wallet.address
+    }
     Promise.all(
       [
-        onit.klay.getBalance(this.wallet.address),
+        caver.klay.getBalance(address),
         ...tokenList
           .filter(({ contractAddress }) => contractAddress)
           .map(({ name, contractAddress, decimal }) => {
-            const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
-            contractInstance.accounts = onit.klay.accounts
-            return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
+            const contractInstance = new caver.klay.Contract(krc20ABI, contractAddress)
+            contractInstance.accounts = caver.klay.accounts
+            return Promise.resolve(contractInstance.methods.balanceOf(address).call())
           }),
       ])
       .then(balances => {
@@ -85,7 +89,7 @@ class MyToken extends Component<Props> {
             return {
               fullname: 'Test_KLAY',
               name: 'Test_KLAY',
-              balance: onit.utils.fromWei(balance, 'ether'),
+              balance: caver.utils.fromWei(balance, 'ether'),
             }
           } else {
             const tokenMetaInfo = tokenList[idx - 1]

@@ -4,7 +4,7 @@ import jsonFormat from 'json-format'
 import { pipe } from 'utils/Functional'
 import { download } from 'utils/misc'
 import cx from 'classnames'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import InputCheck from 'components/InputCheck'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { checkValidName } from 'utils/crypto'
@@ -23,11 +23,12 @@ class WalletCreationStep1 extends Component<Props> {
       isValidName: false,
       isChecked: false,
       checkValidAlert: false,
-      klayWallet: onit.klay.accounts.wallet[0],
+      klayWallet: caver.klay.accounts.wallet[0],
       isHRAMade: false,
       isLoding: false,
       pageOutAction: false,
       isDuplicateName: false,
+      setKlaytn: ''//.klaytn
     }
   }
   dataChange = (e)=>{
@@ -39,10 +40,10 @@ class WalletCreationStep1 extends Component<Props> {
   }
 
   HRACheck = async (e) => {
-    const { HRAid, isChecked, isHRAMade } = this.state
+    const { HRAid, isChecked, setKlaytn, isHRAMade } = this.state
 
     try {
-      let isHRAMadeSet = await onit.klay.accountCreated(HRAid)
+      let isHRAMadeSet = await caver.klay.accountCreated(HRAid+setKlaytn)
       this.setState({ isHRAMade: isHRAMadeSet })
     } catch (e) {
 
@@ -63,30 +64,31 @@ class WalletCreationStep1 extends Component<Props> {
   }
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
-    const { klayWallet, HRAid, isLoding, isDuplicateName } = this.state
+    const { klayWallet, HRAid, setKlaytn, isLoding, isDuplicateName } = this.state
     let setHandleStepMove = handleStepMove(2)
     this.setState({ isLoding: true })
+    console.log(HRAid+setKlaytn)
     //기본 보낼 객체 생성
     const sender_transaction = {
       type: 'ACCOUNT_CREATION',//타입 계정 생성
       from: klayWallet.address, // 보내는 주소 
-      to: HRAid, //humanReadable 생성할 이름 
+      to: HRAid+setKlaytn, //humanReadable 생성할 이름 
       humanReadable: true,// humanReadable로 생성할지 여부
-      publicKey: onit.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
+      publicKey: caver.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
       gas: '300000', // 가스양 ( 계정 생성시에 드는 비용 )
       value: 1,// value 가 없으면 계정 생성이 실패함
     }
     this.setState({ privateKey: klayWallet.privateKey })
     
-    console.log(sender_transaction)
+    
     //메모리 상에 월렛 privateKey를 등록함으로서 sendTransaction시에 확인이 가능하도록 한다.
-    onit.klay.accounts.wallet.add(klayWallet.privateKey) 
+    caver.klay.accounts.wallet.add(klayWallet.privateKey) 
 
     // 아이디 전송 작업 진행
-    onit.klay.sendTransaction(sender_transaction)
+    caver.klay.sendTransaction(sender_transaction)
       .on('transactionHash', console.log)
       .on('receipt', async (receipt) => {
-        
+        console.log(receipt)
         //페이지 이동
         walletDataUpdate({
           walletData: receipt,
@@ -134,6 +136,7 @@ class WalletCreationStep1 extends Component<Props> {
             buttonText="Check"
             isChecked={isChecked}
             buttonDisabled= {!isValidName}
+            autocomplete={'off'}
           />
           
           {isChecked && (

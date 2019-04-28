@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import Lottie from 'react-lottie'
 import cx from 'classnames'
 
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import Input from 'components/Input'
 import LodingButton from 'components/LodingButton'
 import FaucetHowItWork from 'components/FaucetHowItWork'
@@ -23,7 +23,7 @@ type Props = {
 class KlayFaucet extends Component<Props> {
   constructor() {
     super()
-    this.wallet = onit.klay.accounts.wallet[0]
+    this.wallet = caver.klay.accounts.wallet[0]
     
     this.state = {
       balance: '0',
@@ -71,7 +71,7 @@ class KlayFaucet extends Component<Props> {
   }
 
   showLeftBlockToFaucet = async (faucetableBlockNumber) => {
-    const currentBlockNumber = await onit.klay.getBlockNumber()
+    const currentBlockNumber = await caver.klay.getBlockNumber()
     this.setState({
       leftBlock: (faucetableBlockNumber > currentBlockNumber)
         ? faucetableBlockNumber - currentBlockNumber
@@ -80,7 +80,7 @@ class KlayFaucet extends Component<Props> {
   }
 
   updateBalance = () => {
-    onit.klay.getBalance(this.wallet.address)
+    caver.klay.getBalance(this.wallet.address)
       .then((balance) => {
         this.setState({
           balance,
@@ -160,7 +160,7 @@ class KlayFaucet extends Component<Props> {
             className="KlayFaucet__input KlayFaucet__address"
           />
           <Input
-            value={onit.utils.fromWei(balance, 'ether')}
+            value={caver.utils.fromWei(balance, 'ether')}
             readOnly
             label="Test_KLAY Balance"
             className="KlayFaucet__input KlayFaucet__balance"

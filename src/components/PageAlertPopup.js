@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
 import { Link } from 'react-router'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 import EditButton from 'components/EditButton'
 import Input from 'components/Input'
 import Button from 'components/Button'
@@ -13,7 +13,7 @@ class PageAlertPopup extends Component<Props> {
   
   constructor() {
     super()
-    this.wallet = onit.klay.accounts.wallet[0]
+    this.wallet = caver.klay.accounts.wallet[0]
     this.state = {
       balance: '0',
       mainNetSite: true,
@@ -23,7 +23,7 @@ class PageAlertPopup extends Component<Props> {
   }
   updateBalance = () => {
     if(this.wallet ){
-      onit.klay.getBalance(this.wallet.address)
+      caver.klay.getBalance(this.wallet.address)
       .then((balance) => {
         this.setState({
           balance:balance,

@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import cx from 'classnames'
 import jsonFormat from 'json-format'
-import { onit } from 'klaytn/onit'
+import { caver } from 'klaytn/caver'
 
 import Input from 'components/Input'
 import InputCopy from 'components/InputCopy'
@@ -23,7 +23,7 @@ type Props = {
 class MyWallet extends Component<Props> {
   constructor() {
     super()
-    this.wallet = onit.klay.accounts.wallet[0]
+    this.wallet = caver.klay.accounts.wallet[0]
   }
 
   state = {
@@ -32,14 +32,14 @@ class MyWallet extends Component<Props> {
   }
 
   componentWillMount() {
-    if (!onit.klay.accounts.wallet[0]) {
+    if (!caver.klay.accounts.wallet[0]) {
       browserHistory.replace('/access')
     }
   }
   
   // HRAChange(address) {
   //   console.log(address)
-  //   return onit.utils.hexToUtf8(address)
+  //   return caver.utils.hexToUtf8(address)
   // }
   togglePrivateKey = () => {
     this.setState({ hidePrivateKey: !this.state.hidePrivateKey })
@@ -53,7 +53,15 @@ class MyWallet extends Component<Props> {
     }
     return ''
   }
-
+  HRAChangeHex = () => {
+    const address = sessionStorage.getItem('address')
+    if(address){
+      return caver.utils.humanReadableStringToHexAddress(address)
+    }else if(this.wallet && this.wallet.address){
+      return this.wallet.address
+    }
+    return ''
+  }
   render() {
     const { hidePrivateKey } = this.state
     const { isTokenAddMode } = this.props
@@ -91,7 +99,7 @@ class MyWallet extends Component<Props> {
             </p>
             <a
               target="self"
-              href={`${KLAYTN_SCOPE_URL}/account/${this.wallet.address}`}
+              href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
             >
               <Button
                 title="View Transaction List"
