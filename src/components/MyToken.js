@@ -67,15 +67,19 @@ class MyToken extends Component<Props> {
 
   getTokenBalances = () => {
     const { tokenList, setMyTokenBalancesByName } = this.props
+    let address = sessionStorage.getItem('address')
+    if(!address) {
+      address = this.wallet.address
+    }
     Promise.all(
       [
-        onit.klay.getBalance(this.wallet.address),
+        onit.klay.getBalance(address),
         ...tokenList
           .filter(({ contractAddress }) => contractAddress)
           .map(({ name, contractAddress, decimal }) => {
             const contractInstance = new onit.klay.Contract(krc20ABI, contractAddress)
             contractInstance.accounts = onit.klay.accounts
-            return Promise.resolve(contractInstance.methods.balanceOf(this.wallet.address).call())
+            return Promise.resolve(contractInstance.methods.balanceOf(address).call())
           }),
       ])
       .then(balances => {

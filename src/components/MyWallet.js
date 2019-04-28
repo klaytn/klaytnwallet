@@ -53,7 +53,15 @@ class MyWallet extends Component<Props> {
     }
     return ''
   }
-
+  HRAChangeHex = () => {
+    const address = sessionStorage.getItem('address')
+    if(address){
+      return onit.utils.humanReadableStringToHexAddress(address)
+    }else if(this.wallet && this.wallet.address){
+      return this.wallet.address
+    }
+    return ''
+  }
   render() {
     const { hidePrivateKey } = this.state
     const { isTokenAddMode } = this.props
@@ -91,7 +99,7 @@ class MyWallet extends Component<Props> {
             </p>
             <a
               target="self"
-              href={`${KLAYTN_SCOPE_URL}/account/${this.wallet.address}`}
+              href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
             >
               <Button
                 title="View Transaction List"

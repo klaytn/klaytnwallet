@@ -39,6 +39,7 @@ class InputCheck extends Component<Props> {
       buttonText,
       err,
       isChecked,
+      autocomplete,
     } = this.props
     const { accountName, KlayTextWidth } = this.state
     return (
@@ -63,6 +64,7 @@ class InputCheck extends Component<Props> {
             className={cx('InputCheck__input', { 'InputCheck--err': err })}
             onKeyUp={this.onKeyUpAction}
             onKeyDown={this.onKeyDownAction}
+            autoComplete={autocomplete}
           />
           
           <ReactTooltip

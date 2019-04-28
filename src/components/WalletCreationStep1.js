@@ -28,6 +28,7 @@ class WalletCreationStep1 extends Component<Props> {
       isLoding: false,
       pageOutAction: false,
       isDuplicateName: false,
+      setKlaytn: ''//.klaytn
     }
   }
   dataChange = (e)=>{
@@ -39,10 +40,10 @@ class WalletCreationStep1 extends Component<Props> {
   }
 
   HRACheck = async (e) => {
-    const { HRAid, isChecked, isHRAMade } = this.state
+    const { HRAid, isChecked, setKlaytn, isHRAMade } = this.state
 
     try {
-      let isHRAMadeSet = await onit.klay.accountCreated(HRAid)
+      let isHRAMadeSet = await onit.klay.accountCreated(HRAid+setKlaytn)
       this.setState({ isHRAMade: isHRAMadeSet })
     } catch (e) {
 
@@ -63,14 +64,15 @@ class WalletCreationStep1 extends Component<Props> {
   }
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
-    const { klayWallet, HRAid, isLoding, isDuplicateName } = this.state
+    const { klayWallet, HRAid, setKlaytn, isLoding, isDuplicateName } = this.state
     let setHandleStepMove = handleStepMove(2)
     this.setState({ isLoding: true })
+    console.log(HRAid+setKlaytn)
     //기본 보낼 객체 생성
     const sender_transaction = {
       type: 'ACCOUNT_CREATION',//타입 계정 생성
       from: klayWallet.address, // 보내는 주소 
-      to: HRAid, //humanReadable 생성할 이름 
+      to: HRAid+setKlaytn, //humanReadable 생성할 이름 
       humanReadable: true,// humanReadable로 생성할지 여부
       publicKey: onit.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
       gas: '300000', // 가스양 ( 계정 생성시에 드는 비용 )
@@ -134,6 +136,7 @@ class WalletCreationStep1 extends Component<Props> {
             buttonText="Check"
             isChecked={isChecked}
             buttonDisabled= {!isValidName}
+            autocomplete={'off'}
           />
           
           {isChecked && (
