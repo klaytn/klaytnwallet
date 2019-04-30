@@ -38,8 +38,8 @@ class Landing extends Component {
           <p className="Landing__label">B a o b a b  N e t w o r k</p>
           <div className="main__link_list">
             <ul>
-              <li><Link to={'/create'}><button className="create"><img className="TabItem__icon" src="/static/images/icon-create-on.svg"/>Create New Wallet</button></Link></li>
-              <li><Link to={'/access'}><button className="info"><img className="TabItem__icon" src="/static/images/icon-info-on.svg"/>View Wallet Info</button></Link></li>
+              <li><Link to={'/create'}><button className="create"><img className="TabItem__icon" src="/static/images/icon-create-on.svg"/>Create Account</button></Link></li>
+              <li><Link to={'/access'}><button className="info"><img className="TabItem__icon" src="/static/images/icon-info-on.svg"/>View Account Info</button></Link></li>
               <li><Link to={'/transfer'}><button className="send"><img className="TabItem__icon" src="/static/images/icon-send-on.svg"/>Send KLAY &amp; Tokens</button></Link></li>
             </ul>
           </div>
@@ -55,7 +55,7 @@ class Landing extends Component {
                 The Klaytn Wallet shall NOT BE HELD RESPONSIBLE for the loss of your password for the private key or keystore file.
               </li>
               <li>
-                The Klaytn Network recommends  that you use the Testnet-based Klaytn Wallet for testing purpose ONLY.<br />
+                Klaytn Network recommends that you use the Baobab testnet-based Klaytn Wallet for testing purpose ONLY.<br />
                 Klaytn Wallet has no obligation to compensate or assume liability for any financial loss arising out of its use for any other purpose.
               </li>
             </ul>

@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
     <defs>
         <style>
-            .cls-1{fill:#3a51b2}
+            .cls-1,.cls-4{fill:none}.cls-1{stroke:#cacbd8;stroke-width:1.3px}.cls-2{fill:#cacbd8}.cls-3{stroke:none}
         </style>
     </defs>
-    <g id="icon_Help_Label" transform="translate(-835 -292)">
-        <path id="icon_Help_Label-2" d="M6 0a6 6 0 1 0 6 6 6.018 6.018 0 0 0-6-6zm-.1 9.3c-.6 0-.9-.3-.9-.8s.3-.8.9-.8.9.3.9.8a.817.817 0 0 1-.9.8zM7.3 6c-.6.3-.8.5-.8 1v.2H5.1V7a1.476 1.476 0 0 1 .8-1.6c.6-.4.8-.5.8-.9s-.3-.6-.7-.6a.684.684 0 0 0-.7.7H3.8c0-1.2.8-1.9 2.3-1.9 1.3 0 2.2.7 2.2 1.8a2.151 2.151 0 0 1-1 1.5z" class="cls-1" data-name="icon_Help_Label" transform="translate(835 292)"/>
+    <g id="그룹_3225" data-name="그룹 3225" transform="translate(-692 -1091)">
+        <g id="Icon_Qmark" transform="translate(692 1091)">
+            <g id="타원_1399" class="cls-1" data-name="타원 1399">
+                <circle cx="6" cy="6" r="6" class="cls-3"/>
+                <circle cx="6" cy="6" r="5.35" class="cls-4"/>
+            </g>
+        </g>
+        <g id="그룹_3077" data-name="그룹 3077" transform="translate(697 1093.5)">
+            <circle id="타원_1425" cx="1" cy="1" r="1" class="cls-2" data-name="타원 1425"/>
+            <path id="사각형_3583" d="M0 0h1.6v4.5H0z" class="cls-2" data-name="사각형 3583" transform="translate(.2 2.7)"/>
+        </g>
     </g>
 </svg>

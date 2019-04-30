@@ -60,7 +60,7 @@ class TabItem extends Component<Props> {
           className="TabItem__icon"
           src={`/static/images/${icon}${( isActive || isHovered || (menuOpen && dropDown)) ? '-on' : '-off'}.svg`}
         />
-        {title}
+        <span className="TabItem__text">{title}</span>
         </Link>
           {      
             menus && 

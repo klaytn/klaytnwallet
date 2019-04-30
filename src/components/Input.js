@@ -60,7 +60,7 @@ class Input extends Component<Props> {
           {unit && <span className="Input__unit">{unit}</span>}
         </div>
         {errorMessage !== undefined && (
-          <p className="Input__error">{errorMessage || ''}</p>
+          <p className={classNames('Input__error', {'show':errorMessage})}>{errorMessage || ''}</p>
         )}
         {leftBlock ? <p className="Input__error">You can run faucet after {leftBlock} blocks.</p> :
           ''

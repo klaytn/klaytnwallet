@@ -20,6 +20,7 @@ class InputFile extends Component<Props> {
       width,
       disabled,
       err,
+      errorMessage,
     } = this.props
 
     return (
@@ -44,6 +45,9 @@ class InputFile extends Component<Props> {
             icon="icon-upload"
           />
         </div>
+        {errorMessage !== undefined && (
+          <p className={cx('Input__error', {'show':errorMessage})}>{errorMessage || ''}</p>
+        )}
       </div>
     )
   }

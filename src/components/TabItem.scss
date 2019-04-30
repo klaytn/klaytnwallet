@@ -29,7 +29,7 @@
       background-color: $White-one; 
     }
   }
-
+  &__text { vertical-align: middle; }
 }
 
 .TabItem__icon {
@@ -41,8 +41,8 @@
 }
 
 .SidebarNav__dropDownMenu {
-  padding-left: 9.4rem;
-  
+  padding-left: 87px;
+  margin-top: -22px;
   li {
     margin-top: 1.8rem;
   }

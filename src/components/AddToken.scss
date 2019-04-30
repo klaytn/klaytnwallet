@@ -76,6 +76,11 @@
   margin-top: 40px;
 }
 
+.AddToken__saveButton:disabled {
+  box-shadow: unset;
+  cursor: not-allowed;
+  background-color: $Blue-three !important;
+}
 .AddToken__more {
   @include font-style('label');
   text-decoration: underline;
