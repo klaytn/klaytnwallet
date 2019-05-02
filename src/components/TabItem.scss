@@ -23,15 +23,52 @@
     border-radius: 50%;
     background-color: #5a5e79; 
   }
-  &:hover, &--active, &.menuOpen {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 26px;
+    margin-top: -2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #5a5e79; 
+  }
+  
+
+
+  &:hover, &--active {
     color: $White-one;
     &:after {
       background-color: $White-one; 
     }
   }
+  &--open + .SidebarNav__dropDownMenu {
+    display: block;
+  }
   &__text { vertical-align: middle; }
 }
-
+.dropDown .TabItem {
+  &:after {
+    background: none;
+    border-radius: 0;
+    margin-top: -4px;
+    width: 0px;
+    height: 0px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid hsla(0,0%,100%,.2);
+    transition: border-color .1s ease-in,-webkit-transform .15s ease-in;
+    transition: border-color .1s ease-in,transform .15s ease-in;
+    transition: border-color .1s ease-in,transform .15s ease-in,-webkit-transform .15s ease-in;
+  }
+  &--open:after {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    border-left-color: #fff;
+  }
+}
 .TabItem__icon {
   display: inline-block;
   vertical-align: middle;

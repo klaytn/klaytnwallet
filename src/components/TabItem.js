@@ -15,6 +15,7 @@ class TabItem extends Component<Props> {
   state = {
     isHovered: false,
     menuOpen: false,
+    moreMenuClick: false,
   }
 
   toggleHover = (isHovered) => () => {    
@@ -33,23 +34,25 @@ class TabItem extends Component<Props> {
     })
   }
   render() {
-    const { isHovered, menuOpen } = this.state
-    const { title, link, isActive, icon, menus, isMenuActive, menuClass, dropDown } = this.props
+    const { isHovered, menuOpen, moreMenuClick } = this.state
+    const { title, link, isActive, icon, menus, isMenuActive, menuClick, menuClass, dropDown, isDropDown } = this.props
     const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
     return (
-      <div className={menuClass}>
+      <div className={classNames(menuClass,{'dropDown':dropDown})}>
         <Link
           className={classNames('TabItem', {
             'TabItem--active': isActive || isHovered,
-            'menuOpen' : dropDown && menuOpen
+            'TabItem--open': isActive || moreMenuClick,
           })}
           to={link}
           onClick={() => {
-            if(menuOpen){
-              this.setState({menuOpen:false})
+            if(isDropDown){         
+              menuClick(true)
+              console.log('23432423')
             }else{
-              this.setState({menuOpen:true})
+              menuClick(false)
             }
+
             if (privateKeyDecrypt) return
             caver.klay.accounts.wallet.clear()
           }}
@@ -58,16 +61,16 @@ class TabItem extends Component<Props> {
         >
         <img
           className="TabItem__icon"
-          src={`/static/images/${icon}${( isActive || isHovered || (menuOpen && dropDown)) ? '-on' : '-off'}.svg`}
+          src={`/static/images/${icon}${( isActive || isHovered ) ? '-on' : '-off'}.svg`}
         />
         <span className="TabItem__text">{title}</span>
         </Link>
           {      
             menus && 
-            <ul className={cx('SidebarNav__dropDownMenu',{'dropDownMenu' : dropDown,'menuOpen' : menuOpen})}>
-              {(menus.map(({ id, name, subLink }) => (
+            <ul className={cx('SidebarNav__dropDownMenu',{'dropDownMenu' : dropDown})}>
+              {(menus.map(({ id, name, subLink, pageMove }) => (
                 <li key={name}>
-                {!dropDown ?(
+                {!pageMove ?(
                     <Link
                   to={subLink}
                   onClick={() => {
