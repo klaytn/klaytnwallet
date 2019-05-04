@@ -47,7 +47,7 @@ class WalletCreation2 extends Component<Props> {
   }
   returnPrivateKey = () => {
     const {privateKey, walletData} = this.state
-    return privateKey+'.'+walletData.to
+    return privateKey+'0x01'+walletData.to
   }
   renderWalletCreationStep = (step) => {
     const { prevRefComponentState, pageType, walletData, privateKey, HRAaddress } = this.state
