@@ -49,3 +49,8 @@
     padding: 0px;
   }
 }
+.WalletCreationStep5 .InputCopy__input {
+  @include font-style('caption-alert');
+  
+  color: $Red;
+}

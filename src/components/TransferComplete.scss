@@ -6,13 +6,12 @@
   @include panelize;
   @include boxColor;
   margin: 0 auto;
-  width: 100%;
   text-align: left;
-  padding-top: 270px;
-  padding-bottom: 120px;
+  display: table;
   .Inner__Box {
-    width: 560px;
-    margin: 0 auto;
+    display: table-cell;
+    padding: 0 165px;
+    vertical-align: middle;
   }
 }
 

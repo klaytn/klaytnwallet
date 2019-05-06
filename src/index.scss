@@ -11,6 +11,16 @@
 }
 
 @font-face {
+  font-family: 'RobotoMono';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/static/fonts/roboto_bold.eot'), // IE
+       url('/static/fonts/Roboto_mono_regular.woff') format('woff'), // Modern browser
+       url('/static/fonts/Roboto_mono_regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: normal;

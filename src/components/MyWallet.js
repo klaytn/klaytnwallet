@@ -62,6 +62,13 @@ class MyWallet extends Component<Props> {
     }
     return ''
   }
+  privatekeySet = () => {
+    const address = sessionStorage.getItem('address')
+    if(address){
+      return this.wallet.privateKey+'0x01'+caver.utils.humanReadableStringToHexAddress(address)
+    }
+    return this.wallet.privateKey
+  }
   render() {
     const { hidePrivateKey } = this.state
     const { isTokenAddMode } = this.props
@@ -87,7 +94,7 @@ class MyWallet extends Component<Props> {
               onLabelClick={this.togglePrivateKey}
               labelClassName="MyWallet__hideButton"
               type={hidePrivateKey ? 'password' : 'text'}
-              value={this.wallet.privateKey}
+              value={this.privatekeySet()}
               readOnly
               autoFocus
               eye

@@ -63,13 +63,13 @@ export const checkValidName = (name) => {
 }
 
 export const klayKeyMade = (privateKey, address) => {
-  return privateKey+'.'+address
+  return privateKey+'0x01'+address
 }
 
 export const klayKeyDecomulation = (klayKey) => {
   let klayKeyObj, returnObj
-  if(klayKey.indexOf('.') > 0){
-    klayKeyObj= klayKey.split('.')
+  if(klayKey.indexOf('0x01') > 0){
+    klayKeyObj= klayKey.split('0x01')
     returnObj = {
       privateKey : Number(klayKeyObj[0]),
       address : Number(klayKeyObj[1]),

@@ -65,31 +65,29 @@ class WalletCreationStep1 extends Component<Props> {
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
     const { klayWallet, HRAid, setKlaytn, isLoding, isDuplicateName } = this.state
+    const address = sessionStorage.getItem('address') ? sessionStorage.getItem('address') :klayWallet.address
+
     let setHandleStepMove = handleStepMove(2)
     this.setState({ isLoding: true })
     console.log(HRAid+setKlaytn)
-    //기본 보낼 객체 생성
+    //object
     const sender_transaction = {
-      type: 'ACCOUNT_CREATION',//타입 계정 생성
-      from: klayWallet.address, // 보내는 주소 
-      to: HRAid+setKlaytn, //humanReadable 생성할 이름 
-      humanReadable: true,// humanReadable로 생성할지 여부
+      type: 'ACCOUNT_CREATION',//type
+      from: address, // from address
+      to: HRAid+setKlaytn, //to humanReadable
+      humanReadable: true,// humanReadable로 made
       publicKey: caver.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
-      gas: '300000', // 가스양 ( 계정 생성시에 드는 비용 )
-      value: 1,// value 가 없으면 계정 생성이 실패함
+      gas: '300000', // gas
+      value: 1,// value
     }
     this.setState({ privateKey: klayWallet.privateKey })
-    
-    
-    //메모리 상에 월렛 privateKey를 등록함으로서 sendTransaction시에 확인이 가능하도록 한다.
     caver.klay.accounts.wallet.add(klayWallet.privateKey) 
 
-    // 아이디 전송 작업 진행
+    // send id
     caver.klay.sendTransaction(sender_transaction)
       .on('transactionHash', console.log)
       .on('receipt', async (receipt) => {
-        console.log(receipt)
-        //페이지 이동
+
         walletDataUpdate({
           walletData: receipt,
           privateKey: klayWallet.privateKey
@@ -99,16 +97,13 @@ class WalletCreationStep1 extends Component<Props> {
       })
       .on('error', (error) => {
         console.log(error)
-        //기존 페이지 유지 및 alert 팝업 호출 및 input value 삭제
         this.setState({ isDuplicateName: true })
-        
       })
   }
   
   render() {
     const { handleStepMove, dataChange } = this.props
     const { checkEnd, HRAid, isChecked, isLoding, checkValidAlert, isValidName, pageOutAction, isDuplicateName } = this.state
- 
     return (
       <WalletCreationStepPlate
         stepName="STEP 1"

@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="11.338" height="8.089" viewBox="0 0 11.338 8.089">
+<svg xmlns="http://www.w3.org/2000/svg" width="11.334" height="8.089" viewBox="0 0 11.334 8.089">
     <defs>
         <style>
             .cls-1{fill:none;stroke:#4e527d;stroke-width:2px}
         </style>
     </defs>
-    <g id="icon_success_check-blue" transform="translate(-816.331 -179.257)">
-        <path id="icon_success_check-blue-2" d="M788 332.5l3.333 3 6.667-6" class="cls-1" data-name="icon_success_check-blue" transform="translate(29 -149.5)"/>
+    <g id="icon-check-b" transform="translate(-991.331 -478.253)">
+        <path id="icon_success_check-blue" d="M817 183.095l3.266 2.939 6.734-6" class="cls-1" transform="translate(175 298.967)"/>
     </g>
 </svg>

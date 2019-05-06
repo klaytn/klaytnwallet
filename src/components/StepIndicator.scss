@@ -13,21 +13,20 @@
 
 .StepIndicator__item {
   @include font-style('button');
-  padding: 7px;
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
   text-align: center;
   width: 32px;
   height: 32px;
+  line-height: 31px;
   color: $middle-blue-grey;
   border: 1px solid $middle-blue-grey;
 
   &--active, &--checked {
-    border: 0;
+    border-color: $dark-blue-grey;
     color: $White-one;
     background-color: $dark-blue-grey;
-    padding: 8px;
   }
 
   &--checked {

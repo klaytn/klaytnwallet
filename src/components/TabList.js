@@ -9,22 +9,35 @@ type Props = {
 }
 
 class TabList extends Component<Props> {
-
+  state = {
+    moreMenuClick: false,
+  }
+  menuClick = (value)=>{
+    const { moreMenuClick } = this.state
+    if(!value){
+      this.setState({moreMenuClick:false})
+    } else{
+      this.setState({moreMenuClick:true})
+    }
+  }
+  
   render() {
     const { tabItems } = this.props
+    const { moreMenuClick } = this.state
     const [ empty, nextTo ] = (window.location.search || '').split('?next=')
 
     return (
       <div className="TabList">
-        {tabItems.map(({ title, link, icon, menu , dropDown, menuClass}) => {
+        {tabItems.map(({ title, link, icon, menu, dropDown, menuClass, isDropDown}) => {
+          
           return (
             <TabItem
               isActive={
-                link === '/'
+                (link === '/'
                   ? link == window.location.pathname
                   : nextTo
                     ? (`/${nextTo}` == link)
-                    : new RegExp(link).test(window.location.pathname)
+                    : new RegExp(link).test(window.location.pathname)) && !isDropDown && !moreMenuClick || (isDropDown && moreMenuClick)
                 }
               icon={icon}
               key={title}
@@ -33,6 +46,8 @@ class TabList extends Component<Props> {
               menus={menu}
               dropDown={dropDown}
               menuClass={menuClass}
+              isDropDown={isDropDown}
+              menuClick={this.menuClick}
             />
           )
         })}

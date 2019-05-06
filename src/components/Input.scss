@@ -92,4 +92,18 @@
   color: #d64a70;
   margin-top: 10px;
   height: 14px;
+  padding-left: 14px;
+  &.show:after { 
+    display: block
+  }
+  &:after { 
+    content: '';
+    display: none;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-alert-02.svg);
+   }
 }

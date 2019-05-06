@@ -22,8 +22,8 @@ class AccessByPrivateKey extends Component<Props> {
   handleChange = (e) => {
     let walletData = e.target.value
     let inputValue, address
-    if(walletData.indexOf('.') >=0){
-      walletData = walletData.split('.')
+    if(walletData.indexOf('0x01') >=0){
+      walletData = walletData.split('0x01')
       inputValue = walletData[0]
       address = walletData[1].length === 42 ? walletData[1] : null
       sessionStorage.setItem('address', caver.utils.hexToUtf8(address))

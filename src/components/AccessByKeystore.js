@@ -21,6 +21,7 @@ class AccessByKeystore extends Component<Props> {
     // isValidPassword: null,
     isValidPassword: true,
     error: '',
+    passwordError: '',
     password: '',
     isReminderChecked: false,
     fileName: '',
@@ -41,7 +42,8 @@ class AccessByKeystore extends Component<Props> {
 
         if (!isValidKeystore) {
           this.setState({
-            error: 'Keystore file is invalid.'
+            error: 'Keystore file is invalid.',
+            fileName: ''
           })
           return
         }
@@ -49,11 +51,13 @@ class AccessByKeystore extends Component<Props> {
         this.setState({
           fileName,
           keystore: target.result,
+          error: '',
           keystoreAddress: parsedKeystore.address,
         }, () => document.querySelector('#input-password').focus())
       } catch (e) {
         this.setState({
           error: 'Keystore file is invalid.',
+          fileName: ''
         })
         return
       }
@@ -91,7 +95,7 @@ class AccessByKeystore extends Component<Props> {
       if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
     } catch (e) {
       this.setState({
-        error: 'Does not Match with your Keystore Account',
+        passwordError: 'Does not Match with your Keystore Account',
       })
     }
   }
@@ -104,7 +108,8 @@ class AccessByKeystore extends Component<Props> {
         isValidPassword,
         error,
         password,
-        isReminderChecked
+        isReminderChecked,
+        passwordError,
        } = this.state 
     return (
       <div className="AccessByKeystore">
@@ -113,6 +118,7 @@ class AccessByKeystore extends Component<Props> {
           value={fileName}
           onChange={this.handleImport}
           placeholder="Search..."
+          errorMessage={error}
         />
         <Input
           autoFocus
@@ -124,7 +130,7 @@ class AccessByKeystore extends Component<Props> {
           type="password"
           onChange={this.handleChange}
           isValid={isValidPassword}
-          errorMessage={error}
+          errorMessage={passwordError}
         />
         <AccessReminder 
           isChecked={isReminderChecked}
