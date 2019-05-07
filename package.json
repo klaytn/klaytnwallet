@@ -9,6 +9,7 @@
   "scripts": {
     "test": "jest",
     "build:local": "NODE_ENV=local webpack --config webpack.prod.config.js",
+    "build:docker": "NODE_ENV=docker webpack --config webpack.prod.config.js",
     "build:dev": "NODE_ENV=dev webpack --config webpack.prod.config.js",
     "build:qa": "NODE_ENV=qa webpack --config webpack.prod.config.js",
     "build:real": "NODE_ENV=real webpack --config webpack.prod.config.js",
