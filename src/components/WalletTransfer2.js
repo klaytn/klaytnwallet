@@ -161,7 +161,7 @@ class WalletTransfer2 extends Component<Props> {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
     const contractInstance = new caver.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
-    const decimalProcessedTokenAmount = new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
+    const decimalProcessedTokenAmount = '0x' + new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
     contractInstance.accounts = caver.klay.accounts
     contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
       from: this.HRADataChange(),

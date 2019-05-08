@@ -95,7 +95,7 @@ class AccessByKeystore extends Component<Props> {
       if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
     } catch (e) {
       this.setState({
-        passwordError: 'Does not Match with your Keystore Account',
+        passwordError: 'Does not match with your keystore file.',
       })
     }
   }
