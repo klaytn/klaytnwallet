@@ -28,7 +28,7 @@ class WalletCreationStep1 extends Component<Props> {
       isLoding: false,
       pageOutAction: false,
       isDuplicateName: false,
-      setKlaytn: '.Klaytn'
+      setKlaytn: '.klaytn'
     }
   }
   dataChange = (e)=>{
