@@ -22,6 +22,7 @@ class WalletCreationStepPlate extends Component<Props> {
         nextStepButtons = [],
         TransferTotalItem=[],
         className,
+        stepDim,
       } = this.props
     return (
       <div className={cx('WalletCreationStepPlate', className)}>
@@ -65,6 +66,7 @@ class WalletCreationStepPlate extends Component<Props> {
           )}
         </div>
         {dimRender && dimRender()}
+        {stepDim && stepDim}
       </div>
     )
   }

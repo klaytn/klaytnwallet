@@ -205,3 +205,13 @@
     stroke-dashoffset: -600;
   }
 }
+
+.stepDim { 
+  display: block;
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+ }
