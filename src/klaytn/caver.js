@@ -5,8 +5,7 @@ import Caver from 'caver-js'
 // const intervalId = setInterval(() =>
 // caverSocket.klay.getBlockNumber().then(console.log), PING_TIME)
 
-// const protocol = window ? window.location.protocol : 'http:';
-const protocol = 'https:';
+const protocol = window ? window.location.protocol : 'http:';
 export const config = {
   rpcURL: `${protocol}//${process.env.KLAYTN_HOST}`,
   wsURL: 'ws://devnet.klaytn.io:8546', // You can access websocket only with VPN.
