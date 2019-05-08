@@ -28,12 +28,13 @@ class WalletCreationStep1 extends Component<Props> {
       isLoding: false,
       pageOutAction: false,
       isDuplicateName: false,
-      setKlaytn: ''//.klaytn
+      setKlaytn: '.Klaytn'
     }
   }
   dataChange = (e)=>{
     this.setState({
       checkEnd: false,
+      checkValidAlert:false,
       HRAid: e.target.value,
       isValidName: e.target.value.length === 0 ? false : checkValidName(e.target.value),
     })
@@ -44,38 +45,39 @@ class WalletCreationStep1 extends Component<Props> {
 
     try {
       let isHRAMadeSet = await caver.klay.accountCreated(HRAid+setKlaytn)
-      this.setState({ isHRAMade: isHRAMadeSet })
+      await this.setState({ isHRAMade: isHRAMadeSet })
     } catch (e) {
 
     }
-    if(!isHRAMade){
+
+    if(!this.state.isHRAMade){
       this.setState({ isChecked: true })
       this.setState({ checkEnd: true })
       setTimeout(()=>{        
-        this.setState({ isChecked: false })
+        this.setState({ isChecked: false, isHRAMade: false})
       },2000)    
+    }else{
+      this.setState({ checkValidAlert: true })
     }
-    
   }
   resetAccount = () => {
-    const { isDuplicateName,isLoding } = this.state
     this.setState({ HRAid: '', isDuplicateName: false, isLoding: false, isValidName: false })
     document.getElementsByClassName('KlayText')[0].style.left = '65px'
   }
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
     const { klayWallet, HRAid, setKlaytn, isLoding, isDuplicateName } = this.state
-    const address = sessionStorage.getItem('address') ? sessionStorage.getItem('address') :klayWallet.address
+    const address = sessionStorage.getItem('address') ? sessionStorage.getItem('address') : klayWallet.address
 
     let setHandleStepMove = handleStepMove(2)
     this.setState({ isLoding: true })
-    console.log(HRAid+setKlaytn)
+    
     //object
     const sender_transaction = {
       type: 'ACCOUNT_CREATION',//type
       from: address, // from address
       to: HRAid+setKlaytn, //to humanReadable
-      humanReadable: true,// humanReadable로 made
+      humanReadable: true,// humanReadable made
       publicKey: caver.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
       gas: '300000', // gas
       value: 1,// value
@@ -103,7 +105,7 @@ class WalletCreationStep1 extends Component<Props> {
   
   render() {
     const { handleStepMove, dataChange } = this.props
-    const { checkEnd, HRAid, isChecked, isLoding, checkValidAlert, isValidName, pageOutAction, isDuplicateName } = this.state
+    const { checkEnd, HRAid, isChecked, isLoding, checkValidAlert, isValidName, isDuplicateName } = this.state
     return (
       <WalletCreationStepPlate
         stepName="STEP 1"
@@ -144,11 +146,11 @@ class WalletCreationStep1 extends Component<Props> {
           </div>
         )}
         dimRender={() => (
-          <div className={cx('all__loding',{'show':isLoding || pageOutAction})}>
+          <div className={cx('all__loding',{'show':isLoding || isDuplicateName})}>
             <div className="left__dim"></div>
             <div className="right__dim">
 
-              <div className={cx('transaction__alert__popup',{'show':isLoding && pageOutAction})}>
+              <div className={cx('transaction__alert__popup',{'show':isLoding})}>
                 <span className="transaction__alert__title">Sending transaction to create your custom account</span>
                 <p className="transaction__alert__text">
                   Please wait while we collect the transaction results.
@@ -160,18 +162,6 @@ class WalletCreationStep1 extends Component<Props> {
                   <span className="wait__text">Please wait…</span>
                 </div>
               </div>
-              
-              {/* <div className={cx('transaction__alert__popup disNone',{'show': !isLoding && pageOutAction})}>
-                <span className="transaction__alert__title">Leave Page?</span>
-                <p className="transaction__alert__text">
-                You haven’t finished creating your Klaytn account yet. <br />Do you want to leave without finishing? 
-                </p>
-                <div className="popup__bottom__box">
-                  <button className="Button">Leave</button>
-                  <button className="Button">Stay</button>
-                </div>
-              </div> */}
-
               <div className={cx('transaction__alert__popup disNone',{'show': isDuplicateName})}>
                 <span className="transaction__alert__title">Uh-oh, this address is already taken</span>
                 <p className="transaction__alert__text">
