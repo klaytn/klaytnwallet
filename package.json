@@ -27,7 +27,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "bignumber.js": "^7.2.1",
-    "caver-js": "0.0.2-y",
+    "caver-js": "0.0.2-z",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",
     "crypto-js": "^3.1.9-1",
