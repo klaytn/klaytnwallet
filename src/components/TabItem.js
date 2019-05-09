@@ -68,7 +68,7 @@ class TabItem extends Component<Props> {
           {      
             menus && 
             <ul className={cx('SidebarNav__dropDownMenu',{'dropDownMenu' : dropDown})}>
-              {(menus.map(({ id, name, subLink, pageMove }) => (
+              {(menus.map(({ id, name, subLink, pageMove, upcoming }) => (
                 <li key={name}>
                 {!pageMove ?(
                     <Link
@@ -81,6 +81,7 @@ class TabItem extends Component<Props> {
                   onMouseLeave={this.innerToggleHover(false)}
                   className={classNames('SidebarNav__dropDownLink', {
                     'SidebarNav__dropDownLink--active': window.location.pathname == subLink,
+                    'link__upcoming': upcoming
                   })}
                   >{name}</Link>
                   ):(

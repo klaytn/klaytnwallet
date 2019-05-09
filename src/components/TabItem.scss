@@ -123,7 +123,18 @@
     transform: translateY(-50%);
     opacity: .5;
   }
-  &:hover {
+  &.link__upcoming {
+    cursor: not-allowed;
+    position: relative;
+  }
+  &.link__upcoming:after {
+    content: '(Upcoming)';
+    display: block;
+    font-size: 11px;
+    font-style: italic;
+    color:#73768d;
+  }
+  &:not(.link__upcoming):hover {
     text-decoration: underline;
     color: $White-one;
     opacity: 1;
@@ -131,7 +142,7 @@
       opacity: 1;
     }
   }
-  &--active {
+  &--active:not(.link__upcoming) {
     opacity: 1;
     font-weight: bold;
   }  

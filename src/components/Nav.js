@@ -7,7 +7,7 @@ import { KLAYTN_SCOPE_URL,KLAYTN_DOCS_URL,KLAYTN_IDE_URL, KLAYTN_WALLET_URL } fr
 import './Nav.scss'
 
 let navLinks = [
-  { title: 'Create Account', menuClass: 'menu-create', link: '/create', icon: 'icon-create', dropDown: true , menu: [{name: 'New Account', subLink: '/create'}, {name: 'Custom Address', subLink: '/create2'}] },
+  { title: 'Create Account', menuClass: 'menu-create', link: '/create', icon: 'icon-create', dropDown: true , menu: [{name: 'New Account', subLink: '/create'}, {name: 'Custom Address', subLink: '', upcoming: true }] },
   { title: 'View Account Info', link: '/access', dropDown: false , icon: 'icon-info' },
   { title: 'Send KLAY & Token', link: '/transfer',dropDown: false ,  icon: 'icon-send' },
   { title: 'KLAY Faucet', link: '/faucet', dropDown: false , icon: 'icon-faucet' },
