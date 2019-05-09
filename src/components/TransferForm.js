@@ -45,12 +45,20 @@ class TransferForm extends Component<Props> {
       isTokenAddMode,
       myBalance,
     } = this.props
-
-    const isInvalidAddress = to && !caver.utils.isAddress(to)
+    let isInvalidAddress = false
+    if(to){
+      if(to.indexOf('.klaytn') > 0){
+        isInvalidAddress = !caver.utils.isAddress(caver.utils.humanReadableStringToHexAddress(to))
+      }else{
+        isInvalidAddress = !caver.utils.isAddress(to)
+      }
+    }
     const isInvalidAmount = value && (Number(myBalance) <= Number(value) + Number(totalGasFee))
     // show invalid tx fee error message only when selected token is not 'Test_KLAY'
     const isInvalidTxFee = type !== 'Test_KLAY' && Number(myBalance) <= Number(totalGasFee)
     const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee
+    
+    console.log(caver.utils.hexToUtf8(caver.utils.humanReadableStringToHexAddress('address.klaytn')))
 
     return (
       <div className={cx('TransferForm', className, {

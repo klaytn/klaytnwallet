@@ -28,6 +28,7 @@ class PageAlertPopup extends Component<Props> {
         this.setState({
           balance:balance,
         })
+        console.log(balance)
       })
     }
     
@@ -36,12 +37,12 @@ class PageAlertPopup extends Component<Props> {
     this.updateBalance();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps.balance, this.props.balance)
-  //   if (prevProps.balance !== this.props.balance) {
-  //     this.updateBalance();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.balance, this.props.balance)
+    if (prevProps.balance !== this.props.balance) {
+      this.updateBalance();
+    }
+  }
 
   
 
@@ -57,7 +58,7 @@ class PageAlertPopup extends Component<Props> {
 
     return (
       <div className={cx('createMainPopup', {
-        'show': !this.wallet || balance == '0'
+        'show': !this.wallet || balance < 101000000000000000000
       })}>
         {!this.wallet && (
           <div className="createMainPopup__inner widthType">
@@ -74,7 +75,7 @@ class PageAlertPopup extends Component<Props> {
             
           </div>
         )}
-        {this.wallet && balance == '0' && false && (
+        {this.wallet && balance < 101000000000000000000 &&  (
           <div className="createMainPopup__inner widthType">
             <span  className="popup__title">Interested In Customizing Your Account Address?</span>
             <p className="popup__message2">To create a new account with custom address, you need more KLAY to send a transaction. Please check your KLAY balance at View Account Info.
@@ -89,7 +90,7 @@ class PageAlertPopup extends Component<Props> {
             </div>
           </div>
         )}
-        {this.wallet && balance == '0' && (
+        {this.wallet && balance < 101000000000000000000 && false && (
           <div className="createMainPopup__inner">
             <Input
               name="value"

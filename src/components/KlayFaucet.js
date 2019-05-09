@@ -103,7 +103,7 @@ class KlayFaucet extends Component<Props> {
         //   })
         // }
 
-        if (status === 'success') {
+        if (status === 'ok') {
           this.getFaucetableBlock()
           this.updateBalance()
         }

@@ -49,7 +49,7 @@ class WalletCreationStep1 extends Component<Props> {
     } catch (e) {
 
     }
-
+    
     if(!this.state.isHRAMade){
       this.setState({ isChecked: true })
       this.setState({ checkEnd: true })
@@ -68,22 +68,27 @@ class WalletCreationStep1 extends Component<Props> {
     const { handleStepMove, walletDataUpdate } = this.props
     const { klayWallet, HRAid, setKlaytn, isLoding, isDuplicateName } = this.state
     const address = sessionStorage.getItem('address') ? sessionStorage.getItem('address') : klayWallet.address
-
     let setHandleStepMove = handleStepMove(2)
     this.setState({ isLoding: true })
     
-    //object
+    caver.klay.accounts.wallet.add(klayWallet.privateKey)
+  
+    const humanReadableAddress = HRAid + '.klaytn'
+  
+    const { privateKey: newPrivateKey } = caver.klay.accounts.create()
+    const newPublicKey = caver.klay.accounts.privateKeyToPublicKey(newPrivateKey)
+  
     const sender_transaction = {
-      type: 'ACCOUNT_CREATION',//type
-      from: address, // from address
-      to: HRAid+setKlaytn, //to humanReadable
-      humanReadable: true,// humanReadable made
-      publicKey: caver.klay.accounts.privateKeyToPublicKey(klayWallet.privateKey), //privateKey
-      gas: '300000', // gas
-      value: 1,// value
+      type: 'ACCOUNT_CREATION',
+      from: address,
+      to: humanReadableAddress,
+      gas: '5000000000',
+
+      publicKey: newPublicKey,
+      value: caver.utils.toPeb('0.01', 'KLAY'),
     }
+
     this.setState({ privateKey: klayWallet.privateKey })
-    caver.klay.accounts.wallet.add(klayWallet.privateKey) 
 
     // send id
     caver.klay.sendTransaction(sender_transaction)
