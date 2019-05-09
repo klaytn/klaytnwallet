@@ -57,10 +57,11 @@ class WalletAccess2 extends Component<Props> {
     return (
       <div className="WalletAccess2">
         <div className="WalletAccess2__inner">
-          <header className="WalletAccess2__title">Access Existing Wallet</header>
+          <header className="WalletAccess2__title">Access Existing Account</header>
           <p className="WalletAccess2__description">
-            You can access your wallet either with your private key or <br />
-            with your keystore file and keystore file password.
+            You can access your account using your private key<br />
+            or Klaytn HRA Private Key (for custom address accounts).<br />
+            Or you can also use your keystore file and its password.
           </p>
           <TabRadio
             className="WalletAcess2__tabRadio"
