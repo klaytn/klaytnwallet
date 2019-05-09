@@ -15,6 +15,7 @@ class TabItem extends Component<Props> {
   state = {
     isHovered: false,
     menuOpen: false,
+    moreMenuClick: false,
   }
 
   toggleHover = (isHovered) => () => {    
@@ -27,24 +28,31 @@ class TabItem extends Component<Props> {
       isHovered,
     })
   }
+  menuClick = (isHovered) => () => {
+    this.setState({
+      isHovered,
+    })
+  }
   render() {
-    const { isHovered, menuOpen } = this.state
-    const { title, link, isActive, icon, menus, isMenuActive, menuClick, onMenuName, menuClass, dropDown } = this.props
+    const { isHovered, menuOpen, moreMenuClick } = this.state
+    const { title, link, isActive, icon, menus, isMenuActive, menuClick, menuClass, dropDown, isDropDown } = this.props
     const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
     return (
       <div className={classNames(menuClass,{'dropDown':dropDown})}>
         <Link
           className={classNames('TabItem', {
             'TabItem--active': isActive || isHovered,
-            'TabItem--open': isActive,
+            'TabItem--open': isActive || moreMenuClick,
           })}
           to={link}
           onClick={() => {
-            if(dropDown && onMenuName === title){         
-              menuClick('')
+            if(isDropDown){         
+              menuClick(true)
+              console.log('23432423')
             }else{
-              menuClick(title)
+              menuClick(false)
             }
+
             if (privateKeyDecrypt) return
             caver.klay.accounts.wallet.clear()
           }}

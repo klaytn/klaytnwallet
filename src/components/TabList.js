@@ -7,35 +7,38 @@ import './TabList.scss'
 type Props = {
 
 }
-const menuList = {
-  create: 'Create Account',
-  access: 'View Account Info',
-  transfer: 'Send KLAY & Token',
-  faucet: 'KLAY Faucet',
-  '?next=faucet': 'KLAY Faucet',
-  '?next=transfer': 'Send KLAY & Token',
-} 
-class TabList extends Component<Props> {
 
+class TabList extends Component<Props> {
   state = {
-    onMenuName: menuList[window.location.search] ? menuList[window.location.search] : menuList[window.location.pathname.split('/')[1]],
+    moreMenuClick: false,
   }
   menuClick = (value)=>{
-    this.setState({ onMenuName : value})
+    const { moreMenuClick } = this.state
+    if(!value){
+      this.setState({moreMenuClick:false})
+    } else{
+      this.setState({moreMenuClick:true})
+    }
   }
   
   render() {
     const { tabItems } = this.props
-    const { onMenuName } = this.state
+    const { moreMenuClick } = this.state
     const [ empty, nextTo ] = (window.location.search || '').split('?next=')
 
     return (
       <div className="TabList">
-        {tabItems.map(({ title, link, icon, menu, dropDown, menuClass}) => {
-
+        {tabItems.map(({ title, link, icon, menu, dropDown, menuClass, isDropDown}) => {
+          
           return (
             <TabItem
-              isActive={ (window.location.pathname == '/' ? (onMenuName === 'more' && window.location.search ? onMenuName : '') : onMenuName) === title}
+              isActive={
+                (link === '/'
+                  ? link == window.location.pathname
+                  : nextTo
+                    ? (`/${nextTo}` == link)
+                    : new RegExp(link).test(window.location.pathname)) && !isDropDown && !moreMenuClick || (isDropDown && moreMenuClick)
+                }
               icon={icon}
               key={title}
               title={title}
@@ -43,14 +46,13 @@ class TabList extends Component<Props> {
               menus={menu}
               dropDown={dropDown}
               menuClass={menuClass}
+              isDropDown={isDropDown}
               menuClick={this.menuClick}
-              onMenuName={onMenuName}
             />
           )
         })}
 
         <SidebarFooter />
-        
       </div>
     )
   }
