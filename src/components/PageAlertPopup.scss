@@ -45,7 +45,7 @@
     }
     .Input__error {
       color: $Scope-blue;
-      &:before {
+      &:after {
         content: '';
         display: inline-block;
         width: 10px;

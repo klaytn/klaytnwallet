@@ -61,9 +61,8 @@ class PageAlertPopup extends Component<Props> {
       })}>
         {!this.wallet && (
           <div className="createMainPopup__inner widthType">
-            <span  className="popup__title">Please check your account balance first</span>
-            <p className="popup__message2">Creating a custom address account requires KLAY. You can check your KLAY balance at
-              <Link to="/access" className="info_link" >View Account Info.</Link>
+            <span  className="popup__title">Interested In Customizing Your Account Address?</span>
+            <p className="popup__message2">To create a new account with custom address, you need some KLAY to send a transaction. Please gain access to an existing account with KLAY balance through View Account Info.
             </p>
             <div className="popup__bottom__box">
             <Link to="/access" className="info_link" ><Button
@@ -75,11 +74,10 @@ class PageAlertPopup extends Component<Props> {
             
           </div>
         )}
-        {this.wallet && balance == '0' && mainNetSite && (
+        {this.wallet && balance == '0' && false && (
           <div className="createMainPopup__inner widthType">
-            <span  className="popup__title">You need more KLAY for this action</span>
-            <p className="popup__message2">Please check your Test_KLAY balance at
-              <Link to="/access" className="info_link" >View Account Info.</Link>
+            <span  className="popup__title">Interested In Customizing Your Account Address?</span>
+            <p className="popup__message2">To create a new account with custom address, you need more KLAY to send a transaction. Please check your KLAY balance at View Account Info.
             </p>
             
             <div className="popup__bottom__box">
@@ -91,26 +89,27 @@ class PageAlertPopup extends Component<Props> {
             </div>
           </div>
         )}
-        {this.wallet && balance == '0' && !mainNetSite && (
+        {this.wallet && balance == '0' && (
           <div className="createMainPopup__inner">
             <Input
               name="value"
 
               className="TransferForm__input TransferForm__valueInput"
-              label="Get test KLAY"
+              label="Interested In Customizing Your Account Address?"
               placeholder="0.000000"
               autoComplete="off"
               unit="Test_KLAY"
               value="10"
               errorMessage="How does the Klay Faucet work?"
             />
-            <p className="popup__message">Please run the Test_KLAY Faucet to receive a small amount of Test_KLAY for testing. </p>
-            <div className="popup__bottom__box"><Button
-              className="popup__btn"
+            <p className="popup__message">KLAY Faucet lets you receive a small amount of Test_KLAY periodically for testing purposes.</p>
+            <div className="popup__bottom__box">
+            <Link to="/faucet" ><Button className="popup__btn"
               key='Get Test_KLAY'
               title={'Get Test_KLAY'}
-              onClick={goFaucet}
-            /></div>
+            />
+            </Link>
+            </div>
           </div>
         )}
         
