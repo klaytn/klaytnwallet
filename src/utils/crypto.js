@@ -42,7 +42,7 @@ export const has5and13Characters = (name) => (name.length >= MINIMUM_NAME_LENGTH
 
 export const hasSpecialCharacters = (password) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(password))
 export const hasNoSpecialCharacters = (name) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(name) !== true )
-export const onlyAlphabetAndNumbers = (name) => (/^[A-Za-z0-9+]*$/i.test(name))
+export const onlyAlphabetAndNumbers = (name) => (/^[A-Za-z0-9+]*$/i.test(name) && name )
 
 export const hasNoFirstNumber = (name) => (/^[A-za-z]/g.test(name))
 
