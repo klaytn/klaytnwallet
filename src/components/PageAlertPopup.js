@@ -22,13 +22,15 @@ class PageAlertPopup extends Component<Props> {
     }
   }
   updateBalance = () => {
+    const address = sessionStorage.getItem('address')
+    
     if(this.wallet ){
-      caver.klay.getBalance(this.wallet.address)
+      caver.klay.getBalance(address ? address : this.wallet.address)
       .then((balance) => {
         this.setState({
           balance:balance,
         })
-        console.log(balance)
+       
       })
     }
     
