@@ -42,26 +42,22 @@ class WalletCreationStep1 extends Component<Props> {
 
   HRACheck = async (e) => {
     const { HRAid, isChecked, setKlaytn, isHRAMade } = this.state
-
-    try {
-      let isHRAMadeSet = await caver.klay.accountCreated(HRAid+setKlaytn)
-      await this.setState({ isHRAMade: isHRAMadeSet })
-    } catch (e) {
-
-    }
+    await caver.klay.accountCreated(HRAid+setKlaytn).then((data) => {
+      this.setState({ isHRAMade: data, checkValidAlert: !data })
+    })
     
     if(!this.state.isHRAMade){
-      this.setState({ isChecked: true })
-      this.setState({ checkEnd: true })
+      this.setState({ isChecked: true, checkEnd: true, checkValidAlert: false })
       setTimeout(()=>{        
         this.setState({ isChecked: false, isHRAMade: false})
       },2000)    
     }else{
       this.setState({ checkValidAlert: true })
     }
+    
   }
   resetAccount = () => {
-    this.setState({ HRAid: '', isDuplicateName: false, isLoding: false, isValidName: false })
+    this.setState({ HRAid: '', isDuplicateName: false, isLoding: false, checkValidAlert: false, isValidName: false })
     document.getElementsByClassName('KlayText')[0].style.left = '65px'
   }
   HRACreate = (e) => {
@@ -137,7 +133,7 @@ class WalletCreationStep1 extends Component<Props> {
             onChange={this.dataChange}
             buttonText="Check"
             isChecked={isChecked}
-            buttonDisabled= {!isValidName}
+            buttonDisabled= {!isValidName || checkValidAlert }
             autocomplete={'off'}
           />
           
