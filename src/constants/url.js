@@ -6,6 +6,9 @@ export const KLAYTN_MEDIUM_URL= process && process.env.KLAYTN_MEDIUM_URL
 export const KLAYTN_MAIL_URL= process && process.env.KLAYTN_MAIL_URL
 export const KLAYTN_IDE_URL= process && process.env.KLAYTN_IDE_URL
 export const KLAYTN_WALLET_URL= process && process.env.KLAYTN_WALLET_URL
+export const KLAYTN_URL_NAME= process && process.env.KLAYTN_URL_NAME
+export const KLAYTN_MAINNET_URL= process && process.env.KLAYTN_MAINNET_URL
+export const KLAYTN_BAOBAB_URL= process && process.env.KLAYTN_BAOBAB_URL
 
 console.log(process.env.KLAYTN_IDE_URL)
 export default KLAYTN_SCOPE_URL
