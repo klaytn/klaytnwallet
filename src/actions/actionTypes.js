@@ -6,7 +6,8 @@ export const CLOSE_POPUP = 'CLOSE_POPUP'
 
 export const SHOW_TOAST = 'SHOW_TOAST'
 export const HIDE_TOAST = 'HIDE_TOAST'
-
+export const KEY_REMOVE = 'KEY_REMOVE'
+export const KEY_REMOVE_END = 'KEY_REMOVE_END'
 export const REGISTER_TOKEN = 'REGISTER_TOKEN'
 export const GET_ALL_TOKEN = 'GET_ALL_TOKEN'
 export const TOGGLE_TOKEN_ADD_MODE = 'TOGGLE_TOKEN_ADD_MODE'

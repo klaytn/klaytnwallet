@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
-
+import { connect } from 'react-redux'
 import { caver } from 'klaytn/caver'
 import Button from 'components/Button'
 import './ContentHeader.scss'
+import ui from 'utils/ui'
+import store from  '../store'
 import {  KLAYTN_URL_NAME, KLAYTN_MAINNET_URL, KLAYTN_BAOBAB_URL } from 'constants/url'
 const HEALTHCHECK_INTERVAL = 1000
 const CRYPO_PASSWORD = process && process.env.CRYPO_PASSWORD
@@ -45,12 +47,16 @@ class Header extends Component<Props> {
       network: 'Baobab Network',
     })
   }
-  componentWillReceiveProps (){
+  componentWillReceiveProps (preprops){
     this.setState({showDropdown : false})
+    const {removeSessionStorageButton } = this.props
+    if(preprops.removeSessionStorageButton !== removeSessionStorageButton){
+
+    }
   }
   dropDownClick = () => {
     const { showDropdown } = this.state
-    console.log('432423423')
+   
     if(showDropdown) {
       this.setState({showDropdown : false})
     } else {
@@ -67,9 +73,12 @@ class Header extends Component<Props> {
   }
   render() {
     const { network, showDropdown } = this.state
-    const { cancelAction, confirmAction, removeSessionStorageButton, showSessionStoragePopup, popupOpen } = this.props
+    const { cancelAction, confirmAction, removeSessionStorageButton, showSessionStoragePopup, popupOpen, keyRemove } = this.props
     let networkList
-
+    if(keyRemove){
+      confirmAction('notMove')
+      ui.keyRemoveEnd()
+    }
     if(KLAYTN_URL_NAME === 'Main Network'){
       networkList = [{value: '', name: 'Main Network'}, {value: KLAYTN_BAOBAB_URL, name: 'Baobab Network'}]
     }else{
@@ -118,5 +127,11 @@ class Header extends Component<Props> {
     )
   }
 }
-
-export default Header
+const removeSessionStorage = (state) => {
+  return {
+    keyRemove: state.ui.keyRemove,
+  }
+}
+export default connect(
+  removeSessionStorage,
+)(Header)

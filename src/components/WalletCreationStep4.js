@@ -6,6 +6,7 @@ import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { pipe } from 'utils/Functional'
 import { download } from 'utils/misc'
 import { caver } from 'klaytn/caver'
+import ui from 'utils/ui'
 type Props = {
 
 }
@@ -49,6 +50,7 @@ class WalletCreationStep4 extends Component<Props> {
     sessionStorage.removeItem('was')
     this.downloadKeystore(keystore)
     sessionStorage.removeItem('address')
+    ui.keyRemove()
   }
 
   downloadKeystore = (keystore) => {
