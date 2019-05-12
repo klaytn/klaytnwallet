@@ -5,12 +5,15 @@ import {
   CLOSE_POPUP,
   SHOW_TOAST,
   HIDE_TOAST,
+  KEY_REMOVE,
+  KEY_REMOVE_END,
 } from 'actions/actionTypes'
 
 const initialState = {
   isLoading: false,
   popup: null,
   toast: null,
+  keyRemove: false,
 }
 
 const walletReducer = (state = initialState, action) => {
@@ -45,6 +48,16 @@ const walletReducer = (state = initialState, action) => {
         ...state,
         toast: null,
       }
+    case KEY_REMOVE:
+      return {
+        ...state,
+        keyRemove: true,
+      }
+    case KEY_REMOVE_END:
+      return {
+        ...state,
+        keyRemove: false,
+      }      
     default:
       return state
   }

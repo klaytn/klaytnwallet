@@ -44,10 +44,12 @@ class App extends Component<Props> {
     this.setState({ showSessionStoragePopup: false })
   }
 
-  confirmAction = () => {
+  confirmAction = (moveType) => {
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
-    browserHistory.push('/')
+    if(moveType !== 'notMove'){
+      browserHistory.push('/')
+    }
     this.setState({ showSessionStoragePopup: false, removeSessionStorageButton:false })
   }
 

@@ -20,7 +20,13 @@ class TabList extends Component<Props> {
       this.setState({moreMenuClick:true})
     }
   }
-  
+  componentWillReceiveProps(prevProps) {
+    const { moreMenuClick } = this.state
+    if(moreMenuClick){
+      this.menuClick(false)
+    }
+  }
+
   render() {
     const { tabItems } = this.props
     const { moreMenuClick } = this.state

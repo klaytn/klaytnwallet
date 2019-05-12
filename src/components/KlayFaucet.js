@@ -94,28 +94,19 @@ class KlayFaucet extends Component<Props> {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(res => res.json())
-      .then(({ status }) => {
-        console.log('status', status)
-        // if (code === FAUCET_FAILED) {
-        //   this.setState({
-        //     isShowingModal: true,
-        //   })
-        // }
-
-        if (status === 'ok') {
-          this.getFaucetableBlock()
-          this.updateBalance()
-        }
-
-        return status
-      })
-      .catch(err => console.log(`Error catch: ${err}`))
-      .finally(() => {
-        this.setState({ isRunning: false })
-        // loding end
-
-      })
+    .then(res => res.json())
+    .then(({ status }) => {
+      console.log('status', status)
+      return status
+    })
+    .catch(err => console.log(`Error catch: ${err}`))
+    .finally(() => {
+      // loding end, update data 
+      this.setState({ isRunning: false })
+      this.getFaucetableBlock()
+      this.updateBalance()
+      
+    })
   }
 
   closeModal = () => {

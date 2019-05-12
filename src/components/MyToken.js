@@ -71,6 +71,10 @@ class MyToken extends Component<Props> {
     if(!address) {
       address = this.wallet.address
     }
+    if(address.length < 42){
+      address = caver.utils.humanReadableStringToHexAddress(address)
+    }
+    
     Promise.all(
       [
         caver.klay.getBalance(address),
@@ -93,7 +97,6 @@ class MyToken extends Component<Props> {
             }
           } else {
             const tokenMetaInfo = tokenList[idx - 1]
-            console.log(tokenMetaInfo)
             return {
               fullname: tokenMetaInfo.fullname,
               name: tokenMetaInfo.name,

@@ -167,8 +167,8 @@ class WalletTransfer2 extends Component<Props> {
       from: this.HRADataChange(),
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
     })
-    .once('transactionHash', () => {
-      this.changeView('complete')()
+    .once('transactionHash', (transactionHash) => {
+      this.setState({ transactionHash }, this.changeView('complete'))
     })
     // .once('receipt', () => {
     // })

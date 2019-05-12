@@ -5,6 +5,8 @@ import {
   CLOSE_POPUP,
   SHOW_TOAST,
   HIDE_TOAST,
+  KEY_REMOVE,
+  KEY_REMOVE_END,
 } from 'actions/actionTypes'
 
 /**
@@ -63,4 +65,18 @@ export const showToast = (toast) => ({
  */
 export const hideToast = () => ({
   type: HIDE_TOAST,
+})
+/**
+ * key remove.
+ * @usage ui.keyRemove()
+ */
+export const keyRemove = () => ({
+  type: KEY_REMOVE,
+})
+/**
+ * key remove end.
+ * @usage ui.keyRemoveEnd()
+ */
+export const keyRemoveEnd = () => ({
+  type: KEY_REMOVE_END,
 })

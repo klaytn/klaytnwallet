@@ -5,6 +5,8 @@ import {
   closePopup,
   showToast,
   hideToast,
+  keyRemove,
+  keyRemoveEnd,
 } from 'actions/ui'
 import store from '../store'
 
@@ -15,6 +17,8 @@ export const ui = {
   closePopup: () => store.dispatch(closePopup()),
   showToast: (toast) => store.dispatch(showToast(toast)),
   hideToast: () => store.dispatch(hideToast()),
+  keyRemove: () => store.dispatch(keyRemove()),
+  keyRemoveEnd: () => store.dispatch(keyRemoveEnd()),
 }
 
 if (DEV) {

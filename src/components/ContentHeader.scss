@@ -53,11 +53,59 @@
     background-size: contain;
   }
 }
+.Header__network__box {
+  display: inline-block;
+  position: relative; 
+}
+.network__dropdown {
+  display: none;
+  position: absolute;
+  width: 190px;
+  left: 0;
+  top: 43px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.35);
+  background-color: $Scope-blue;
+  z-index: 10;
+  border-radius: 5px;
+  text-align: left;
+  overflow: hidden;
+  &.show {
+    display: block;
+  }
+  .network__dropdown__item {
+    position: relative;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 41px;
+    color: $Grey-one;
+    transition: background-color 100ms;
+    &:hover {
+      background-color: #3d4060;
+    }
+    &:hover:active {
+      background-color: $Black-two;
+    }
+    &.on {
+      color: $Blue-green-one;
+    }
+    &.on:after {
+      content:'';
+      position: absolute;
+      top: 50%;
+      left: 24px;
+      margin-top: -3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%; 
+      background-color: $Blue-green-one;
 
+    }
+  }
+}
 .Header__network {
   @extend  %header-button;
   background: left 22px center/9px no-repeat url(/static/images/icon-network.svg);
-  width: 174px;
+  width: 190px;
   
   &::after {
     content: "";
