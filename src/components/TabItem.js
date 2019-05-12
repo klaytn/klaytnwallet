@@ -46,9 +46,8 @@ class TabItem extends Component<Props> {
           })}
           to={link}
           onClick={() => {
-            if(isDropDown){         
+            if(isDropDown && !isActive){
               menuClick(true)
-              console.log('23432423')
             }else{
               menuClick(false)
             }

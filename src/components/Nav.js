@@ -28,7 +28,7 @@ console.log(KLAYTN_SCOPE_URL)
 const Nav = ({ className, onClick }) => (
   <div className={cx('Nav', className)} onClick={onClick}>
     <Link to="/" className="Header__logo" />
-    <TabList tabItems={navLinks} />
+    <TabList tabItems={navLinks} setHistory={window.location} />
   </div>
 )
 
