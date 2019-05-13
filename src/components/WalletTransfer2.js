@@ -46,8 +46,23 @@ class WalletTransfer2 extends Component<Props> {
   }
 
   componentWillMount() {
+    const walletAddress = window.location.pathname.indexOf('/transfer/') > -1 ? window.location.pathname.split('/transfer/')[1] : ''
+    const pathname = window.location.pathname
+    let klayAccounts = sessionStorage.getItem('address')
+    if(caver.klay.accounts.wallet[0]){
+      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+    }
+    if (walletAddress && klayAccounts !== walletAddress) {
+      browserHistory.replace('/ErrorPage')
+      return
+    }
     if (!caver.klay.accounts || !caver.klay.accounts.wallet[0]) {
       browserHistory.replace('/access?next=transfer')
+      return
+    }
+    if ('/transfer' !== pathname && pathname.indexOf('/transfer/') < 0) {   
+      browserHistory.replace('/ErrorPage')
+      return
     }
   }
 

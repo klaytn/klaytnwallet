@@ -14,6 +14,7 @@ import WalletTransfer2 from 'components/WalletTransfer2'
 import KlayFaucet from 'components/KlayFaucet'
 import Landing from 'components/Landing'
 import MyWallet from 'components/MyWallet'
+import ErrorPage from 'components/ErrorPage'
 import './index.scss'
 
 import * as tokenActions from 'actions/token'
@@ -38,7 +39,8 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
         <Route path="/faucet" component={KlayFaucet} />
-        <Route path="/faucet/:address" component={KlayFaucet} /> 
+        <Route path="/faucet/:address" component={KlayFaucet} />
+        <Route path='*' component={ErrorPage} /> 
       </Route>
     </Router>
   </Provider>

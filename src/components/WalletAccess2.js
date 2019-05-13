@@ -30,13 +30,22 @@ class WalletAccess2 extends Component<Props> {
 
   componentWillMount() {
     // Clear whole wallet instances when we get in '/access' route.
+    let klayAccounts = sessionStorage.getItem('address')
     if (sessionStorage.getItem('was') && caver.klay.accounts.wallet[0]) {
-      browserHistory.push(`/access/${caver.klay.accounts.wallet[0].address}`)
+      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+      browserHistory.push(`/access/${klayAccounts}`)
       return
     }
     caver.klay.accounts.wallet.clear()
   }
-
+  componentDidMount() {
+    const search = window.location.search
+    const searchBoolean = search == '?next=transfer' || search == '?next=faucet' ? true :  false
+    
+    if(search && !searchBoolean){
+      browserHistory.replace('/ErrorPage')
+    }
+  }
   handleAccess = (accessMethod) => () => {
     this.setState({
       accessMethod,

@@ -50,6 +50,7 @@ class App extends Component<Props> {
     if(moveType !== 'notMove'){
       browserHistory.push('/')
     }
+    caver.klay.accounts.wallet.clear()
     this.setState({ showSessionStoragePopup: false, removeSessionStorageButton:false })
   }
 

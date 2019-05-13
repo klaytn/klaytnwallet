@@ -32,11 +32,25 @@ class MyWallet extends Component<Props> {
   }
 
   componentWillMount() {
+    
     if (!caver.klay.accounts.wallet[0]) {
       browserHistory.replace('/access')
+      return
     }
+    
+
   }
-  
+  componentDidMount() {
+    const walletAddress = window.location.pathname.indexOf('/access/') > -1 ? window.location.pathname.split('/access/')[1] : ''
+    let klayAccounts = sessionStorage.getItem('address')
+    if(caver.klay.accounts.wallet[0]){
+      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+    }
+    if (walletAddress && klayAccounts !== walletAddress) {
+      browserHistory.replace('/ErrorPage')
+    }
+    
+  }
   // HRAChange(address) {
   //   console.log(address)
   //   return caver.utils.hexToUtf8(address)
