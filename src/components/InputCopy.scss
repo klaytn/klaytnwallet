@@ -10,12 +10,32 @@
   position: relative;
   outline: 0;
   background-color: transparent;
+  &.not__margin { 
+    margin-bottom: 4px;
+  }
 }
 
 .InputCopy__inputWrapper {
   position: relative;
   padding-right: 72px;
-  
+  &__type2{
+    padding-left: 68px;
+  }
+  .input__subname {
+    @include font-style('label');
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 68px;
+    padding-left: 8px;
+    line-height: 30px;
+    color: $dark-blue-grey;
+    background-color: #f0f2fc;
+  }
+  .input__subname+input {
+
+  }
 }
 
 .InputCopy__input {
@@ -29,7 +49,7 @@
   height: 100%;
   display: block;
   padding: 7px 8px 6px;
-  
+
 
   &::placeholder {
     color: $middle-blue-grey;

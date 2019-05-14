@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import cx from 'classnames'
 import jsonFormat from 'json-format'
 import { caver } from 'klaytn/caver'
-
+import { pipe } from 'utils/Functional'
 import Input from 'components/Input'
 import InputCopy from 'components/InputCopy'
 import MyToken from 'components/MyToken'
@@ -29,6 +29,7 @@ class MyWallet extends Component<Props> {
   state = {
     balance: null,
     hidePrivateKey: true,
+    klayAccounts : sessionStorage.getItem('address')
   }
 
   componentWillMount() {
@@ -83,10 +84,11 @@ class MyWallet extends Component<Props> {
     }
     return this.wallet.privateKey
   }
+  
   render() {
-    const { hidePrivateKey } = this.state
+    const { hidePrivateKey, klayAccounts } = this.state
     const { isTokenAddMode } = this.props
-
+    console.log( this.wallet )
     return !!this.wallet && (
       <div className={cx('MyWallet', {
         'MyWallet--addingToken': isTokenAddMode,
@@ -95,12 +97,20 @@ class MyWallet extends Component<Props> {
         <div className="MyWallet__info">
           <header className="Contents__title">My Wallet Info</header>
           <div className="Inner__Box">
+            {klayAccounts && 
             <InputCopy
-              className="MyWallet__Input"
+              className="MyWallet__Input not__margin"
               label="Address"
               name="address"
               value={this.HRADataChange() }
+              subName="Custom"
+            />}
+            <InputCopy
+              className="MyWallet__Input"
+              value={this.wallet.address }
+              subName="Hex"
             />
+            
             <InputCopy
               className="MyWallet__Input"
               name="privateKey"
@@ -108,26 +118,52 @@ class MyWallet extends Component<Props> {
               onLabelClick={this.togglePrivateKey}
               labelClassName="MyWallet__hideButton"
               type={hidePrivateKey ? 'password' : 'text'}
-              value={this.privatekeySet()}
+              value={this.wallet.privateKey}
+              isTooltip={true}
+              tooltipText={(
+                <Fragment>This refers to the 32 byte private key commonly used in public key cryptography (following the same format as in Ethereum); it is used for transaction signing.<br />
+                Please store your private key securely, as its compromise can lead to loss of control of your account and assets within the account.</Fragment>
+              )}
               readOnly
               autoFocus
               eye
             />
-            <p className="MyWallet__transactionListTitle">Transaction List</p>
-            <p className="MyWallet__transactionListDescription">
-              All transaction history occurring from<br />
-              active wallets can be found on Klaytnscope.
-            </p>
-            <a
-              target="self"
-              href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
-            >
-              <Button
-                title="View Transaction List"
-                className="MyWallet__viewTransationListButton"
-                gray
-              />
-            </a>
+            {klayAccounts && 
+            <InputCopy
+              className="MyWallet__Input"
+              name="Klaytn HRA Private Key"
+              label="Klaytn HRA Private Key"
+              onLabelClick={this.togglePrivateKey}
+              labelClassName="MyWallet__hideButton"
+              type={hidePrivateKey ? 'password' : 'text'}
+              value={this.privatekeySet()}
+              isTooltip={true}
+              tooltipText={(
+                <Fragment>Klaytn HRA Private Key contains important information that users need in order to access their account: the private key AND the account address. Users with custom-address Klaytn accounts are required to use Klaytn HRA Private Key when signing in to services on Klaytn. <br />
+                Please note that Klaytn HRA Private Key should NOT be used for transaction signing; it is for sign-in purpose only.</Fragment>
+              )}
+              readOnly
+              autoFocus
+              eye
+            />
+            }
+            <div className="MyWallet__viewTransation">
+              <p className="MyWallet__transactionListTitle">Transaction List</p>
+              <p className="MyWallet__transactionListDescription">
+                All transaction history occurring from<br />
+                active wallets can be found on Klaytnscope.
+              </p>
+              <a
+                target="self"
+                href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
+              >
+                <Button
+                  title="View Transaction List"
+                  className="MyWallet__viewTransationListButton"
+                  gray
+                />
+              </a>
+            </div>
           </div>
           
         </div>

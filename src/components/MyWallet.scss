@@ -31,6 +31,9 @@
 
 .MyWallet__Input {
   margin-bottom: 60px;
+  .InputCopy__label{
+    display: inline-block;
+  }
 }
 
 .MyWallet__info {
@@ -73,10 +76,18 @@
   display: inline-block;
   vertical-align: text-bottom;
 }
+.MyWallet__viewTransation {
+  position: relative;
+  .MyWallet__viewTransationListButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 
+  }
+}
 .MyWallet__transactionListTitle {
   @include font-style('button');
-  margin-top: 60px;
+  margin-top: 80px;
   color: $main-theme;
   margin-bottom: 10px;
 }
