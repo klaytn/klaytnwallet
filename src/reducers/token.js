@@ -4,11 +4,11 @@ import {
   SET_MY_TOKEN_BALANCES_BY_NAME,
 } from 'actions/actionTypes'
 
-import { getParsedLocalStorageItem } from 'utils/misc'
+import { getParsedSessionStorageItem } from 'utils/misc'
 import tokenMetaList from 'utils/tokenMetaList'
 
 const initialState = {
-  tokenList: [...tokenMetaList, ...getParsedLocalStorageItem('savedTokenList')],
+  tokenList: [...tokenMetaList, ...getParsedSessionStorageItem('savedTokenList')],
   isTokenAddMode: false,
 }
 
