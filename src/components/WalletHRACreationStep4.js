@@ -38,12 +38,14 @@ class WalletHRACreationStep4 extends Component<Props> {
         )}
         description={(
           <Fragment>
+            <div>
             <p>Congratulations! Your Klaytn account has been successfully created.</p>
             To access your new account, prepare your Klaytn HRA Private Key and click the “Sign In with New Account” button below (this will clear your current account’s key from the browser).
+            </div>
           </Fragment>
         )}
         nextStepButtons={[
-          { title: 'Sign in with New Account', onClick: pipe(this.removeData, this.movePageInfo), className: 'Button--size5'},
+          { title: 'Sign in with New Account', gray: true, onClick: pipe(this.removeData, this.movePageInfo), className: 'Button--size5'},
           { title: 'View My Current Account', onClick: this.movePageInfo, className: 'Button--size5'}
         ]}
       />

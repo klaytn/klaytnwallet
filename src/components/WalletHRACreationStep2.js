@@ -8,6 +8,9 @@ import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import cx from 'classnames'
 import { changeKlayUnit } from 'utils/crypto'
+import Button from 'components/Button'
+
+
 type Props = {
 
 }
@@ -39,7 +42,9 @@ class WalletHRACreationStep2 extends Component<Props> {
     const { receiptWallet } = this.props
     this.state = {
       receiptWallet,
-      isAlert:false,
+      isAlert: false,
+      popupShow: false,
+      buttonClick: false,
     }
     document.onkeydown = doNotReload;
     
@@ -56,12 +61,31 @@ class WalletHRACreationStep2 extends Component<Props> {
   }
   closeSet =()=>{
     this.setState({ isAlert: false})
-   
+  }
+  
+  clickEvent = () => {
+    this.setState({ popupShow: true })
+  }
+  
+  popupClose = () => {
+    this.setState({ buttonClick: false})
+  }
+
+  nextStepButtonClick = () => {
+    const { popupShow } = this.state
+    const { handleStepMove } = this.props
+    const setHandleStepMove = handleStepMove(3)
+    if(!popupShow){
+      this.setState({ buttonClick: true})
+    }else{
+      this.clearReload()
+      setHandleStepMove()
+    }
   }
   render() {
-    const { receiptWallet, isAlert} = this.state
+    const { receiptWallet, isAlert, buttonClick } = this.state
     const { handleStepMove, HRAprivateKey} = this.props
-    console.log(HRAprivateKey)
+
     return (
       <WalletCreationStepPlate
         className="WalletCreationStep2"
@@ -78,14 +102,15 @@ class WalletHRACreationStep2 extends Component<Props> {
             value={HRAprivateKey}
             className="twoLine"
             label="Klaytn HRA Private Key"
+            clickEvent={this.clickEvent}
             // type="twoLine"
           />
         )}
         TransferTotalItem={[
-            { title:"Account Name", value: caver.utils.hexToUtf8(receiptWallet.to)},
-            { title:"Transaction Fee", value: changeKlayUnit(receiptWallet.gasUsed)+' klaytn'}   
+          { title:"Account Name", value: caver.utils.hexToUtf8(receiptWallet.to)},
+          { title:"Transaction Fee", value: changeKlayUnit(receiptWallet.gasUsed)+' klaytn'}   
         ]}
-        nextStepButtons={[{ title: 'Next Step', onClick: pipe(this.clearReload,handleStepMove(3))}]}
+        nextStepButtons={[{ title: 'Next Step', onClick: this.nextStepButtonClick }]}
         stepDim={(
           <div className="stepDim" onClick={this.menuClick}></div>
         )}
@@ -102,10 +127,29 @@ class WalletHRACreationStep2 extends Component<Props> {
                 <button className="Button" onClick={this.closeSet}>Ok</button>
               </div>
             </div>
-         
+        
           </div>
         </div>
-         
+        
+        )}
+        popupRender={() => (
+          <div className={cx('createMainPopup', {
+            'show' : buttonClick
+          })}>
+              <div className="createMainPopup__inner widthType">
+                <span  className="popup__title">Please Copy Your HRA Private Key & Securely Store It</span>
+                <p className="popup__message2">Your HRA Private Key is VERY IMPORTANT in managing your account. Please COPY and STORE IT SECURELY on a safe storage. Klaytn CANNOT provide a means for recovery for lost HRA Private Keys.
+                </p>
+                <div className="popup__bottom__box">
+                <Button
+                  className="popup__btn"
+                  key='OK'
+                  title="OK"
+                  onClick={this.popupClose}
+                />
+                </div>
+              </div>
+         </div>
         )}
       />
     )

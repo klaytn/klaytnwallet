@@ -37,7 +37,6 @@ class WalletHRACreationStep3 extends Component<Props> {
   handleDownload = () => {
     const { password } = this.state
     const { privateKey, receiptWallet, walletDataUpdate} = this.props
-    console.log(privateKey,password, receiptWallet.to)
     const HRAaddress = {}
     HRAaddress.address = caver.utils.hexToUtf8(receiptWallet.to)
     const keystore = caver.klay.accounts.encrypt(privateKey, password, HRAaddress)

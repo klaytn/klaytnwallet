@@ -88,7 +88,6 @@ class MyWallet extends Component<Props> {
   render() {
     const { hidePrivateKey, klayAccounts } = this.state
     const { isTokenAddMode } = this.props
-    console.log( this.wallet )
     return !!this.wallet && (
       <div className={cx('MyWallet', {
         'MyWallet--addingToken': isTokenAddMode,

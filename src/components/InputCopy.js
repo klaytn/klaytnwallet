@@ -12,10 +12,15 @@ class InputCopy extends Component<Props> {
   }
 
   copy = () => {
+    const { clickEvent } = this.props
+    if (typeof clickEvent === 'function') {
+      clickEvent(true)
+    }
     if (this.$input)
     copy(this.$input)
     this.setCopyState(true)
     setTimeout(() => this.setCopyState(false), 1500)
+
   }
 
   setCopyState = (isCopied) => this.setState({ isCopied })
