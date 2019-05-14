@@ -77,7 +77,7 @@ class WalletHRACreationStep1 extends Component<Props> {
       from: klayWallet.address,
       to: humanReadableAddress,
       publicKey: newPublicKey,
-      gas: '5000000000',
+      gas: '4040000000',
       value: caver.utils.toPeb('0.01', 'KLAY'),
     }
 
