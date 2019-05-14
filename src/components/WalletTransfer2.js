@@ -142,6 +142,11 @@ class WalletTransfer2 extends Component<Props> {
       default:
         this.transferToken()
     }
+    this.setState({
+      to: '',
+      value: '',
+      totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+    })
   }
   HRADataChange = () => {
     const address = sessionStorage.getItem('address')
