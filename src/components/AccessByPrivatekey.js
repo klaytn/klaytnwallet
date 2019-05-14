@@ -77,7 +77,7 @@ class AccessByPrivateKey extends Component<Props> {
           placeholder="Enter the private key"
           onChange={this.handleChange}
           isValid={isValid}
-          autocomplete="off"
+          autoComplete="off"
           errorMessage={isValid === false && 'Invalid key'}
         />
         <AccessReminder 
