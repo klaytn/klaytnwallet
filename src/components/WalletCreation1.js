@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
+import WalletCreationStep1 from 'components/WalletCreationStep1'
+import WalletCreationStep2 from 'components/WalletCreationStep2'
 import WalletCreationStep3 from 'components/WalletCreationStep3'
-import WalletCreationStep4 from 'components/WalletCreationStep4'
-import WalletCreationStep5 from 'components/WalletCreationStep5'
 import StepIndicator from 'components/StepIndicator'
 
 import './WalletCreation1.scss'
 
 class WalletCreation1 extends Component<Props> {
   state = {
-    currentStep: 3,
+    currentStep: 1,
     endStep: 3, 
     prevRefComponentState: {},
     StepIndicatorList: [
@@ -22,7 +22,7 @@ class WalletCreation1 extends Component<Props> {
 
   handleStepMove = (step) => () => {
     this.setState({ currentStep: step })
-    this.setState({ showStep: step - 2 })
+    this.setState({ showStep: step})
     
     if (this.prevRefComponent) {
       const { state } = this.prevRefComponent
@@ -35,9 +35,9 @@ class WalletCreation1 extends Component<Props> {
     console.log('prevRefComponentState : '+ prevRefComponentState)
 
     switch (step) {
-      case 3:
+      case 1:
         return (
-          <WalletCreationStep3
+          <WalletCreationStep1
             ref={(step3Component) => this.prevRefComponent = step3Component}
             privateKey={prevRefComponentState.privateKey}
             handleStepMove={this.handleStepMove}
@@ -45,9 +45,9 @@ class WalletCreation1 extends Component<Props> {
             pageType={pageType}
           />
         )
-      case 4:     
+      case 2:     
         return (
-          <WalletCreationStep4
+          <WalletCreationStep2
             ref={(step4Component) => this.prevRefComponent = step4Component}
             privateKey={prevRefComponentState.privateKey}
             password={prevRefComponentState.password}
@@ -56,9 +56,9 @@ class WalletCreation1 extends Component<Props> {
 
           />
         )
-      case 5:
+      case 3:
         return (
-          <WalletCreationStep5
+          <WalletCreationStep3
             privateKey={prevRefComponentState.privateKey}
             pageType={pageType}
           />
@@ -74,7 +74,7 @@ class WalletCreation1 extends Component<Props> {
           <StepIndicator
             className="WalletCreation2__stepIndicator"
             StepIndicatorList={StepIndicatorList}
-            currentStep={currentStep-2}
+            currentStep={currentStep}
             endStep={endStep}
           />
           {this.renderWalletCreationStep(currentStep)}

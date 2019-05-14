@@ -97,7 +97,7 @@ class MyWallet extends Component<Props> {
           <div className="Inner__Box">
             <InputCopy
               className="MyWallet__Input"
-              label="Wallet Address"
+              label="Address"
               name="address"
               value={this.HRADataChange() }
             />

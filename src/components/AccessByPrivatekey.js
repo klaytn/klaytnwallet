@@ -16,7 +16,8 @@ class AccessByPrivateKey extends Component<Props> {
   state = {
     privatekey: '',
     isValid: null,
-    isReminderChecked: false
+    isReminderChecked: false,
+    address: '',
   }
 
   handleChange = (e) => {
@@ -27,6 +28,8 @@ class AccessByPrivateKey extends Component<Props> {
       inputValue = walletData[0]
       address = walletData[1].length === 42 ? walletData[1] : null
       sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
+      
+      this.setState({address: address })
     }else{
       inputValue = walletData
     }
@@ -44,14 +47,18 @@ class AccessByPrivateKey extends Component<Props> {
     })
   }
   access = () => {
-    const { privatekey } = this.state
+    const { privatekey, address } = this.state
     const { accessTo } = this.props
-    const wallet = caver.klay.accounts.wallet.add(privatekey)
-
+    let wallet
+    if(address){
+      wallet = caver.klay.accounts.wallet.add(privatekey,address)
+    }else{
+      wallet = caver.klay.accounts.wallet.add(privatekey)
+    }
     // WARNING: sessionStorage has private key. it expired when window tab closed.
     const privateKeyencrypt = encryptAction(wallet.privateKey)
     sessionStorage.setItem('was', privateKeyencrypt)
-    if (typeof accessTo === 'function') accessTo(wallet.address)
+    if (typeof accessTo === 'function') accessTo(address? address : wallet.address)
   }
 
   render() {

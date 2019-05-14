@@ -82,7 +82,9 @@ export const klayKeyDecomulation = (klayKey) => {
 
   return returnObj
 }
-
+export const changeKlayUnit = (data) => {
+  return data*25*0.000000001
+}
 
 export const krc20ABI = [
   {

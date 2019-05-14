@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 
-import WalletCreationStep1 from 'components/WalletCreationStep1'
-import WalletCreationStep2 from 'components/WalletCreationStep2'
-import WalletCreationStep3 from 'components/WalletCreationStep3'
-import WalletCreationStep4 from 'components/WalletCreationStep4'
-import WalletCreationStep5 from 'components/WalletCreationStep5'
+import WalletHRACreationStep1 from 'components/WalletHRACreationStep1'
+import WalletHRACreationStep2 from 'components/WalletHRACreationStep2'
+import WalletHRACreationStep3 from 'components/WalletHRACreationStep3'
+import WalletHRACreationStep4 from 'components/WalletHRACreationStep4'
 import PageAlertPopup from 'components/PageAlertPopup'
 import StepIndicator from 'components/StepIndicator'
 import './WalletCreation2.scss'
@@ -12,13 +11,14 @@ import './WalletCreation2.scss'
 class WalletCreation2 extends Component<Props> {
     state = {
     currentStep: 1,
-    endStep: 5, 
-    StepIndicatorList: [{showStep: 1 }, {showStep: 2 }, {showStep: 3 }, {showStep: 4 }, {showStep: 5 }],
+    endStep: 4, 
+    StepIndicatorList: [{showStep: 1 }, {showStep: 2 }, {showStep: 3 }, {showStep: 4 }],
     prevRefComponentState: {},
     walletData: {},
     HRAaddress: '',
     pageType: 'HRAType',
     privateKey: '',
+    HRAprivateKey:'',
   }
 
 
@@ -31,6 +31,9 @@ class WalletCreation2 extends Component<Props> {
           this.setState({privateKey : dataObj[prop]})
         case 'HRAaddress':
           this.setState({HRAaddress : dataObj[prop]})
+        case 'HRAprivateKey':
+          this.setState({HRAprivateKey : dataObj[prop]})
+            
       }
       
     }
@@ -50,11 +53,11 @@ class WalletCreation2 extends Component<Props> {
     return privateKey+'0x01'+walletData.to
   }
   renderWalletCreationStep = (step) => {
-    const { prevRefComponentState, pageType, walletData, privateKey, HRAaddress } = this.state
+    const { prevRefComponentState, pageType, walletData, privateKey, HRAaddress, HRAprivateKey } = this.state
     switch (step) {
       case 1:
         return (
-          <WalletCreationStep1
+          <WalletHRACreationStep1
             ref={(step1Component) => this.prevRefComponent = step1Component}
             handleStepMove={this.handleStepMove}
             walletDataUpdate={this.walletDataUpdate}
@@ -62,26 +65,29 @@ class WalletCreation2 extends Component<Props> {
         )
       case 2:
         return (
-          <WalletCreationStep2
+          <WalletHRACreationStep2
             ref={(step2Component) => this.prevRefComponent = step2Component}
             handleStepMove={this.handleStepMove}
             receiptWallet={walletData}
+            HRAprivateKey={HRAprivateKey}
           />
         )
       case 3:
       
         return (
-          <WalletCreationStep3
+          <WalletHRACreationStep3
             ref={(step3Component) => this.prevRefComponent = step3Component}
             pageType={pageType}
-            privateKey={prevRefComponentState.privateKey}
+            privateKey={privateKey}
             handleStepMove={this.handleStepMove}
+            receiptWallet={walletData}
             password={prevRefComponentState.password}
+            walletDataUpdate={this.walletDataUpdate}
           />
         )
       case 4:
         return (
-          <WalletCreationStep4
+          <WalletHRACreationStep4
             ref={(step4Component) => this.prevRefComponent = step4Component}
             pageType={pageType}
             madePrivateKey={privateKey}
@@ -89,14 +95,6 @@ class WalletCreation2 extends Component<Props> {
             password={prevRefComponentState.password}
             walletDataUpdate={this.walletDataUpdate}
             handleStepMove={this.handleStepMove}
-          />
-        )
-      case 5:
-        return (
-          <WalletCreationStep5
-            privateKey={this.returnPrivateKey()}
-            pageType={pageType}
-            receiptWallet={walletData}
           />
         )
     }

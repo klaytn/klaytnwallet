@@ -154,8 +154,10 @@ class WalletTransfer2 extends Component<Props> {
   }
   transferCoin = () => {
     const { to, value, gas } = this.state
-
+    
+    caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
     caver.klay.sendTransaction({
+      type: 'VALUE_TRANSFER',
       from: this.HRADataChange(),
       to,
       value: caver.utils.toWei(value, 'ether'),
