@@ -156,6 +156,7 @@ class WalletTransfer2 extends Component<Props> {
   transferCoin = () => {
     const { to, value, gas } = this.state
     const root = this
+
     caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
 
     caver.klay.sendTransaction({
@@ -185,10 +186,13 @@ class WalletTransfer2 extends Component<Props> {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
     const contractInstance = new caver.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
-    const decimalProcessedTokenAmount = '0x' + new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
+    const decimalProcessedTokenAmount = '0x' + new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)  
+    const toAddress = to.indexOf('.klaytn') >= 0 ? caver.utils.humanReadableStringToHexAddress(to) : to
+    const fromAddress = this.HRADataChange().indexOf('.klaytn') >= 0 ? caver.utils.humanReadableStringToHexAddress(this.HRADataChange()) : this.HRADataChange()
+
     contractInstance.accounts = caver.klay.accounts
-    contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
-      from: this.HRADataChange(),
+    contractInstance.methods.transfer(toAddress, decimalProcessedTokenAmount).send({
+      from: fromAddress,
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
     })
     .once('transactionHash', (transactionHash) => {
