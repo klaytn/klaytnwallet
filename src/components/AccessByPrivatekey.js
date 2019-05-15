@@ -35,7 +35,7 @@ class AccessByPrivateKey extends Component<Props> {
       [e.target.name]: inputValue,
       isValid: inputValue.length === 0
         ? null
-        : isValidPrivateKey(inputValue),
+        : inputValue.length == 66 && isValidPrivateKey(inputValue),
     })
   }
 

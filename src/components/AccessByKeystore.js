@@ -70,6 +70,7 @@ class AccessByKeystore extends Component<Props> {
       [e.target.name]: e.target.value,
       // isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
       error: '',
+      passwordError: '',
     })
   }
 

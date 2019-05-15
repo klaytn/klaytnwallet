@@ -47,7 +47,7 @@ class TransferForm extends Component<Props> {
     } = this.props
     let isInvalidAddress = false
     if(to){
-      if(to.indexOf('.klaytn') > 0){
+      if(to.length <= 20 && to.indexOf('.klaytn') > 0 ){
         isInvalidAddress = !caver.utils.isAddress(caver.utils.humanReadableStringToHexAddress(to))
       }else{
         isInvalidAddress = !caver.utils.isAddress(to)
