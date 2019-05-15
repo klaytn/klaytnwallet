@@ -85,10 +85,9 @@ class WalletHRACreationStep1 extends Component<Props> {
     caver.klay.sendTransaction(sender_transaction)
       .on('transactionHash', console.log)
       .on('receipt', async (receipt) => {
-        console.log(receipt, newWallet.privateKey)
         walletDataUpdate({
           walletData: receipt,
-          privateKey: String(klayWallet.privateKey),
+          privateKey: String(newWallet.privateKey),
           HRAprivateKey: newWallet.privateKey+'0x01'+ caver.utils.humanReadableStringToHexAddress(humanReadableAddress)
         })
 
