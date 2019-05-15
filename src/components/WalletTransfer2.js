@@ -142,11 +142,7 @@ class WalletTransfer2 extends Component<Props> {
       default:
         this.transferToken()
     }
-    this.setState({
-      to: '',
-      value: '',
-      totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
-    })
+    
   }
   HRADataChange = () => {
     const address = sessionStorage.getItem('address')
@@ -159,8 +155,9 @@ class WalletTransfer2 extends Component<Props> {
   }
   transferCoin = () => {
     const { to, value, gas } = this.state
-    
+    const root = this
     caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
+
     caver.klay.sendTransaction({
       type: 'VALUE_TRANSFER',
       from: this.HRADataChange(),
@@ -170,6 +167,11 @@ class WalletTransfer2 extends Component<Props> {
     })
       .once('transactionHash', (transactionHash) => {
         this.setState({ transactionHash }, this.changeView('complete'))
+        this.setState({
+          to: '',
+          value: '',
+          totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+        })
       })
       // .once('receipt', () => {
       // })
@@ -191,6 +193,11 @@ class WalletTransfer2 extends Component<Props> {
     })
     .once('transactionHash', (transactionHash) => {
       this.setState({ transactionHash }, this.changeView('complete'))
+      this.setState({
+        to: '',
+        value: '',
+        totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+      })
     })
     // .once('receipt', () => {
     // })
