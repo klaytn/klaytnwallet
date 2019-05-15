@@ -133,6 +133,7 @@ class AccessByKeystore extends Component<Props> {
           onChange={this.handleChange}
           isValid={isValidPassword}
           errorMessage={passwordError}
+          maxLength={128}
         />
         <AccessReminder 
           isChecked={isReminderChecked}

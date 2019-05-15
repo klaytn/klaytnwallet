@@ -6,7 +6,7 @@ const CryptoJS = require('crypto-js')
 const MINIMUM_PASSWORD_LENGTH = 8
 const MINIMUM_NAME_LENGTH = 5
 const MAXIMUM_NAME_LENGTH = 13
-
+const MAXIMUM_PASSWORD_LENGTH = 128
 export const encryptAction = (myKey) => {
   return CryptoJS.AES.encrypt(myKey, CRYPO_PASSWORD).toString()
 }
@@ -37,7 +37,7 @@ export const isValidPrivateKey = (privateKey) => {
     .length === 64
 }
 
-export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH
+export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH && password.length <= MAXIMUM_PASSWORD_LENGTH
 export const has5and13Characters = (name) => (name.length >= MINIMUM_NAME_LENGTH && name.length <= MAXIMUM_NAME_LENGTH)
 
 export const hasSpecialCharacters = (password) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(password))

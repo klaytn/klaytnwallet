@@ -25,6 +25,7 @@ class Input extends Component<Props> {
       readOnly,
       errorMessage,
       leftBlock,
+      maxLength,
     } = this.props
 
     return (
@@ -56,6 +57,7 @@ class Input extends Component<Props> {
             type={type}
             value={value}
             readOnly={readOnly}
+            maxLength={maxLength}
           />
           {unit && <span className="Input__unit">{unit}</span>}
         </div>

@@ -19,7 +19,7 @@ const PasswordTooltip = ({ value = '' }) => {
         'PasswordTooltip__item--active': has8MoreCharacters(value),
       })}
       >
-        8 or more characters
+        length between 8 to 128 characters
       </p>
       <p className={cx('PasswordTooltip__item', {
         'PasswordTooltip__item--active': hasSpecialCharacters(value),
