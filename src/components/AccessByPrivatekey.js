@@ -50,13 +50,13 @@ class AccessByPrivateKey extends Component<Props> {
     let wallet
     if(address){
       wallet = caver.klay.accounts.wallet.add(privatekey,address)
+      sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
     }else{
       wallet = caver.klay.accounts.wallet.add(privatekey)
     }
     // WARNING: sessionStorage has private key. it expired when window tab closed.
     const privateKeyencrypt = encryptAction(wallet.privateKey)
     sessionStorage.setItem('was', privateKeyencrypt)
-    sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
     if (typeof accessTo === 'function') accessTo(address? address : wallet.address)
   }
 
