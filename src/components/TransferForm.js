@@ -86,7 +86,7 @@ class TransferForm extends Component<Props> {
             placeholder="Enter the address to send"
             autoComplete="off"
             value={to}
-            errorMessage={isInvalidAddress && 'Recipient address is invalid'}
+            errorMessage={isInvalidAddress && 'Invalid Address'}
           />
           <Input
             name="value"

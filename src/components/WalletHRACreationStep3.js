@@ -61,10 +61,10 @@ class WalletHRACreationStep3 extends Component<Props> {
     return (
       <WalletCreationStepPlate
         stepName="STEP 3"
-        title="Please Set Password for your Keystore File"
+        title="Please Set Password for Your Keystore File"
         description={(
           <Fragment>
-            Your keystore file contains your account’s private key and its address. <br />
+            Your keystore file contains your account’s private key and its address.<br /> 
             Please protect your keystore file with a strong password.
           </Fragment>
         )}

@@ -61,8 +61,8 @@ class WalletCreationStep2 extends Component<Props> {
         )}
         description={(
           <Fragment>
-            The password for your keystore file for a new wallet has been set.<br/>
-            Please click the tab below to download your keystore to setup your wallet and move on to the last step.
+            The password for your keystore file has been set.<br />
+            Click the button below to download the file and move on to the final step.
           </Fragment>
         )}
         nextStepButtons={[

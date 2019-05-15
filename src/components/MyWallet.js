@@ -149,10 +149,11 @@ class MyWallet extends Component<Props> {
             <div className="MyWallet__viewTransation">
               <p className="MyWallet__transactionListTitle">Transaction List</p>
               <p className="MyWallet__transactionListDescription">
-                All transaction history occurring from<br />
-                active wallets can be found on Klaytnscope.
-              </p>
+                Explore all transactions involving your account<br />
+                with Klaytn Scope.
+              </p> 
               <a
+                className="scope__transaction"
                 target="self"
                 href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
               >

@@ -14,11 +14,11 @@ type Props = {
 }
 
 const radioItems = [{
-  title: 'Private Key',
+  title: 'Sign-in Using Private Key',
   value: 'privatekey',
   attribute: 'accessMethod',
 }, {
-  title: 'Keystore File',
+  title: 'Sign-in Using Keystore File',
   value: 'keystore',
   attribute: 'accessMethod',
 }]
@@ -67,17 +67,18 @@ class WalletAccess2 extends Component<Props> {
       <div className="WalletAccess2">
         <div className="WalletAccess2__inner">
           <header className="WalletAccess2__title">Access Existing Account</header>
-          <p className="WalletAccess2__description">
-            You can access your account using your private key<br />
-            or Klaytn HRA Private Key (for custom address accounts).<br />
-            Or you can also use your keystore file and its password.
-          </p>
+          
           <TabRadio
             className="WalletAcess2__tabRadio"
             tabs={radioItems}
             selectedValue={accessMethod}
             onClick={this.handleAccess}
           />
+          <p className="WalletAccess2__description">
+          You can access your account using your private key or Klaytn HRA<br />
+          Private Key (for custom address accounts). Or you can also use<br />
+          your keystore file and its password.
+          </p>
           <AccessSide
             accessMethod={accessMethod}
             accessTo={this.accessTo}

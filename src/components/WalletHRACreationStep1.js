@@ -7,8 +7,7 @@ import cx from 'classnames'
 import { caver } from 'klaytn/caver'
 import InputCheck from 'components/InputCheck'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-import { checkValidName } from 'utils/crypto'
-import { decryptAction } from 'utils/crypto'
+import { checkValidName, decryptAction } from 'utils/crypto'
 type Props = {
 
 }

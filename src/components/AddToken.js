@@ -54,13 +54,13 @@ class AddToken extends Component<Props> {
     contractInstance.methods.name().call()
       .then((fullname) => fullname = fullname)
       .catch(e => {
-        this.setState({ errorMessage: 'Token contract address is invalid' })
+        this.setState({ errorMessage: 'Invalid address' })
         return
       })
     contractInstance.methods.balanceOf(this.wallet && this.wallet.address).call()
       .then(balance => {
         if (typeof balance === 'undefined') {
-          this.setState({ errorMessage: 'Token contract address is invalid' })
+          this.setState({ errorMessage: 'Invalid address' })
           return
         }
         store.dispatch(
@@ -75,7 +75,7 @@ class AddToken extends Component<Props> {
         ui.closePopup()
       })
       .catch((e) => {
-        this.setState({ errorMessage: 'Token contract address is invalid' })
+        this.setState({ errorMessage: 'Invalid address' })
         console.log(e)
       })
   }
@@ -123,10 +123,9 @@ class AddToken extends Component<Props> {
         <div className="AddToken__topBlock">
 
           <div className="AddToken__message">
-            Tokens registered on Testnet are only visible at your currently active wallet.<br/>
-            Official registration of tokens are not supported on testnet at the moment. (to be provided soon)<br/>
+            Tokens registered on Testnet are only visible at your currently active account.<br />
+            Official registration of tokens are not supported on testnet at the moment. (to be provided soon)<br />
             Your registered token is stored in the browser repository; all registration history for your token shall be deleted if you delete your cookie.
-
           </div>
           <XButton onClick={onClick} className="AddToken__xButton" />
           

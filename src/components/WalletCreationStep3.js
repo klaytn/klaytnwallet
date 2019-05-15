@@ -33,18 +33,28 @@ class WalletCreationStep3 extends Component<Props> {
   movePageInfo = () => {
     browserHistory.push('/access')
   }
+  movePageTransfer = () => {
+    browserHistory.push('/access?next=transfer')
+  }
   render() {
     const { privateKey, pageType, receiptWallet } = this.props
-
+    let buttonList
+    if(sessionStorage.getItem('was')){
+      buttonList =[{ title: 'Sign in with New Account', gray: true, onClick: pipe(this.removeData, this.movePageInfo), className: 'Button--size5'},
+      { title: 'View My Current Account', onClick: this.movePageInfo, className: 'Button--size5'}] 
+    }else{
+      buttonList = [{ title: 'View Account Info', onClick: pipe(this.removeData, this.movePageInfo), className: 'WalletCreationStep3__button Button--size5', gray: true},
+      { title: 'Send KLAY & Tokens', onClick: pipe(this.removeData, this.movePageTransfer), className: 'WalletCreationStep3__button Button--size5'},]
+    }
     return (
       <WalletCreationStepPlate
         className="WalletCreationStep5"
         stepName="STEP 3"
-        title="Please Save your Private Key"
+        title="Please Download Keystore File"
         description={(
           <Fragment>
-            Your new account has been created.<br />
-            Please copy and securely store the private key below.
+            The password for your keystore file has been set.<br />
+            Click the button below to download the file and move on to the final step.
           </Fragment>
         )}
         render={() => (
@@ -53,19 +63,7 @@ class WalletCreationStep3 extends Component<Props> {
             label="Private Key"
           />
         )}
-        nextStepButtons={[
-          {
-            title: 'Sign in with New Account',
-            onClick: pipe(this.removeData, this.movePageInfo),
-            className: 'WalletCreationStep3__button Button--size5',
-            gray: true,
-          },
-          {
-            title: 'View My Current Account',
-            onClick: pipe(this.movePageInfo),
-            className: 'WalletCreationStep3__button Button--size5',
-          },
-        ]}
+        nextStepButtons={buttonList}
       />
     )
   }

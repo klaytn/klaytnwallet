@@ -68,12 +68,12 @@ class AccessByPrivateKey extends Component<Props> {
     return (
       <div className="AccessByPrivatekey">
         <Input
-          label="Private Key"
+          label="Private Key or HRA Private Key"
           type="text"
           autoFocus
           name="privatekey"
           className="AccessByPrivatekey__input"
-          placeholder="Enter the private key"
+          placeholder="Enter the private key or HRA Private Key"
           onChange={this.handleChange}
           isValid={isValid}
           autoComplete="off"

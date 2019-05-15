@@ -89,11 +89,11 @@
 }
 .MyWallet__viewTransation {
   position: relative;
-  .MyWallet__viewTransationListButton {
+  .scope__transaction {
+    display: block;
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     right: 0;
-
   }
 }
 .MyWallet__transactionListTitle {

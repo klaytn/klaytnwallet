@@ -107,8 +107,8 @@ class WalletHRACreationStep2 extends Component<Props> {
           />
         )}
         TransferTotalItem={[
-          { title:"Account Name", value: caver.utils.hexToUtf8(receiptWallet.to)},
-          { title:"Transaction Fee", value: changeKlayUnit(receiptWallet.gasUsed)+' klaytn'}   
+          { title:"Account Address", value: caver.utils.hexToUtf8(receiptWallet.to)},
+          { title:"Transaction Fee", value: changeKlayUnit(receiptWallet.gasUsed)+' KLAY'}   
         ]}
         nextStepButtons={[{ title: 'Next Step', onClick: this.nextStepButtonClick }]}
         stepDim={(
