@@ -45,7 +45,7 @@ export const hasNoSpecialCharacters = (name) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.
 export const onlyAlphabetAndNumbers = (name) => (/^[A-Za-z0-9+]*$/i.test(name) && name )
 
 export const hasNoFirstNumber = (name) => (/^[A-za-z]/g.test(name))
-
+export const onlyAlphabet12Max = (name) => (/^[A-Za-z]*$/i.test(name) && name.length > 0 && name.length <= 12)
 export const hasAtLeastOneNumber = (password) => (/[0-9]/.test(password))
 
 export const checkValidPassword = (password) => {
