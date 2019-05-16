@@ -5,7 +5,7 @@ import cx from 'classnames'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import { XButton } from 'components/PlusButton'
-import { krc20ABI } from 'utils/crypto'
+import { krc20ABI, onlyAlphabet12Max } from 'utils/crypto'
 import { caver } from 'klaytn/caver'
 import { registerToken } from 'actions/token'
 import ui from 'utils/ui'
@@ -29,7 +29,8 @@ class AddToken extends Component<Props> {
   state = {
     name: '',
     address: '',
-    decimal: ''
+    decimal: '',
+    symbolErrorMessage: '',
   }
 
   handleChange = (e) => {
@@ -37,8 +38,12 @@ class AddToken extends Component<Props> {
       [e.target.name]: e.target.value,
       errorMessage: e.target.name === 'address'
         && !caver.utils.isAddress(e.target.value)
-        && 'Invalid address'
+        && 'Invalid address',
+      symbolErrorMessage: e.target.name === 'name'
+        && !onlyAlphabet12Max(e.target.value)
+        && 'Length 1~12, alphabet only'
     })
+
   }
 
   handleDecimalChange = (e) => {
@@ -81,7 +86,7 @@ class AddToken extends Component<Props> {
   }
 
   render() {
-    const { name, address, decimal, errorMessage } = this.state
+    const { name, address, decimal, errorMessage, symbolErrorMessage } = this.state
     const { onClick, className, toggleTokenAddMode } = this.props
     return (
       <div className={cx('AddToken', className)}>
@@ -94,6 +99,7 @@ class AddToken extends Component<Props> {
             placeholder="Enter new token name"
             autoComplete="off"
             onChange={this.handleChange}
+            errorMessage={name && symbolErrorMessage}
           />
           <Input
             name="address"
