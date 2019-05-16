@@ -23,7 +23,7 @@ const KLAY_GAS_PRICE = caver.utils.toWei('25', 'shannon')
 const DEFAULT_KLAY_TRANSFER_GAS = 25000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 const MAX_INTEGER_LENGTH = 14
-
+const DEFAULTTYPE = 'Test_KLAY'
 class WalletTransfer2 extends Component<Props> {
   constructor(props) {
     super(props)
@@ -256,6 +256,7 @@ class WalletTransfer2 extends Component<Props> {
               gas={gas}
               tokenColorIdx={tokenColorIdx}
               isTokenAddMode={isTokenAddMode}
+              klayBalance={myBalancesByName && myBalancesByName[DEFAULTTYPE]}
             />
           </div>
         )
