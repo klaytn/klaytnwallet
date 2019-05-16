@@ -64,13 +64,15 @@
 .TransferForm__feeLimit {
   .ErrorMessage {
     @include font-style('caption');
-    position: relative;
     text-align: left;
     color: #d64a70;
     margin-top: 10px;
     height: 14px;
     padding-left: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 0px;
+    position: absolute;
+    left: 0;
+    bottom: -22px;
     &:after {
     content: '';
     display: block;
