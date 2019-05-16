@@ -62,7 +62,26 @@
 }
 
 .TransferForm__feeLimit {
-
+  .ErrorMessage {
+    @include font-style('caption');
+    position: relative;
+    text-align: left;
+    color: #d64a70;
+    margin-top: 10px;
+    height: 14px;
+    padding-left: 14px;
+    margin-bottom: 12px;
+    &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-alert-02.svg);
+    }
+  }
 }
 
 .TransferForm__feeLimitLabel {

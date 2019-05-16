@@ -129,9 +129,9 @@ class TransferForm extends Component<Props> {
               listen={this.listenEditing}
               errorMessage={isInvalidTxFee}
             />
-            {isInvalidTxFee && (
+            {/* {isInvalidTxFee && (
               <ErrorMessage msg="Insufficienct balance." />
-            )}
+            )} */}
           </div>
           {!listenedIsEditing && (
             <div className="TransferForm__gasInfo">

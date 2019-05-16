@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
 
 import EditButton from 'components/EditButton'
+import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
-
 import './InputEdit.scss'
 
 class InputEdit extends Component<Props> {
@@ -73,6 +73,9 @@ class InputEdit extends Component<Props> {
                     />
                     {unit && <span className="InputEdit__unit">{unit}</span>}
                 </div>
+                {errorMessage && (
+                  <ErrorMessage msg="Insufficienct balance." />
+                )}
                 <div className="InputEdit__ButtonBox">
                   <Fragment>
                       <button
@@ -109,7 +112,7 @@ class InputEdit extends Component<Props> {
             value={value}
             placeholder={placeholder}
             disabled={true}
-            className={cx('InputEdit__input', { 'InputEdit--err': err })}
+            className={cx('InputEdit__input')}
             readOnly
           />
           {unit && <span className="InputEdit__unit">{unit}</span>}
