@@ -50,11 +50,11 @@ class WalletCreationStep3 extends Component<Props> {
       <WalletCreationStepPlate
         className="WalletCreationStep5"
         stepName="STEP 3"
-        title="Please Download Keystore File"
+        title="Please Save your Private Key"
         description={(
           <Fragment>
-            The password for your keystore file has been set.<br />
-            Click the button below to download the file and move on to the final step.
+            Your new account has been created.<br />
+            Please copy and securely store the private key below.
           </Fragment>
         )}
         render={() => (
