@@ -30,22 +30,26 @@ class AddToken extends Component<Props> {
     name: '',
     address: '',
     decimal: '',
+    errorMessage: '',
     symbolErrorMessage: '',
   }
 
-  handleChange = (e) => {
+  handleNameChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      symbolErrorMessage: e.target.name === 'name'
+        && !onlyAlphabet12Max(e.target.value)
+        && 'Length 1~12, alphabet only'
+    })
+  }
+  handleAddressChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
       errorMessage: e.target.name === 'address'
         && !caver.utils.isAddress(e.target.value)
         && 'Invalid address',
-      symbolErrorMessage: e.target.name === 'name'
-        && !onlyAlphabet12Max(e.target.value)
-        && 'Length 1~12, alphabet only'
     })
-
   }
-
   handleDecimalChange = (e) => {
     const isNumberString = /^[0-9]*$/.test(e.target.value)
     if (!isNumberString) return
@@ -98,7 +102,7 @@ class AddToken extends Component<Props> {
             label="Token Symbol"
             placeholder="Enter new token name"
             autoComplete="off"
-            onChange={this.handleChange}
+            onChange={this.handleNameChange}
             errorMessage={name && symbolErrorMessage}
           />
           <Input
@@ -107,7 +111,7 @@ class AddToken extends Component<Props> {
             label="Token Contract Address"
             placeholder="Enter token contract address"
             autoComplete="off"
-            onChange={this.handleChange}
+            onChange={this.handleAddressChange}
             errorMessage={address && errorMessage}
           />
           <Input
@@ -123,7 +127,7 @@ class AddToken extends Component<Props> {
             title="Save"
             className="AddToken__saveButton"
             onClick={() => this.add(onClick)}
-            disabled={!name || !address || !decimal}
+            disabled={!name || !address || !decimal || errorMessage || symbolErrorMessage }
           />
         </div>
         <div className="AddToken__topBlock">
