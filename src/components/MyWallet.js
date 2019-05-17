@@ -106,6 +106,7 @@ class MyWallet extends Component<Props> {
             />}
             <InputCopy
               className="MyWallet__Input"
+              label={!klayAccounts && 'Address'}
               value={this.wallet.address }
               subName="Hex"
             />
