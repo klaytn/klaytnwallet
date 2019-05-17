@@ -1,73 +1,69 @@
 import React, { Component, Fragment } from 'react'
-
+import { browserHistory } from 'react-router'
+import jsonFormat from 'json-format'
+import { Link } from 'react-router'
+import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-import InputPassword from 'components/InputPassword'
-import WalletCreationReminder from 'components/WalletCreationReminder'
-import { checkValidPassword } from 'utils/crypto'
+import { klayKeyMade } from 'utils/crypto'
+import { KLAYTN_SCOPE_URL } from 'constants/url'
+import cx from 'classnames'
+import { caver } from 'klaytn/caver'
+import { pipe } from 'utils/Functional'
+import ui from 'utils/ui'
+type Props = {
+
+}
+
 
 class WalletCreationStep3 extends Component<Props> {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    const { privateKey } = this.props
     this.state = {
-      password: '',
-      isValidPassword: null,
-      nameSet: {
-        'normal': {
-          stepName:'STEP 1',
-        },
-        'HRAType': {
-          stepName:'STEP 3',
-        }
-      },
-    }
-    
-  }
-
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-      isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
-    })
-  }
-  enterKeySelcet = (e)=>{
-    const { handleStepMove } = this.props
-    const { isValidPassword } = this.state
-    const handleStepMoveSet = handleStepMove(4)
-    if(e.keyCode ===13 && isValidPassword){
-      handleStepMoveSet()
-      
+      userPrivateKey:'',
     }
   }
-
+  removeData = () => {
+    caver.klay.accounts.wallet.clear()
+    sessionStorage.removeItem('was')
+    sessionStorage.removeItem('address')
+    ui.keyRemove()
+  }
+  movePageInfo = () => {
+    browserHistory.push('/access')
+  }
+  movePageTransfer = () => {
+    browserHistory.push('/access?next=transfer')
+  }
   render() {
-    const { password, isValidPassword, nameSet } = this.state
-    const { handleStepMove, pageType } = this.props
-    const { stepName } = nameSet[pageType]
+    const { privateKey, pageType, receiptWallet } = this.props
+    let buttonList
+    if(sessionStorage.getItem('was')){
+      buttonList =[{ title: 'Sign in with New Account', gray: true, onClick: pipe(this.removeData, this.movePageInfo), className: 'Button--size5'},
+      { title: 'View My Current Account', onClick: this.movePageInfo, className: 'Button--size5'}] 
+    }else{
+      buttonList = [{ title: 'View Account Info', onClick: pipe(this.removeData, this.movePageInfo), className: 'WalletCreationStep3__button Button--size5', gray: true},
+      { title: 'Send KLAY & Tokens', onClick: pipe(this.removeData, this.movePageTransfer), className: 'WalletCreationStep3__button Button--size5'},]
+    }
     return (
       <WalletCreationStepPlate
-        stepName={stepName}
-        title="Please Set Password for your Keystore File"
+        className="WalletCreationStep5"
+        stepName="STEP 3"
+        title="Please Download Keystore File"
         description={(
           <Fragment>
-            This is your first step in creating your Klaytn Wallet.<br />
-            Please set the password for the keystore file for your new wallet.
+            The password for your keystore file has been set.<br />
+            Click the button below to download the file and move on to the final step.
           </Fragment>
         )}
         render={() => (
-          <InputPassword
-            value={password}
-            name="password"
-            placeholder="Enter the password"
-            label="Password"
-            onChange={this.handleChange}
-            onKeyUp={this.enterKeySelcet}
+          <InputCopy
+            value={privateKey}
+            label="Private Key"
           />
         )}
-        reminder={() => (
-          <WalletCreationReminder />
-        )}
-        nextStepButtons={[{ title: 'Next Step', onClick: handleStepMove(4), disabled: !isValidPassword }]}
+        nextStepButtons={buttonList}
       />
     )
   }

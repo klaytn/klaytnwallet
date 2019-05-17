@@ -13,7 +13,16 @@
   }
 
   &--tokenAdding {
+    position: relative;
     opacity: 0.2;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
   .Inner__Box {
     @include boxColor();
@@ -53,7 +62,28 @@
 }
 
 .TransferForm__feeLimit {
-
+  .ErrorMessage {
+    @include font-style('caption');
+    text-align: left;
+    color: #d64a70;
+    margin-top: 10px;
+    height: 14px;
+    padding-left: 14px;
+    margin-bottom: 0px;
+    position: absolute;
+    left: 0;
+    bottom: -22px;
+    &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-alert-02.svg);
+    }
+  }
 }
 
 .TransferForm__feeLimitLabel {

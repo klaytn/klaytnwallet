@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
 
 import EditButton from 'components/EditButton'
+import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
-
 import './InputEdit.scss'
 
 class InputEdit extends Component<Props> {
@@ -48,7 +48,7 @@ class InputEdit extends Component<Props> {
       <div
         className={cx('InputEdit', className, {
           'InputEdit--isEditing': isEditing,
-          'InputEdit--error': errorMessage,
+          
         })}
         style={{ width: `${width}` }}
       >
@@ -57,7 +57,7 @@ class InputEdit extends Component<Props> {
           <div className="InputEdit__Popup">
             <div className="InputEdit__Popup--inner">
               <label className="InputEdit__label" >Transaction Fee Limit Edit</label>
-                <div className="InputEdit__box">
+                <div className={cx('InputEdit__box', { 'InputEdit--error': errorMessage})}>
                   <input
                       ref={($input) => this.$input = $input}
                       id={name}
@@ -72,7 +72,11 @@ class InputEdit extends Component<Props> {
                       autoComplete="off"
                     />
                     {unit && <span className="InputEdit__unit">{unit}</span>}
+                    {errorMessage && (
+                      <ErrorMessage msg="Insufficienct balance." />
+                    )}
                 </div>
+                
                 <div className="InputEdit__ButtonBox">
                   <Fragment>
                       <button
@@ -86,6 +90,7 @@ class InputEdit extends Component<Props> {
                         className="Button InputEdit__editOkButton"
                         tabIndex="-1"
                         onClick={this.toggleEdit}
+                        disabled={errorMessage}
                       >
                         <span>Confirm</span>
                       </button>
@@ -109,7 +114,7 @@ class InputEdit extends Component<Props> {
             value={value}
             placeholder={placeholder}
             disabled={true}
-            className={cx('InputEdit__input', { 'InputEdit--err': err })}
+            className={cx('InputEdit__input')}
             readOnly
           />
           {unit && <span className="InputEdit__unit">{unit}</span>}

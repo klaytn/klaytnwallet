@@ -17,6 +17,7 @@
 .HRAMadeBox{  
   position: relative;
   .Input__error {
+    padding-left: 0;
     &::before {
       content: "";
       background-image: url(/static/images/icon-warning.svg);
@@ -26,6 +27,7 @@
       float: left;
       margin-right: 4px;
       margin-top: 1px;
+      
     }
     &--end {
       color: $Blue-green-one;

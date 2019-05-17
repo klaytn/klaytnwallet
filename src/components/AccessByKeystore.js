@@ -70,6 +70,7 @@ class AccessByKeystore extends Component<Props> {
       [e.target.name]: e.target.value,
       // isValidPassword: e.target.value.length === 0 ? null : checkValidPassword(e.target.value),
       error: '',
+      passwordError: '',
     })
   }
 
@@ -87,7 +88,8 @@ class AccessByKeystore extends Component<Props> {
      
     try {
       const wallet = caver.klay.accounts.decrypt(keystore, password)
-      caver.klay.accounts.wallet.add(wallet.privateKey)
+      caver.klay.accounts.wallet.add(wallet.privateKey, wallet.address)
+
       // WARNING: sessionStorage has private key. it expired when window tab closed.
       const privateKeyencrypt = encryptAction(wallet.privateKey)
       sessionStorage.setItem('was', privateKeyencrypt)
@@ -131,6 +133,7 @@ class AccessByKeystore extends Component<Props> {
           onChange={this.handleChange}
           isValid={isValidPassword}
           errorMessage={passwordError}
+          maxLength={128}
         />
         <AccessReminder 
           isChecked={isReminderChecked}

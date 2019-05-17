@@ -23,14 +23,15 @@ class WalletCreationStepPlate extends Component<Props> {
         TransferTotalItem=[],
         className,
         stepDim,
+        popupRender,
       } = this.props
     return (
       <div className={cx('WalletCreationStepPlate', className)}>
         <div className="WalletCreationStepPlate__stepName">{stepName}</div>
         <div className="WalletCreationStepPlate__title">{title}</div>
-        <p className="WalletCreationStepPlate__description">
+        <div className="WalletCreationStepPlate__description">
           {description}
-        </p>
+        </div>
         {render && render()}
         {reminder && reminder()}
         {accountRender && accountRender()}
@@ -67,6 +68,8 @@ class WalletCreationStepPlate extends Component<Props> {
         </div>
         {dimRender && dimRender()}
         {stepDim && stepDim}
+        {popupRender && popupRender()}
+        
       </div>
     )
   }

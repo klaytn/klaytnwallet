@@ -23,7 +23,7 @@ const KLAY_GAS_PRICE = caver.utils.toWei('25', 'shannon')
 const DEFAULT_KLAY_TRANSFER_GAS = 25000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 const MAX_INTEGER_LENGTH = 14
-
+const DEFAULTTYPE = 'Test_KLAY'
 class WalletTransfer2 extends Component<Props> {
   constructor(props) {
     super(props)
@@ -46,8 +46,23 @@ class WalletTransfer2 extends Component<Props> {
   }
 
   componentWillMount() {
+    const walletAddress = window.location.pathname.indexOf('/transfer/') > -1 ? window.location.pathname.split('/transfer/')[1] : ''
+    const pathname = window.location.pathname
+    let klayAccounts = sessionStorage.getItem('address')
+    if(caver.klay.accounts.wallet[0]){
+      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+    }
+    if (walletAddress && klayAccounts !== walletAddress) {
+      browserHistory.replace('/ErrorPage')
+      return
+    }
     if (!caver.klay.accounts || !caver.klay.accounts.wallet[0]) {
       browserHistory.replace('/access?next=transfer')
+      return
+    }
+    if ('/transfer' !== pathname && pathname.indexOf('/transfer/') < 0) {   
+      browserHistory.replace('/ErrorPage')
+      return
     }
   }
 
@@ -127,6 +142,7 @@ class WalletTransfer2 extends Component<Props> {
       default:
         this.transferToken()
     }
+    
   }
   HRADataChange = () => {
     const address = sessionStorage.getItem('address')
@@ -139,8 +155,12 @@ class WalletTransfer2 extends Component<Props> {
   }
   transferCoin = () => {
     const { to, value, gas } = this.state
+    const root = this
+
+    caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
 
     caver.klay.sendTransaction({
+      type: 'VALUE_TRANSFER',
       from: this.HRADataChange(),
       to,
       value: caver.utils.toWei(value, 'ether'),
@@ -148,6 +168,11 @@ class WalletTransfer2 extends Component<Props> {
     })
       .once('transactionHash', (transactionHash) => {
         this.setState({ transactionHash }, this.changeView('complete'))
+        this.setState({
+          to: '',
+          value: '',
+          totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+        })
       })
       // .once('receipt', () => {
       // })
@@ -161,14 +186,22 @@ class WalletTransfer2 extends Component<Props> {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
     const contractInstance = new caver.klay.Contract(krc20ABI, tokenByName[type].contractAddress)
-    const decimalProcessedTokenAmount = '0x' + new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)
+    const decimalProcessedTokenAmount = '0x' + new BN(value).multipliedBy(10 ** tokenByName[type].decimal).toString(16)  
+    const toAddress = to.indexOf('.klaytn') >= 0 ? caver.utils.humanReadableStringToHexAddress(to) : to
+    const fromAddress = this.HRADataChange().indexOf('.klaytn') >= 0 ? caver.utils.humanReadableStringToHexAddress(this.HRADataChange()) : this.HRADataChange()
+
     contractInstance.accounts = caver.klay.accounts
-    contractInstance.methods.transfer(to, decimalProcessedTokenAmount).send({
-      from: this.HRADataChange(),
+    contractInstance.methods.transfer(toAddress, decimalProcessedTokenAmount).send({
+      from: fromAddress,
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
     })
     .once('transactionHash', (transactionHash) => {
       this.setState({ transactionHash }, this.changeView('complete'))
+      this.setState({
+        to: '',
+        value: '',
+        totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+      })
     })
     // .once('receipt', () => {
     // })
@@ -223,6 +256,7 @@ class WalletTransfer2 extends Component<Props> {
               gas={gas}
               tokenColorIdx={tokenColorIdx}
               isTokenAddMode={isTokenAddMode}
+              klayBalance={myBalancesByName && myBalancesByName[DEFAULTTYPE]}
             />
           </div>
         )

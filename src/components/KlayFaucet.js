@@ -147,7 +147,7 @@ class KlayFaucet extends Component<Props> {
           <Input
             value={this.wallet && this.wallet.address}
             readOnly
-            label="Wallet Address"
+            label="Account Address"
             className="KlayFaucet__input KlayFaucet__address"
           />
           <Input

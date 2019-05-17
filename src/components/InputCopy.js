@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
 
 import { copy } from 'utils/misc'
-
+import Tooltip from 'components/Tooltip'
 import './InputCopy.scss'
 
 class InputCopy extends Component<Props> {
@@ -12,10 +12,15 @@ class InputCopy extends Component<Props> {
   }
 
   copy = () => {
+    const { clickEvent } = this.props
+    if (typeof clickEvent === 'function') {
+      clickEvent(true)
+    }
     if (this.$input)
     copy(this.$input)
     this.setCopyState(true)
     setTimeout(() => this.setCopyState(false), 1500)
+
   }
 
   setCopyState = (isCopied) => this.setState({ isCopied })
@@ -25,7 +30,6 @@ class InputCopy extends Component<Props> {
       showPassword: !this.state.showPassword,
     })
   }
-
   render() {
     const { isCopied, showPassword } = this.state
     const {
@@ -40,12 +44,26 @@ class InputCopy extends Component<Props> {
       disabled,
       err,
       eye,
+      isTooltip,
+      tooltipText,
+      subName,
     } = this.props
+    
+    
 
     return (
       <div className={cx('InputCopy', className)}>
         {label && <label className="InputCopy__label" htmlFor={name}>{label}</label>}
-        <div className="InputCopy__inputWrapper">
+        
+        {isTooltip && <Tooltip
+          className="AccountOverviewSection__tooltip"
+          direction="top"
+          message={(
+            <Fragment>{tooltipText}</Fragment>
+          )}><img className="button__question__icon" src="/static/images/icon-question-mark.svg"/>
+          </Tooltip>}
+
+        <div className={cx('InputCopy__inputWrapper', { 'InputCopy__inputWrapper__type2': subName })}>
         {eye && (
             <button
               className={cx('InputCopy__eye', {
@@ -56,6 +74,7 @@ class InputCopy extends Component<Props> {
               tabIndex="-1"
             />
           )}
+          {subName && <div className="input__subname">{subName}</div>}
           <input
             ref={($input) => this.$input = $input}
             name={name}

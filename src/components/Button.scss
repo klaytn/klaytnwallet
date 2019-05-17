@@ -63,7 +63,8 @@
   &--size1,
   &--size2,
   &--size3,
-  &--size4 {
+  &--size4,
+  &--size5 {
     padding: 0 10px;
   }
   &--size1 {
@@ -77,6 +78,9 @@
   }
   &--size4 {
     width: 180px;
+  }
+  &--size5 {
+    width: 200px;
   }
 }
 .Button + .Button { margin-left: 16px; }
