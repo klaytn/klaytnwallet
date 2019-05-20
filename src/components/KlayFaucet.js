@@ -10,9 +10,7 @@ import FaucetHowItWork from 'components/FaucetHowItWork'
 import FaucetWarningModal from 'components/FaucetWarningModal'
 import APIEntry from 'constants/network'
 
-
 import './KlayFaucet.scss'
-
 const FAUCET_SUCCESS = 0
 const FAUCET_FAILED = 900
 
@@ -29,9 +27,10 @@ class KlayFaucet extends Component<Props> {
       balance: '0',
       isRunning: false,
       isRunningComplete: true,
-      leftBlock: null,
+      madeDate: null,
       isLoadingFaucetableBlock: true,
       isShowingModal: false,
+
     }
   }
 
@@ -45,38 +44,35 @@ class KlayFaucet extends Component<Props> {
     this.updateBalance()
   }
 
-  componentWillUnmount() {
-    this.intervalId && clearInterval(this.intervalId)
-  }
-
-  intervalId = null
-
   getFaucetableBlock = () => {
-    fetch(`${APIEntry}/faucet/nextblocknumber?address=${this.wallet.address}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then(res => res.json())
-      .then(({ result }) => {
-        if (this.intervalId) clearInterval(this.intervalId)
-        // set interval for checking left block to run faucet.
-        this.intervalId = setInterval(
-          () => this.showLeftBlockToFaucet(result && result.nextBlockNumber),
-          1000
-        )
-        this.setState({
-          isLoadingFaucetableBlock: false,
-        })
-      })
-  }
+    const root = this
+    fetch(`${APIEntry}/faucet/time?address=${root.wallet.address}`, {
 
-  showLeftBlockToFaucet = async (faucetableBlockNumber) => {
-    const currentBlockNumber = await caver.klay.getBlockNumber()
-    this.setState({
-      leftBlock: (faucetableBlockNumber > currentBlockNumber)
-        ? faucetableBlockNumber - currentBlockNumber
-        : 0,
-    })
+    }).then(async function (response) {
+        const responseText = await response.text()
+        const result = JSON.parse(responseText)
+        let madeDataSet, nowDataSet,remainingHour, remainingMinute
+        
+        if(result && result.data){
+          madeDataSet = new Date(result.data)
+          nowDataSet = new Date()
+          remainingHour = nowDataSet.getHours()-madeDataSet.getHours() == 0 ? 1 : nowDataSet.getHours()-madeDataSet.getHours()
+          remainingHour = remainingHour >= 0 ? 24-remainingHour : Math.abs(remainingHour)
+          remainingMinute = 60-Math.abs(nowDataSet.getMinutes()-madeDataSet.getMinutes())
+
+          root.setState({
+            isLoadingFaucetableBlock: true,
+            madeDate: `You can run faucet once every 24 hours (last time you ran faucet was ${remainingHour} hours ${remainingMinute} minutes ago).`,
+          })
+        }else{
+          root.setState({
+            isLoadingFaucetableBlock: false,
+            madeDate: 'Faucet is ready to run.',
+          })
+        }
+    }).catch(function (e) {
+        console.log(e);
+    });
   }
 
   updateBalance = () => {
@@ -90,9 +86,8 @@ class KlayFaucet extends Component<Props> {
 
   runFacuet = () => {
     this.setState({ isRunning: true, isRunningComplete: false })
-    fetch(`${APIEntry}/faucet/?address=${this.wallet && this.wallet.address}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
+    fetch(`${APIEntry}/faucet/run?address=${this.wallet && this.wallet.address}`, {
+      method: 'POST',
     })
     .then(res => res.json())
     .then(({ status }) => {
@@ -120,9 +115,9 @@ class KlayFaucet extends Component<Props> {
       balance,
       isRunning,
       isRunningComplete,
-      leftBlock,
       isLoadingFaucetableBlock,
       isShowingModal,
+      madeDate,
     } = this.state
 
     const defaultOptions = {
@@ -156,16 +151,17 @@ class KlayFaucet extends Component<Props> {
             label="Test_KLAY Balance"
             className="KlayFaucet__input KlayFaucet__balance"
             unit="Test_KLAY"
-            leftBlock={leftBlock}
+            madeDate={madeDate}
+            isError={isLoadingFaucetableBlock}
           />
           <LodingButton
             title="Run Faucet"
             className="KlayFaucet__button"
             onClick={this.runFacuet}
-            disabled={isLoadingFaucetableBlock || leftBlock !== 0}
+            disabled={isLoadingFaucetableBlock}
             loadingSet={isRunning}
           />
-          <FaucetHowItWork leftBlock={leftBlock} />
+          <FaucetHowItWork leftBlock={madeDate} />
         </div>
         
       </div>
