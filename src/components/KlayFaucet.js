@@ -51,12 +51,13 @@ class KlayFaucet extends Component<Props> {
     }).then(async function (response) {
         const responseText = await response.text()
         const result = JSON.parse(responseText)
-        let madeDataSet, nowDataSet,remainingHour, remainingMinute
+        let madeDataSet, nowDataSet,remainingHour, remainingMinute, timeZone
         
         if(result && result.data){
           madeDataSet = new Date(result.data)
           nowDataSet = new Date()
-          remainingHour = nowDataSet.getHours()-madeDataSet.getHours() == 0 ? 1 : nowDataSet.getHours()-madeDataSet.getHours()
+          timeZone = nowDataSet.getTimezoneOffset()/60
+          remainingHour = nowDataSet.getHours()-madeDataSet.getHours()+timeZone == 0 ? 1 : nowDataSet.getHours()-madeDataSet.getHours()+timeZone
           remainingHour = remainingHour >= 0 ? 24-remainingHour : Math.abs(remainingHour)
           remainingMinute = 60-Math.abs(nowDataSet.getMinutes()-madeDataSet.getMinutes())
 
