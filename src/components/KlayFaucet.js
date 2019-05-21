@@ -47,7 +47,7 @@ class KlayFaucet extends Component<Props> {
   getFaucetableBlock = () => {
     const root = this
     fetch(`${APIEntry}/faucet/time?address=${root.wallet.address}`, {
-
+      method: 'GET',
     }).then(async function (response) {
         const responseText = await response.text()
         const result = JSON.parse(responseText)
@@ -76,12 +76,19 @@ class KlayFaucet extends Component<Props> {
   }
 
   updateBalance = () => {
-    caver.klay.getBalance(this.wallet.address)
-      .then((balance) => {
-        this.setState({
-          balance,
-        })
-      })
+    const root = this
+    fetch(`${APIEntry}/faucet/balance?address=${root.wallet.address}`, {
+      method: 'GET',
+    }).then(async function (response) {
+        const responseText = await response.text()
+        const result = JSON.parse(responseText)
+        root.setState({
+          balance:result.data
+        })    
+    }).catch(function (e) {
+        console.log(e);
+    });
+    
   }
 
   runFacuet = () => {
@@ -97,10 +104,12 @@ class KlayFaucet extends Component<Props> {
     .catch(err => console.log(`Error catch: ${err}`))
     .finally(() => {
       // loding end, update data 
-      this.setState({ isRunning: false })
-      this.getFaucetableBlock()
-      this.updateBalance()
       
+      setTimeout(()=>{
+        this.setState({ isRunning: false })
+        this.getFaucetableBlock()
+        this.updateBalance()
+      },3000)
     })
   }
 
@@ -146,7 +155,7 @@ class KlayFaucet extends Component<Props> {
             className="KlayFaucet__input KlayFaucet__address"
           />
           <Input
-            value={caver.utils.fromWei(balance, 'ether')}
+            value={balance}
             readOnly
             label="Test_KLAY Balance"
             className="KlayFaucet__input KlayFaucet__balance"
