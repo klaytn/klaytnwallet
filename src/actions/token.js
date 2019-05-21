@@ -5,7 +5,7 @@ import {
   SET_MY_TOKEN_BALANCES_BY_NAME,
 } from 'actions/actionTypes'
 
-import { getParsedLocalStorageItem } from 'utils/misc'
+import { getParsedSessionStorageItem } from 'utils/misc'
 
 export const getAllToken = () => ({
   type: GET_ALL_TOKEN,
@@ -21,7 +21,7 @@ export const registerToken = (token) => (dispatch) => {
     }
 
   try {
-    localStorage.setItem('savedTokenList', JSON.stringify([...getParsedLocalStorageItem('savedTokenList'), newlyAdded]))
+    sessionStorage.setItem('savedTokenList', JSON.stringify([...getParsedSessionStorageItem('savedTokenList'), newlyAdded]))
   } catch (e) {
     console.log(e)
   }

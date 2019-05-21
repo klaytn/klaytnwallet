@@ -5,7 +5,7 @@ import cx from 'classnames'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import { XButton } from 'components/PlusButton'
-import { krc20ABI } from 'utils/crypto'
+import { krc20ABI, onlyAlphabet12Max } from 'utils/crypto'
 import { caver } from 'klaytn/caver'
 import { registerToken } from 'actions/token'
 import ui from 'utils/ui'
@@ -29,18 +29,27 @@ class AddToken extends Component<Props> {
   state = {
     name: '',
     address: '',
-    decimal: ''
+    decimal: '',
+    errorMessage: '',
+    symbolErrorMessage: '',
   }
 
-  handleChange = (e) => {
+  handleNameChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      symbolErrorMessage: e.target.name === 'name'
+        && !onlyAlphabet12Max(e.target.value)
+        && 'Length 1~12, alphabet only'
+    })
+  }
+  handleAddressChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
       errorMessage: e.target.name === 'address'
         && !caver.utils.isAddress(e.target.value)
-        && 'Invalid address'
+        && 'Invalid address',
     })
   }
-
   handleDecimalChange = (e) => {
     const isNumberString = /^[0-9]*$/.test(e.target.value)
     if (!isNumberString) return
@@ -54,13 +63,13 @@ class AddToken extends Component<Props> {
     contractInstance.methods.name().call()
       .then((fullname) => fullname = fullname)
       .catch(e => {
-        this.setState({ errorMessage: 'Token contract address is invalid' })
+        this.setState({ errorMessage: 'Invalid address' })
         return
       })
     contractInstance.methods.balanceOf(this.wallet && this.wallet.address).call()
       .then(balance => {
         if (typeof balance === 'undefined') {
-          this.setState({ errorMessage: 'Token contract address is invalid' })
+          this.setState({ errorMessage: 'Invalid address' })
           return
         }
         store.dispatch(
@@ -75,13 +84,13 @@ class AddToken extends Component<Props> {
         ui.closePopup()
       })
       .catch((e) => {
-        this.setState({ errorMessage: 'Token contract address is invalid' })
+        this.setState({ errorMessage: 'Invalid address' })
         console.log(e)
       })
   }
 
   render() {
-    const { name, address, decimal, errorMessage } = this.state
+    const { name, address, decimal, errorMessage, symbolErrorMessage } = this.state
     const { onClick, className, toggleTokenAddMode } = this.props
     return (
       <div className={cx('AddToken', className)}>
@@ -93,7 +102,8 @@ class AddToken extends Component<Props> {
             label="Token Symbol"
             placeholder="Enter new token name"
             autoComplete="off"
-            onChange={this.handleChange}
+            onChange={this.handleNameChange}
+            errorMessage={name && symbolErrorMessage}
           />
           <Input
             name="address"
@@ -101,7 +111,7 @@ class AddToken extends Component<Props> {
             label="Token Contract Address"
             placeholder="Enter token contract address"
             autoComplete="off"
-            onChange={this.handleChange}
+            onChange={this.handleAddressChange}
             errorMessage={address && errorMessage}
           />
           <Input
@@ -117,16 +127,15 @@ class AddToken extends Component<Props> {
             title="Save"
             className="AddToken__saveButton"
             onClick={() => this.add(onClick)}
-            disabled={!name || !address || !decimal}
+            disabled={!name || !address || !decimal || errorMessage || symbolErrorMessage }
           />
         </div>
         <div className="AddToken__topBlock">
 
           <div className="AddToken__message">
-            Tokens registered on Testnet are only visible at your currently active wallet.<br/>
-            Official registration of tokens are not supported on testnet at the moment. (to be provided soon)<br/>
+            Tokens registered on Testnet are only visible at your currently active account.<br />
+            Official registration of tokens are not supported on testnet at the moment. (to be provided soon)<br />
             Your registered token is stored in the browser repository; all registration history for your token shall be deleted if you delete your cookie.
-
           </div>
           <XButton onClick={onClick} className="AddToken__xButton" />
           

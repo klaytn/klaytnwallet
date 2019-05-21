@@ -88,9 +88,9 @@ export const detectMobile = () => {
 
 export const isMobile = detectMobile()
 
-export const getParsedLocalStorageItem = (item) => {
+export const getParsedSessionStorageItem = (item) => {
   try {
-    return JSON.parse(localStorage.getItem(item)) || []
+    return JSON.parse(sessionStorage.getItem(item)) || []
   } catch (e) {
     console.log(e)
     return []

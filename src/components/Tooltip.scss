@@ -1,0 +1,113 @@
+@import "fonts.scss";
+@import "colors.scss";
+$space: 5px;
+$tooltip-tail-height: 6px;
+
+.Tooltip {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  cursor: default;
+
+  &:hover .Tooltip__tooltip { visibility: visible; }
+  &:focus .Tooltip__tooltip { visibility: visible; }
+}
+
+.Tooltip__tooltip {
+  visibility: hidden;
+  position: absolute;
+  width: auto;
+  width: 280px;
+  padding: 20px 24px;
+  color: $White-one;
+  border-radius: 4px;
+  background-color: rgba($Black-three, 0.9);
+  box-shadow: 0 4px 8px 0 rgba($Black-zero, 0.25);
+  z-index: 10;
+  text-align: left;
+  margin-left: 3px;
+  line-height: 1;
+
+  @include font-style('caption');
+
+  /* Default tooltip direction: top */
+  &--top, & {
+    left: 50%;
+    top: -($space + $tooltip-tail-height);
+    transform: translate(-50%, -100%);
+  }
+
+  &--bottom {
+    left: 50%;
+    bottom: -($space + $tooltip-tail-height);
+    transform: translate(-50%, 20%);
+  }
+
+  &--left {
+    left: -($space + $tooltip-tail-height);
+    top: 50%;
+    transform: translate(-100%, -50%);
+  }
+
+  &--right {
+    left: unset;
+    right: -($space + $tooltip-tail-height);
+    top: 50%;
+    transform: translate(100%, -50%);
+  }
+
+  /* Default tooltip direction: top */
+  &--top::after, &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    border-top: 6px solid rgba($Black-three, 0.9);
+    border-bottom: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+
+  &--bottom::after {
+    top: -($space + $tooltip-tail-height);
+    bottom: unset;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    border-top: none;
+    border-bottom: 6px solid rgba($Black-three, 0.9);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+
+  &--left::after {
+    top: 50%;
+    bottom: unset;
+    left: unset;
+    right: 0;
+    transform: translate(100%, -50%);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid rgba($Black-three, 0.9);
+    border-right: none;
+  }
+
+  &--right::after {
+    top: 50%;
+    bottom: unset;
+    left: 0;
+    right: unset;
+    transform: translate(-100%, -50%);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: none;
+    border-right: 6px solid rgba($Black-three, 0.9);
+  }
+}
+.button__question__icon {
+  vertical-align: middle;
+  margin-left: 8px;
+}

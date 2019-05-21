@@ -24,7 +24,9 @@ class Input extends Component<Props> {
       unit,
       readOnly,
       errorMessage,
-      leftBlock,
+      madeDate,
+      maxLength,
+      isError,
     } = this.props
 
     return (
@@ -56,13 +58,15 @@ class Input extends Component<Props> {
             type={type}
             value={value}
             readOnly={readOnly}
+            maxLength={maxLength}
           />
           {unit && <span className="Input__unit">{unit}</span>}
         </div>
         {errorMessage !== undefined && (
           <p className={classNames('Input__error', {'show':errorMessage})}>{errorMessage || ''}</p>
         )}
-        {leftBlock ? <p className="Input__error">You can run faucet after {leftBlock} blocks.</p> :
+
+        {madeDate ? <p className={classNames('Input__error', {'text__error':isError})}>{madeDate}</p> :
           ''
         }
     </div>

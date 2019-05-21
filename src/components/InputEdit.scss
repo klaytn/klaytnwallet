@@ -55,6 +55,9 @@
       &:focus-within {
         border-color: $Scope-blue;
       }
+      &.InputEdit--error {
+        border-bottom: 1px solid #D64A70;
+      }
     }
     .InputEdit__ButtonBox {
       text-align: center;

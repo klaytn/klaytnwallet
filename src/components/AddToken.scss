@@ -3,7 +3,6 @@
 @import "mixins.scss";
 
 .AddToken {
-  background-color: $Blue-five;
   padding-bottom: 100px;
 }
 
@@ -40,9 +39,11 @@
   position: absolute;
   bottom: 24px;
   right: 24px;
+  z-index: 4;
 }
 
 .AddToken__input {
+  position: relative;
   margin-bottom: 32px;
   height: 60px;
   .Input__label {
@@ -58,6 +59,7 @@
 
   .Input__error {
     color: red;
+    bottom: -18px;
   }
 
   .Input__inner {

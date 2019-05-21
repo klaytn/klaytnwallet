@@ -16,17 +16,18 @@ class AccessByPrivateKey extends Component<Props> {
   state = {
     privatekey: '',
     isValid: null,
-    isReminderChecked: false
+    isReminderChecked: false,
+    address: '',
   }
 
   handleChange = (e) => {
     let walletData = e.target.value
     let inputValue, address
-    if(walletData.indexOf('0x01') >=0){
+    if(walletData.indexOf('0x01') >= 0 && walletData.split('0x01')[1].length == 42){
       walletData = walletData.split('0x01')
       inputValue = walletData[0]
-      address = walletData[1].length === 42 ? walletData[1] : null
-      sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
+      address = walletData[1].length === 42 ? walletData[1] : null      
+      this.setState({address: address })
     }else{
       inputValue = walletData
     }
@@ -34,7 +35,7 @@ class AccessByPrivateKey extends Component<Props> {
       [e.target.name]: inputValue,
       isValid: inputValue.length === 0
         ? null
-        : isValidPrivateKey(inputValue),
+        : inputValue.length == 66 && isValidPrivateKey(inputValue),
     })
   }
 
@@ -44,14 +45,19 @@ class AccessByPrivateKey extends Component<Props> {
     })
   }
   access = () => {
-    const { privatekey } = this.state
+    const { privatekey, address } = this.state
     const { accessTo } = this.props
-    const wallet = caver.klay.accounts.wallet.add(privatekey)
-
+    let wallet
+    if(address){
+      wallet = caver.klay.accounts.wallet.add(privatekey,address)
+      sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
+    }else{
+      wallet = caver.klay.accounts.wallet.add(privatekey)
+    }
     // WARNING: sessionStorage has private key. it expired when window tab closed.
     const privateKeyencrypt = encryptAction(wallet.privateKey)
     sessionStorage.setItem('was', privateKeyencrypt)
-    if (typeof accessTo === 'function') accessTo(wallet.address)
+    if (typeof accessTo === 'function') accessTo(address? address : wallet.address)
   }
 
   render() {
@@ -62,15 +68,15 @@ class AccessByPrivateKey extends Component<Props> {
     return (
       <div className="AccessByPrivatekey">
         <Input
-          label="Private Key"
+          label="Private Key or HRA Private Key"
           type="text"
           autoFocus
           name="privatekey"
           className="AccessByPrivatekey__input"
-          placeholder="Enter the private key"
+          placeholder="Enter the private key or HRA Private Key"
           onChange={this.handleChange}
           isValid={isValid}
-          autocomplete="off"
+          autoComplete="off"
           errorMessage={isValid === false && 'Invalid key'}
         />
         <AccessReminder 

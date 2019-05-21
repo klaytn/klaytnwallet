@@ -8,6 +8,7 @@
   height: 32px;
   font-size: 11px;
   line-height: 16px;
+  letter-spacing: 0px;
   color: $token-color-2-main;
 
   span {
@@ -23,7 +24,7 @@
   display: inline-block;
   float: left;
   margin-bottom: 18px;
-  margin-right: 8px;
+  margin-right: 6px;
   vertical-align: top;
 }
 .WalletCreationStep3 {

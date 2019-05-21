@@ -91,31 +91,7 @@ class PageAlertPopup extends Component<Props> {
             /></Link>
             </div>
           </div>
-        )}
-        {this.wallet && balance < 101000000000000000000 && false && (
-          <div className="createMainPopup__inner">
-            <Input
-              name="value"
-
-              className="TransferForm__input TransferForm__valueInput"
-              label="Interested In Customizing Your Account Address?"
-              placeholder="0.000000"
-              autoComplete="off"
-              unit="Test_KLAY"
-              value="10"
-              errorMessage="How does the Klay Faucet work?"
-            />
-            <p className="popup__message">KLAY Faucet lets you receive a small amount of Test_KLAY periodically for testing purposes.</p>
-            <div className="popup__bottom__box">
-            <Link to="/faucet" ><Button className="popup__btn"
-              key='Get Test_KLAY'
-              title={'Get Test_KLAY'}
-            />
-            </Link>
-            </div>
-          </div>
-        )}
-        
+        )}        
      </div>
     )
   }

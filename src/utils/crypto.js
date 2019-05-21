@@ -6,7 +6,7 @@ const CryptoJS = require('crypto-js')
 const MINIMUM_PASSWORD_LENGTH = 8
 const MINIMUM_NAME_LENGTH = 5
 const MAXIMUM_NAME_LENGTH = 13
-
+const MAXIMUM_PASSWORD_LENGTH = 128
 export const encryptAction = (myKey) => {
   return CryptoJS.AES.encrypt(myKey, CRYPO_PASSWORD).toString()
 }
@@ -37,7 +37,7 @@ export const isValidPrivateKey = (privateKey) => {
     .length === 64
 }
 
-export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH
+export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH && password.length <= MAXIMUM_PASSWORD_LENGTH
 export const has5and13Characters = (name) => (name.length >= MINIMUM_NAME_LENGTH && name.length <= MAXIMUM_NAME_LENGTH)
 
 export const hasSpecialCharacters = (password) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/.test(password))
@@ -45,7 +45,7 @@ export const hasNoSpecialCharacters = (name) => (/[`~!@#$%^&*()_|+\-=÷¿?;:'",.
 export const onlyAlphabetAndNumbers = (name) => (/^[A-Za-z0-9+]*$/i.test(name) && name )
 
 export const hasNoFirstNumber = (name) => (/^[A-za-z]/g.test(name))
-
+export const onlyAlphabet12Max = (name) => (/^[A-Za-z]*$/i.test(name) && name.length > 0 && name.length <= 12)
 export const hasAtLeastOneNumber = (password) => (/[0-9]/.test(password))
 
 export const checkValidPassword = (password) => {
@@ -82,7 +82,9 @@ export const klayKeyDecomulation = (klayKey) => {
 
   return returnObj
 }
-
+export const changeKlayUnit = (data) => {
+  return data*25*0.000000001
+}
 
 export const krc20ABI = [
   {

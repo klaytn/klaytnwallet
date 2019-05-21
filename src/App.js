@@ -26,8 +26,13 @@ class App extends Component<Props> {
   componentDidMount() {
     const root = this
     const privateKeyDecrypt = decryptAction(sessionStorage.getItem('was'))
+    const address = sessionStorage.getItem('address')
     if (privateKeyDecrypt) {
-      caver.klay.accounts.wallet.add(privateKeyDecrypt)
+      if(address){
+        caver.klay.accounts.wallet.add(privateKeyDecrypt, address )
+      }else{
+        caver.klay.accounts.wallet.add(privateKeyDecrypt)
+      }
       this.setState({ removeSessionStorageButton: true })
     }
     this.setState({ isCheckedSessionStorage: true })
@@ -37,6 +42,10 @@ class App extends Component<Props> {
       if (privateKeyDecrypt) {
         root.setState({ removeSessionStorageButton: true })
       }
+      if(window.beforeunloadEvent){
+        window.removeEventListener("beforeunload", beforeunloadEvent);
+      }
+      
     })
   }
 
@@ -44,10 +53,13 @@ class App extends Component<Props> {
     this.setState({ showSessionStoragePopup: false })
   }
 
-  confirmAction = () => {
+  confirmAction = (moveType) => {
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
-    browserHistory.push('/')
+    if(moveType !== 'notMove'){
+      browserHistory.push('/')
+    }
+    caver.klay.accounts.wallet.clear()
     this.setState({ showSessionStoragePopup: false, removeSessionStorageButton:false })
   }
 
