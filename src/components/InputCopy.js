@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import cx from 'classnames'
 
-import { copy } from 'utils/misc'
+import { copy, madeBulletString } from 'utils/misc'
 import Tooltip from 'components/Tooltip'
 import './InputCopy.scss'
 
@@ -9,6 +9,7 @@ class InputCopy extends Component<Props> {
   state = {
     isCopied: false,
     showPassword: false,
+    bullet: madeBulletString(112),
   }
 
   copy = () => {
@@ -31,7 +32,7 @@ class InputCopy extends Component<Props> {
     })
   }
   render() {
-    const { isCopied, showPassword } = this.state
+    const { isCopied, showPassword, bullet } = this.state
     const {
       className,
       name,
@@ -47,6 +48,7 @@ class InputCopy extends Component<Props> {
       isTooltip,
       tooltipText,
       subName,
+      styleType,
     } = this.props
     
     
@@ -63,7 +65,7 @@ class InputCopy extends Component<Props> {
           )}><img className="button__question__icon" src="/static/images/icon-question-mark.svg"/>
           </Tooltip>}
 
-        <div className={cx('InputCopy__inputWrapper', { 'InputCopy__inputWrapper__type2': subName })}>
+        <div className={cx('InputCopy__inputWrapper', { 'InputCopy__inputWrapper__type2': subName, 'InputCopy__inputWrapper__type3': styleType })}>
         {eye && (
             <button
               className={cx('InputCopy__eye', {
@@ -86,9 +88,10 @@ class InputCopy extends Component<Props> {
             onKeyPress={onKeyPress}
             placeholder={placeholder}
             disabled={disabled}
-            className={cx('InputCopy__input', { 'InputCopy--err': err })}
+            className={cx('InputCopy__input', { 'InputCopy--err': err, 'hide': styleType == 'twoLine' })}
             readOnly
           />
+          {styleType == 'twoLine' && <textarea className="textarea__Copy" value={ eye && !showPassword ? bullet : value} readOnly></textarea>}
           
           <button
             className={cx('InputCopy__copyButton', {

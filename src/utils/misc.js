@@ -116,3 +116,10 @@ export const addCommas = (num: number | string): string => {
   }
   return int + decimal
 }
+export const madeBulletString = (length) => {
+  let bullet = ''
+  for(var i = 0 ;i < length ; i++){
+    bullet += '•'
+  }
+  return bullet
+}

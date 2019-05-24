@@ -20,7 +20,7 @@
   left: 25px;
   margin-top: -7px;
   width: 14px;
-    animation: loading 3s linear infinite;
+    animation: loading 5s linear infinite;
     .LoadingInner {
       stroke: {
         dashoffset: 0;
@@ -28,7 +28,7 @@
         width: 2;
         miterlimit: 4;
       }
-      animation: loading-circle 2s linear infinite;
+      animation: loading-circle 5s linear infinite;
       stroke: $White-one;
       fill: transparent;
     }

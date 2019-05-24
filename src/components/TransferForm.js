@@ -10,7 +10,7 @@ import InputEdit from 'components/InputEdit'
 import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
 import { addCommas } from 'utils/misc'
-
+import { isHRA } from 'utils/crypto'
 type Props = {
 
 }
@@ -25,7 +25,13 @@ class TransferForm extends Component<Props> {
   listenEditing = (listenedIsEditing) => {
     this.setState({ listenedIsEditing })
   }
-
+  focusOut = async (e) => {
+    const { to, humanReadableCreatedCheck } = this.props
+    await caver.klay.accountCreated(to).then((data) => {
+      console.log('data : '+ data)
+      humanReadableCreatedCheck(data)
+    })
+  }
   render() {
     const { listenedIsEditing } = this.state
     const {
@@ -45,10 +51,11 @@ class TransferForm extends Component<Props> {
       isTokenAddMode,
       myBalance,
       klayBalance,
+      humanReadableCreated,
     } = this.props
     let isInvalidAddress = false
     if(to){
-      if(to.length <= 20 && to.indexOf('.klaytn') > 0 && !to.split('.klaytn')[1] ){
+      if(to && to.length <= 20 && isHRA(to) ){
         isInvalidAddress = !caver.utils.isAddress(caver.utils.humanReadableStringToHexAddress(to))
       }else{
         isInvalidAddress = !caver.utils.isAddress(to)
@@ -57,7 +64,7 @@ class TransferForm extends Component<Props> {
     const isInvalidAmount = value && (type !== 'Test_KLAY' ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
     // show invalid tx fee error message only when selected token is not 'Test_KLAY'
     const isInvalidTxFee = type !== 'Test_KLAY' ? Number(klayBalance && klayBalance.balance) <= Number(totalGasFee) : Number(myBalance) <= Number(totalGasFee) + Number(value)
-    const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee
+    const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee || !humanReadableCreated
     
     return (
       <div className={cx('TransferForm', className, {
@@ -87,6 +94,9 @@ class TransferForm extends Component<Props> {
             placeholder="Enter the address to send"
             autoComplete="off"
             value={to}
+            onBlur={this.focusOut}
+            isSuccess={humanReadableCreated }
+            isInvalidData={isInvalidAddress}
             errorMessage={isInvalidAddress && 'Invalid Address'}
           />
           <Input

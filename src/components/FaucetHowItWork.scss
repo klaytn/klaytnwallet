@@ -14,11 +14,20 @@
   text-align: left;
   color: $Scope-blue;
   margin-bottom: 8px;
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    vertical-align: middle;
+    background-image: url('/static/images/icon-alert-03.svg'); 
+  }
 }
 
 .FaucetHowItWork__howItWorkDescription {
   @include font-style('text-small');
-  color: $dark-blue-grey;
+  color: $Grey-two;
   line-height: 20px;
 }
 

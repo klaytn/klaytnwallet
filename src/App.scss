@@ -5,7 +5,7 @@
   min-width: 1280px;
   min-height: 800px;
   height: 100vh;
-  
+  overflow: hidden;
 }
 
 .App__section {
@@ -20,7 +20,7 @@
 .App__navSection {
   display: inline-block;
   width: 240px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   vertical-align: top;

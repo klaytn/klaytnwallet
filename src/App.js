@@ -8,7 +8,7 @@ import cx from 'classnames'
 import { caver } from 'klaytn/caver'
 import './App.scss'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { decryptAction } from 'utils/crypto'
+import { decryptAction, humanReadableChange } from 'utils/crypto'
 import store from './store'
 
 type Props = {
@@ -29,7 +29,7 @@ class App extends Component<Props> {
     const address = sessionStorage.getItem('address')
     if (privateKeyDecrypt) {
       if(address){
-        caver.klay.accounts.wallet.add(privateKeyDecrypt, address )
+        caver.klay.accounts.wallet.add(privateKeyDecrypt, humanReadableChange(address) )
       }else{
         caver.klay.accounts.wallet.add(privateKeyDecrypt)
       }
@@ -45,10 +45,9 @@ class App extends Component<Props> {
       if(window.beforeunloadEvent){
         window.removeEventListener("beforeunload", beforeunloadEvent);
       }
-      
+      root.setState({ getBlockNumber: caver.klay.getBlockNumber() })
     })
   }
-
   cancelAction = () => {
     this.setState({ showSessionStoragePopup: false })
   }
@@ -72,7 +71,7 @@ class App extends Component<Props> {
   }
 
   render() {
-    const { isCheckedSessionStorage,  removeSessionStorageButton, showSessionStoragePopup } = this.state
+    const { isCheckedSessionStorage, removeSessionStorageButton, showSessionStoragePopup } = this.state
     const { children } = this.props
     return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,

@@ -59,6 +59,7 @@ $modal-width: 640px;
   border: none;
   padding: 0 0 0 240px;
   color: $White-one;
+  z-index: 2;
   cursor: pointer;
   .button__link__icon {
     display: inline-block;

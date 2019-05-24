@@ -8,9 +8,8 @@ import { caver } from 'klaytn/caver'
 import AddToken from 'components/AddToken'
 import PlusButton from 'components/PlusButton'
 import MyTokenReminder from 'components/MyTokenReminder'
-import { krc20ABI } from 'utils/crypto'
+import { krc20ABI, isHRA, humanReadableChange } from 'utils/crypto'
 import numeral from 'numeral'
-
 import './MyToken.scss'
 
 const INIT_TOKEN_LISTING_INTERVAL = 7000
@@ -71,8 +70,9 @@ class MyToken extends Component<Props> {
     if(!address) {
       address = this.wallet.address
     }
-    if(address.length < 42){
-      address = caver.utils.humanReadableStringToHexAddress(address)
+    
+    if(address && isHRA(address)){
+      address = humanReadableChange(address)
     }
     
     Promise.all(
@@ -175,7 +175,7 @@ const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenNam
         <span className="TokenItem__balanceInteger">{new BN(integerPoints).toFormat()}</span>
         {decimalPoints && <span className="TokenItem__balanceDecimal">.{decimalPoints.slice(0, 6)}</span>}
       </span>
-      <span className="TokenItem__tokenName">{name}</span>
+      {/* <span className="TokenItem__tokenName">{name}</span> */}
       <div className="TokenItem__decoration" />
     </div>
   )

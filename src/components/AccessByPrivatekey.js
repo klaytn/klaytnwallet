@@ -5,7 +5,7 @@ import { caver } from 'klaytn/caver'
 import Input from 'components/Input'
 import AccessReminder from 'components/AccessReminder'
 import Button from 'components/Button'
-import { isValidPrivateKey, klayKeyDecomulation, encryptAction } from 'utils/crypto'
+import { isValidPrivateKey, klayKeyDecomulation, encryptAction, klaytnKeyCheck} from 'utils/crypto'
 import './AccessByPrivatekey.scss'
 
 type Props = {
@@ -21,18 +21,25 @@ class AccessByPrivateKey extends Component<Props> {
   }
 
   handleChange = (e) => {
-    let walletData = e.target.value
-    let inputValue, address
-    if(walletData.indexOf('0x01') >= 0 && walletData.split('0x01')[1].length == 42){
-      walletData = walletData.split('0x01')
+    let walletData = e.target && e.target.value
+    let name = e.target && e.target.name
+    let inputValue , address
+    const addressCheck = klaytnKeyCheck(e.target.value)
+    this.setState({address: '' })
+    if(addressCheck && walletData && walletData.length ==112){
+      walletData = walletData.split(addressCheck)
       inputValue = walletData[0]
       address = walletData[1].length === 42 ? walletData[1] : null      
       this.setState({address: address })
     }else{
       inputValue = walletData
     }
+    if(name){
+      this.setState({
+        [name]: inputValue,    
+      })
+    }
     this.setState({
-      [e.target.name]: inputValue,
       isValid: inputValue.length === 0
         ? null
         : inputValue.length == 66 && isValidPrivateKey(inputValue),
@@ -44,13 +51,15 @@ class AccessByPrivateKey extends Component<Props> {
       isReminderChecked: !this.state.isReminderChecked
     })
   }
-  access = () => {
+  access = async () => {
     const { privatekey, address } = this.state
     const { accessTo } = this.props
-    let wallet
+    let wallet, isHumanReadable
+    caver.klay.accounts.wallet.clear()
+    isHumanReadable = await caver.utils.isConvertableToHRA(address)
     if(address){
       wallet = caver.klay.accounts.wallet.add(privatekey,address)
-      sessionStorage.setItem('address', caver.utils.hexToUtf8(address))
+      sessionStorage.setItem('address', isHumanReadable ? caver.utils.hexToUtf8(address):address )
     }else{
       wallet = caver.klay.accounts.wallet.add(privatekey)
     }
@@ -75,9 +84,10 @@ class AccessByPrivateKey extends Component<Props> {
           className="AccessByPrivatekey__input"
           placeholder="Enter the private key or HRA Private Key"
           onChange={this.handleChange}
-          isValid={isValid}
+          isValid={isValid }
           autoComplete="off"
           errorMessage={isValid === false && 'Invalid key'}
+          isSuccess={isValid}
         />
         <AccessReminder 
           isChecked={isReminderChecked}
@@ -85,7 +95,7 @@ class AccessByPrivateKey extends Component<Props> {
         />
         <Button
           className="AccessByPrivatekey__button"
-          disabled={!isValid || !isReminderChecked}
+          disabled={!isValid || !isReminderChecked }
           onClick={this.access}
           title="Access"
         />

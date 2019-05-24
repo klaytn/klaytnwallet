@@ -58,12 +58,39 @@
 
 .KlayFaucet__balance {
   &.KlayFaucet__input { 
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
   
   .Input__input {
     @include font-family('roboto');
     @include font-style('h2');
+    font-weight: normal;
+  }
+  .Input__error {
+    padding-left: 15px;
+    color: $Blue-green-one;
+    &::before {
+      content: '';
+      background-image: url(/static/images/icon-check-end.svg);
+      width: 10px;
+      height: 10px;
+      
+      display: inline-block;
+      float: left;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+    &.text__error {
+      color: $Red;
+      &::before {
+        width: 12px;
+        height: 12px;
+        background-image: url(/static/images/icon-warning.svg);
+        top: 1px;
+      }
+    }
+    
   }
 }
 

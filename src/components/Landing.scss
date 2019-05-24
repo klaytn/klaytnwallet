@@ -83,6 +83,7 @@
     padding: 0;
     outline: none;
     cursor: pointer;
+    transition: background-color 200ms ease;
     &.create {
       background-color: $Purple-blue-one;
     }
@@ -91,6 +92,24 @@
     }
     &.send {
       background-color: $Red;
+    }
+    &.create:hover {
+      background-color: rgba($Purple-blue-one,.9);
+    }
+    &.info:hover {
+      background-color: rgba($Blue-green-one,.9);
+    }
+    &.send:hover {
+      background-color: rgba($Red,.9);
+    }  
+    &.create:hover:active {
+      background-color: rgba($Purple-blue-one,.8);
+    }
+    &.info:hover:active {
+      background-color: rgba($Blue-green-one,.8);
+    }
+    &.send:hover:active {
+      background-color: rgba($Red,.8);
     }
   }
 }
