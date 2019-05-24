@@ -124,6 +124,7 @@ class MyWallet extends Component<Props> {
                 <Fragment>This refers to the 32 byte private key commonly used in public key cryptography (following the same format as in Ethereum); it is used for transaction signing.<br />
                 Please store your private key securely, as its compromise can lead to loss of control of your account and assets within the account.</Fragment>
               )}
+              styleType="pullSize"
               readOnly
               autoFocus
               eye
@@ -142,6 +143,7 @@ class MyWallet extends Component<Props> {
                 <Fragment>Klaytn HRA Private Key contains important information that users need in order to access their account: the private key AND the account address. Users with custom-address Klaytn accounts are required to use Klaytn HRA Private Key when signing in to services on Klaytn. <br />
                 Please note that Klaytn HRA Private Key should NOT be used for transaction signing; it is for sign-in purpose only.</Fragment>
               )}
+              styleType="twoLine"
               readOnly
               autoFocus
               eye

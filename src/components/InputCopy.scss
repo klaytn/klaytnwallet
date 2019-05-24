@@ -13,6 +13,11 @@
   &.not__margin { 
     margin-bottom: 4px;
   }
+  &.textarea__show .textarea__Copy {
+    @include font-style('caption-alert');
+    color: $Red;
+    padding: 7px 8px 8px;
+  }
 }
 
 .InputCopy__inputWrapper {
@@ -36,6 +41,37 @@
   .input__subname+input {
 
   }
+  &.InputCopy__inputWrapper__type3 {
+    padding: 0;
+    .InputCopy__copyButton {
+      bottom: -38px; 
+    }
+    .InputCopy__eye {
+      right: 8px;
+      z-index: 2;
+    }
+  }
+  .hide { 
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+  .textarea__Copy {
+    position: relative;
+    width: 100%;
+    padding: 7px 37px 6px 8px;
+    height: 50px;
+    border: none;
+    resize: none;
+    color: $dark-blue-grey;
+    background-color: #f0f2fc;
+    outline: none;
+    z-index: 1;
+    @include font-style('body');
+  }
+  
 }
 
 .InputCopy__input {
@@ -46,9 +82,10 @@
   outline: 0;
   border: 0;
   width: 100%;
-  height: 100%;
+  height: 30px;
+  line-height: 30px;
   display: block;
-  padding: 7px 8px 6px;
+  padding: 0px 8px;
 
 
   &::placeholder {
@@ -120,7 +157,7 @@
   cursor: text;
   display: block;
   text-align: left;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 
@@ -138,3 +175,5 @@
   &--show { background-image: url('/static/images/btn-show.svg'); }
   &--hide { background-image: url('/static/images/btn-hide.svg'); }
 }
+
+

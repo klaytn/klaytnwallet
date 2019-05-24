@@ -100,10 +100,10 @@ class WalletHRACreationStep2 extends Component<Props> {
         render={() => (
           <InputCopy
             value={HRAprivateKey}
-            className="twoLine"
+            className="textarea__show"
             label="Klaytn HRA Private Key"
             clickEvent={this.clickEvent}
-            // type="twoLine"
+            styleType="twoLine"
           />
         )}
         TransferTotalItem={[
