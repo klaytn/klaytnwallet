@@ -1,4 +1,5 @@
 import randombytes from 'randombytes'
+import { caver } from 'klaytn/caver'
 const CRYPO_PASSWORD = process && process.env.CRYPO_PASSWORD
 
 const CryptoJS = require('crypto-js')
@@ -47,7 +48,7 @@ export const onlyAlphabetAndNumbers = (name) => (/^[A-Za-z0-9+]*$/i.test(name) &
 export const hasNoFirstNumber = (name) => (/^[A-za-z]/g.test(name))
 export const onlyAlphabet12Max = (name) => (/^[A-Za-z]*$/i.test(name) && name.length > 0 && name.length <= 12)
 export const hasAtLeastOneNumber = (password) => (/[0-9]/.test(password))
-
+export const isHRA = (value: string) => RegExp(/^[A-Za-z][0-9A-Za-z]{4,12}\.klaytn$/).test(value)
 export const checkValidPassword = (password) => {
   return has8MoreCharacters(password)
     && hasSpecialCharacters(password)
@@ -84,6 +85,16 @@ export const klayKeyDecomulation = (klayKey) => {
 }
 export const changeKlayUnit = (data) => {
   return data*25*0.000000001
+}
+export const klaytnKeyCheck = (data) => {
+  if(RegExp(/0x00|0x01/).test(data) && data.length === 112){
+    return data.match(/0x00|0x01/)[0]
+  }else{
+    return false
+  }
+}
+export const humanReadableChange = (address) => {
+  return isHRA(address) ? caver.utils.humanReadableStringToHexAddress(address) : address
 }
 
 export const krc20ABI = [
