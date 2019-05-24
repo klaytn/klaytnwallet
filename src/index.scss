@@ -2,11 +2,8 @@
   font-family: 'RobotoMono';
   font-style: normal;
   font-weight: bold;
-  src: url('/static/fonts/roboto_bold.eot'); // IE
-  src: url('/static/fonts/roboto_bold.eot#iefix') format('embedded-opentype'), // IE 6 ~ 8
-       url('/static/fonts/roboto_mono_bold.woff') format('woff'), // Modern browser
-       url('/static/fonts/roboto_mono_bold.woff2') format('woff2'), // Modern browser
-       url('/static/fonts/roboto_mono_bold.ttf') format('truetype');
+  src: url('/static/fonts/roboto_mono_bold.woff') format('woff'), // Modern browser
+       url('/static/fonts/roboto_mono_bold.woff2') format('woff2'); // Modern browser
   font-display: swap;
 }
 
@@ -14,8 +11,7 @@
   font-family: 'RobotoMono';
   font-style: normal;
   font-weight: normal;
-  src: url('/static/fonts/roboto_bold.eot'), // IE
-       url('/static/fonts/Roboto_mono_regular.woff') format('woff'), // Modern browser
+  src: url('/static/fonts/Roboto_mono_regular.woff') format('woff'), // Modern browser
        url('/static/fonts/Roboto_mono_regular.ttf') format('truetype');
   font-display: swap;
 }
@@ -24,11 +20,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: normal;
-  src: url('/static/fonts/roboto_regular.eot'); // IE
-  src: url('/static/fonts/roboto_regular.eot#iefix') format('embedded-opentype'), // IE 6 ~ 8
-       url('/static/fonts/Roboto-Regular.woff') format('woff'), // Modern browser
-       url('/static/fonts/Roboto-Regular.woff2') format('woff2'), // Modern browser
-       url('/static/fonts/Roboto-Regular.ttf') format('truetype');
+  src: url('/static/fonts/Roboto-Regular.woff') format('woff'), // Modern browser
+       url('/static/fonts/Roboto-Regular.woff2') format('woff2'); // Modern browser
   font-display: swap;
 }
 
@@ -36,11 +29,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: bold;
-  src: url('/static/fonts/Roboto_Bold.eot'); // IE
-  src: url('/static/fonts/Roboto_Bold.eot#iefix') format('embedded-opentype'), // IE 6 ~ 8
-       url('/static/fonts/Roboto-Bold.woff') format('woff'), // Modern browser
-       url('/static/fonts/Roboto-Bold.woff2') format('woff2'), // Modern browser
-       url('/static/fonts/Roboto-Bold.ttf') format('truetype');
+  src: url('/static/fonts/Roboto-Bold.woff') format('woff'), // Modern browser
+       url('/static/fonts/Roboto-Bold.woff2') format('woff2'); // Modern browser
   font-display: swap;
 }
 
