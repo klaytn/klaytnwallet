@@ -16,18 +16,17 @@ class AccessByPrivateKey extends Component<Props> {
   state = {
     privatekey: '',
     isValid: null,
-    isValidWalletKey: null,
     isReminderChecked: false,
     address: '',
   }
 
-  handleChange = async (e) => {
-    let walletData = e.target.value
-    let inputValue, address
+  handleChange = (e) => {
+    let walletData = e.target && e.target.value
+    let name = e.target && e.target.name
+    let inputValue , address
     const addressCheck = klaytnKeyCheck(e.target.value)
     this.setState({address: '' })
-    this.setState({isValidWalletKey: addressCheck == '0x00' && await !caver.utils.isConvertableToHRA(address) })
-    if(addressCheck){
+    if(addressCheck && walletData && walletData.length ==112){
       walletData = walletData.split(addressCheck)
       inputValue = walletData[0]
       address = walletData[1].length === 42 ? walletData[1] : null      
@@ -35,8 +34,12 @@ class AccessByPrivateKey extends Component<Props> {
     }else{
       inputValue = walletData
     }
+    if(name){
+      this.setState({
+        [name]: inputValue,    
+      })
+    }
     this.setState({
-      [e.target.name]: inputValue,
       isValid: inputValue.length === 0
         ? null
         : inputValue.length == 66 && isValidPrivateKey(inputValue),
@@ -70,7 +73,6 @@ class AccessByPrivateKey extends Component<Props> {
     const { 
       isValid,
       isReminderChecked,
-      isValidWalletKey,
     } = this.state
     return (
       <div className="AccessByPrivatekey">
@@ -84,7 +86,7 @@ class AccessByPrivateKey extends Component<Props> {
           onChange={this.handleChange}
           isValid={isValid }
           autoComplete="off"
-          errorMessage={(isValid === false || isValidWalletKey) && 'Invalid key'}
+          errorMessage={isValid === false && 'Invalid key'}
           isSuccess={isValid}
         />
         <AccessReminder 
@@ -93,7 +95,7 @@ class AccessByPrivateKey extends Component<Props> {
         />
         <Button
           className="AccessByPrivatekey__button"
-          disabled={!isValid || !isReminderChecked || isValidWalletKey}
+          disabled={!isValid || !isReminderChecked }
           onClick={this.access}
           title="Access"
         />
