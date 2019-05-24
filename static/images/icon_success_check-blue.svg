@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11.338" height="8.089" viewBox="0 0 11.338 8.089">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none}.cls-2{clip-path:url(#clip-path)}.cls-3{stroke:#78c9b7;stroke-width:2px}
+        </style>
+        <clipPath id="clip-path">
+            <path d="M0 0h11.338v8.089H0z" class="cls-1"/>
+        </clipPath>
+    </defs>
+    <g id="icon_success_check-blue" class="cls-2">
+        <path id="icon_success_check-blue-2" d="M788 332.5l3.333 3 6.667-6" class="cls-3" data-name="icon_success_check-blue" transform="translate(-787.331 -328.757)"/>
+    </g>
+</svg>
