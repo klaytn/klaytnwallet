@@ -64,6 +64,7 @@
   .Input__input {
     @include font-family('roboto');
     @include font-style('h2');
+    font-weight: normal;
   }
   .Input__error {
     padding-left: 15px;

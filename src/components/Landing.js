@@ -47,16 +47,14 @@ class Landing extends Component {
             <div className="main__text__title">About Klaytn Wallet :-)</div>
             <ul className="main__text__list">
               <li>
-                The Klaytn Network does not store  your private key on the server.<br />
-                Your private key is stored only in the browser’s storage and is automatically deleted when you close the browser.
+                Klaytn network does not store your private key on its servers.
+                Your private key is stored only in your browser’s local storage and is automatically deleted when you close the browser or when you click the Clear Private Key button.
               </li>
               <li>
-                The Klaytn Network recommends that you download the Keystore file and save it securely.<br />
-                The Klaytn Wallet shall NOT BE HELD RESPONSIBLE for the loss of your password for the private key or keystore file.
+                Klaytn recommends that you use Klaytn Wallet on the Baobab testnet for TESTING ONLY, and NOT for any other purpose.
               </li>
               <li>
-                Klaytn Network recommends that you use the Baobab testnet-based Klaytn Wallet for testing purpose ONLY.<br />
-                Klaytn Wallet has no obligation to compensate or assume liability for any financial loss arising out of its use for any other purpose.
+                Klaytn recommends that you save your downloaded keystore file securely. Klaytn Wallet shall NOT BE HELD RESPONSIBLE for the loss of your password or your keystore file.
               </li>
             </ul>
 

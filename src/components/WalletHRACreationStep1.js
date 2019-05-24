@@ -130,6 +130,7 @@ class WalletHRACreationStep1 extends Component<Props> {
             isChecked={isChecked}
             buttonDisabled= {!isValidName || checkValidAlert }
             autocomplete={'off'}
+            err={checkValidAlert}
           />         
           {isChecked && (
             <p className="Input__error Input__error--end">Available</p>

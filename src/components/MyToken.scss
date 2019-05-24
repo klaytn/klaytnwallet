@@ -173,13 +173,10 @@
   right: 0;
 }
 
-.TokenItem__balanceInteger {
-  @include font-style('h3');
-  font-weight: normal;
-}
-
+.TokenItem__balanceInteger,
 .TokenItem__balanceDecimal {
   @include font-style('body');
+  color: $Blue-five;
 }
 
 .TokenItem__title {

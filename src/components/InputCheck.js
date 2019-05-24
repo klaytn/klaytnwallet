@@ -43,7 +43,7 @@ class InputCheck extends Component<Props> {
     } = this.props
     const { accountName, KlayTextWidth } = this.state
     return (
-      <div className={cx('InputCheck', className)}>
+      <div className={cx('InputCheck', className, { 'InputCheck--err': err })}>
         <span className="KlayTextSizeChack"></span>
         <span className="KlayText" style={{'left': KlayTextWidth+3+'px'}}>.klaytn</span>
         {label && <label className="InputCheck__label" htmlFor={name}>{label}</label>}
@@ -61,7 +61,7 @@ class InputCheck extends Component<Props> {
             onKeyPress={onKeyPress}
             placeholder={placeholder}
             disabled={disabled}
-            className={cx('InputCheck__input', { 'InputCheck--err': err })}
+            className="InputCheck__input"
             onKeyUp={this.onKeyUpAction}
             onKeyDown={this.onKeyDownAction}
             autoComplete={autocomplete}

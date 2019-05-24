@@ -24,7 +24,7 @@ class InputFile extends Component<Props> {
     } = this.props
 
     return (
-      <div className={cx('InputFile', className)}>
+      <div className={cx('InputFile', className, { 'InputFile--err': errorMessage })}>
         {label && <label className="InputFile__label" htmlFor={name}>{label}</label>}
         <div className="InputFile__inputWrapper">
           <input
@@ -35,7 +35,7 @@ class InputFile extends Component<Props> {
             onKeyPress={onKeyPress}
             placeholder={placeholder}
             disabled={disabled}
-            className={cx('InputFile__input', { 'InputFile--err': err })}
+            className="InputFile__input"
             readOnly
           />
           <File
