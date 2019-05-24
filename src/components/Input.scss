@@ -107,3 +107,24 @@
     background-image: url(/static/images/icon-alert-02.svg);
    }
 }
+.TransferForm__input .success {
+  display: none;
+  &.show { 
+    display: block
+  }
+}
+.Input.Input__inner--success {
+  .Input__inner {
+    border-bottom: 1px solid $Blue-green-one;
+  }
+  &:after { 
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    width: 12px;
+    height: 9px;
+    background-image: url(/static/images/icon_success_check-blue.svg);
+  }
+}

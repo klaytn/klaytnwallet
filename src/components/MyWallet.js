@@ -13,7 +13,7 @@ import ui from 'utils/ui'
 import { RegisterTokenButton } from 'components/RegisterToken'
 import { download } from 'utils/misc'
 import { KLAYTN_SCOPE_URL } from 'constants/url'
-
+import { isHRA, humanReadableChange } from 'utils/crypto'
 import './MyWallet.scss'
 
 type Props = {
@@ -29,7 +29,7 @@ class MyWallet extends Component<Props> {
   state = {
     balance: null,
     hidePrivateKey: true,
-    klayAccounts : sessionStorage.getItem('address')
+    klayAccounts : isHRA(sessionStorage.getItem('address'))
   }
 
   componentWillMount() {
@@ -45,7 +45,7 @@ class MyWallet extends Component<Props> {
     const walletAddress = window.location.pathname.indexOf('/access/') > -1 ? window.location.pathname.split('/access/')[1] : ''
     let klayAccounts = sessionStorage.getItem('address')
     if(caver.klay.accounts.wallet[0]){
-      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+      klayAccounts = klayAccounts ? humanReadableChange(klayAccounts) : caver.klay.accounts.wallet[0].address
     }
     if (walletAddress && klayAccounts !== walletAddress) {
       browserHistory.replace('/ErrorPage')
@@ -60,7 +60,7 @@ class MyWallet extends Component<Props> {
     this.setState({ hidePrivateKey: !this.state.hidePrivateKey })
   }
   HRADataChange = () => {
-    const address = sessionStorage.getItem('address')
+    let address = sessionStorage.getItem('address')
     if(address){
       return address
     }else if(this.wallet && this.wallet.address){
@@ -69,18 +69,20 @@ class MyWallet extends Component<Props> {
     return ''
   }
   HRAChangeHex = () => {
-    const address = sessionStorage.getItem('address')
-    if(address){
-      return caver.utils.humanReadableStringToHexAddress(address)
-    }else if(this.wallet && this.wallet.address){
+    let address = sessionStorage.getItem('address')
+    if(address && isHRA(address)){
+      return humanReadableChange(address)
+    }else if(address){
+      return address
+    }else{  
       return this.wallet.address
     }
-    return ''
   }
   privatekeySet = () => {
-    const address = sessionStorage.getItem('address')
+    let address = sessionStorage.getItem('address')
     if(address){
-      return this.wallet.privateKey+'0x01'+caver.utils.humanReadableStringToHexAddress(address)
+      address = humanReadableChange(address)
+      return this.wallet.privateKey+'0x01'+address
     }
     return this.wallet.privateKey
   }

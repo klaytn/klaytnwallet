@@ -10,7 +10,7 @@ import MyToken from 'components/MyToken'
 import TransferForm from 'components/TransferForm'
 import TransferTotal from 'components/TransferTotal'
 import TransferComplete from 'components/TransferComplete'
-import { krc20ABI } from 'utils/crypto'
+import { krc20ABI, humanReadableChange } from 'utils/crypto'
 import { limit6Decimal } from 'utils/misc'
 
 type Props = {
@@ -41,6 +41,7 @@ class WalletTransfer2 extends Component<Props> {
       totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
       tokenColorIdx: 1,
       transactionHash: '',
+      humanReadableCreated: null,
     },
     this.wallet = caver.klay.accounts.wallet[0]
   }
@@ -49,9 +50,12 @@ class WalletTransfer2 extends Component<Props> {
     const walletAddress = window.location.pathname.indexOf('/transfer/') > -1 ? window.location.pathname.split('/transfer/')[1] : ''
     const pathname = window.location.pathname
     let klayAccounts = sessionStorage.getItem('address')
+    klayAccounts = humanReadableChange(klayAccounts)
+
     if(caver.klay.accounts.wallet[0]){
-      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+      klayAccounts = klayAccounts ? klayAccounts : caver.klay.accounts.wallet[0].address
     }
+
     if (walletAddress && klayAccounts !== walletAddress) {
       browserHistory.replace('/ErrorPage')
       return
@@ -86,6 +90,9 @@ class WalletTransfer2 extends Component<Props> {
         })
         break
       case 'to':
+        this.setState({
+          humanReadableCreated: null,
+        })
         this.setState({
           [e.target.name]: e.target.value,
         })
@@ -153,6 +160,14 @@ class WalletTransfer2 extends Component<Props> {
     }
     return ''
   }
+  formReset = () => {
+    this.setState({
+      to: '',
+      value: '',
+      totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+      humanReadableCreated: null,
+    })
+  }
   transferCoin = () => {
     const { to, value, gas } = this.state
     const root = this
@@ -168,11 +183,7 @@ class WalletTransfer2 extends Component<Props> {
     })
       .once('transactionHash', (transactionHash) => {
         this.setState({ transactionHash }, this.changeView('complete'))
-        this.setState({
-          to: '',
-          value: '',
-          totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
-        })
+        this.formReset()
       })
       // .once('receipt', () => {
       // })
@@ -197,11 +208,7 @@ class WalletTransfer2 extends Component<Props> {
     })
     .once('transactionHash', (transactionHash) => {
       this.setState({ transactionHash }, this.changeView('complete'))
-      this.setState({
-        to: '',
-        value: '',
-        totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
-      })
+      this.formReset()
     })
     // .once('receipt', () => {
     // })
@@ -210,7 +217,9 @@ class WalletTransfer2 extends Component<Props> {
       ui.showToast({ msg: 'Error occurred.' })
     })
   }
-
+  humanReadableCreatedCheck = (isCreated) => {
+    this.setState({ humanReadableCreated : isCreated })
+  }
   renderTransferView = () => {
     const {
       view,
@@ -223,6 +232,7 @@ class WalletTransfer2 extends Component<Props> {
       totalGasFee,
       tokenColorIdx,
       transactionHash,
+      humanReadableCreated,
     } = this.state
 
     const { isTokenAddMode, myBalancesByName } = this.props
@@ -257,6 +267,8 @@ class WalletTransfer2 extends Component<Props> {
               tokenColorIdx={tokenColorIdx}
               isTokenAddMode={isTokenAddMode}
               klayBalance={myBalancesByName && myBalancesByName[DEFAULTTYPE]}
+              humanReadableCreatedCheck={this.humanReadableCreatedCheck}
+              humanReadableCreated={humanReadableCreated}
             />
           </div>
         )

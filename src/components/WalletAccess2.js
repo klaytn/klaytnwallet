@@ -6,7 +6,7 @@ import { caver } from 'klaytn/caver'
 import TabRadio from 'components/TabRadio'
 import AccessByKeystore from 'components/AccessByKeystore'
 import AccessByPrivatekey from 'components/AccessByPrivatekey'
-
+import { humanReadableChange } from 'utils/crypto'
 import './WalletAccess2.scss'
 
 type Props = {
@@ -32,7 +32,7 @@ class WalletAccess2 extends Component<Props> {
     // Clear whole wallet instances when we get in '/access' route.
     let klayAccounts = sessionStorage.getItem('address')
     if (sessionStorage.getItem('was') && caver.klay.accounts.wallet[0]) {
-      klayAccounts = klayAccounts ? caver.utils.humanReadableStringToHexAddress(klayAccounts) : caver.klay.accounts.wallet[0].address
+      klayAccounts = klayAccounts ? humanReadableChange(klayAccounts) : caver.klay.accounts.wallet[0].address
       browserHistory.push(`/access/${klayAccounts}`)
       return
     }
