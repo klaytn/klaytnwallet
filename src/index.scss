@@ -65,4 +65,11 @@ body {
     margin:0;
     list-style: none;
   }
+  input, 
+  textarea {
+    font-family: roboto;
+  }
+  input[type="password"] {
+    font-size: 18px;
+  }
 }

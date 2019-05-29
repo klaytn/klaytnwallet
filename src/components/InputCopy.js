@@ -91,7 +91,7 @@ class InputCopy extends Component<Props> {
             className={cx('InputCopy__input', { 'InputCopy--err': err, 'hide': styleType == 'twoLine' })}
             readOnly
           />
-          {styleType == 'twoLine' && <textarea className="textarea__Copy" value={ eye && !showPassword ? bullet : value} readOnly></textarea>}
+          {styleType == 'twoLine' && <textarea className={cx('textarea__Copy', {'textarea__password': eye && !showPassword })} value={ eye && !showPassword ? bullet : value} readOnly></textarea>}
           
           <button
             className={cx('InputCopy__copyButton', {
