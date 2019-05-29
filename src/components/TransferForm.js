@@ -27,10 +27,15 @@ class TransferForm extends Component<Props> {
   }
   focusOut = async (e) => {
     const { to, humanReadableCreatedCheck } = this.props
-    await caver.klay.accountCreated(to).then((data) => {
-      console.log('data : '+ data)
-      humanReadableCreatedCheck(data)
-    })
+    if(caver.utils.isAddress(to)){
+      humanReadableCreatedCheck(true)
+      return
+    }
+    if(isHRA(to)){
+      await caver.klay.accountCreated(to).then((data) => {
+        humanReadableCreatedCheck(data)
+      })
+    }
   }
   render() {
     const { listenedIsEditing } = this.state
