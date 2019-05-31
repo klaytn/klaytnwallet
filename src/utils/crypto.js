@@ -37,7 +37,14 @@ export const isValidPrivateKey = (privateKey) => {
     .filter(character => /^[a-f0-9A-F]$/i.test(character))
     .length === 64
 }
-
+export const isValidWalletKey = (walletKey) => {
+  const addressCheck = walletKey.slice(66, 70)
+  if (walletKey.length === 112 && (addressCheck == '0x00' || addressCheck == '0x01' )) {
+    const privateKey = walletKey.slice(0, 66)
+    const address = walletKey.slice(70, 112)
+    return isValidPrivateKey(privateKey) && caver.utils.isAddress(address)
+  }
+}
 export const has8MoreCharacters = (password) => password.length >= MINIMUM_PASSWORD_LENGTH && password.length <= MAXIMUM_PASSWORD_LENGTH
 export const has5and13Characters = (name) => (name.length >= MINIMUM_NAME_LENGTH && name.length <= MAXIMUM_NAME_LENGTH)
 
@@ -87,7 +94,7 @@ export const changeKlayUnit = (data) => {
   return data*25*0.000000001
 }
 export const klaytnKeyCheck = (data) => {
-  if(RegExp(/0x00|0x01/).test(data) && data.length === 112){
+  if(isValidWalletKey(data)){
     return data.match(/0x00|0x01/)[0]
   }else{
     return false
