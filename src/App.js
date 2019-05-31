@@ -21,6 +21,7 @@ class App extends Component<Props> {
     isCheckedSessionStorage: false,
     removeSessionStorageButton: false,
     showSessionStoragePopup: false,
+    networkShow: false,
   }
 
   componentDidMount() {
@@ -45,13 +46,15 @@ class App extends Component<Props> {
       if(window.beforeunloadEvent){
         window.removeEventListener("beforeunload", beforeunloadEvent);
       }
-      root.setState({ getBlockNumber: caver.klay.getBlockNumber() })
+      root.setState({ getBlockNumber: caver.klay.getBlockNumber(), networkShow: false })
     })
   }
   cancelAction = () => {
     this.setState({ showSessionStoragePopup: false })
   }
-
+  networkSet = (value) => {
+    this.setState({ networkShow: value })
+  }
   confirmAction = (moveType) => {
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
@@ -71,7 +74,7 @@ class App extends Component<Props> {
   }
 
   render() {
-    const { isCheckedSessionStorage, removeSessionStorageButton, showSessionStoragePopup } = this.state
+    const { isCheckedSessionStorage, removeSessionStorageButton, showSessionStoragePopup, networkShow } = this.state
     const { children } = this.props
     return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,
@@ -86,6 +89,8 @@ class App extends Component<Props> {
               removeSessionStorageButton={removeSessionStorageButton} 
               showSessionStoragePopup={showSessionStoragePopup}
               popupOpen={this.popupOpen}
+              networkShow={networkShow}
+              networkSet={this.networkSet}
                />
             {children}
           </div>
