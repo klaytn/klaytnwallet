@@ -9,7 +9,7 @@ import LodingButton from 'components/LodingButton'
 import FaucetHowItWork from 'components/FaucetHowItWork'
 import FaucetWarningModal from 'components/FaucetWarningModal'
 import APIEntry from 'constants/network'
-
+import { KLAYTN_KLAY_UINT } from 'constants/url'
 import './KlayFaucet.scss'
 const FAUCET_SUCCESS = 0
 const FAUCET_FAILED = 900
@@ -147,8 +147,8 @@ class KlayFaucet extends Component<Props> {
           
           <div className="KlayFaucet__head">
             <div className="KlayFaucet__point">Only for Baobab</div>
-            <header className="KlayFaucet__title">Test_KLAY Faucet</header>
-            <p className="KlayFaucet__text">The Test_KLAY Faucet runs on Baobab Network.</p>
+            <header className="KlayFaucet__title">{KLAYTN_KLAY_UINT} Faucet</header>
+            <p className="KlayFaucet__text">The {KLAYTN_KLAY_UINT} Faucet runs on Baobab Network.</p>
           </div>
           
           <Input
@@ -160,9 +160,9 @@ class KlayFaucet extends Component<Props> {
           <Input
             value={balance}
             readOnly
-            label="Test_KLAY Balance"
+            label={KLAYTN_KLAY_UINT +' Balance'}
             className="KlayFaucet__input KlayFaucet__balance"
-            unit="Test_KLAY"
+            unit={KLAYTN_KLAY_UINT}
             madeDate={madeDate}
             isError={isLoadingFaucetableBlock}
           />

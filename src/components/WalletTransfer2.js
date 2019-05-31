@@ -12,7 +12,7 @@ import TransferTotal from 'components/TransferTotal'
 import TransferComplete from 'components/TransferComplete'
 import { krc20ABI, humanReadableChange } from 'utils/crypto'
 import { limit6Decimal } from 'utils/misc'
-
+import { KLAYTN_KLAY_UINT } from 'constants/url'
 type Props = {
 
 }
@@ -23,7 +23,7 @@ const KLAY_GAS_PRICE = caver.utils.toWei('25', 'shannon')
 const DEFAULT_KLAY_TRANSFER_GAS = 25000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 const MAX_INTEGER_LENGTH = 14
-const DEFAULTTYPE = 'Test_KLAY'
+const DEFAULTTYPE = KLAYTN_KLAY_UINT
 class WalletTransfer2 extends Component<Props> {
   constructor(props) {
     super(props)
@@ -32,7 +32,7 @@ class WalletTransfer2 extends Component<Props> {
       isLoading: false,
       to: '',
       value: '',
-      type: 'Test_KLAY', // default type is KLAY.
+      type: KLAYTN_KLAY_UINT, // default type is KLAY.
       fee: 0,
       isValidTransaction: false,
       myTokenBalances: [],
@@ -113,7 +113,7 @@ class WalletTransfer2 extends Component<Props> {
 
   handleSelect = ({ tokenSymbol, tokenColorIdx }) => {
     const _totalGasFee = caver.utils.fromWei(
-      `${(tokenSymbol === 'Test_KLAY'
+      `${(tokenSymbol === KLAYTN_KLAY_UINT
         ? DEFAULT_KLAY_TRANSFER_GAS
         : DEFAULT_TOKEN_TRANSFER_GAS
       ) * KLAY_GAS_PRICE}`)
@@ -143,7 +143,7 @@ class WalletTransfer2 extends Component<Props> {
   transfer = () => {
     const { type } = this.state
     switch (type) {
-      case 'Test_KLAY':
+      case KLAYTN_KLAY_UINT:
         this.transferCoin()
         break
       default:

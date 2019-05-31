@@ -4,7 +4,7 @@ import Modal from 'components/Modal'
 import LandingItem from 'components/LandingItem'
 import { Link } from 'react-router'
 import cookie from 'utils/cookie'
-
+import {  KLAYTN_URL_NAME } from 'constants/url'
 import './Landing.scss'
 
 class Landing extends Component {
@@ -35,7 +35,13 @@ class Landing extends Component {
         />
         <div className="Landing">     
           <header className="Landing__title">Welcome to Klaytn Wallet</header>
-          <p className="Landing__label">B a o b a b  N e t w o r k</p>
+          {KLAYTN_URL_NAME === 'Main Network' ? (
+            <p className="Landing__label">M a i n n e t</p>           
+          ):(
+            <p className="Landing__label">B a o b a b  N e t w o r k</p>
+          )}
+          
+          
           <div className="main__link_list">
             <ul>
               <li><Link to={'/create'}><button className="create"><img className="TabItem__icon" src="/static/images/icon-create-on.svg"/>Create Account</button></Link></li>
