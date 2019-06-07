@@ -3,6 +3,7 @@
 @import "mixins.scss";
 
 .PlusButton, .XButton {
+  position: relative;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -17,15 +18,25 @@
   background-size: 12px 12px;
   border: 0;
   transition: background 300ms;
-  &:hover {
-    background-color: $Blue-two;
+  &:after {
+    content: '';
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 0, 0,.1);
+  }
+  &:hover:after {
+    display: block;
   }
 
-  &:active {
-    background-color: $Scope-blue;
-    box-shadow: unset;
+  &:hover:active:after {
+    display: block;
+    background-color: rgba(0, 0, 0,.2);
   }
-
   &:disabled {
     background-color: $solitude;
   }

@@ -22,7 +22,7 @@ class ErrorPage extends Component<Props> {
       <div className="errorPage">
         <div className="errorPage__box">
           <div className="errorPage__title">
-            404ERROR<br />
+            404 ERROR<br />
             PAGE NOT FOUND
           </div>
           <div className="errorPage__text">The Page you are looking for has been removed<br />or does not exist.</div>

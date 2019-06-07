@@ -27,7 +27,9 @@ $tooltip-tail-height: 6px;
   text-align: left;
   margin-left: 3px;
   line-height: 1;
-
+  p+p { 
+    margin-top: 8px;
+  }
   @include font-style('caption');
 
   /* Default tooltip direction: top */

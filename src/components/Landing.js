@@ -36,9 +36,9 @@ class Landing extends Component {
         <div className="Landing">     
           <header className="Landing__title">Welcome to Klaytn Wallet</header>
           {KLAYTN_URL_NAME === 'Main Network' ? (
-            <p className="Landing__label">M a i n n e t</p>           
+            <p className="Landing__label">M a i n&nbsp;&nbsp;N e t w o r k</p>           
           ):(
-            <p className="Landing__label">B a o b a b  N e t w o r k</p>
+            <p className="Landing__label">B a o b a b&nbsp;&nbsp;T e s t n e t</p>
           )}
           
           
@@ -57,7 +57,7 @@ class Landing extends Component {
                 Your private key is stored only in your browser’s local storage and is automatically deleted when you close the browser or when you click the Clear Private Key button.
               </li>
               <li>
-                Klaytn recommends that you use Klaytn Wallet on the Baobab testnet for TESTING ONLY, and NOT for any other purpose.
+                Klaytn recommends that you use Klaytn Wallet on the Baobab Testnet for TESTING ONLY, and NOT for any other purpose.
               </li>
               <li>
                 Klaytn recommends that you save your downloaded keystore file securely. Klaytn Wallet shall NOT BE HELD RESPONSIBLE for the loss of your password or your keystore file.

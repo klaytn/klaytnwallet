@@ -148,7 +148,7 @@ class KlayFaucet extends Component<Props> {
           <div className="KlayFaucet__head">
             <div className="KlayFaucet__point">Only for Baobab</div>
             <header className="KlayFaucet__title">{KLAYTN_KLAY_UINT} Faucet</header>
-            <p className="KlayFaucet__text">The {KLAYTN_KLAY_UINT} Faucet runs on Baobab Network.</p>
+            <p className="KlayFaucet__text">The {KLAYTN_KLAY_UINT} Faucet runs on Baobab Testnet.</p>
           </div>
           
           <Input

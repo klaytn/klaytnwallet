@@ -9,10 +9,9 @@ const FaucetHowItWork = ({ leftBlock }) => (
       How does the Klay Faucet work?
     </header>
     <p className="FaucetHowItWork__howItWorkDescription">
-      Please run the {KLAYTN_KLAY_UINT} Faucet to receive a small amount of {KLAYTN_KLAY_UINT} for testing.
-      For the purpose of preserving enough {KLAYTN_KLAY_UINT} for its community users,
-      {KLAYTN_KLAY_UINT} may not be further distributed if you have recently used the {KLAYTN_KLAY_UINT} Faucet.
-      The {KLAYTN_KLAY_UINT} Faucet is replenished per every 86,400 blocks(24 hours).
+      {KLAYTN_KLAY_UINT} Faucet sends a small amount of {KLAYTN_KLAY_UINT} to the designated address for testing.
+      To ensure fair distribution to the community, you can run {KLAYTN_KLAY_UINT} Faucet only once every 24 hours.
+      The {KLAYTN_KLAY_UINT} reserve in Faucet is replinished every 24 hours.
     </p>
     
   </div>

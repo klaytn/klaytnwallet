@@ -39,8 +39,8 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/access/:id" component={MyWallet} />
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
-        <Route path="/faucet" component={KLAYTN_URL_NAME == 'Baobab Network' ? KlayFaucet : ErrorPage} />
-        <Route path="/faucet/:address" component={KLAYTN_URL_NAME == 'Baobab Network' ? KlayFaucet : ErrorPage} />
+        <Route path="/faucet" component={KLAYTN_URL_NAME !== 'Main Network' ? KlayFaucet : ErrorPage} />
+        <Route path="/faucet/:address" component={KLAYTN_URL_NAME !== 'Main Network' ? KlayFaucet : ErrorPage} />
         <Route path='*' component={ErrorPage} /> 
       </Route>
     </Router>

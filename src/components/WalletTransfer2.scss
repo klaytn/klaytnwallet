@@ -12,17 +12,23 @@
 }
 
 .WalletTransfer2__myToken {
-  display: inline-block;
+  display: block;
+  float: left;
   width: 328px;
   vertical-align: top;
 
   .MyToken__list {
     @include boxColor();
-    height: 551px;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
   }
 }
 
 .WalletTransfer2__transferForm {
-  display: inline-block;
+  display: block;
+  float: left;
   vertical-align: top;
 }

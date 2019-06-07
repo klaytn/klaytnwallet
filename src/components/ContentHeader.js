@@ -68,9 +68,9 @@ class Header extends Component<Props> {
       ui.keyRemoveEnd()
     }
     if(KLAYTN_URL_NAME === 'Main Network'){
-      networkList = [{value: '', name: 'Main Network'}, {value: KLAYTN_BAOBAB_URL, name: 'Baobab Network'}]
+      networkList = [{value: '', name: 'Main Network'}, {value: KLAYTN_BAOBAB_URL, name: 'Baobab Testnet'}]
     }else{
-      networkList = [{value: '', name: 'Baobab Network'},{value: KLAYTN_MAINNET_URL, name: 'Main Network'}]
+      networkList = [{value: '', name: 'Baobab Testnet'},{value: KLAYTN_MAINNET_URL, name: 'Main Network'}]
     }
     return (
       <div className="Header">

@@ -15,6 +15,12 @@
     background-size: 100% auto;
     background-position: 0 top;
     }
+    @media screen and (max-width: 1440px) {
+        &:after{
+            background-position: 0 bottom;
+        }
+        
+    }
 }
 .errorPage__box {
     @include panelize();

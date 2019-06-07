@@ -89,12 +89,11 @@ class AccessByKeystore extends Component<Props> {
     try {
       const wallet = caver.klay.accounts.decrypt(keystore, password)
       caver.klay.accounts.wallet.add(wallet.privateKey, wallet.address)
-
       // WARNING: sessionStorage has private key. it expired when window tab closed.
       const privateKeyencrypt = encryptAction(wallet.privateKey)
       sessionStorage.setItem('was', privateKeyencrypt)
       if (typeof accessTo === 'function') accessTo(wallet.address)
-      if (wallet.address.indexOf('0000') > 0 ) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
+      if (caver.utils.isConvertableToHRA(wallet.address)) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
     } catch (e) {
       this.setState({
         passwordError: 'Does not match with your keystore file.',
@@ -115,6 +114,11 @@ class AccessByKeystore extends Component<Props> {
        } = this.state 
     return (
       <div className="AccessByKeystore">
+        <p className="WalletAccess2__description">
+          Your keystore file encrypts your private key for improved security.<br />
+          Please access your account using the keystore file you downloaded during<br />
+          account creation.
+        </p>
         <InputFile
           label="Import Keystore File (.json)"
           value={fileName}
