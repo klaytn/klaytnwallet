@@ -16,8 +16,8 @@ switch (process.env.NODE_ENV) {
     console.log('starting qa...')
     require('./klaytnwalletFront.qa.js')
     break
-  case 'real':
-    console.log('starting real...')
-    require('./klaytnwalletFront.real.js')
+  case 'production':
+    console.log('starting production...')
+    require('./klaytnwalletFront.production.js')
     break
 }

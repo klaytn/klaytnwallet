@@ -18,7 +18,7 @@ switch (process.env.NODE_ENV) {
   case 'local':
   case 'dev':
   case 'qa':
-  case 'real':
+  case 'production':
   case 'docker':
     envPath = ENV_DIR + `${process.env.NODE_ENV}`.toLowerCase() + '.env'
     break

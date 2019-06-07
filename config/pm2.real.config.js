@@ -14,7 +14,7 @@ module.exports = {
     merge_logs: true,
 
     env: {
-      NODE_ENV: 'real',
+      NODE_ENV: 'production',
       NEWRELIC_APP_NAME: 'KLAYTNWALLET_BAOBAB_REAL_FRONT',
       SENTRY_DSN: 'https://30fcc5f962e644b2b104477838997e4c@sentry.io/1292023',
     },

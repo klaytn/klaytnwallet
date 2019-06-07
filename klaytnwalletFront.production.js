@@ -8,7 +8,7 @@ const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
-require('dotenv').config({ path: './config/real.env' })
+require('dotenv').config({ path: './config/production.env' })
 const logger = require('./src/utils/logger')
 const config = require('./webpack.prod.config.js')
 
