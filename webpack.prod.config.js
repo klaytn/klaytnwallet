@@ -107,6 +107,7 @@ module.exports = {
       'DEV': false,
       'DEPLOYED_ADDRESS': JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
       'METAMASK': process.env.METAMASK,
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new CompressionPlugin(),
     new CopyWebpackPlugin([{
