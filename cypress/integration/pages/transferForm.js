@@ -1,11 +1,13 @@
 import { 
-  mainURL, 
-  testPrivateKey, 
+  mainURL,
+  testPrivateKey,
   testAddress,
-  normalPrivateKey5, 
+  normalPrivateKey5,
   normaladdress5,
   existingHRAAddressFull,
   nonExistingHRAAddressFull,
+  normalWalletKey1,
+  normalWalletaddress1,
   errorAddress1,
   errorAddress2,
   errorAddress3,
@@ -41,11 +43,11 @@ const toAddressErrorCheck = (address, check) => {
 }
 /* wallet info page test */
 describe('wallet transfer page test', () => {
-  it('메인페이지 들어감', function() {
+  it('main page move', function() {
     cy.visit('/')
   })
   login(testPrivateKey)
-  it('transfer 클릭시에 url 변경 확인', function() {
+  it('Check url change when clicking transfer', function() {
     cy.get('.TabList div:nth-child(3) .TabItem')
       .click()
       .url().should('eq', `${mainURL}/transfer`)
@@ -133,6 +135,64 @@ describe('wallet transfer page send test', () => {
       .click()
   })
   login(normalPrivateKey5)
+  it('send value check test', function() {
+    cy.get(':nth-child(3) > .TabItem')
+      .click()
+      .get('.MyToken__list > :nth-child(2) .TokenItem__balanceInteger')
+      .click()
+      .get('.MyToken__list > :nth-child(2) .TokenItem__balanceInteger')
+      .should('have.text', '100')
+      .get('#input-to')
+      .type(testAddress)
+      .get('#input-value')
+      .type(100)
+      .get('.Inner__Box > .Button')
+      .click()
+      .get('.TransferTotalItem__yesButton')
+      .click()
+  })
+})
+/* HRA address token send test */
+describe('wallet transfer page send test', () => {
+  it('main page enter', function() {
+    cy.visit('/')
+  })
+  login(testPrivateKey)
+  it('transfer click url and check', function() {
+    cy.get('.TabList div:nth-child(3) .TabItem')
+      .click()
+      .url().should('eq', `${mainURL}/transfer`)
+  })
+  it('test of input value send', function() {
+    cy.get('.MyToken__list > :nth-child(2)')
+      .click()
+      .get('#input-to')
+      .type(normalWalletaddress1)
+      .blur()
+      .get('#input-value')
+      .type(100)
+      .get('.TransferForm__valueInput > .Input__error')
+      .should('be.visible')
+      .get('.Inner__Box > .Button')
+      .click()
+  })
+  it('test of total step view', function() {
+    cy.get('.From')
+      .should('have.text', testAddress)
+      .get('.To')
+      .should('have.text', normalWalletaddress1)
+      .get('.Amount')
+      .should('have.text', '100')
+      .get('.TransferTotalItem__noButton')
+      .click()
+      .get('.Inner__Box > .Button')
+      .click()
+      .get('.TransferTotalItem__yesButton')
+      .click()
+      .get('.TransferComplete__button.Button--gray')
+      .click()
+  })
+  login(normalWalletKey1)
   it('send value check test', function() {
     cy.get(':nth-child(3) > .TabItem')
       .click()

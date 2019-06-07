@@ -88,6 +88,7 @@ class TransferForm extends Component<Props> {
         <div className="Inner__Box">
           <Input
             readOnly
+            name="from"
             value={from}
             className="TransferForm__input TransferForm__input--readOnly"
             label="From Address"
