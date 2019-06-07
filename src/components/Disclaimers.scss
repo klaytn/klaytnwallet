@@ -1,0 +1,121 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.Disclaimers {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  background: rgba($Black-zero,.5);
+  padding: 20px 0;
+  overflow-y: scroll;
+  text-align: center;
+  &.show {
+    display: block;
+  }
+  .inner_box {
+    background: $White-one;
+    display: inline-block;
+    text-align: left;
+    padding: 40px;
+    max-width: 960px;
+    min-width: 960px;
+    min-height: 640px;
+    margin: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
+    border: solid 1px $Grey-four;
+    position: relative;
+    top: 0%;
+    transform: translateY(0%);
+  }
+  @media screen and (min-height: 680px) { 
+    .inner_box {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  
+  
+  .Disclaimers_box {
+
+    & + .Disclaimers_box {
+      margin-top: 24px;
+    }
+  }
+  .Disclaimers_title {
+    @include font-style('body'); 
+    font-weight: bold;
+    color: $Scope-blue;
+  }
+  .Disclaimers_list {
+    @include font-style('body');
+    color: $Blue-five;
+    margin-bottom: 24px; 
+    b {
+      color: $Scope-blue;
+      font-weight: normal;
+    }
+  }
+  li {
+    position: relative;
+    margin-top: 6px;
+    padding-left: 23px; 
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 17px;
+      height: 17px;
+      background-image: url(/static/images/icon_success_check-disabled.svg);
+    }
+  }
+  &.agree .Disclaimers_list li:after {
+    background-image: url(/static/images/icon_success_check-active.svg);
+  }
+  .Disclaimers_footer {
+
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .Disclaimers_agree {
+      float: left;
+      height: 48px;
+      line-height: 48px;
+    }
+    .Disclaimers_agree__button {
+      float: right;
+    }
+  }
+}
+.Disclaimers__checkbox {
+  background-image: url(/static/images/checkbox-default.svg);
+  width: 20px;
+  height: 20px;
+  margin: 0px 8px 0 0;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+
+  &--checked {
+    background-image: url(/static/images/checkbox-checked.svg);
+  }
+}
+
+.Disclaimers__description {
+  display: inline-block;
+  @include font-style('body'); 
+  color: $Scope-blue;
+  line-height: 20px;
+  vertical-align: middle;
+  cursor: pointer;
+}

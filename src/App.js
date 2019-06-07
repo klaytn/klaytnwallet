@@ -58,6 +58,7 @@ class App extends Component<Props> {
   confirmAction = (moveType) => {
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
+    sessionStorage.removeItem('disclaimers')
     if(moveType !== 'notMove'){
       browserHistory.push('/')
     }

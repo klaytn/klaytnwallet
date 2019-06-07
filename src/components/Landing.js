@@ -4,6 +4,7 @@ import Modal from 'components/Modal'
 import LandingItem from 'components/LandingItem'
 import { Link } from 'react-router'
 import cookie from 'utils/cookie'
+import Disclaimers from 'components/Disclaimers'
 import {  KLAYTN_URL_NAME } from 'constants/url'
 import './Landing.scss'
 
@@ -29,6 +30,7 @@ class Landing extends Component {
     const { isShowingModal } = this.state
     return (
       <Fragment>
+        <Disclaimers/>
         <Modal
           closeModal={this.closeModal}
           isShowingModal={isShowingModal}

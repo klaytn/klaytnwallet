@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+    <defs>
+        <style>
+            .cls-1,.cls-4{fill:none}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:#fff;opacity:0}.cls-4{stroke:#cacbd8;stroke-width:2px}
+        </style>
+        <clipPath id="clip-path">
+            <path d="M0 0h17v17H0z" class="cls-1"/>
+        </clipPath>
+    </defs>
+    <g id="icon_success_check-disabled" class="cls-2">
+        <path id="사각형_4293" d="M0 0h17v17H0z" class="cls-3" data-name="사각형 4293"/>
+        <path id="icon_success_check-disabled-2" d="M817 183.095l3.266 2.939 6.734-6" class="cls-4" data-name="icon_success_check-disabled" transform="translate(-813.331 -174.287)"/>
+    </g>
+</svg>
