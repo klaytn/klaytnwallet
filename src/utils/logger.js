@@ -31,7 +31,7 @@ const logger = winston.createLogger({
 
     transports       : [
         new sentry({
-            // SENTRY_DSN가 undefined여도 동작 이상 없음.
+            // SENTRY_DSN is No problem even if undefined.
             dsn     : process.env.SENTRY_DSN, 
             level   : 'debug',
         }),

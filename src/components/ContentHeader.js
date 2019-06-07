@@ -14,19 +14,10 @@ class Header extends Component<Props> {
   state = {
     network: KLAYTN_URL_NAME,
     prevBlockNumber: null,
-    showDropdown: false,
   }
 
   sameBlockNumberCount = 0
 
-
-  networkList =()=>{
-    if(KLAYTN_URL_NAME === 'Main Network'){
-      return ``
-    }else{
-      return `<li><a href="${KLAYTN_BAOBAB_URL}">Baobab Network</a></li><li><a href="${KLAYTN_MAINNET_URL}">Main Network</a></li>`
-    }
-  }
   healthCheck = async () => {
     const blockNumber = await caver.klay.getBlockNumber()
 
@@ -44,45 +35,42 @@ class Header extends Component<Props> {
     this.sameBlockNumberCount = 0
     this.setState({
       prevBlockNumber: blockNumber,
-      network: 'Baobab Network',
     })
   }
   componentWillReceiveProps (preprops){
-    this.setState({showDropdown : false})
     const {removeSessionStorageButton } = this.props
     if(preprops.removeSessionStorageButton !== removeSessionStorageButton){
 
     }
   }
   dropDownClick = () => {
-    const { showDropdown } = this.state
-   
-    if(showDropdown) {
-      this.setState({showDropdown : false})
+    const { networkShow, networkSet } = this.props
+    if(networkShow) {
+      networkSet(false)
     } else {
-      this.setState({showDropdown : true})
+      networkSet(true)
     }
   }
   handleSelect = (value) => {
+    const { networkSet } = this.props
     if(value){
       window.open(value)
     }else{
-      this.setState({showDropdown : false})
-    }
-    
+      networkSet(false)
+    }   
   }
   render() {
-    const { network, showDropdown } = this.state
-    const { cancelAction, confirmAction, removeSessionStorageButton, showSessionStoragePopup, popupOpen, keyRemove } = this.props
+    const { network } = this.state
+    const { cancelAction, networkShow, confirmAction, removeSessionStorageButton, showSessionStoragePopup, popupOpen, keyRemove } = this.props
     let networkList
     if(keyRemove){
       confirmAction('notMove')
       ui.keyRemoveEnd()
     }
     if(KLAYTN_URL_NAME === 'Main Network'){
-      networkList = [{value: '', name: 'Main Network'}, {value: KLAYTN_BAOBAB_URL, name: 'Baobab Network'}]
+      networkList = [{value: '', name: 'Main Network'}, {value: KLAYTN_BAOBAB_URL, name: 'Baobab Testnet'}]
     }else{
-      networkList = [{value: '', name: 'Baobab Network'},{value: KLAYTN_MAINNET_URL, name: 'Main Network'}]
+      networkList = [{value: '', name: 'Baobab Testnet'},{value: KLAYTN_MAINNET_URL, name: 'Main Network'}]
     }
     return (
       <div className="Header">
@@ -91,11 +79,11 @@ class Header extends Component<Props> {
           <div className={cx('Header__network', {
             'Header__network--disconnected': !network
           })}
-          // onClick={this.dropDownClick} 
+          onClick={KLAYTN_URL_NAME === 'Main Network' ? this.dropDownClick :()=>{}} 
           >
             {network || 'Disconnected'}
           </div>
-          <ul className={cx('network__dropdown', {'show': showDropdown})}>
+          <ul className={cx('network__dropdown', {'show': networkShow})}>
             {networkList.map(({ value, name }) => (
               <li key={name} onClick={()=>{this.handleSelect(value)}} className={cx('network__dropdown__item', {'on': KLAYTN_URL_NAME == name})}>{name}</li>
             ))}

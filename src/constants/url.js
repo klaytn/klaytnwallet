@@ -9,6 +9,7 @@ export const KLAYTN_WALLET_URL= process && process.env.KLAYTN_WALLET_URL
 export const KLAYTN_URL_NAME= process && process.env.KLAYTN_URL_NAME
 export const KLAYTN_MAINNET_URL= process && process.env.KLAYTN_MAINNET_URL
 export const KLAYTN_BAOBAB_URL= process && process.env.KLAYTN_BAOBAB_URL
+export const KLAYTN_KLAY_UINT= process && process.env.KLAYTN_KLAY_UINT
 
 console.log(process.env.KLAYTN_IDE_URL)
 export default KLAYTN_SCOPE_URL

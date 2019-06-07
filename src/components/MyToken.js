@@ -10,6 +10,7 @@ import PlusButton from 'components/PlusButton'
 import MyTokenReminder from 'components/MyTokenReminder'
 import { krc20ABI, isHRA, humanReadableChange } from 'utils/crypto'
 import numeral from 'numeral'
+import { KLAYTN_KLAY_UINT } from 'constants/url'
 import './MyToken.scss'
 
 const INIT_TOKEN_LISTING_INTERVAL = 7000
@@ -91,8 +92,8 @@ class MyToken extends Component<Props> {
           const isNativeCoin = idx === 0
           if (isNativeCoin) {
             return {
-              fullname: 'Test_KLAY',
-              name: 'Test_KLAY',
+              fullname: KLAYTN_KLAY_UINT,
+              name: KLAYTN_KLAY_UINT,
               balance: caver.utils.fromWei(balance, 'ether'),
             }
           } else {

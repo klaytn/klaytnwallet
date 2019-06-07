@@ -1,0 +1,42 @@
+---
+version: 2
+
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node_modules-{{ checksum "package-lock.json" }}
+
+      - run: |
+          # Get values specific to the environment we are deploying to
+          eval "CURRENT_ENVIRONMENT=\${ENVIRONMENT_$(echo "${CIRCLE_TAG//-/_}" | cut -d\/ -f 2)}"
+          set -a; eval $(echo $CURRENT_ENVIRONMENT | base64 -d); set +a
+
+          npm install
+          npm run build:production
+
+          sudo apt-get install awscli
+          aws s3 sync dist/ s3://$FRONTEND_BUCKET/dist
+
+          aws configure set preview.cloudfront true
+          aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "/*"
+
+      - save_cache:
+          key: node_modules-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /env\/.*\/.*/

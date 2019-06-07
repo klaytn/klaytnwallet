@@ -72,4 +72,10 @@ body {
   input[type="password"] {
     font-size: 18px;
   }
+  input[type="password"]::placeholder {
+    font-size: 14px;
+  }
+  ::-webkit-input-placeholder { 
+    color: #e4e7f0;
+  }
 }

@@ -32,7 +32,7 @@ const doNotReload=()=>{
   }
 }
 window.beforeunloadEvent = (event)=>{
-  event.returnValue = "페이지를 벗어나시겠습니까?";
+  event.returnValue = "Do you want to leave the page?";
 }
 class WalletHRACreationStep2 extends Component<Props> {
 
@@ -66,7 +66,9 @@ class WalletHRACreationStep2 extends Component<Props> {
   clickEvent = () => {
     this.setState({ popupShow: true })
   }
-  
+  moveMain = () => {
+    browserHistory.push('/')
+  }
   popupClose = () => {
     this.setState({ buttonClick: false})
   }
@@ -90,18 +92,18 @@ class WalletHRACreationStep2 extends Component<Props> {
       <WalletCreationStepPlate
         className="WalletCreationStep2"
         stepName="STEP 2"
-        title="Please Save Your Klaytn HRA Private Key"
+        title="Please Save Your Klaytn Wallet Key"
         description={(
           <Fragment>
             Your new account has been successfully created.<br />
-            Please copy and securely store the Klaytn HRA Private Key below:
+            Please copy and securely store the Klaytn Wallet Key below:
           </Fragment>
         )}
         render={() => (
           <InputCopy
             value={HRAprivateKey}
             className="textarea__show"
-            label="Klaytn HRA Private Key"
+            label="Klaytn Wallet Key"
             clickEvent={this.clickEvent}
             styleType="twoLine"
           />
@@ -119,12 +121,13 @@ class WalletHRACreationStep2 extends Component<Props> {
           <div className="left__dim"></div>
           <div className="right__dim">
             <div className="transaction__alert__popup show">
-              <span className="transaction__alert__title">Leave Page?</span>
+              <span className="transaction__alert__title">Your Account Is Incomplete</span>
               <p className="transaction__alert__text">
-              You haven’t finished creating your Klaytn account yet.
+              You have NOT FINISHED creating your account. We strongly. recommend that you complete the process. Do you really want to leave this page? (You'll be redirected to the main page)
               </p>
               <div className="popup__bottom__box">
-                <button className="Button" onClick={this.closeSet}>Ok</button>
+                <button className="Button Button--gray" onClick={this.moveMain}>Leave</button>
+                <button className="Button" onClick={this.closeSet}>Stay</button>
               </div>
             </div>
         
@@ -137,8 +140,8 @@ class WalletHRACreationStep2 extends Component<Props> {
             'show' : buttonClick
           })}>
               <div className="createMainPopup__inner widthType">
-                <span  className="popup__title">Please Copy Your HRA Private Key & Securely Store It</span>
-                <p className="popup__message2">Your HRA Private Key is VERY IMPORTANT in managing your account. Please COPY and STORE IT SECURELY on a safe storage. Klaytn CANNOT provide a means for recovery for lost HRA Private Keys.
+                <span  className="popup__title">Please Copy Your Wallet Key & Securely Store It</span>
+                <p className="popup__message2">Your Wallet Key is VERY IMPORTANT in managing your account. Please COPY and STORE IT SECURELY on a safe storage. Klaytn CANNOT provide a means to recover lost Wallet Keys.
                 </p>
                 <div className="popup__bottom__box">
                 <Button

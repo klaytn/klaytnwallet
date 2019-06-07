@@ -74,11 +74,6 @@ class WalletAccess2 extends Component<Props> {
             selectedValue={accessMethod}
             onClick={this.handleAccess}
           />
-          <p className="WalletAccess2__description">
-          You can access your account using your private key or Klaytn HRA<br />
-          Private Key (for custom address accounts). Or you can also use<br />
-          your keystore file and its password.
-          </p>
           <AccessSide
             accessMethod={accessMethod}
             accessTo={this.accessTo}

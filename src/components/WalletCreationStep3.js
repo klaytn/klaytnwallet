@@ -28,6 +28,7 @@ class WalletCreationStep3 extends Component<Props> {
     caver.klay.accounts.wallet.clear()
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
+    sessionStorage.removeItem('disclaimers')
     ui.keyRemove()
   }
   movePageInfo = () => {

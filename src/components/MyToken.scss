@@ -10,6 +10,9 @@
   position: relative;
   text-align: left;
   overflow-x: visible;
+  & > .Inner__Box {
+    position: relative;
+  }
 }
 
 .MyToken__header {
@@ -24,7 +27,7 @@
 
 .MyToken__list {
   @include boxColor();
-  height: 550px;
+  height: 552px;
   overflow-y: scroll;
 }
 
@@ -38,6 +41,7 @@
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
   background-color: $Scope-blue;
   overflow: hidden;
+  z-index: 4;
 }
 
 .TokenItem {
@@ -49,7 +53,10 @@
   background-color: $White-one;
   opacity: .3;
   cursor: pointer;
-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
   &:last-of-type {
     .TokenItem__decoration { }
   }
@@ -73,7 +80,8 @@
     }
 
   }
-  &.TokenItem--active:after, &:hover:after {
+  &:not(.TokenItem--readOnly):hover:after,
+  &.TokenItem--active:after {
     content: '';
     display: block;
     position: absolute;
@@ -152,7 +160,7 @@
 
 .TokenItem__decoration {
   position: absolute;
-  top: 23px;
+  top: 24px;
   left: 22px;
   width: 10px;
   background-color: #ad6af0;

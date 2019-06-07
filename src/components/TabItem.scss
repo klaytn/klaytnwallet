@@ -11,6 +11,7 @@
   text-align: left;
   color: $Blue-four;
   transition: all 200ms ease;
+  cursor: pointer;
   &:after {
     content: '';
     display: block;

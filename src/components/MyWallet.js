@@ -96,7 +96,7 @@ class MyWallet extends Component<Props> {
       })}
       >
         <div className="MyWallet__info">
-          <header className="Contents__title">My Wallet Info</header>
+          <header className="Contents__title">My Account Info</header>
           <div className="Inner__Box">
             {klayAccounts && 
             <InputCopy
@@ -123,8 +123,10 @@ class MyWallet extends Component<Props> {
               value={this.wallet.privateKey}
               isTooltip={true}
               tooltipText={(
-                <Fragment>This refers to the 32 byte private key commonly used in public key cryptography (following the same format as in Ethereum); it is used for transaction signing.<br />
-                Please store your private key securely, as its compromise can lead to loss of control of your account and assets within the account.</Fragment>
+                <Fragment>
+                  <p>This refers to the 32 byte private key commonly used in public key cryptography (following the same format as in Ethereum); it is used for transaction signing.</p>
+                  <p>Please store your private key securely, as its compromise can lead to loss of control of your account and assets within the account.</p>
+                </Fragment>
               )}
               styleType="pullSize"
               readOnly
@@ -134,16 +136,18 @@ class MyWallet extends Component<Props> {
             {klayAccounts && 
             <InputCopy
               className="MyWallet__Input"
-              name="Klaytn HRA Private Key"
-              label="Klaytn HRA Private Key"
+              name="Klaytn Wallet Key"
+              label="Klaytn Wallet Key"
               onLabelClick={this.togglePrivateKey}
               labelClassName="MyWallet__hideButton"
               type={hidePrivateKey ? 'password' : 'text'}
               value={this.privatekeySet()}
               isTooltip={true}
               tooltipText={(
-                <Fragment>Klaytn HRA Private Key contains important information that users need in order to access their account: the private key AND the account address. Users with custom-address Klaytn accounts are required to use Klaytn HRA Private Key when signing in to services on Klaytn. <br />
-                Please note that Klaytn HRA Private Key should NOT be used for transaction signing; it is for sign-in purpose only.</Fragment>
+                <Fragment>
+                  <p>Klaytn Wallet Key contains important information that users need in order to access their account: the private key AND the account address. Users with custom address accounts are required to use Klaytn Wallet Key when signing in to services on Klaytn.</p>
+                  <p>Please note that Klaytn Wallet Key should NOT be used for transaction signing; it is for sign-in purpose only.</p>
+                </Fragment>
               )}
               styleType="twoLine"
               readOnly

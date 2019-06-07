@@ -120,9 +120,9 @@ class WalletHRACreationStep1 extends Component<Props> {
         render={() => (
           <div className="HRAMadeBox">
           <InputCheck
-            name="Account Name"
+            name="Account Address"
             placeholder="yourname"
-            label="Account Name"
+            label="Account Address"
             value={HRAid}
             onClick={this.HRACheck}
             onChange={this.dataChange}

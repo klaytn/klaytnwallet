@@ -15,6 +15,7 @@ import KlayFaucet from 'components/KlayFaucet'
 import Landing from 'components/Landing'
 import MyWallet from 'components/MyWallet'
 import ErrorPage from 'components/ErrorPage'
+import {  KLAYTN_URL_NAME } from 'constants/url'
 import './index.scss'
 
 import * as tokenActions from 'actions/token'
@@ -38,8 +39,8 @@ export const renderRoutes = (rootComponent) => (
         <Route path="/access/:id" component={MyWallet} />
         <Route path="/transfer" component={WalletTransfer2} />
         <Route path="/transfer/:id" component={WalletTransfer2} />
-        <Route path="/faucet" component={KlayFaucet} />
-        <Route path="/faucet/:address" component={KlayFaucet} />
+        <Route path="/faucet" component={KLAYTN_URL_NAME !== 'Main Network' ? KlayFaucet : ErrorPage} />
+        <Route path="/faucet/:address" component={KLAYTN_URL_NAME !== 'Main Network' ? KlayFaucet : ErrorPage} />
         <Route path='*' component={ErrorPage} /> 
       </Route>
     </Router>

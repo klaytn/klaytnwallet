@@ -21,6 +21,7 @@ class WalletHRACreationStep4 extends Component<Props> {
     caver.klay.accounts.wallet.clear()
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
+    sessionStorage.removeItem('disclaimers')
     ui.keyRemove()
   }
   movePageInfo = () => {
@@ -40,7 +41,7 @@ class WalletHRACreationStep4 extends Component<Props> {
           <Fragment>
             <div>
             <p>Congratulations! Your Klaytn account has been successfully created.</p>
-            To access your new account, prepare your Klaytn HRA Private Key and click the “Sign In with New Account” button below (this will clear your current account’s key from the browser).
+            To access your new account, prepare your Klaytn Wallet Key and click the “Sign In with New Account” button below (this will clear your current account’s key from the browser).
             </div>
           </Fragment>
         )}

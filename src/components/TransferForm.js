@@ -11,6 +11,7 @@ import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
 import { addCommas } from 'utils/misc'
 import { isHRA } from 'utils/crypto'
+import { KLAYTN_KLAY_UINT } from 'constants/url'
 type Props = {
 
 }
@@ -47,7 +48,7 @@ class TransferForm extends Component<Props> {
       fee,
       value,
       to,
-      type = 'Test_KLAY',
+      type = KLAYTN_KLAY_UINT,
       totalGasFee,
       gasPrice,
       handleEdit,
@@ -66,9 +67,9 @@ class TransferForm extends Component<Props> {
         isInvalidAddress = !caver.utils.isAddress(to)
       }
     }
-    const isInvalidAmount = value && (type !== 'Test_KLAY' ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
+    const isInvalidAmount = value && (type !== KLAYTN_KLAY_UINT ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
     // show invalid tx fee error message only when selected token is not 'Test_KLAY'
-    const isInvalidTxFee = type !== 'Test_KLAY' ? Number(klayBalance && klayBalance.balance) <= Number(totalGasFee) : Number(myBalance) <= Number(totalGasFee) + Number(value)
+    const isInvalidTxFee = type !== KLAYTN_KLAY_UINT ? Number(klayBalance && klayBalance.balance) <= Number(totalGasFee) : Number(myBalance) <= Number(totalGasFee) + Number(value)
     const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee || !humanReadableCreated
     
     return (
@@ -87,6 +88,7 @@ class TransferForm extends Component<Props> {
         <div className="Inner__Box">
           <Input
             readOnly
+            name="from"
             value={from}
             className="TransferForm__input TransferForm__input--readOnly"
             label="From Address"
@@ -140,7 +142,7 @@ class TransferForm extends Component<Props> {
               onChange={onChange}
               handleEdit={handleEdit}
               handleEditCancel={handleEditCancel}
-              unit="Test_KLAY"
+              unit={KLAYTN_KLAY_UINT}
               autoComplete="off"
               listen={this.listenEditing}
               errorMessage={isInvalidTxFee}

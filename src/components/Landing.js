@@ -4,7 +4,8 @@ import Modal from 'components/Modal'
 import LandingItem from 'components/LandingItem'
 import { Link } from 'react-router'
 import cookie from 'utils/cookie'
-
+import Disclaimers from 'components/Disclaimers'
+import {  KLAYTN_URL_NAME } from 'constants/url'
 import './Landing.scss'
 
 class Landing extends Component {
@@ -29,13 +30,20 @@ class Landing extends Component {
     const { isShowingModal } = this.state
     return (
       <Fragment>
+        <Disclaimers/>
         <Modal
           closeModal={this.closeModal}
           isShowingModal={isShowingModal}
         />
         <div className="Landing">     
           <header className="Landing__title">Welcome to Klaytn Wallet</header>
-          <p className="Landing__label">B a o b a b  N e t w o r k</p>
+          {KLAYTN_URL_NAME === 'Main Network' ? (
+            <p className="Landing__label">M a i n&nbsp;&nbsp;N e t w o r k</p>           
+          ):(
+            <p className="Landing__label">B a o b a b&nbsp;&nbsp;T e s t n e t</p>
+          )}
+          
+          
           <div className="main__link_list">
             <ul>
               <li><Link to={'/create'}><button className="create"><img className="TabItem__icon" src="/static/images/icon-create-on.svg"/>Create Account</button></Link></li>
@@ -51,7 +59,7 @@ class Landing extends Component {
                 Your private key is stored only in your browser’s local storage and is automatically deleted when you close the browser or when you click the Clear Private Key button.
               </li>
               <li>
-                Klaytn recommends that you use Klaytn Wallet on the Baobab testnet for TESTING ONLY, and NOT for any other purpose.
+                Klaytn recommends that you use Klaytn Wallet on the Baobab Testnet for TESTING ONLY, and NOT for any other purpose.
               </li>
               <li>
                 Klaytn recommends that you save your downloaded keystore file securely. Klaytn Wallet shall NOT BE HELD RESPONSIBLE for the loss of your password or your keystore file.
