@@ -12,7 +12,7 @@ const customAddress = () => {
   })
 }
 
-/* wallet info 페이지 테스트 */
+/* wallet info page test */
 describe('wallet info page normal test', () => {
   it('main move', function() {
     cy.visit('/')

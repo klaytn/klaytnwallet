@@ -3,8 +3,8 @@ import { login, testPassword } from '../components/common'
 
 
 /* new account logout condition */
-describe('신규 wallet 생성 step01 ( 로그아웃 )', () => {
-  it('create 진입', function() {
+describe('new wallet create step01 ( logout )', () => {
+  it('create move', function() {
     cy.visit('/')
     .get('.create').click()
   })
@@ -13,7 +13,7 @@ describe('신규 wallet 생성 step01 ( 로그아웃 )', () => {
   testPassword('!', 3)
   testPassword('1', 4)
   
-  it('next step 활성화 확인', function() {
+  it('next step enabled test', function() {
     cy.get('#password')
     .type('qwer1234!')
     .get('.WalletCreationStepPlate__nextButtons > .Button')
@@ -39,7 +39,7 @@ describe('new wallet create step03 ( logout )', () => {
   })
 })
 
-/* new account 로그인 상태 테스트 */
+/* new account login condition test */
 describe('new wallet create step01 ( login )', () => {
   login(normalPrivateKey1)
   it('create click', function() {

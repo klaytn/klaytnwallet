@@ -35,7 +35,7 @@ describe('common menu test', () => {
       .url().should('eq', `${mainURL}/create`)
   })
 
-  /* info, Send KLAY & Tokens, Faucet은 로그인이 필요하기 때문에 로그인 */
+  /* info, Send KLAY & Tokens, Faucet need login */
   login(normalPrivateKey1)
     /* info */ 
   it('common-13 info hover activate button', function() {

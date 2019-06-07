@@ -26,7 +26,7 @@ describe('main page', () => {
     .visit('/')
   })
 
-  /* 메인 스캠 주의 팝업 테스트 */
+  /* main Scam Attention Popup Test */
   it('Fraud Alert popup test', () => {
     cy.get('.klay__alertPopup__button')
     .click()
