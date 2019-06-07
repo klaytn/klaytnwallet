@@ -5,7 +5,7 @@ import cx from 'classnames'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import { XButton } from 'components/PlusButton'
-import { krc20ABI, onlyAlphabet12Max } from 'utils/crypto'
+import { krc20ABI, onlyAlphabet12Max, humanReadableChange } from 'utils/crypto'
 import { caver } from 'klaytn/caver'
 import { registerToken } from 'actions/token'
 import ui from 'utils/ui'
@@ -46,7 +46,7 @@ class AddToken extends Component<Props> {
     this.setState({
       [e.target.name]: e.target.value,
       errorMessage: e.target.name === 'address'
-        && !caver.utils.isAddress(e.target.value)
+        && !caver.utils.isAddress(humanReadableChange(e.target.value))
         && 'Invalid address',
     })
   }
@@ -57,9 +57,12 @@ class AddToken extends Component<Props> {
   }
 
   add = (callback) => {
-    const { name, address, decimal } = this.state
+    const { name, decimal } = this.state
+    let { address } = this.state
+    address = humanReadableChange(address)
     const contractInstance = new caver.klay.Contract(krc20ABI, address)
     let fullname
+    
     contractInstance.methods.name().call()
       .then((fullname) => fullname = fullname)
       .catch(e => {
@@ -133,9 +136,8 @@ class AddToken extends Component<Props> {
         <div className="AddToken__topBlock">
 
           <div className="AddToken__message">
-            Tokens registered on Testnet are only visible at your currently active account.<br />
-            Official registration of tokens are not supported on testnet at the moment. (to be provided soon)<br />
-            Your registered token is stored in the browser repository; all registration history for your token shall be deleted if you delete your cookie.
+            <p>Klaytn Wallet supports token transactions for development purposes only.</p>
+            <p>Added tokens are stored in your local browser, and persist for the current session; if you close your browser tab or clear your private key, added tokens will also be removed.</p>
           </div>
           <XButton onClick={onClick} className="AddToken__xButton" />
           
