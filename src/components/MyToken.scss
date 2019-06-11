@@ -60,7 +60,9 @@
   &:last-of-type {
     .TokenItem__decoration { }
   }
-
+  &--one {
+    cursor: default;
+  }
   &--active {
     .TokenItem__arrow { display: inline-block; }
     opacity: 1;
@@ -93,6 +95,10 @@
     margin-top: -4px;
     border-left-color: $Scope-blue;
 
+  }
+  &--one.TokenItem:after,
+  &--one.TokenItem:hover:after {
+    display: none;
   }
   &--token-color-1 {
     .TokenItem__decoration { background-color: #AD6AF0; }
