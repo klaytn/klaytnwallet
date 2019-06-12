@@ -77,7 +77,7 @@ class WalletHRACreationStep1 extends Component<Props> {
       to: humanReadableAddress,
       publicKey: newPublicKey,
       gas: '4040000000',
-      value: caver.utils.toPeb('0.01', 'KLAY'),
+      value: 0,
     }
 
     // send id
@@ -89,7 +89,6 @@ class WalletHRACreationStep1 extends Component<Props> {
           privateKey: String(newWallet.privateKey),
           HRAprivateKey: newWallet.privateKey+'0x01'+ caver.utils.humanReadableStringToHexAddress(humanReadableAddress)
         })
-
         setHandleStepMove();
         this.setState({ isLoding: false })
       })
