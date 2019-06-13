@@ -28,7 +28,8 @@
   height: 100%;
   display: block;
   padding-bottom: 12px;
-
+  font-family: roboto;
+  font-weight: normal;
   &::placeholder {
     color: $middle-blue-grey;
   }
@@ -90,7 +91,6 @@
   margin-right: 4px;
 }
 .KlayTextSizeChack {
-  font: 400 11px system-ui;
   @include font-style('body');
   color: $Blue-five;
   position: absolute;
@@ -99,11 +99,13 @@
   right: 0px;
   visibility: hidden;
   text-rendering: auto;
+  font-family: roboto;
+  font-weight: normal;
 }
 .KlayText {
   @include font-style('body');
   color: $Grey-two;
   position: absolute;
   display: inline-block;
-  top: 35px;
+  top: 33px;
 }

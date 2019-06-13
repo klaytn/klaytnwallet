@@ -69,6 +69,9 @@
   border-radius: 5px;
   text-align: left;
   overflow: hidden;
+  .Header__network--activation + & {
+    cursor: pointer;
+  }
   &.show {
     display: block;
   }
@@ -106,7 +109,9 @@
   @extend  %header-button;
   background: left 22px center/9px no-repeat url(/static/images/icon-network.svg);
   width: 190px;
-  
+  &--activation {
+    cursor: pointer;
+  }
   &::after {
     content: "";
     width: 0px;

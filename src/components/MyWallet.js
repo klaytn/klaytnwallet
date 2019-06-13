@@ -159,7 +159,7 @@ class MyWallet extends Component<Props> {
               <p className="MyWallet__transactionListTitle">Transaction List</p>
               <p className="MyWallet__transactionListDescription">
                 Explore all transactions involving your account<br />
-                with Klaytn Scope.
+                with Klaytnscope.
               </p> 
               <a
                 className="scope__transaction"
@@ -178,7 +178,7 @@ class MyWallet extends Component<Props> {
         </div>
         <div className="MyWallet__token">
           <MyToken title="Balance" addClassName="infoList"/>
-          <RegisterTokenButton />
+          
         </div>
       </div>
     )

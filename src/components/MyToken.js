@@ -109,7 +109,7 @@ class MyToken extends Component<Props> {
           isLoading: false,
           myTokenBalances: myTokenBalances,
         })
-
+        
         // For broadcasting my token balances through redux store.
         setMyTokenBalancesByName(keyBy(myTokenBalances, ({ name }) => name))
       })
@@ -145,6 +145,7 @@ class MyToken extends Component<Props> {
                   tokenColor={(idx % 4) + 1}
                   selectedTokenName={selectedTokenName}
                   onClick={this.selectToken({ name, tokenColorIdx: (idx % 4) + 1})}
+                  index={myTokenBalances.length}
                 />
               ))
             }
@@ -157,7 +158,7 @@ class MyToken extends Component<Props> {
   }
 }
 
-const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenName, onClick, selectable }) => {
+const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenName, onClick, selectable, index }) => {
   const [ integerPoints, decimalPoints ] = balance.split('.')
   return (
     <div
@@ -168,6 +169,7 @@ const TokenItem = ({ fullname, name, balance = '0', tokenColor, selectedTokenNam
         'TokenItem--token-color-2': tokenColor == 2,
         'TokenItem--token-color-3': tokenColor == 3,
         'TokenItem--token-color-4': tokenColor == 4,
+        'TokenItem--one': index == 1,
       })}
       onClick={onClick}
     >

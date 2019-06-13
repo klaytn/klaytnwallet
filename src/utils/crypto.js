@@ -1,9 +1,9 @@
 import randombytes from 'randombytes'
 import { caver } from 'klaytn/caver'
+import BN from 'bignumber.js'
 const CRYPO_PASSWORD = process && process.env.CRYPO_PASSWORD
 
 const CryptoJS = require('crypto-js')
-
 const MINIMUM_PASSWORD_LENGTH = 8
 const MINIMUM_NAME_LENGTH = 5
 const MAXIMUM_NAME_LENGTH = 13
@@ -91,7 +91,7 @@ export const klayKeyDecomulation = (klayKey) => {
   return returnObj
 }
 export const changeKlayUnit = (data) => {
-  return data*25*0.000000001
+  return BN(data*25).multipliedBy(0.000000001).toFixed()
 }
 export const klaytnKeyCheck = (data) => {
   if(isValidWalletKey(data)){

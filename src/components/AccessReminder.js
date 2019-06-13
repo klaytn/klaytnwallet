@@ -14,7 +14,7 @@ const AccessReminder = ({ isChecked, onClick }) => (
     <div className="AccessReminder__description" onClick={onClick} >
       {KLAYTN_URL_NAME == 'Main Network' ? (
           <p>
-            Klaytn Wallet is for development purpose only. Do not be used for personal or commercial use.<br />
+            Klaytn Wallet is for development purpose only. Do not use it for personal or commercial use.<br />
             Klaytn Wallet은 개발 용도로만 사용 가능합니다. 상용 목적의 사용을 금합니다.
           </p>
         ):(

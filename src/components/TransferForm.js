@@ -155,7 +155,7 @@ class TransferForm extends Component<Props> {
             <div className="TransferForm__gasInfo">
               <div className="TransferForm__gasPrice">
                 <span>Gas Price</span>
-                <span>{addCommas(caver.utils.fromWei(gasPrice, 'shannon'))} Test_ston</span>
+                <span>{addCommas(caver.utils.fromWei(gasPrice, 'shannon'))} ston</span>
               </div>
               <div className="TransferForm__gasLimit">
                 <span>Gas Limit</span>
