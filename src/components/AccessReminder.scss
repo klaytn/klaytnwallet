@@ -10,7 +10,7 @@
   background-image: url(/static/images/checkbox-default.svg);
   width: 20px;
   height: 20px;
-  margin: 2px 8px 0 0;
+  margin: 0px 8px 0 0;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;
@@ -23,7 +23,7 @@
 .AccessReminder__description {
   display: inline-block;
   font-size: 11px;
-  line-height: 16px;
+  line-height: 20px;
   color: $Blue-five;
   cursor: pointer;
   span {
