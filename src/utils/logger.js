@@ -1,7 +1,6 @@
 /** LOGGER **/
 const winston = require('winston');
 const dailyRotate = require('winston-daily-rotate-file');
-const sentry = require('winston-sentry-raven-transport');
 
 const replaceErrors = (key, value) => {
     if (value instanceof Buffer) {
@@ -30,11 +29,6 @@ const logger = winston.createLogger({
     ),
 
     transports       : [
-        new sentry({
-            // SENTRY_DSN is No problem even if undefined.
-            dsn     : process.env.SENTRY_DSN, 
-            level   : 'debug',
-        }),
         new winston.transports.Console({handleExceptions: true}),
         new dailyRotate({
             filename         : process.env.LOGGER_PATH || './logs/api-access',
