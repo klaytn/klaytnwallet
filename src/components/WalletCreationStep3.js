@@ -45,7 +45,7 @@ class WalletCreationStep3 extends Component<Props> {
       { title: 'View My Current Account', onClick: this.movePageInfo, className: 'Button--size5'}] 
     }else{
       buttonList = [{ title: 'View Account Info', onClick: pipe(this.removeData, this.movePageInfo), className: 'WalletCreationStep3__button Button--size5', gray: true},
-      { title: 'Send KLAY & Tokens', onClick: pipe(this.removeData, this.movePageTransfer), className: 'WalletCreationStep3__button Button--size5'},]
+      { title: 'Send KLAY & Token', onClick: pipe(this.removeData, this.movePageTransfer), className: 'WalletCreationStep3__button Button--size5'},]
     }
     return (
       <WalletCreationStepPlate
