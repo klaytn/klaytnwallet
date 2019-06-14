@@ -51,7 +51,11 @@
   }
 }
 .WalletCreationStepPlate__list {
+  display: none;
   margin-top: 57px;
+  &.show {
+    display: block;
+  }
 }
 .WalletCreationStep5 .InputCopy__input {
   @include font-style('caption-alert');

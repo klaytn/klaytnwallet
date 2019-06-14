@@ -103,11 +103,11 @@ class InputEdit extends Component<Props> {
       
         {label && <label className="InputEdit__label" htmlFor={name}>{label}</label>}
         <div className="InputEdit__inputWrapper">
-          <EditButton
+          {/* <EditButton
                 className="InputEdit__editButton"
                 tabIndex="-1"
                 onClick={this.toggleEdit}
-              />
+              /> */}
           <input
             id={name+'Show'}
             name={name}

@@ -118,6 +118,13 @@
   &.show {
     display: block;
   }
+  .alert_text {
+    color: $Red;
+  }
+  .alert_icon {
+    display: block;
+    @include font-style('h1');
+  }
   .left__dim {
     position:absolute;
     top: 0;
@@ -133,6 +140,7 @@
 
     background: rgba(255, 255, 255,.5);
   }
+
 }
 .transaction__alert__popup {
   @include popupStyle();
@@ -144,6 +152,9 @@
   padding: 73px 40px;
   margin: -150px 0 0 -195px;
   background: $White-one;
+  &.type1 {
+    padding: 45px 40px;
+  }
   &.disNone {
     display: none;
   }

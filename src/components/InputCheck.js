@@ -74,13 +74,13 @@ class InputCheck extends Component<Props> {
           ><AccountNameTooltip value={value} />
           </ReactTooltip>
           
-          <button
+          {/* <button
             className={cx('InputCheck__Button', { 'isChecked': isChecked })}
 
             onClick={onClick}
             icon="icon-check"
             disabled={buttonDisabled}
-          >{buttonText}{isChecked && 'ed!' }</button>
+          >{buttonText}{isChecked && 'ed!' }</button> */}
         </div>
 
       </div>
