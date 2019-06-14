@@ -98,12 +98,12 @@ class WalletTransfer2 extends Component<Props> {
         })
         break
       case 'value':
-        if (e.target.value !== '' && !isNumberStringWithDot) return
-        // If input value starts with 0, should trail it with '.'
-        if (isStartWithZero(this.state.value)) {
-          this.setState({ [e.target.name]: limit6Decimal(e.target.value + '.') })
-          return
+
+        let valueArray =  e.target.value.indexOf('.') >= 0 ? e.target.value.split('.')[0] === '' : true
+        if (e.target.value !== '' && !isNumberStringWithDot ) {
+          if(!valueArray) return
         }
+
         this.setState({ [e.target.name]: limit6Decimal(e.target.value) })
         break
       default:
@@ -166,6 +166,8 @@ class WalletTransfer2 extends Component<Props> {
       value: '',
       totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
       humanReadableCreated: null,
+      gas: DEFAULT_KLAY_TRANSFER_GAS,
+      gasPrice: KLAY_GAS_PRICE,
     })
   }
   transferCoin = () => {
@@ -243,7 +245,7 @@ class WalletTransfer2 extends Component<Props> {
           <div className="WalletTransfer2">
             <MyToken
               className="WalletTransfer2__myToken"
-              title="Step1. Select Tokens"
+              title="Step 1. Select Token"
               selectedTokenName={type}
               handleSelect={this.handleSelect}
               selectable
@@ -278,7 +280,7 @@ class WalletTransfer2 extends Component<Props> {
             transfer={this.transfer}
             from={this.HRADataChange()}
             to={to}
-            value={value}
+            value={Number(value)}
             type={type}
             fee={fee}
             gas={gas}

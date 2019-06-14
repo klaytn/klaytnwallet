@@ -67,7 +67,7 @@ class TransferForm extends Component<Props> {
         isInvalidAddress = !caver.utils.isAddress(to)
       }
     }
-    const isInvalidAmount = value && (type !== KLAYTN_KLAY_UINT ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
+    const isInvalidAmount = Number(value) && (type !== KLAYTN_KLAY_UINT ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
     // show invalid tx fee error message only when selected token is not 'Test_KLAY'
     const isInvalidTxFee = type !== KLAYTN_KLAY_UINT ? Number(klayBalance && klayBalance.balance) <= Number(totalGasFee) : Number(myBalance) <= Number(totalGasFee) + Number(value)
     const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee || !humanReadableCreated
@@ -78,7 +78,7 @@ class TransferForm extends Component<Props> {
         'TransferForm--tokenAdding': isTokenAddMode,
       })}>
         <header className="TransferForm__title">
-          Step2. Enter the infomation <span className={cx('TransferForm__tokenSymbol', {
+          Step 2. Enter Information <span className={cx('TransferForm__tokenSymbol', {
             [`TransferForm__tokenSymbol--token-color-${tokenColorIdx}`]: tokenColorIdx,
           })}
         >
@@ -108,6 +108,7 @@ class TransferForm extends Component<Props> {
           />
           <Input
             name="value"
+            type="number"
             onChange={onChange}
             className="TransferForm__input TransferForm__valueInput"
             label="Amount to Send"
