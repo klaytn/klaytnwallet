@@ -1,6 +1,7 @@
 import {
   GET_ALL_TOKEN,
   REGISTER_TOKEN,
+  RESET_TOKEN,
   TOGGLE_TOKEN_ADD_MODE,
   SET_MY_TOKEN_BALANCES_BY_NAME,
 } from 'actions/actionTypes'
@@ -10,7 +11,9 @@ import { getParsedSessionStorageItem } from 'utils/misc'
 export const getAllToken = () => ({
   type: GET_ALL_TOKEN,
 })
-
+export const resetToken = () => ({
+  type: RESET_TOKEN,
+})
 export const registerToken = (token) => (dispatch) => {
 
   const newlyAdded = {
@@ -38,7 +41,6 @@ export const registerToken = (token) => (dispatch) => {
     },
   })
 }
-
 export const toggleTokenAddMode = () => ({
   type: TOGGLE_TOKEN_ADD_MODE,
 })
