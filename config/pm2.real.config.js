@@ -6,9 +6,9 @@ module.exports = {
     args: 'webpack.prod.config.js',
 
     /**
-     * 실행모대
-     * - 인스턴스 갯수는 최대
-     * - 로그파일은 하나로 관리
+     * Execution mode
+     * - The number of instances is 1
+     * - Manage log files as one
      */
     instances: 'max',
     merge_logs: true,

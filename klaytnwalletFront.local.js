@@ -53,7 +53,7 @@ app.listen(port, '0.0.0.0', (err) => {
 
   opn(`http://localhost:${port}`)
     .catch(err => {
-      // cli(linux)환경에서는 opn이 작동하지 않는다.
+      // opn does not work in cli(linux) environment.
       console.log('can\'t open in your pc');
     });
 });
