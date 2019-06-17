@@ -51,8 +51,6 @@ class InputCopy extends Component<Props> {
       styleType,
     } = this.props
     
-    
-
     return (
       <div className={cx('InputCopy', className)}>
         {label && <label className="InputCopy__label" htmlFor={name}>{label}</label>}
@@ -81,7 +79,7 @@ class InputCopy extends Component<Props> {
             ref={($input) => this.$input = $input}
             name={name}
             type={eye
-                ? !showPassword && 'password'
+                ? (!showPassword ? 'password' : 'text')
                 : 'text'}
             value={value}
             onChange={onChange}

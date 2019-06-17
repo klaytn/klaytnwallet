@@ -18,7 +18,7 @@ const AccessReminder = ({ isChecked, onClick }) => (
           </p>
         ):(
           <p>
-            Klaytn Wallet is for development purpose only. {KLAYTN_KLAY_UINT} on test has no financial value.
+            Klaytn Wallet is for development purpose only. {KLAYTN_KLAY_UINT} on testnet has no financial value.
           </p>
         )
       }

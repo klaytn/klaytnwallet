@@ -46,7 +46,7 @@ class AddToken extends Component<Props> {
     this.setState({
       [e.target.name]: e.target.value,
       errorMessage: e.target.name === 'address'
-        && !caver.utils.isAddress(humanReadableChange(e.target.value))
+        && !caver.utils.isAddress(e.target.value)
         && 'Invalid address',
     })
   }

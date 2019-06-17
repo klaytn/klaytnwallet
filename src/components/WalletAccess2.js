@@ -73,8 +73,11 @@ class WalletAccess2 extends Component<Props> {
     return (
       <div className="WalletAccess2">
         <div className="WalletAccess2__inner">
-          <header className="WalletAccess2__title">Access Your Account {menuItem[window.location.search ? window.location.search : 'none']}</header>
-          
+          <header className="WalletAccess2__title">Access Existing Account {menuItem[window.location.search ? window.location.search : 'none']}</header>
+          <p className="WalletAccess2__description">
+            You can access your account using your private key,<br />
+            or your keystore file and its password.
+          </p>
           <TabRadio
             className="WalletAcess2__tabRadio"
             tabs={radioItems}
