@@ -63,9 +63,14 @@ class TransferTotal extends Component<Props> {
             <TransferTotalItem title="Gas Price" value="25 ston" />
             <TransferTotalItem title="Gas Limit" value={gas} />
           </div>
-          <p className="TransferTotal__message">
-            Are you sure you want to do this?
-          </p>
+          <div className="TransferTotal__message">
+            Are you sure you want to do this?<br />
+            <p className="sub_message">
+            Klaytn Wallet은 KLAY 및 token 전송 중 발생할 수 있는
+            <span className="alert_text">장애 및 오류로 인한 손실 또는 피해에 대해 책임을 지지 않습니다.</span>
+            정말로 전송을 실행하시겠습니까?
+            </p>
+          </div>
           <Button
             gray
             title="No, I want to back"

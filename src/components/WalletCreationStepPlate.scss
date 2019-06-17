@@ -27,6 +27,11 @@
   margin: 0 auto;
   color: $Scope-blue;
   margin-bottom: 8px;
+  .sub__title {
+    display: block;
+    @include font-style('h3');
+    margin-top: 5px;
+  }
 }
 
 .WalletCreationStepPlate__description {

@@ -2,18 +2,6 @@
 @import "colors.scss";
 @import "fonts.scss";
 
-.WalletCreation2 {
-  @include panelize;
-  @include boxColor;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 984px;
-}
-
-.WalletCreation2__stepIndicator {
-  margin-bottom: 80px;
-}
-
 .HRAMadeBox{  
   position: relative;
   .Input__error {
@@ -153,7 +141,10 @@
   margin: -150px 0 0 -195px;
   background: $White-one;
   &.type1 {
+    height: 340px;
+    width: 380px;
     padding: 45px 40px;
+    margin: -170px 0 0 -190px;
   }
   &.disNone {
     display: none;
@@ -162,14 +153,18 @@
     display: block;
   }
   .transaction__alert__title {
-    @include font-style('h3');
+    @include font-style('body');
+    font-weight: bold;
     display: block;
     color: $Scope-blue;
     margin-bottom: 12px;
   }
   .transaction__alert__text {
-    @include font-style('body');
+    @include font-style('caption');
     color: $Blue-five;
+    p {
+      margin-bottom: 5px;
+    }
   }
   .popup__bottom__box{
     margin-top: 38px;

@@ -98,11 +98,18 @@ class WalletHRACreationStep2 extends Component<Props> {
       <WalletCreationStepPlate
         className="WalletCreationStep2"
         stepName="STEP 2"
-        title="Please Save Your Klaytn Wallet Key"
+        title={(
+          <Fragment>
+            Please Save Your Klaytn Wallet Key
+            <span className="sub__title">발급된 Klaytn Wallet Key를 안전하게 보관하세요.</span>
+          </Fragment>
+        )}
         description={(
           <Fragment>
-            Your new account has been successfully created.<br />
-            Please copy and securely store the Klaytn Wallet Key below:
+            <p>Your new account has been successfully created.<br />
+            Please copy and securely store the Klaytn Wallet Key below:</p>
+            신규 Klaytn 어카운트가 정상적으로 생성되었습니다.<br />
+            아래 COPY 버튼을 사용해 Klaytn Wallet Key를 복사한 뒤 안전한 저장소에 보관하세요.
           </Fragment>
         )}
         render={() => (
@@ -146,10 +153,17 @@ class WalletHRACreationStep2 extends Component<Props> {
             'show' : buttonClick
           })}>
               <div className="createMainPopup__inner">
-                <span  className="popup__title">Securely Store Your Wallet Key</span>
+                <span  className="popup__title">
+                  Securely Store Your Wallet Key<br />
+                  Wallet Key를 반드시 안전한 저장소에 보관하십시오
+                </span>
                 <div className="popup__message2">
                   <p>Below is your Wallet Key. Please store it securely.<br />
-                    <span className="alert_text">Klaytn cannot recover lost Wallet Key.</span></p>
+                    Klaytn cannot recover lost Wallet Key.
+                  </p>
+                  <span className="alert_text">발급된 Wallet Key를 반드시 안전하게 보관하십시오.</span><br />
+                  <span className="alert_text">분실된 Wallet Key는 Klaytn도 복구가 불가능합니다.</span>
+                  
                   <div className="InputCopy__inputWrapper">
                     <label className="InputCopy__label">Klaytn Wallet Key</label>
                     <textarea className="textarea__Copy" readOnly
