@@ -7,7 +7,8 @@ import cx from 'classnames'
 import { caver } from 'klaytn/caver'
 import InputCheck from 'components/InputCheck'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-import { checkValidName, decryptAction } from 'utils/crypto'
+import { checkValidName, HRAMADEVALUE, decryptAction } from 'utils/crypto'
+import BN from 'bignumber.js'
 type Props = {
 
 }
@@ -81,7 +82,7 @@ class WalletHRACreationStep1 extends Component<Props> {
       from: klayWallet.address,
       to: humanReadableAddress,
       publicKey: newPublicKey,
-      gas: '4040000000',
+      gas: BN(HRAMADEVALUE/25).multipliedBy(0.000000001).toFixed(),
       value: 0,
     }
 
@@ -145,7 +146,7 @@ class WalletHRACreationStep1 extends Component<Props> {
           <div className={cx('all__loding',{'show':isLoding || isDuplicateName || transactionPopup})}>
             <div className="left__dim"></div>
             <div className="right__dim">
-              <div className={cx('transaction__alert__popup',{'show':isLoding})}>
+              <div className={cx('transaction__alert__popup disNone',{'show':isLoding})}>
                 <span className="transaction__alert__title">Sending transaction to create your custom account</span>
                 <p className="transaction__alert__text">
                   Please wait while we collect the transaction results.
@@ -167,10 +168,15 @@ class WalletHRACreationStep1 extends Component<Props> {
                 </div>
               </div>
               <div className={cx('transaction__alert__popup type1 disNone',{'show': transactionPopup})}>
-                <p className="transaction__alert__title"><span className="alert_icon">👏</span>You Are About to <span className="alert_text">Spend 100 KLAY + tx fee</span></p>
-                <p className="transaction__alert__text">
-                  By selecting ‘Proceed’, you will send an account creation transaction to Klaytn network.
+                <p className="transaction__alert__title">
+                  <span className="alert_icon">👏</span>You Are About to <span className="alert_text">Spend 100 KLAY + tx fee</span><br />
+                  100 KLAY + tx fee가 <span className="alert_text">잔고에서 차감</span>됩니다
                 </p>
+                <div className="transaction__alert__text">
+                  <p>By selecting ‘Proceed’, you will send an account<br />creation transaction to Klaytn network.<br /></p>
+                  “Process” 버튼을 누르면 어카운트 생성 요청이 전송됩니다.<br />
+                  정말로 실행하시겠습니까?
+                </div>
                 <div className="popup__bottom__box">
                   <button className="Button Button--gray" onClick={this.closePopup}>Cancel</button>
                   <button className="Button" onClick={this.HRACreate}>Proceed</button>

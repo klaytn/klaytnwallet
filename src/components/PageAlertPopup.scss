@@ -14,6 +14,30 @@
   &.show { 
     display: block;
    }
+   &.type1 .createMainPopup__inner {
+    width: 480px;
+    margin: -150px 0 0 -120px;
+    .Disclaimers_agree {
+      margin-top: 24px; 
+    }
+   }
+   &.type2 .createMainPopup__inner {
+    width: 480px;
+    height: 400px;
+    margin: -200px 0 0 -120px;
+    .InputCopy__inputWrapper {
+      margin-top: 24px; 
+    }
+    .textarea__Copy {
+      padding: 7px 6px 6px 8px;
+      height: 46px;
+      @include font-style('text-small');
+      color: $Scope-blue;
+    }
+    .popup__message2 {
+      margin-bottom: 32px;
+    }
+   }
   .createMainPopup__inner {
     text-align: left;
     width: 400px;
@@ -29,6 +53,13 @@
       width: 430px;
       margin: -150px 0 0 -95px;
       padding-top: 72px;
+    }
+    &.heightType {
+      height: 320px;
+      margin: -160px 0 0 -80px;
+      & .popup__message2 {
+        margin-bottom: 24px;
+      }
     }
     .popup__title {
       display: block;
@@ -55,23 +86,63 @@
       }
 
     }
+    .InputCopy__inputWrapper {
+      padding: 0;
+    }
     .popup__message {
       @include font-style('text-small');
       color: $Grey-two;
       margin-bottom: 28px;
     }
     .popup__message2 {
-      @include font-style('body');
+      @include font-style('caption');
       color: $Blue-five;
       margin-bottom: 40px;
+      & p {
+        margin-bottom: 6px;
+      }
       .info_link {
         display: inline-block;
         margin-left: 4px;
         text-decoration: underline;
       }
+      
+    }
+    .alert_text { 
+      color: $Red;
     }
     .popup__bottom__box{
       text-align: center;
+    }
+  }
+  .item__list {
+    padding: 16px 0;
+    border-top: 1px solid $middle-blue-grey;
+    border-bottom: 1px solid $middle-blue-grey;
+    margin-top: 16px; 
+    & > li {
+
+      &::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    & li + li {
+      margin-top: 10px;
+    }
+    .item__name {
+      @include font-style('label');
+      float: left;
+      color: $main-theme;
+    }
+    .item__value {
+      float: right;
+      color: $Blue-five;
+      @include font-style('body');
+    }
+    .alert__text {
+      color: $Red;
     }
   }
 }

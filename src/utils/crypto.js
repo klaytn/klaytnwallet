@@ -8,6 +8,7 @@ const MINIMUM_PASSWORD_LENGTH = 8
 const MINIMUM_NAME_LENGTH = 5
 const MAXIMUM_NAME_LENGTH = 13
 const MAXIMUM_PASSWORD_LENGTH = 128
+export const HRAMADEVALUE = 100001025000000000000
 export const encryptAction = (myKey) => {
   return CryptoJS.AES.encrypt(myKey, CRYPO_PASSWORD).toString()
 }
