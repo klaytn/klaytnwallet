@@ -22,6 +22,7 @@ class WalletCreationStep3 extends Component<Props> {
     const { privateKey } = this.props
     this.state = {
       userPrivateKey:'',
+      hidePrivateKey: false,
     }
   }
   removeData = () => {
@@ -37,32 +38,48 @@ class WalletCreationStep3 extends Component<Props> {
   movePageTransfer = () => {
     browserHistory.push('/access?next=transfer')
   }
+  togglePrivateKey = () => {
+    this.setState({ hidePrivateKey: !this.state.hidePrivateKey })
+  }
+  madeWalletKey = () => {
+    const { walletData } = this.props
+    return (walletData.privateKey+'0x00'+walletData.address).toLowerCase()
+  }
   render() {
-    const { privateKey, pageType, receiptWallet } = this.props
+    const { privateKey, pageType, receiptWallet, walletData, hidePrivateKey } = this.props
     let buttonList
     if(sessionStorage.getItem('was')){
-      buttonList =[{ title: 'Sign in with New Account', gray: true, onClick: pipe(this.removeData, this.movePageInfo), className: 'Button--size5'},
-      { title: 'View My Current Account', onClick: this.movePageInfo, className: 'Button--size5'}] 
+      buttonList =[{ title: 'Sign in with New Account', gray: true, onClick: pipe(this.removeData, this.movePageInfo), className: 'WalletCreationStep3__button'},
+      { title: 'View My Current Account', onClick: this.movePageInfo, className: 'WalletCreationStep3__button'}] 
     }else{
-      buttonList = [{ title: 'View Account Info', onClick: pipe(this.removeData, this.movePageInfo), className: 'WalletCreationStep3__button Button--size5', gray: true},
-      { title: 'Send KLAY & Tokens', onClick: pipe(this.removeData, this.movePageTransfer), className: 'WalletCreationStep3__button Button--size5'},]
+      buttonList = [{ title: 'View Account Info', onClick: pipe(this.removeData, this.movePageInfo), className: 'WalletCreationStep3__button', gray: true},
+      { title: 'Send KLAY & Token', onClick: pipe(this.removeData, this.movePageTransfer), className: 'WalletCreationStep3__button'},]
     }
     return (
       <WalletCreationStepPlate
         className="WalletCreationStep5"
         stepName="STEP 3"
-        title="Please Save your Private Key"
+        title="Please Save Your Klaytn Wallet Key"
         description={(
           <Fragment>
             Your new account has been created.<br />
-            Please copy and securely store the private key below.
+            Please copy and securely store the Klaytn Wallet Key below.
           </Fragment>
         )}
         render={() => (
-          <InputCopy
-            value={privateKey}
-            label="Private Key"
-          />
+          <div className="input__box">
+            <InputCopy
+              value={privateKey}
+              label="Private Key"
+            />
+            <InputCopy
+              value={this.madeWalletKey()}
+              className="textarea__show"
+              label="Klaytn Wallet Key"
+              clickEvent={this.togglePrivateKey}
+              styleType="twoLine"
+            />
+            </div>
         )}
         nextStepButtons={buttonList}
       />

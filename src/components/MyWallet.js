@@ -7,6 +7,7 @@ import { caver } from 'klaytn/caver'
 import { pipe } from 'utils/Functional'
 import Input from 'components/Input'
 import InputCopy from 'components/InputCopy'
+import KeystorePopup from 'components/KeystorePopup'
 import MyToken from 'components/MyToken'
 import Button from 'components/Button'
 import ui from 'utils/ui'
@@ -29,7 +30,9 @@ class MyWallet extends Component<Props> {
   state = {
     balance: null,
     hidePrivateKey: true,
-    klayAccounts : isHRA(sessionStorage.getItem('address'))
+    klayAccounts : sessionStorage.getItem('address'),
+    showPopup: false,
+
   }
 
   componentWillMount() {
@@ -79,36 +82,44 @@ class MyWallet extends Component<Props> {
     }
   }
   privatekeySet = () => {
-    let address = sessionStorage.getItem('address')
-    if(address){
-      address = humanReadableChange(address)
-      return this.wallet.privateKey+'0x01'+address
-    }
-    return this.wallet.privateKey
+    let address = sessionStorage.getItem('address') ? sessionStorage.getItem('address') : this.wallet.address
+    return this.wallet.privateKey+'0x00'+address
   }
-  
+  openPopup = () => {
+    this.setState({ showPopup: true })
+  }
+  closePopup  = () => {
+    this.setState({ showPopup: false })
+  }
   render() {
-    const { hidePrivateKey, klayAccounts } = this.state
+    const { hidePrivateKey, klayAccounts, showPopup } = this.state
     const { isTokenAddMode } = this.props
     return !!this.wallet && (
       <div className={cx('MyWallet', {
         'MyWallet--addingToken': isTokenAddMode,
       })}
       >
+        <KeystorePopup
+          popupShow={showPopup}
+          privateKey={this.wallet.privateKey}
+          address={sessionStorage.getItem('address') ? sessionStorage.getItem('address') : this.wallet.address }
+          wallerKey={this.privatekeySet()}
+          closePopup={this.closePopup}
+        />
         <div className="MyWallet__info">
           <header className="Contents__title">My Account Info</header>
           <div className="Inner__Box">
-            {klayAccounts && 
+            {/* {klayAccounts && 
             <InputCopy
               className="MyWallet__Input not__margin"
               label="Address"
               name="address"
               value={this.HRADataChange() }
               subName="Custom"
-            />}
+            />} */}
             <InputCopy
               className="MyWallet__Input"
-              label={!klayAccounts && 'Address'}
+              label={'Address'}
               value={this.wallet.address }
               subName="Hex"
             />
@@ -133,7 +144,6 @@ class MyWallet extends Component<Props> {
               autoFocus
               eye
             />
-            {klayAccounts && 
             <InputCopy
               className="MyWallet__Input"
               name="Klaytn Wallet Key"
@@ -154,27 +164,39 @@ class MyWallet extends Component<Props> {
               autoFocus
               eye
             />
-            }
-            <div className="MyWallet__viewTransation">
-              <p className="MyWallet__transactionListTitle">Transaction List</p>
-              <p className="MyWallet__transactionListDescription">
-                Explore all transactions involving your account<br />
-                with Klaytnscope.
-              </p> 
-              <a
-                className="scope__transaction"
-                target="self"
-                href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
-              >
+            <div className="MyWallet__bottom">
+              <div className="MyWallet__bottom__box">
+                <p className="MyWallet__bottom__title">Transaction List</p>
+                <p className="MyWallet__bottom__description">
+                  Explore all transactions involving<br />
+                  your account with Klaytnscope.
+                </p> 
+                <a
+                  className="scope__transaction"
+                  target="self"
+                  href={`${KLAYTN_SCOPE_URL}/account/${this.HRAChangeHex()}`}
+                >
+                  <Button
+                    title="View Transaction List"
+                    className="MyWallet__viewTransationListButton"
+                    gray
+                  />
+                </a>
+              </div>
+              <div className="MyWallet__bottom__box">
+                <p className="MyWallet__bottom__title">Download Keystore File</p>
+                <p className="MyWallet__bottom__description">
+                  Keystore file securely stores your<br /> 
+                  private key and account address.
+                </p> 
                 <Button
-                  title="View Transaction List"
-                  className="MyWallet__viewTransationListButton"
-                  gray
+                  title="keystore Download"
+                  className="MyWallet__keyStoreMade"
+                  onClick={this.openPopup}
                 />
-              </a>
+              </div>
             </div>
           </div>
-          
         </div>
         <div className="MyWallet__token">
           <MyToken title="Balance" addClassName="infoList"/>

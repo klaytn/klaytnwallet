@@ -8,6 +8,8 @@ import Button from 'components/Button'
 import { pipe } from 'utils/Functional'
 import BN from 'bignumber.js'
 import './PageAlertPopup.scss'
+import { KLAYTN_KLAY_UINT } from 'constants/url'
+import { HRAMADEVALUE } from 'utils/crypto'
 
 class PageAlertPopup extends Component<Props> {
   
@@ -40,7 +42,6 @@ class PageAlertPopup extends Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps.balance, this.props.balance)
     if (prevProps.balance !== this.props.balance) {
       this.updateBalance();
     }
@@ -60,7 +61,7 @@ class PageAlertPopup extends Component<Props> {
 
     return (
       <div className={cx('createMainPopup', {
-        'show': !this.wallet || balance < 101000000000000000000
+        'show': !this.wallet || balance < HRAMADEVALUE
       })}>
         {!this.wallet && (
           <div className="createMainPopup__inner widthType">
@@ -77,11 +78,15 @@ class PageAlertPopup extends Component<Props> {
             
           </div>
         )}
-        {this.wallet && balance < 101000000000000000000 &&  (
-          <div className="createMainPopup__inner widthType">
-            <span  className="popup__title">Interested In Customizing Your Account Address?</span>
-            <p className="popup__message2">To create a new account with custom address, you need more KLAY to send a transaction. Please check your KLAY balance at View Account Info.
-            </p>
+        {this.wallet && balance < HRAMADEVALUE &&  (
+          <div className="createMainPopup__inner heightType">
+            <span  className="popup__title">Insufficient {KLAYTN_KLAY_UINT} Balance</span>
+            <div className="popup__message2">Creating new account with custom address requires following amount of {KLAYTN_KLAY_UINT}:<br />
+              <ul className="item__list">
+                <li><span className="item__name">You Need</span><span className="item__value">100 {KLAYTN_KLAY_UINT} + tx Fee</span></li>
+                <li><span className="item__name">Your Balance</span><span className="item__value alert__text">{BN(balance).multipliedBy(0.000000000000000001).toFixed()} {KLAYTN_KLAY_UINT}</span></li>
+              </ul>
+            </div>
             
             <div className="popup__bottom__box">
             <Link to="/access?next=faucet" className="info_link" ><Button

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import cx from 'classnames'
 import WalletHRACreationStep1 from 'components/WalletHRACreationStep1'
 import WalletHRACreationStep2 from 'components/WalletHRACreationStep2'
 import WalletHRACreationStep3 from 'components/WalletHRACreationStep3'
@@ -103,7 +103,7 @@ class WalletCreation2 extends Component<Props> {
   render() {
     const {  StepIndicatorList, currentStep, endStep  } = this.state
     return (
-      <div className="WalletCreation2">
+      <div className={cx('WalletCreation2','WalletCreation__step'+currentStep)}>
         <PageAlertPopup className="pageAlertPopup"/>
         <div className="WalletAccess2__inner">
           <StepIndicator

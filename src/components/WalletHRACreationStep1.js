@@ -7,7 +7,8 @@ import cx from 'classnames'
 import { caver } from 'klaytn/caver'
 import InputCheck from 'components/InputCheck'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
-import { checkValidName, decryptAction } from 'utils/crypto'
+import { checkValidName, HRAMADEVALUE, decryptAction } from 'utils/crypto'
+import BN from 'bignumber.js'
 type Props = {
 
 }
@@ -28,6 +29,7 @@ class WalletHRACreationStep1 extends Component<Props> {
       isLoding: false,
       pageOutAction: false,
       isDuplicateName: false,
+      transactionPopup: false,
       setKlaytn: '.klaytn'
     }
   }
@@ -35,30 +37,34 @@ class WalletHRACreationStep1 extends Component<Props> {
     this.setState({
       checkEnd: false,
       checkValidAlert:false,
+      isChecked: false, 
+      isHRAMade: false,
       HRAid: e.target.value,
       isValidName: e.target.value.length === 0 ? false : checkValidName(e.target.value),
     })
   }
-
-  HRACheck = async (e) => {
+  setTransaction = async (e) => {
+    const { transactionPopup } = this.state
     const { HRAid, isChecked, setKlaytn, isHRAMade } = this.state
     await caver.klay.accountCreated(HRAid+setKlaytn).then((data) => {
       this.setState({ isHRAMade: data, checkValidAlert: !data })
     })
     
     if(!this.state.isHRAMade){
-      this.setState({ isChecked: true, checkEnd: true, checkValidAlert: false })
-      setTimeout(()=>{        
-        this.setState({ isChecked: false, isHRAMade: false})
-      },2000)    
+      this.setState({ isChecked: true, checkEnd: true, checkValidAlert: false }) 
+      this.setState({ transactionPopup: true })
+      
     }else{
       this.setState({ checkValidAlert: true })
     }
-    
   }
   resetAccount = () => {
     this.setState({ HRAid: '', isDuplicateName: false, isLoding: false, checkValidAlert: false, isValidName: false })
     document.getElementsByClassName('KlayText')[0].style.left = '65px'
+  }
+  
+  closePopup = () => {
+    this.setState({ transactionPopup: false })
   }
   HRACreate = (e) => {
     const { handleStepMove, walletDataUpdate } = this.props
@@ -66,7 +72,7 @@ class WalletHRACreationStep1 extends Component<Props> {
     const humanReadableAddress = HRAid + '.klaytn'
     const address = sessionStorage.getItem('address') ? sessionStorage.getItem('address') : klayWallet.address
     const setHandleStepMove = handleStepMove(2)
-    this.setState({ isLoding: true })
+    this.setState({ isLoding: true, transactionPopup: false })
     const newWallet = caver.klay.accounts.create()
     
     caver.klay.accounts.wallet.add(newWallet.privateKey, caver.utils.humanReadableStringToHexAddress(humanReadableAddress))
@@ -76,7 +82,7 @@ class WalletHRACreationStep1 extends Component<Props> {
       from: klayWallet.address,
       to: humanReadableAddress,
       publicKey: newPublicKey,
-      gas: '4040000000',
+      gas: BN(HRAMADEVALUE/25).multipliedBy(0.000000001).toFixed(),
       value: 0,
     }
 
@@ -100,7 +106,7 @@ class WalletHRACreationStep1 extends Component<Props> {
   
   render() {
     const { handleStepMove, dataChange } = this.props
-    const { checkEnd, HRAid, isChecked, isLoding, checkValidAlert, isValidName, isDuplicateName } = this.state
+    const { checkEnd, HRAid, isChecked, isLoding, checkValidAlert, isValidName, isDuplicateName, transactionPopup } = this.state
     return (
       <WalletCreationStepPlate
         stepName="STEP 1"
@@ -123,17 +129,13 @@ class WalletHRACreationStep1 extends Component<Props> {
             placeholder="yourname"
             label="Account Address"
             value={HRAid}
-            onClick={this.HRACheck}
             onChange={this.dataChange}
             buttonText="Check"
             isChecked={isChecked}
             buttonDisabled= {!isValidName || checkValidAlert }
             autocomplete={'off'}
             err={checkValidAlert}
-          />         
-          {isChecked && (
-            <p className="Input__error Input__error--end">Available</p>
-          )}
+          />
           {checkValidAlert && (
             <p className="Input__error">The account name is already taken, please choose another one</p>
           )}
@@ -141,11 +143,10 @@ class WalletHRACreationStep1 extends Component<Props> {
           </div>
         )}
         dimRender={() => (
-          <div className={cx('all__loding',{'show':isLoding || isDuplicateName})}>
+          <div className={cx('all__loding',{'show':isLoding || isDuplicateName || transactionPopup})}>
             <div className="left__dim"></div>
             <div className="right__dim">
-
-              <div className={cx('transaction__alert__popup',{'show':isLoding})}>
+              <div className={cx('transaction__alert__popup disNone',{'show':isLoding})}>
                 <span className="transaction__alert__title">Sending transaction to create your custom account</span>
                 <p className="transaction__alert__text">
                   Please wait while we collect the transaction results.
@@ -165,11 +166,26 @@ class WalletHRACreationStep1 extends Component<Props> {
                 <div className="popup__bottom__box">
                   <button className="Button" onClick={this.resetAccount}>Go Back</button>
                 </div>
-              </div>             
+              </div>
+              <div className={cx('transaction__alert__popup type1 disNone',{'show': transactionPopup})}>
+                <p className="transaction__alert__title">
+                  <span className="alert_icon">👏</span>You Are About to <span className="alert_text">Spend 100 KLAY + tx fee</span><br />
+                  100 KLAY + tx fee가 <span className="alert_text">잔고에서 차감</span>됩니다
+                </p>
+                <div className="transaction__alert__text">
+                  <p>By selecting ‘Proceed’, you will send an account<br />creation transaction to Klaytn network.<br /></p>
+                  “Process” 버튼을 누르면 어카운트 생성 요청이 전송됩니다.<br />
+                  정말로 실행하시겠습니까?
+                </div>
+                <div className="popup__bottom__box">
+                  <button className="Button Button--gray" onClick={this.closePopup}>Cancel</button>
+                  <button className="Button" onClick={this.HRACreate}>Proceed</button>
+                </div>
+              </div>                  
             </div>
           </div>
         )}
-        nextStepButtons={[{ title: 'Next Step', onClick: this.HRACreate, disabled : !checkEnd }]}
+        nextStepButtons={[{ title: 'Next Step', onClick: this.setTransaction, disabled: !isValidName }]}
       />
     )
   }

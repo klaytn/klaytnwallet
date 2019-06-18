@@ -48,7 +48,7 @@ class Landing extends Component {
             <ul>
               <li><Link to={'/create'}><button className="create"><img className="TabItem__icon" src="/static/images/icon-create-on.svg"/>Create Account</button></Link></li>
               <li><Link to={'/access'}><button className="info"><img className="TabItem__icon" src="/static/images/icon-info-on.svg"/>View Account Info</button></Link></li>
-              <li><Link to={'/transfer'}><button className="send"><img className="TabItem__icon" src="/static/images/icon-send-on.svg"/>Send KLAY &amp; Tokens</button></Link></li>
+              <li><Link to={'/transfer'}><button className="send"><img className="TabItem__icon" src="/static/images/icon-send-on.svg"/>Send KLAY &amp; Token</button></Link></li>
             </ul>
           </div>
           <div className="main__text__box">

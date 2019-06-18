@@ -10,7 +10,7 @@ import './App.scss'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { decryptAction, humanReadableChange } from 'utils/crypto'
 import store from './store'
-
+import * as tokenActions from 'actions/token'
 type Props = {
   isLoading: boolean,
   children: React.DOM,
@@ -59,6 +59,11 @@ class App extends Component<Props> {
     sessionStorage.removeItem('was')
     sessionStorage.removeItem('address')
     sessionStorage.removeItem('disclaimers')
+    console.log(store.getState())
+    if(moveType === true){
+      store.dispatch(tokenActions.resetToken())
+      sessionStorage.removeItem('savedTokenList')
+    }
     if(moveType !== 'notMove'){
       browserHistory.push('/')
     }

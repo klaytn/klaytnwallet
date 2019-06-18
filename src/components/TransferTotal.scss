@@ -74,6 +74,15 @@
   color: $Scope-blue;
   margin-top: 40px;
   margin-bottom: 24px;
+  .sub_message {
+    @include font-style('body');
+    color: $Blue-five;
+    margin-top: 5px;
+  }
+  .alert_text {
+    display: block;
+    color: $Red;
+  }
 }
 
 .TransferTotalItem__yesButton {

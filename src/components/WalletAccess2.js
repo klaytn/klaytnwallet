@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import classNames from 'classnames'
-
+import { syncHistoryWithStore } from 'react-router-redux'
 import { caver } from 'klaytn/caver'
 import TabRadio from 'components/TabRadio'
 import AccessByKeystore from 'components/AccessByKeystore'
 import AccessByPrivatekey from 'components/AccessByPrivatekey'
 import { humanReadableChange } from 'utils/crypto'
+import store from '../store'
 import './WalletAccess2.scss'
 
 type Props = {
 
+}
+const menuItem = {
+  '?next=transfer': 'to Send KLAY & Token',
+  '?next=faucet': 'run faucet',
+  'none' : ''
 }
 
 const radioItems = [{
@@ -25,7 +31,7 @@ const radioItems = [{
 
 class WalletAccess2 extends Component<Props> {
   state = {
-    accessMethod: 'privatekey' // default value : privatekey
+    accessMethod: 'privatekey', // default value : privatekey
   }
 
   componentWillMount() {
@@ -63,11 +69,11 @@ class WalletAccess2 extends Component<Props> {
 
   render() {
     const { accessMethod } = this.state
+
     return (
       <div className="WalletAccess2">
         <div className="WalletAccess2__inner">
-          <header className="WalletAccess2__title">Access Existing Account</header>
-          
+          <header className="WalletAccess2__title">Access Existing Account {menuItem[window.location.search ? window.location.search : 'none']}</header>
           <TabRadio
             className="WalletAcess2__tabRadio"
             tabs={radioItems}

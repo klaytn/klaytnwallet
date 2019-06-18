@@ -14,16 +14,17 @@ type Props = {
 class WalletCreationStep2 extends Component<Props> {
   constructor(props) {
     super(props)
-    const { privateKey } = caver.klay.accounts.create()
+    const walletData = caver.klay.accounts.create()
     this.state = {
-      privateKey,
+      privateKey :walletData.privateKey,
+      address:walletData.address,
+      walletData:walletData
     }
   }
 
-
   handleDownload = () => {
-    const { privateKey} = this.state
-    const { password, receiptWallet,walletDataUpdate, pageType, madePrivateKey} = this.props
+    const { privateKey, walletData} = this.state
+    const { password, receiptWallet, walletDataUpdate, pageType, madePrivateKey} = this.props
     
     const HRAaddress = {}
     if(pageType == 'HRAType'){
@@ -36,7 +37,7 @@ class WalletCreationStep2 extends Component<Props> {
         HRAaddress: HRAaddress.address
       })
     }
-    
+    walletDataUpdate(walletData)
     // If user clicked download, clear previous wallet instance.
     this.downloadKeystore(keystore)
   }
@@ -45,6 +46,7 @@ class WalletCreationStep2 extends Component<Props> {
     const date = new Date()
     const address = keystore.addressAsHumanReadableString ? keystore.addressAsHumanReadableString : keystore.address
     const fileName = `keystore-${address}-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}.json`
+    
     download(jsonFormat(keystore), fileName)
   }
 

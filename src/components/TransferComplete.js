@@ -23,7 +23,7 @@ const TransferComplete = ({
         More information regarding your transaction can be found on Klaytnscope.
       </p>
       <Button
-        title="Send KLAY & Tokens"
+        title="Send KLAY & Token"
         className="TransferComplete__button"
         gray
         onClick={changeView('form')}

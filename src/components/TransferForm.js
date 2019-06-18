@@ -26,18 +26,18 @@ class TransferForm extends Component<Props> {
   listenEditing = (listenedIsEditing) => {
     this.setState({ listenedIsEditing })
   }
-  focusOut = async (e) => {
-    const { to, humanReadableCreatedCheck } = this.props
-    if(caver.utils.isAddress(to)){
-      humanReadableCreatedCheck(true)
-      return
-    }
-    if(isHRA(to)){
-      await caver.klay.accountCreated(to).then((data) => {
-        humanReadableCreatedCheck(data)
-      })
-    }
-  }
+  // focusOut = async (e) => {
+  //   const { to, humanReadableCreatedCheck } = this.props
+  //   if(caver.utils.isAddress(to)){
+  //     humanReadableCreatedCheck(true)
+  //     return
+  //   }
+  //   if(isHRA(to)){
+  //     await caver.klay.accountCreated(to).then((data) => {
+  //       humanReadableCreatedCheck(data)
+  //     })
+  //   }
+  // }
   render() {
     const { listenedIsEditing } = this.state
     const {
@@ -61,24 +61,26 @@ class TransferForm extends Component<Props> {
     } = this.props
     let isInvalidAddress = false
     if(to){
-      if(to && to.length <= 20 && isHRA(to) ){
-        isInvalidAddress = !caver.utils.isAddress(caver.utils.humanReadableStringToHexAddress(to))
-      }else{
-        isInvalidAddress = !caver.utils.isAddress(to)
-      }
+      // if(to && to.length <= 20 && isHRA(to) ){
+      //   isInvalidAddress = !caver.utils.isAddress(caver.utils.humanReadableStringToHexAddress(to))
+      // }else{
+      //   isInvalidAddress = !caver.utils.isAddress(to)
+      // }
+      isInvalidAddress = !caver.utils.isAddress(to)
+
     }
-    const isInvalidAmount = value && (type !== KLAYTN_KLAY_UINT ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
+    const isInvalidAmount = Number(value) && (type !== KLAYTN_KLAY_UINT ? Number(myBalance) < Number(value) : (Number(myBalance) <= Number(value) + Number(totalGasFee)))
     // show invalid tx fee error message only when selected token is not 'Test_KLAY'
     const isInvalidTxFee = type !== KLAYTN_KLAY_UINT ? Number(klayBalance && klayBalance.balance) <= Number(totalGasFee) : Number(myBalance) <= Number(totalGasFee) + Number(value)
-    const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee || !humanReadableCreated
+    const hasError = isInvalidAddress || isInvalidAmount || isInvalidTxFee //|| !humanReadableCreated
     
-    return (
+    return (  
       <div className={cx('TransferForm', className, {
         'TransferForm--editing': listenedIsEditing,
         'TransferForm--tokenAdding': isTokenAddMode,
       })}>
         <header className="TransferForm__title">
-          Step2. Enter the infomation <span className={cx('TransferForm__tokenSymbol', {
+          Step 2. Enter Information <span className={cx('TransferForm__tokenSymbol', {
             [`TransferForm__tokenSymbol--token-color-${tokenColorIdx}`]: tokenColorIdx,
           })}
         >
@@ -108,6 +110,7 @@ class TransferForm extends Component<Props> {
           />
           <Input
             name="value"
+            type="number"
             onChange={onChange}
             className="TransferForm__input TransferForm__valueInput"
             label="Amount to Send"

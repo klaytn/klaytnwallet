@@ -6,17 +6,15 @@ module.exports = {
     args: 'webpack.prod.config.js',
 
     /**
-     * 실행모대
-     * - 인스턴스 갯수는 최대
-     * - 로그파일은 하나로 관리
+     * Execution mode
+     * - The number of instances is 1
+     * - Manage log files as one
      */
     instances: 'max',
     merge_logs: true,
 
     env: {
       NODE_ENV: 'production',
-      NEWRELIC_APP_NAME: 'KLAYTNWALLET_BAOBAB_REAL_FRONT',
-      SENTRY_DSN: 'https://30fcc5f962e644b2b104477838997e4c@sentry.io/1292023',
     },
 
     output: '/var/log/nodejs/ground-x/app/klaytnwallet-baobab-frontend/out.log',

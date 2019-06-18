@@ -6,9 +6,9 @@ module.exports = {
     args: 'webpack.config.js',
 
     /**
-     * 실행모드
-     * - 인스턴스 갯수는 1
-     * - 로그파일은 하나로 관리
+     * Execution mode
+     * - The number of instances is 1
+     * - Manage log files as one
      */
     instances: 1,
     merge_logs: true,

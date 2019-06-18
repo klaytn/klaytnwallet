@@ -2,6 +2,7 @@ import {
   REGISTER_TOKEN,
   TOGGLE_TOKEN_ADD_MODE,
   SET_MY_TOKEN_BALANCES_BY_NAME,
+  RESET_TOKEN,
 } from 'actions/actionTypes'
 
 import { getParsedSessionStorageItem } from 'utils/misc'
@@ -29,6 +30,11 @@ const tokenReducer = (state = initialState, action) => {
         ...state,
         balancesByName: action.payload.balancesByName,
       }
+    case RESET_TOKEN:
+      return {
+        ...state,
+        tokenList: [],
+      }  
     default:
       return state
   }

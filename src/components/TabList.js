@@ -32,17 +32,15 @@ class TabList extends Component<Props> {
     const { moreMenuClick } = this.state
     
     const [ empty2, locationPathname ] = window.location.pathname.split('/')
-    
-
     return (
       <div className="TabList">
-        {tabItems.map(({ title, link, icon, menu, dropDown, subLink, menuClass, isDropDown}) => {
+        {tabItems.map(({ title, link, icon, menu, dropDown, subLink, menuClass, search, isDropDown}) => {
           return (
             <TabItem
               isActive={
                 (link === '/'
                    ? link == '/'+locationPathname
-                  :  link =='/'+locationPathname || subLink == '/'+locationPathname) && !isDropDown && !moreMenuClick || (isDropDown && moreMenuClick)
+                  :  (link =='/'+locationPathname && !window.location.search) || search == window.location.search || subLink == '/'+locationPathname) && !isDropDown && !moreMenuClick || (isDropDown && moreMenuClick)
                 }
               icon={icon}
               key={title}

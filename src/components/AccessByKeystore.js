@@ -34,11 +34,11 @@ class AccessByKeystore extends Component<Props> {
     fileReader.onload = ({ target }) => {
       try {
         const parsedKeystore = JSON.parse(target.result)
-
         const isValidKeystore = parsedKeystore.version &&
           parsedKeystore.id &&
           parsedKeystore.address &&
-          parsedKeystore.crypto
+          parsedKeystore.crypto &&
+          !parsedKeystore.addressAsHumanReadableString
 
         if (!isValidKeystore) {
           this.setState({
@@ -93,7 +93,7 @@ class AccessByKeystore extends Component<Props> {
       const privateKeyencrypt = encryptAction(wallet.privateKey)
       sessionStorage.setItem('was', privateKeyencrypt)
       if (typeof accessTo === 'function') accessTo(wallet.address)
-      if (caver.utils.isConvertableToHRA(wallet.address)) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
+      //if (caver.utils.isConvertableToHRA(wallet.address)) sessionStorage.setItem('address', caver.utils.hexToUtf8(wallet.address))
     } catch (e) {
       this.setState({
         passwordError: 'Does not match with your keystore file.',
@@ -115,9 +115,8 @@ class AccessByKeystore extends Component<Props> {
     return (
       <div className="AccessByKeystore">
         <p className="WalletAccess2__description">
-          Your keystore file encrypts your private key for improved security.<br />
-          Please access your account using the keystore file you downloaded during<br />
-          account creation.
+          Your keystore file securely stores your private key and your account address.<br />
+          Sign-in to your account using the keystore file and its password.     
         </p>
         <InputFile
           label="Import Keystore File (.json)"

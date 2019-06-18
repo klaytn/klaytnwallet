@@ -35,7 +35,7 @@ class WalletCreationStepPlate extends Component<Props> {
         {render && render()}
         {reminder && reminder()}
         {accountRender && accountRender()}
-        <div className="WalletCreationStepPlate__list">
+        <div className={cx('WalletCreationStepPlate__list', {'show':TransferTotalItem.length > 0 })}>
           {TransferTotalItem.map(({
               title,
               value

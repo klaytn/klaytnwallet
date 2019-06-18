@@ -77,17 +77,16 @@ class AccessByPrivateKey extends Component<Props> {
     return (
       <div className="AccessByPrivatekey">
         <p className="WalletAccess2__description">
-          You can access your account using your private key or Klaytn<br />
-          Wallet Key (for custom address accounts). Or you can also use<br />
-          your keystore file and its password.
+          You can access your account using your private key or Klaytn Wallet Key.<br />
+          Alternatively, you can use your keystore file and password to sign-in.
         </p>
         <Input
-          label="Private Key or Klaytn Wallet Key"
+          label="Klaytn Wallet Key or Private Key"
           type="text"
           autoFocus
           name="privatekey"
           className="AccessByPrivatekey__input"
-          placeholder="Enter the private key or Klaytn Wallet Key"
+          placeholder="Enter the Klaytn wallet key or private key"
           onChange={this.handleChange}
           isValid={isValid }
           autoComplete="off"

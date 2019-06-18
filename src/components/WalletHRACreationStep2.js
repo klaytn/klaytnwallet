@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { browserHistory } from 'react-router'
 import jsonFormat from 'json-format'
 import { pipe } from 'utils/Functional'
-import { download } from 'utils/misc'
+import { download, copy } from 'utils/misc'
 import { caver } from 'klaytn/caver'
 import InputCopy from 'components/InputCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
@@ -71,6 +71,12 @@ class WalletHRACreationStep2 extends Component<Props> {
   }
   popupClose = () => {
     this.setState({ buttonClick: false})
+    const { handleStepMove } = this.props
+    const setHandleStepMove = handleStepMove(3)
+    if (this.$input)
+    copy(this.$input)
+    this.clearReload()
+    setHandleStepMove()
   }
 
   nextStepButtonClick = () => {
@@ -92,11 +98,18 @@ class WalletHRACreationStep2 extends Component<Props> {
       <WalletCreationStepPlate
         className="WalletCreationStep2"
         stepName="STEP 2"
-        title="Please Save Your Klaytn Wallet Key"
+        title={(
+          <Fragment>
+            Please Save Your Klaytn Wallet Key
+            <span className="sub__title">발급된 Klaytn Wallet Key를 안전하게 보관하세요.</span>
+          </Fragment>
+        )}
         description={(
           <Fragment>
-            Your new account has been successfully created.<br />
-            Please copy and securely store the Klaytn Wallet Key below:
+            <p>Your new account has been successfully created.<br />
+            Please copy and securely store the Klaytn Wallet Key below:</p>
+            신규 Klaytn 어카운트가 정상적으로 생성되었습니다.<br />
+            아래 COPY 버튼을 사용해 Klaytn Wallet Key를 복사한 뒤 안전한 저장소에 보관하세요.
           </Fragment>
         )}
         render={() => (
@@ -136,20 +149,35 @@ class WalletHRACreationStep2 extends Component<Props> {
         
         )}
         popupRender={() => (
-          <div className={cx('createMainPopup', {
+          <div className={cx('createMainPopup type2', {
             'show' : buttonClick
           })}>
-              <div className="createMainPopup__inner widthType">
-                <span  className="popup__title">Please Copy Your Wallet Key & Securely Store It</span>
-                <p className="popup__message2">Your Wallet Key is VERY IMPORTANT in managing your account. Please COPY and STORE IT SECURELY on a safe storage. Klaytn CANNOT provide a means to recover lost Wallet Keys.
-                </p>
+              <div className="createMainPopup__inner">
+                <span  className="popup__title">
+                  Securely Store Your Wallet Key<br />
+                  Wallet Key를 반드시 안전한 저장소에 보관하십시오
+                </span>
+                <div className="popup__message2">
+                  <p>Below is your Wallet Key. Please store it securely.<br />
+                    Klaytn cannot recover lost Wallet Key.
+                  </p>
+                  <span className="alert_text">발급된 Wallet Key를 반드시 안전하게 보관하십시오.</span><br />
+                  <span className="alert_text">분실된 Wallet Key는 Klaytn도 복구가 불가능합니다.</span>
+                  
+                  <div className="InputCopy__inputWrapper">
+                    <label className="InputCopy__label">Klaytn Wallet Key</label>
+                    <textarea className="textarea__Copy" readOnly
+                      ref={($input) => this.$input = $input}
+                      value={HRAprivateKey}></textarea>
+                  </div>
+                </div> 
                 <div className="popup__bottom__box">
-                <Button
-                  className="popup__btn"
-                  key='OK'
-                  title="OK"
-                  onClick={this.popupClose}
-                />
+                  <Button
+                    className="popup__btn"
+                    key='Copy to Clipboard & Proceed'
+                    title="Copy to Clipboard & Proceed"
+                    onClick={this.popupClose}
+                  />
                 </div>
               </div>
          </div>

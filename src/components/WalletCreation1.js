@@ -17,9 +17,12 @@ class WalletCreation1 extends Component<Props> {
       {showStep:2 },
       {showStep:3 }
     ],
-    pageType: 'normal'
+    pageType: 'normal',
+    walletData: '',
   }
-
+  walletDataUpdate = (data) => {
+    this.setState({walletData : data})
+  }
   handleStepMove = (step) => () => {
     this.setState({ currentStep: step })
     this.setState({ showStep: step})
@@ -31,9 +34,7 @@ class WalletCreation1 extends Component<Props> {
   }
 
   renderWalletCreationStep = (step) => {
-    const { prevRefComponentState,pageType } = this.state
-    console.log('prevRefComponentState : '+ prevRefComponentState)
-
+    const { prevRefComponentState,pageType, walletData } = this.state
     switch (step) {
       case 1:
         return (
@@ -53,6 +54,7 @@ class WalletCreation1 extends Component<Props> {
             password={prevRefComponentState.password}
             handleStepMove={this.handleStepMove}
             pageType={pageType}
+            walletDataUpdate={this.walletDataUpdate}
 
           />
         )
@@ -61,6 +63,7 @@ class WalletCreation1 extends Component<Props> {
           <WalletCreationStep3
             privateKey={prevRefComponentState.privateKey}
             pageType={pageType}
+            walletData={walletData}
           />
         )
     }
