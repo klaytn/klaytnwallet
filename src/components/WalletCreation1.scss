@@ -14,3 +14,18 @@
 .WalletCreation2__stepIndicator {
   margin-bottom: 80px;
 }
+
+.input__box {
+  padding-bottom: 40px;
+  .InputCopy + .InputCopy {
+    margin-top: 15px;
+  }
+}
+.WalletCreationStepPlate__nextButtons {
+  .WalletCreationStep3__button {
+    width: 244px;
+  }
+  .WalletCreationStep3__button +.WalletCreationStep3__button {
+    
+  }
+}

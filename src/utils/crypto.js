@@ -40,7 +40,7 @@ export const isValidPrivateKey = (privateKey) => {
 }
 export const isValidWalletKey = (walletKey) => {
   const addressCheck = walletKey.slice(66, 70)
-  if (walletKey.length === 112 && (addressCheck == '0x00' || addressCheck == '0x01' )) {
+  if (walletKey.length === 112 && addressCheck == '0x00') {
     const privateKey = walletKey.slice(0, 66)
     const address = walletKey.slice(70, 112)
     return isValidPrivateKey(privateKey) && caver.utils.isAddress(address)

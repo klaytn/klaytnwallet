@@ -45,7 +45,7 @@
 }
 
 .MyWallet__Input {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   .InputCopy__label{
     display: inline-block;
   }
@@ -93,29 +93,38 @@
   display: inline-block;
   vertical-align: text-bottom;
 }
-.MyWallet__viewTransation {
+.MyWallet__bottom {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.MyWallet__bottom__box {
+  width: 50%;
+  float: left;
   position: relative;
   .scope__transaction {
     display: block;
-    position: absolute;
-    bottom: -4px;
-    right: 0;
   }
 }
-.MyWallet__transactionListTitle {
+.MyWallet__bottom__title {
   @include font-style('button');
   margin-top: 80px;
   color: $main-theme;
   margin-bottom: 10px;
 }
 
-.MyWallet__transactionListDescription {
+.MyWallet__bottom__description {
   @include font-style('body');
   color: $dark-blue-grey;
   margin-bottom: 20px;
   line-height: 20px;
 }
 
-.MyWallet__viewTransationListButton {
+.MyWallet__viewTransationListButton, 
+.MyWallet__keyStoreMade {
   @include font-style('body');
+  width: 175px;
+  padding: 0 10px;
 }

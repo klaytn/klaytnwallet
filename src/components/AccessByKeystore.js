@@ -114,6 +114,10 @@ class AccessByKeystore extends Component<Props> {
        } = this.state 
     return (
       <div className="AccessByKeystore">
+        <p className="WalletAccess2__description">
+          Your keystore file securely stores your private key and your account address.<br />
+          Sign-in to your account using the keystore file and its password.     
+        </p>
         <InputFile
           label="Import Keystore File (.json)"
           value={fileName}
