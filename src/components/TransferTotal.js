@@ -4,6 +4,7 @@ import BN from 'bignumber.js'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
+import ErrorPopup from 'components/ErrorPopup'
 
 import './TransferTotal.scss'
 
@@ -35,12 +36,22 @@ class TransferTotal extends Component<Props> {
       totalGasFee,
       gas,
       changeView,
+      popupShow,
+      buttonName,
+      buttonClick,
+      errorMessage,
     } = this.props
 
     const [ integerPoints, decimalPoints ] = new BN(value).toString().split('.')
 
     return (
       <div className="TransferTotal">
+       <ErrorPopup
+              popupShow={popupShow}
+              buttonName={buttonName}
+              buttonClick={buttonClick}
+              errorMessage={errorMessage}
+        />
         <div className="Inner__Box">
           <header className="TransferTotal__title">Total</header>
           <p className="TransferTotal__totalToken">

@@ -42,6 +42,9 @@ class WalletTransfer2 extends Component<Props> {
       tokenColorIdx: 1,
       transactionHash: '',
       humanReadableCreated: null,
+      popupShow: false,
+      buttonName: 'BACK',
+      errorMessage:''
     },
     this.wallet = caver.klay.accounts.wallet[0]
   }
@@ -139,6 +142,12 @@ class WalletTransfer2 extends Component<Props> {
       view,
     })
   }
+  buttonClick = () => {
+    this.setState({
+      view : 'form',
+      popupShow: false,
+    })
+  }
 
   transfer = () => {
     const { type } = this.state
@@ -190,11 +199,14 @@ class WalletTransfer2 extends Component<Props> {
       // .once('receipt', () => {
       // })
       .on('error', (e) => {
-        console.log(e)
-        ui.showToast({ msg: 'Error occurred.' })
+        console.log(e.message)
+        this.setState({
+          popupShow : true,
+          errorMessage : e.message,
+        })
+        //ui.showToast({ msg: 'Error occurred.' })
       })
   }
-
   transferToken = () => {
     const { to, value, type, gas } = this.state
     const { tokenByName } = this.props
@@ -212,11 +224,13 @@ class WalletTransfer2 extends Component<Props> {
       this.setState({ transactionHash }, this.changeView('complete'))
       this.formReset()
     })
-    // .once('receipt', () => {
-    // })
     .on('error', (e) => {
-      console.log(e)
-      ui.showToast({ msg: 'Error occurred.' })
+      console.log(e.message)
+      this.setState({
+        popupShow : true,
+        errorMessage : e.message,
+      })
+      //ui.showToast({ msg: 'Error occurred.' })
     })
   }
   humanReadableCreatedCheck = (isCreated) => {
@@ -235,6 +249,9 @@ class WalletTransfer2 extends Component<Props> {
       tokenColorIdx,
       transactionHash,
       humanReadableCreated,
+      popupShow,
+      buttonName,
+      errorMessage
     } = this.state
 
     const { isTokenAddMode, myBalancesByName } = this.props
@@ -286,6 +303,10 @@ class WalletTransfer2 extends Component<Props> {
             gas={gas}
             totalGasFee={totalGasFee}
             changeView={this.changeView}
+            popupShow={popupShow}
+            buttonName={buttonName}
+            buttonClick={this.buttonClick}
+            errorMessage={errorMessage}
           />
         )
       case 'complete':

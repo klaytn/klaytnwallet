@@ -1,0 +1,16 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import "mixins.scss";
+.TransferTotal {
+  .createMainPopup {
+    .popup__message2 {  
+      @include font-style('body');
+      .alert_text {
+        display: block;
+        margin-top: 8px; 
+        color: $Red;
+        word-break: break-all;
+      }
+    }
+  }
+}
