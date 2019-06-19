@@ -73,7 +73,7 @@ class WalletAccess2 extends Component<Props> {
     return (
       <div className="WalletAccess2">
         <div className="WalletAccess2__inner">
-          <header className="WalletAccess2__title">Access Existing Account {menuItem[window.location.search ? window.location.search : 'none']}</header>
+          <header className="WalletAccess2__title">Access Your Account {menuItem[window.location.search ? window.location.search : 'none']}</header>
           <TabRadio
             className="WalletAcess2__tabRadio"
             tabs={radioItems}
