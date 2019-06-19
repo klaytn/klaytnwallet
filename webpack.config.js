@@ -1,3 +1,4 @@
+const { envPath, defaultEnvPath } = require('./config')
 const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
@@ -9,16 +10,6 @@ require('babel-polyfill')
 
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
 
-const ENV_DIR = './config/'
-let envPath
-switch (process.env.NODE_ENV) {
-  case 'local':
-  case 'dev':
-  case 'qa':
-  case 'production':
-    envPath = ENV_DIR + `${process.env.NODE_ENV}`.toLowerCase() + '.env'
-    break
-}
 
 module.exports = {
   devtool: 'source-map',
@@ -91,7 +82,8 @@ module.exports = {
     }),
     new Dotenv({
       path: envPath,
+      defaults: defaultEnvPath,
       systemvars: true,
-    })
+    }),
   ],
 }

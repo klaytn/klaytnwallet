@@ -17,7 +17,7 @@ jobs:
           set -a; eval $(echo $CURRENT_ENVIRONMENT | base64 -d); set +a
 
           npm install
-          npm run build:production
+          NODE_ENV=production npm run build
 
           sudo apt-get install awscli
           aws s3 sync dist/ s3://$FRONTEND_BUCKET/dist

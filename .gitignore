@@ -6,3 +6,6 @@ truffle.js
 newrelic_agent.log
 logs/
 .vscode/
+
+# env
+.env

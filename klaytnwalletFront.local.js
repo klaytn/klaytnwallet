@@ -1,14 +1,13 @@
+require('./config')
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
 const uuid = require('uuid')
 
-
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
-require('dotenv').config({ path: './config/local.env' })
 const logger = require('./src/utils/logger')
 const config = require('./webpack.config.js')
 

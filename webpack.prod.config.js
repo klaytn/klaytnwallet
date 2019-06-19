@@ -1,3 +1,4 @@
+const { envPath, defaultEnvPath } = require('./config')
 const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
@@ -12,19 +13,8 @@ const Dotenv = require('dotenv-webpack')
 
 require('babel-polyfill')
 
-const ENV_DIR = './config/'
-let envPath
-switch (process.env.NODE_ENV) {
-  case 'local':
-  case 'dev':
-  case 'qa':
-  case 'production':
-  case 'docker':
-    envPath = ENV_DIR + `${process.env.NODE_ENV}`.toLowerCase() + '.env'
-    break
-}
-
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
+
 
 module.exports = {
   devtool: 'source-map',
@@ -55,7 +45,7 @@ module.exports = {
               options: { minimize: true },
             },
           ],
-        })
+        }),
       },
       {
         test: /\.scss$/,
@@ -94,7 +84,7 @@ module.exports = {
       new UglifyJSPlugin({
         sourceMap: true,
       }),
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -104,9 +94,9 @@ module.exports = {
     extractCSS,
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'DEV': false,
-      'DEPLOYED_ADDRESS': JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
-      'METAMASK': process.env.METAMASK,
+      DEV: false,
+      DEPLOYED_ADDRESS: JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
+      METAMASK: process.env.METAMASK,
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new CompressionPlugin(),
@@ -117,7 +107,8 @@ module.exports = {
     }]),
     new Dotenv({
       path: envPath,
+      defaults: defaultEnvPath,
       systemvars: true,
-    })
+    }),
   ],
 }
