@@ -67,6 +67,7 @@
     @include boxColor;
     padding: 40px;
     height: 640px;
+    position: relative;
   }
 }
 
@@ -94,10 +95,25 @@
   vertical-align: text-bottom;
 }
 .MyWallet__bottom {
+  position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 40px;
   &:after {
     content: '';
     display: table;
     clear: both;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    background: $Wallet-bg;
   }
 }
 .MyWallet__bottom__box {
@@ -110,7 +126,6 @@
 }
 .MyWallet__bottom__title {
   @include font-style('button');
-  margin-top: 80px;
   color: $main-theme;
   margin-bottom: 10px;
 }
