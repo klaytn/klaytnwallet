@@ -1,6 +1,6 @@
 # Klaytn Wallet Project
 
-## GROUNDX Klaytn Wallet Project explanation
+## GroundX Klaytn Wallet Project explanation
 table of contents 
 1) Getting started
 2) npm package information
