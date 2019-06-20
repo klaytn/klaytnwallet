@@ -11,6 +11,5 @@ export const config = {
   wsURL: 'ws://devnet.klaytn.io:8546', // You can access websocket only with VPN.
 }
 
-// caver -> caver로 변경됬지만, 기존 코드를 당장 수정하기 힘드니 놔둔다.
 export const caver = new Caver(config.rpcURL);
 // export const caverSocket = new caver(new caver.providers.WebsocketProvider(config.wsURL))
