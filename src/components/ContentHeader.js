@@ -91,10 +91,9 @@ class Header extends Component<Props> {
         <button className={cx('remove__sessionStorage', {'show': removeSessionStorageButton })} onClick={popupOpen}>Clear Private Key</button>
         <div className="Header__network__box">
           <div className={cx('Header__network', {
-            'Header__network--activation':  KLAYTN_URL_NAME === 'Main Network',
             'Header__network--disconnected': !network
           })}
-          onClick={KLAYTN_URL_NAME === 'Main Network' ? this.dropDownClick :()=>{}} 
+          onClick={this.dropDownClick} 
           >
             {network || 'Disconnected'}
           </div>
