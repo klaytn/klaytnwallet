@@ -21,10 +21,10 @@
     background: $White-one;
     display: inline-block;
     text-align: left;
-    padding: 40px;
+    padding: 50px 40px 45px;
     max-width: 960px;
     min-width: 960px;
-    min-height: 640px;
+    height: 650px;
     margin: 0 20px;
     border-radius: 5px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
@@ -32,6 +32,26 @@
     position: relative;
     top: 0%;
     transform: translateY(0%);
+    .languageChange__button_list {
+      text-align: right;
+      position: absolute;
+      top: 25px;
+      right: 40px;
+    }
+    .languageChange__button {
+      @include font-style('button-small');
+      min-width: 64px;
+      width: 64px;
+      background: #cacbd8;
+      box-shadow: 0 4px 8px 0 rgba(202, 203, 216, 0.25);
+    }
+    .languageChange__button +.languageChange__button {
+      margin-left: 5px;
+    }
+    .languageChange__button.on {
+      background-color: #6AD1BA;
+      box-shadow: 0 4px 8px 0 rgba(106, 209, 186, 0.25);
+    }
   }
   @media screen and (min-height: 680px) { 
     .inner_box {
@@ -43,15 +63,18 @@
   
   
   .Disclaimers_box {
-
-    & + .Disclaimers_box {
-      margin-top: 24px;
+    display: none;
+    &.show {
+      display: block;
     }
   }
   .Disclaimers_title {
     @include font-style('body'); 
     font-weight: bold;
     color: $Scope-blue;
+    b {
+      color: $Red;
+    }
   }
   .Disclaimers_list {
     @include font-style('body');
@@ -65,7 +88,7 @@
   li {
     position: relative;
     margin-top: 6px;
-    padding-left: 23px; 
+    padding-left: 22px; 
     &::after {
       content: '';
       display: block;
@@ -81,7 +104,11 @@
     background-image: url(/static/images/icon_success_check-active.svg);
   }
   .Disclaimers_footer {
-
+    position: absolute;
+    width: 100%;
+    padding: 0 40px;
+    left: 0;
+    bottom: 44px;
     &:after {
       content: '';
       display: table;
