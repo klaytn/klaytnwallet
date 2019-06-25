@@ -1,8 +1,7 @@
 {
-  "name": "gx-dapp-boilerplate",
-  "version": "0.0.1",
-  "description": "Boilerplate for react app with truffle",
-  "main": "truffle-config.js",
+  "name": "klaytn-wallet",
+  "version": "2.0.0",
+  "description": "Klaytn Wallet Project",
   "directories": {
     "test": "test"
   },
@@ -16,8 +15,8 @@
   "repository": {
     "type": "git"
   },
-  "author": "nujabes403",
-  "license": "GPL-3.0",
+  "author": "devoloper@klaytn.com",
+  "license": "MIT",
   "dependencies": {
     "bignumber.js": "^7.2.1",
     "caver-js": "^0.8.3-2",

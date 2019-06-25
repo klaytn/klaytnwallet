@@ -11,7 +11,7 @@ table of contents
 
 ### 1) Getting started
 1. Open terminal
-2. Clone the repo by running `git clone https://github.com/ground-x/klaytnwallet-baobab-frontend.git`
+2. Clone the repo by running `git clone https://github.com/ground-x/klaytnwallet.git`
 3. Run `npm install`to install node packages
 4. Run `npm run start:local`
 5. App should be running in https://localhost:15000
@@ -60,17 +60,17 @@ Supported (Optimized) | Supported | Supported | Not supported
 > Actual service wallet site
 ``` 
 1. Baobab testnet 
-  - https://baobab.klaytnwallet.com/
+  - https://baobab.wallet.klaytn.com
   - Use your wallet with a test klay. The Faucet menu is available.
 
 2. Main Network
-  - https://cypress.klaytnwallet.com
+  - https://wallet.klaytn.com
   - This site uses real klay. Take care when using your wallet. The Faucet menu is not available.
 
 * Check out the site link below
 ```
-* Baobab testnet url : https://baobab.klaytnwallet.com/
-* Main Network url : https://cypress.klaytnwallet.com
+* Baobab testnet url : https://baobab.wallet.klaytn.com
+* Main Network url : https://wallet.klaytn.com
 
 > Api Type
 ``` 
@@ -92,7 +92,7 @@ You can see how wallet works and how to use caver in the following sites.
 * klaytn docs caver-js url : https://docs.klaytn.com/caverjs 
 
 ### License
-Wallet service is released under the [MIT license](https://github.com/ground-x/klaytnwallet-baobab-frontend/LICENSE).
+Wallet service is released under the [MIT license](https://github.com/ground-x/klaytnwallet/blob/dev/LICENSE).
 
 ``` 
 The MIT License
