@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+    <defs>
+        <style>
+            .cls-1{fill:rgba(255,255,255,0)}.cls-2{fill:#fff409}.cls-3,.cls-4,.cls-5{fill:none;stroke:#2d3241;stroke-miterlimit:10;stroke-width:3px}.cls-4{stroke-dasharray:3.077 6.155}.cls-5{stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="illust_neverSend" transform="translate(-953 -324)">
+        <path id="사각형_110" d="M0 0h150v150H0z" class="cls-1" data-name="사각형 110" transform="translate(953 324)"/>
+        <g id="그룹_56" data-name="그룹 56" transform="translate(962.4 339.013)">
+            <path id="패스_555" d="M38.9 60.5a29.25 29.25 0 1 0 29.2 29.3 29.17 29.17 0 0 0-29.2-29.3zm-8.6 43.1l-11-18.3 11-18.3 11 18.3z" class="cls-2" data-name="패스 555"/>
+            <g id="그룹_52" data-name="그룹 52">
+                <path id="사각형_118" d="M0 0h16.7v138.8H0z" class="cls-2" data-name="사각형 118" transform="rotate(135 44.932 76.097)"/>
+                <path id="패스_556" d="M61.4 80.9l-7.9-15.7L118.7 0l11.8 11.8z" class="cls-2" data-name="패스 556"/>
+            </g>
+            <g id="그룹_55" data-name="그룹 55">
+                <circle id="타원_414" cx="29.2" cy="29.2" r="29.2" class="cls-3" data-name="타원 414" transform="translate(1.6 56.4)"/>
+                <g id="그룹_53" data-name="그룹 53">
+                    <circle id="타원_415" cx="25" cy="25" r="25" class="cls-4" data-name="타원 415" transform="translate(5.8 60.6)"/>
+                </g>
+                <g id="그룹_54" data-name="그룹 54">
+                    <path id="패스_557" d="M30.8 103.8l-11-18.2 11-18.3 10.9 18.3z" class="cls-3" data-name="패스 557"/>
+                    <path id="패스_558" d="M30.8 91.7l-11-6.1 11-6.1 10.9 6.1z" class="cls-5" data-name="패스 558"/>
+                    <path id="선_330" d="M0 0v34.7" class="cls-5" data-name="선 330" transform="translate(30.8 68.5)"/>
+                </g>
+            </g>
+            <path id="패스_559" d="M30.8 56.3V27.1a6.487 6.487 0 0 1 6.5-6.5h76.4a6.487 6.487 0 0 1 6.5 6.5v16.7" class="cls-3" data-name="패스 559"/>
+            <path id="패스_560" d="M30.8 56.3V27.1c0-3.6 2.3-6.5 5.2-6.5l69.2-7.3c2.9 0 5.2 2.9 5.2 6.5v2" class="cls-3" data-name="패스 560"/>
+            <path id="패스_561" d="M120.1 61.6v17.5a6.487 6.487 0 0 1-6.5 6.5H60.8" class="cls-3" data-name="패스 561"/>
+            <path id="패스_562" d="M124 61.2H96.8a1 1 0 0 1-1-1V44.3a1 1 0 0 1 1-1H124a1 1 0 0 1 1 1v15.9a1 1 0 0 1-1 1z" class="cls-3" data-name="패스 562"/>
+        </g>
+    </g>
+</svg>

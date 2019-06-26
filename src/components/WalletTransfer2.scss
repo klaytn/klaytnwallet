@@ -1,0 +1,34 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.WalletTransfer2 {
+
+  width: 988px;
+  min-height: 800px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.WalletTransfer2__myToken {
+  display: block;
+  float: left;
+  width: 328px;
+  vertical-align: top;
+
+  .MyToken__list {
+    @include boxColor();
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.WalletTransfer2__transferForm {
+  display: block;
+  float: left;
+  vertical-align: top;
+}

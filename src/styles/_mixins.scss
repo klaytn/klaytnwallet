@@ -1,0 +1,79 @@
+@import "colors.scss";
+
+@mixin fixed-center() {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin full-width() {
+  @media screen and (min-width: 1320px) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin font-size($size) {
+  font-size: #{$size * 10}px;
+  font-size: #{$size}rem;
+}
+
+@mixin title() {
+  color: #AAAAAA;
+  text-align: left;
+  margin-left: 14px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+@mixin description() {
+  color: #AAAAAA;
+  text-align: left;
+  margin-left: 14px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 24px;
+
+  &--highlight {
+    color: #0DFF92;
+  }
+}
+
+@mixin background-image($imagePath) {
+  background-image: url($imagePath);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin panelize() {
+  width: 984px;
+  height: 704px;
+  padding: 70px 75px;
+}
+
+@mixin boxColor() {
+  background-color: $White-one;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+}
+@mixin popupStyle() {
+  background-color: $White-one;
+  border: solid 1px $Grey-four;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+}
+
+@mixin textPosition() {
+  position: absolute;
+  bottom: -25px;
+  left: 0px;
+  z-index: 3;
+}
+
+

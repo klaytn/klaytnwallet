@@ -1,0 +1,29 @@
+@import 'colors.scss';
+@import "mixins.scss";
+@import 'fonts.scss';
+
+.MyTokenReminder {
+  @include boxColor;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 25px 20px 25px 40px;
+  height: 80px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.55;
+  color: #d64a70;
+  margin-bottom: 8px;
+}
+
+.MyTokenReminder::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 22px;
+  background-image: url(/static/images/icon-warning-w.svg);
+  width: 10px;
+  height: 10px;
+  vertical-align: top;
+  display: inline-block;
+}

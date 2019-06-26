@@ -1,0 +1,130 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.Input {
+  width: 100%;
+  font-family: roboto;
+}
+
+.Input__inner {
+  border: 0;
+  border-bottom: 1px solid $Grey-four;
+  padding: 0;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  position: relative;
+  outline: 0;
+  background-color: transparent;
+
+  &::after {
+    @include mobile {
+      right: 0;
+    }
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: right 50%;
+    background-size: cover;
+  }
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:focus-within {
+    border-color: $Scope-blue;
+  }
+
+  &--noFocus {
+    border-bottom: 1px solid #333 !important;
+  }
+
+  &--error {
+    border-bottom: 1px solid #d64a70 !important;
+  }
+}
+
+.Input__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.Input__input {
+  @include font-style('body');
+  color: $Scope-blue;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 95%;
+  height: 100%;
+  display: block;
+  padding-bottom: 12px;
+
+  &::placeholder {
+    color: $Grey-four;
+  }
+  
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+}
+
+.Input__unit {
+  @include font-style('body');
+  color: $Blue-five;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+}
+
+.Input__error {
+  @include font-style('caption');
+  @include textPosition();
+  text-align: left;
+  color: #d64a70;
+  margin-top: 10px;
+  height: 14px;
+  padding-left: 14px;
+  &.show:after { 
+    display: block
+  }
+  &:after { 
+    content: '';
+    display: none;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-alert-02.svg);
+   }
+}
+.TransferForm__input .success {
+  display: none;
+  &.show { 
+    display: block
+  }
+}
+.Input.Input__inner--success {
+  .Input__inner {
+    border-bottom: 1px solid $Blue-green-one;
+  }
+  &:after { 
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    width: 12px;
+    height: 9px;
+    background-image: url(/static/images/icon_success_check-blue.svg);
+  }
+}

@@ -1,0 +1,104 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.AddToken {
+  padding-bottom: 100px;
+}
+
+.AddToken__topBlock {
+  padding: 24px 40px 0;
+
+  .AddToken__message{
+    font-size: 11px; 
+    line-height: 1.55;
+    color: $Blue-five;
+    p+p {
+      margin-top: 12px;
+    }
+  }
+}
+
+.AddToken__header {
+  margin-bottom: 8px;
+}
+
+.AddToken__title {
+  @include font-style('h2');
+  color: $White-one;
+}
+
+.AddToken__description {
+  @include font-style('body');
+  color: $dark-blue-grey;
+  line-height: 20px;
+}
+
+.AddToken__downBlock {
+  padding: 40px 40px 0;
+}
+
+.AddToken__xButton {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 4;
+}
+
+.AddToken__input {
+  position: relative;
+  margin-bottom: 32px;
+  height: 60px;
+  .Input__label {
+    color: $White-one;
+  }
+
+  .Input__input {
+    color: $White-one;
+    &::placeholder {
+      color: $Blue-four;
+    }
+  }
+
+  .Input__error {
+    color: red;
+    bottom: -18px;
+  }
+
+  .Input__inner {
+    border-color: $Blue-four;
+
+    &:focus-within {
+      border-color: $White-one;
+    }
+  }
+
+}
+
+.AddToken__saveButton {
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  box-shadow: unset;
+}
+
+.AddToken__saveButton:disabled {
+  box-shadow: unset;
+  cursor: not-allowed;
+  background-color: $Blue-three !important;
+}
+.AddToken__more {
+  @include font-style('label');
+  text-decoration: underline;
+  color: $dark-blue-grey;
+}
+
+.AddToken__moreTooltip {
+  @include font-style('caption');
+  color: $solitude;
+  line-height: 18px;
+  width: 244px;
+  padding: 20px 24px;
+  background-color: $dark !important;
+  border-radius: 10px;
+}

@@ -1,0 +1,157 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.TransferForm {
+  // @include panelize;
+  width: 640px;
+  margin-left: 16px;
+  height: 100%;
+
+  &--editing {
+
+  }
+
+  &--tokenAdding {
+    position: relative;
+  }
+  .Inner__Box {
+    @include boxColor();
+    width: 640px;
+    height: 640px;
+    padding: 40px; 
+  }
+}
+
+.TransferForm__title {
+  @include font-style('h2');
+  color: $black;
+  margin: 20px 0 25px;
+}
+
+.TransferForm__hr {
+  border-color: $solitude;
+  border-style: dashed;
+  margin: 46px 0;
+}
+
+.TransferForm__input {
+  position: relative;
+  margin-bottom: 50px;
+
+  &--readOnly {
+    .Input__input {
+      color: $dark-blue-grey;
+    }
+  }
+}
+
+.TransferForm__sendTransactionButton {
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.TransferForm__feeLimit {
+  .ErrorMessage {
+    @include font-style('caption');
+    text-align: left;
+    color: #d64a70;
+    margin-top: 10px;
+    height: 14px;
+    padding-left: 14px;
+    margin-bottom: 0px;
+    position: absolute;
+    left: 0;
+    bottom: -22px;
+    &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-alert-02.svg);
+    }
+  }
+}
+
+.TransferForm__feeLimitLabel {
+  @include font-style('label');
+  color: $main-theme;
+  margin-bottom: 11px;
+}
+
+.TransferForm__questionMark {
+  font-size: 8px;
+  color: $White-one;
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: help;
+}
+
+.TransferForm__gasTooltip {
+  @include font-style('caption');
+  padding: 20px 24px;
+  background-color: $dark !important;
+  border-radius: 10px;
+}
+
+.TransferForm__gasInfo {
+  background-color: $light-blue-gray;
+  border: 1px solid $solitude;
+  padding: 16px 20px;
+}
+
+.TransferForm__gasPrice {
+  margin-bottom: 12px;
+}
+
+.TransferForm__gasPrice, .TransferForm__gasLimit {
+  overflow: hidden;
+  color: $dark-blue-grey;
+
+  & span:first-child {
+    @include font-style('label');
+    float: left;
+  }
+
+  & span:last-child {
+    @include font-style('body');
+    float: right;
+  }
+}
+
+.TransferForm__totalGasFeeInput {
+  .InputEdit__input {
+    color: $dark-grey;
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+  &.InputEdit:focus-within{
+    border-bottom: 1px solid $Grey-four;
+  }
+}
+
+.TransferForm__valueInput {
+  .Input__input {
+    color: $dark-grey;
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+}
+
+.TransferForm__tokenSymbol {
+  &--token-color-1 { color: $token-color-1-main; }
+  &--token-color-2 { color: $token-color-2-main; }
+  &--token-color-3 { color: $token-color-3-main; }
+  &--token-color-4 { color: $token-color-4-main; }
+}

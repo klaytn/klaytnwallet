@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+    <defs>
+        <style>
+            .cls-1{fill:#d64a70}.cls-2{fill:#fff;font-size:8px;font-family:ArialRoundedMTBold,Arial Rounded MT Bold}
+        </style>
+    </defs>
+    <g id="icon-alert-02" transform="translate(-135 -777)">
+        <circle id="타원_1423" cx="5" cy="5" r="5" class="cls-1" data-name="타원 1423" transform="translate(135 777)"/>
+        <text id="_" class="cls-2" data-name="!" transform="translate(140 785)">
+            <tspan x="-1.332" y="0">!</tspan>
+        </text>
+    </g>
+</svg>

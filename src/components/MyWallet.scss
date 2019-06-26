@@ -1,0 +1,145 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.MyWallet {
+  @include panelize;
+  @include mobile {
+    padding: 10px;
+  }
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  padding: 0;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  &--addingToken {
+    .MyWallet__info {
+      position: relative;
+      // opacity: 0.2;
+      // &:after {
+      //   content: '';
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      // }
+    }
+  }
+}
+
+.Contents__title {
+  @include font-style('h2');
+  margin: 20px 0 25px;
+
+}
+
+.MyWallet__hr {
+  border-color: $solitude;
+  border-style: dashed;
+  margin-bottom: 44px;
+}
+
+.MyWallet__Input {
+  margin-bottom: 40px;
+  .InputCopy__label{
+    display: inline-block;
+  }
+}
+
+.MyWallet__info {
+  @include mobile {
+    display: block;
+    width: 100%;
+  }
+  text-align: left;
+  height: 100%;
+  display: block;
+  float: left;
+  vertical-align: middle;
+  width: 640px;
+  margin-right: 16px;
+  .Inner__Box {
+    @include boxColor;
+    padding: 40px;
+    height: 640px;
+    position: relative;
+  }
+}
+
+.MyWallet__token {
+  height: 100%;
+  display: block;
+  float: left;
+  vertical-align: middle;
+  width: 328px;
+  padding: 0;
+}
+
+.MyWallet__hideButton {
+  cursor: pointer;
+  color: #eb0a6a;
+}
+
+.MyWallet__icon {
+  background-size: cover;
+  background-color: #eb0a6a;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+.MyWallet__bottom {
+  position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 40px;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    background: $Wallet-bg;
+  }
+}
+.MyWallet__bottom__box {
+  width: 50%;
+  float: left;
+  position: relative;
+  .scope__transaction {
+    display: block;
+  }
+}
+.MyWallet__bottom__title {
+  @include font-style('button');
+  color: $main-theme;
+  margin-bottom: 10px;
+}
+
+.MyWallet__bottom__description {
+  @include font-style('body');
+  color: $dark-blue-grey;
+  margin-bottom: 20px;
+  line-height: 20px;
+}
+
+.MyWallet__viewTransationListButton, 
+.MyWallet__keyStoreMade {
+  @include font-style('body');
+  width: 175px;
+  padding: 0 10px;
+}

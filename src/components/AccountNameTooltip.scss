@@ -1,0 +1,42 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+.PasswordTooltip {
+  @include font-style('caption');
+  text-align: left;
+  border-radius: 6px;
+}
+
+.PasswordTooltip__title {
+  color: $White-one;
+  margin-bottom: 12px;
+}
+
+.PasswordTooltip__item {
+  position: relative;
+  padding-left: 18px;
+  color: $middle-grey;
+  margin-bottom: 4px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    background-image: url(/static/images/icon-check-off.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 6px;
+  }
+
+  &--active {
+    &::before {
+      background-image: url(/static/images/icon-check-on.svg);
+    }
+    color: $Neon-green;
+  }
+}

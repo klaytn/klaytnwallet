@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .cls-1,.cls-4{fill:none}.cls-1,.cls-2{opacity:.5}.cls-2{fill:#b56161}.cls-3{fill:#ef8989;opacity:.7}.cls-4{stroke:#fff;stroke-linecap:round;stroke-miterlimit:10}.cls-5{fill:#fff}
+        </style>
+    </defs>
+    <g id="icon-menu-faucet-on" transform="translate(-46 -242)">
+        <path id="사각형_3996" d="M0 0h30v30H0z" class="cls-1" data-name="사각형 3996" transform="translate(46 242)"/>
+        <path id="패스_2141" d="M173.225 42.651L166.014 33l-7.214 9.651a8.986 8.986 0 1 0 14.423 0z" class="cls-2" data-name="패스 2141" transform="translate(-107.028 212)"/>
+        <path id="패스_2142" d="M177.078 42.651L169.866 33l-7.211 9.651a8.986 8.986 0 1 0 14.423 0z" class="cls-3" data-name="패스 2142" transform="translate(-107.028 212)"/>
+        <path id="패스_2143" d="M165.5 51.5A5.2 5.2 0 0 0 169 54" class="cls-4" data-name="패스 2143" transform="translate(-107.028 212)"/>
+        <circle id="타원_1431" cx=".5" cy=".5" r=".5" class="cls-5" data-name="타원 1431" transform="translate(63.972 266)"/>
+    </g>
+</svg>

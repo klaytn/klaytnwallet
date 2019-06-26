@@ -1,0 +1,11 @@
+node_modules/
+build/
+dist/
+truffle.js
+/klaytnWallet.iml
+newrelic_agent.log
+logs/
+.vscode/
+
+# env
+.env

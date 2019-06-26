@@ -1,0 +1,100 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.KlayFaucet {
+  @include boxColor();
+  @include panelize();
+  padding: 80px 40px;
+  margin: 0 auto;
+}
+
+.KlayFaucet__content {
+  
+  width: 504px;
+  vertical-align: middle;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.KlayFaucet__point {
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 28px;
+  color: $White-one;
+  background-color: $main-theme;
+  height: 28px;
+  width: 118px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+
+.KlayFaucet__img {
+  width: 160px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.KlayFaucet__head {
+  margin-bottom: 40px
+}
+.KlayFaucet__title {
+  @include font-style('h1');
+  color: $Scope-blue;
+  margin-bottom: 8px;
+}
+.KlayFaucet__text {
+  @include font-style('body');
+  color: $Grey-two;
+}
+
+.KlayFaucet__address {
+  .Input__input {
+    color: $dark-blue-grey;
+  }
+}
+
+.KlayFaucet__balance {
+  &.KlayFaucet__input { 
+    margin-bottom: 50px;
+  }
+  
+  .Input__input {
+    @include font-family('roboto');
+    @include font-style('h2');
+    font-weight: normal;
+  }
+  .Input__error {
+    padding-left: 15px;
+    color: $Blue-green-one;
+    &::before {
+      content: '';
+      background-image: url(/static/images/icon-check-end.svg);
+      width: 10px;
+      height: 10px;
+      
+      display: inline-block;
+      float: left;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+    &.text__error {
+      color: $Red;
+      &::before {
+        width: 12px;
+        height: 12px;
+        background-image: url(/static/images/icon-warning.svg);
+        top: 1px;
+      }
+    }
+    
+  }
+}
+
+.KlayFaucet__input {
+  margin-bottom: 24px;
+  position: relative;
+}

@@ -1,0 +1,86 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+.Button {
+  @include font-style('body');
+  display: inline-block;
+  border: 0;
+  background-color: $Blue-green-one;
+  color: $White-one;
+  cursor: pointer;
+  padding: 0px 20px;
+  min-width: 140px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  outline: 0;
+  box-shadow: 0 4px 8px 0 rgba($Blue-green-one, .25);
+  transition: background 300ms;
+
+  &:disabled {
+    box-shadow: unset;
+    cursor: not-allowed;
+    background-color: $Grey-four !important;
+  }
+
+  &:hover {
+    background-color: $breakerbay;
+  }
+
+  &:active {
+    background-color: $ming;
+    box-shadow: unset;
+  }
+
+  &--gray {
+    background-color: $Blue-three;
+    box-shadow: 0 4px 8px 0 rgba($Blue-three, 0.25);
+
+    &:hover {
+      background-color: $Blue-two;
+    }
+
+    &:active {
+      background-color: $Scope-blue;
+      box-shadow: unset;
+    }
+  }
+
+  &--red {
+    background-color: $light-red;
+    box-shadow: 0 4px 8px 0 rgba($light-red, 0.25);
+
+    &:hover {
+      background-color: $dark-red;
+    }
+
+    &:active {
+      background-color: $shiraz;
+      box-shadow: unset;
+    }
+  }
+
+  &--size1,
+  &--size2,
+  &--size3,
+  &--size4,
+  &--size5 {
+    padding: 0 10px;
+  }
+  &--size1 {
+    width: 150px;
+  }
+  &--size2 {
+    width: 160px;
+  }
+  &--size3 {
+    width: 170px;
+  }
+  &--size4 {
+    width: 180px;
+  }
+  &--size5 {
+    width: 200px;
+  }
+}
+.Button + .Button { margin-left: 16px; }

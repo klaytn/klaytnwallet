@@ -1,0 +1,54 @@
+@import "mixins.scss";
+@import "colors.scss";
+
+.Toast {
+  @include mobile {
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    width: 90%;
+    word-break: break-all;
+  }
+
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  min-width: 500px;
+  z-index: 9999;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: visible;
+  transition: all 80ms;
+  animation: showToast 10s;
+  cursor: pointer;
+  outline: none;
+
+  font-size: 16px;
+  color: $main-theme;
+  background-color: #ffffff;
+  border: 1px solid $main-theme;
+}
+
+@keyframes showToast {
+  0% {
+    opacity: 0;
+    bottom: 0;
+    visibility: visible;
+  }
+
+  10% {
+    opacity: 1;
+    bottom: 30px;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

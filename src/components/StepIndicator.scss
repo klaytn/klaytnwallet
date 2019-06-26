@@ -1,0 +1,54 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+
+.StepIndicator {
+  width: 100%;
+  display: block;
+  text-align: left;
+  margin: 0 auto;
+  > div{
+    display: inline-block;
+  }
+}
+
+.StepIndicator__item {
+  @include font-style('button');
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  text-align: center;
+  width: 32px;
+  height: 32px;
+  line-height: 31px;
+  color: $middle-blue-grey;
+  border: 1px solid $middle-blue-grey;
+
+  &--active, &--checked {
+    border-color: $dark-blue-grey;
+    color: $White-one;
+    background-color: $dark-blue-grey;
+  }
+
+  &--checked {
+    background-image: url(/static/images/icon-success-check-w.svg);
+    background-repeat: no-repeat;
+    background-size: 12px 8px;
+    background-position: center;
+  }
+}
+
+.StepIndicator__border {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  margin: 0 10px;
+  border-bottom: 2px dashed $middle-blue-grey;
+
+  &--checked {
+    border-bottom: 2px solid $middle-blue-grey;
+  }
+  &--hide {
+    display: none;
+  }
+  
+}

@@ -1,0 +1,32 @@
+@import 'colors.scss';
+
+.AccessReminder {
+  display: block;
+  text-align: left;
+  margin: 40px 0;
+}
+
+.AccessReminder__checkbox {
+  background-image: url(/static/images/checkbox-default.svg);
+  width: 20px;
+  height: 20px;
+  margin: 0px 8px 0 0;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+
+  &--checked {
+    background-image: url(/static/images/checkbox-checked.svg);
+  }
+}
+
+.AccessReminder__description {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 20px;
+  color: $Blue-five;
+  cursor: pointer;
+  span {
+    font-weight: bold;
+  }
+}

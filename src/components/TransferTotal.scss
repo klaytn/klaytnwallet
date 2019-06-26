@@ -1,0 +1,132 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.TransferTotal {
+  @include panelize;
+  @include boxColor;
+  padding: 56px 64px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  .Inner__Box {
+    width: 560px;
+    margin: 0 auto;
+  }
+}
+
+.TransferTotal__title {
+  @include font-style('h2');
+  color: $main-theme;
+  margin-bottom: 12px;
+}
+
+.TransferTotal__totalToken {
+  @include font-style('number-big');
+  font-family: RobotoMono;
+  color: $Scope-blue;
+  margin-bottom: 7px;
+}
+
+.TransferTotal__feeLimit {
+  @include font-style('body');
+  margin-bottom: 40px;
+  color: $Blue-five;
+
+  &--light {
+    font-weight: bold;
+    font-family: robotoMono;
+    margin: 0 8px 0 16px;
+  }
+}
+
+.TransferTotal__item {
+  overflow: hidden;
+  border-bottom: 2px dotted #d9dcea;
+  padding: 16px 0;
+
+  &:first-of-type {
+    border-top: 1px solid #d9dcea;
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid #d9dcea;
+  }
+}
+.TransferTotal__itemTitle {
+  @include font-style('label');
+  color: $Blue-three;
+  float: left;
+}
+
+.TransferTotal__itemValue {
+  @include font-style('body');
+  color: $Blue-five;
+  float: right;
+  & .Amount {
+    font-family: robotoMono;
+    margin-right: 8px;
+  }
+}
+
+.TransferTotal__message {
+  @include font-style('h3');
+  color: $Scope-blue;
+  margin-top: 40px;
+  margin-bottom: 24px;
+  .sub_message {
+    @include font-style('body');
+    color: $Blue-five;
+    margin-top: 5px;
+  }
+  .alert_text {
+    display: block;
+    color: $Red;
+  }
+}
+
+.TransferTotalItem__yesButton {
+  width: 152px;
+  padding: 0 10px;
+  margin-left: 8px;
+}
+
+.TransferTotalItem__noButton {
+  width: 152px;
+  padding: 0 10px;
+}
+
+.TransferTotal__valueDecimal {
+
+}
+
+.TransferTotal__tokenSymbol {
+  @include font-style('body');
+  color: $Scope-blue;
+  vertical-align: middle;
+  font-family: Roboto;
+  margin-left: 4px;
+}
+
+.TransferTotal__decoration {
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  border: 1px solid $solitude;
+  bottom: 170px;
+  background-color: $light-blue-gray;
+
+  &--left {
+    border-left-color: transparent;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    left: -1px;
+  }
+
+  &--right {
+    border-right-color: transparent;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    right: -1px;
+  }
+}

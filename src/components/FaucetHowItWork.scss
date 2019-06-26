@@ -1,0 +1,50 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.FaucetHowItWork {
+  padding-top: 80px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.FaucetHowItWork__howItWorkTitle {
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.55;
+  text-align: left;
+  color: $Scope-blue;
+  margin-bottom: 8px;
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    vertical-align: middle;
+    background-image: url('/static/images/icon-alert-03.svg'); 
+  }
+}
+
+.FaucetHowItWork__howItWorkDescription {
+  @include font-style('text-small');
+  color: $Grey-two;
+  line-height: 20px;
+}
+
+.FaucetHowItWork__faucetableBlock {
+  &--visible {
+    visibility: visible;
+  }
+  visibility: hidden;
+}
+
+.FaucetHowItWork__faucetableBlockTitle {
+  @include font-style('body');
+  color: $Blue-five;
+  margin-bottom: 10px;
+}
+
+.FaucetHowItWork__faucetableBlockNumber {
+  @include font-style('h3');
+  color: $light-red;
+}

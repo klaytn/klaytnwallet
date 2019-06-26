@@ -1,0 +1,25 @@
+@import 'colors.scss';
+
+@mixin font-style($type) {
+  @if $type == 'h1' { font-size: 24px; font-weight: bold; line-height: 1.33; }
+  @if $type == 'h2' { font-size: 20px; font-weight: bold; line-height: 1.4; }
+  @if $type == 'h3' { font-size: 16px; font-weight: bold; line-height: 1.5; }
+  @if $type == 'stepTitle' { font-size: 24px; font-weight: bold; letter-spacing: -0.3px; }
+  @if $type == 'body' { font-size: 14px; font-weight: normal; line-height: 1.29; }
+  @if $type == 'label' { font-size: 12px; font-weight: bold; line-height: 1.42; }
+  @if $type == 'caption' { font-size: 12px; font-weight: normal; line-height: 1.42; }
+  @if $type == 'caption-alert' { font-size: 11px; font-weight: bold; line-height: 1.55; }
+  @if $type == 'button' { font-size: 14px; font-weight: bold; line-height: 1.29; }
+  @if $type == 'button-small' { font-size: 10px; font-weight: bold; line-height: 1.4; }
+  @if $type == 'number' { font-size: 14px; font-weight: normal; line-height: 1.29; }
+  @if $type == 'number-big' { font-size: 20px; font-weight: normal; line-height: 1.4; }
+  @if $type == 'text-small' { font-size: 11px; font-weight: normal; line-height: 1.55; }
+
+}
+
+@mixin font-family($family) {
+  @if $family == 'roboto' {
+    font-family: 'RobotoMono';
+  }
+}
+

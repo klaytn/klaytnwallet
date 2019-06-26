@@ -1,0 +1,54 @@
+
+@import 'colors.scss';
+
+.App {
+  min-height: 800px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App__section {
+  height: 100%;
+  background-image: linear-gradient(122deg, #f8f9fa, #eaeef7);
+  padding: 0 0px 0 240px;
+  overflow-x: scroll;
+  width: 100vw;
+  &__mainPage {
+    background: $Blue-zero;
+  }
+
+}
+
+
+.App__navSection {
+  display: inline-block;
+  width: 240px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  vertical-align: top;
+  z-index: 10;
+}
+
+.App__contentSection {
+  min-width: 1040px;
+  min-height: 800px;
+  display: block;
+  vertical-align: top;
+  padding: 0 28px 0 28px;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.main__model {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  display: none;
+  padding: 0 0 0 240px;
+}
+.model__show {
+  display: block;
+}

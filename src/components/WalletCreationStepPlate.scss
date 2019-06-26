@@ -1,0 +1,69 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.WalletCreationStepPlate {
+  width: 100%;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.WalletCreationStepPlate__stepName {
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 28px;
+  color: $White-one;
+  background-color: $main-theme;
+  height: 28px;
+  width: 78px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.WalletCreationStepPlate__title {
+  @include font-style('h1');
+  width: 100%;
+  margin: 0 auto;
+  color: $Scope-blue;
+  margin-bottom: 8px;
+  .sub__title {
+    display: block;
+    @include font-style('h3');
+    margin-top: 5px;
+  }
+}
+
+.WalletCreationStepPlate__description {
+  @include font-style('body');
+  color: $Blue-five;
+  line-height: 20px;
+  margin-bottom: 30px;
+  p { margin-bottom: 8px; }
+}
+
+.WalletCreationStepPlate__nextButtons {
+  margin-top: 40px;
+}
+
+.WalletCreationStepPlate__skip {
+  padding-top:10px;
+  button {
+    background: none;
+    border: none;
+    color: $Grey-four;
+    padding: 0px;
+  }
+}
+.WalletCreationStepPlate__list {
+  display: none;
+  margin-top: 57px;
+  &.show {
+    display: block;
+  }
+}
+.WalletCreationStep5 .InputCopy__input {
+  @include font-style('caption-alert');
+  
+  color: $Red;
+}

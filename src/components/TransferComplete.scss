@@ -1,0 +1,45 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.TransferComplete {
+  @include panelize;
+  @include boxColor;
+  margin: 0 auto;
+  text-align: left;
+  display: table;
+  .Inner__Box {
+    display: table-cell;
+    padding: 0 165px;
+    vertical-align: middle;
+  }
+}
+
+.TransferComplete__title {
+  @include font-style('h1');
+  color: $Scope-blue;
+  margin-bottom: 8px;
+}
+
+.TransferComplete__img {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.TransferComplete__description {
+  @include font-style('body');
+  color: $Blue-five;
+  margin-bottom: 40px;
+  line-height: 20px;
+}
+.TransferComplete__link {
+  display: inline-block;
+  margin-left: 8px;
+}
+.TransferComplete__button {
+  width: 176px;
+  padding: 0;
+}

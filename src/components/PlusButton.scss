@@ -1,0 +1,47 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.PlusButton, .XButton {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 16px;
+  box-shadow: 0 4px 8px 0 rgba($Blue-three, 0.25);
+  outline: 0;
+  cursor: pointer;
+  background-color: $Blue-three;
+  background-image: url(/static/images/icon-plus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+  border: 0;
+  transition: background 300ms;
+  &:after {
+    content: '';
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 0, 0,.1);
+  }
+  &:hover:after {
+    display: block;
+  }
+
+  &:hover:active:after {
+    display: block;
+    background-color: rgba(0, 0, 0,.2);
+  }
+  &:disabled {
+    background-color: $solitude;
+  }
+}
+
+.XButton {
+  background-image: url(/static/images/icon-x.svg);
+}

@@ -1,0 +1,325 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import "mixins.scss";
+.createMainPopup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 240px;
+  background: rgba(255, 255, 255, .7);
+  z-index: 5;
+  &.show { 
+    display: block;
+   }
+   &.type1 .createMainPopup__inner {
+    width: 480px;
+    margin: -150px 0 0 -120px;
+    .Disclaimers_agree {
+      margin-top: 24px; 
+    }
+   }
+   &.type2 .createMainPopup__inner {
+    width: 480px;
+    height: 400px;
+    margin: -200px 0 0 -120px;
+    .InputCopy__inputWrapper {
+      margin-top: 24px; 
+    }
+    .textarea__Copy {
+      padding: 7px 6px 6px 8px;
+      height: 46px;
+      @include font-style('text-small');
+      color: $Scope-blue;
+    }
+    .popup__message2 {
+      margin-bottom: 32px;
+    }
+   }
+  .createMainPopup__inner {
+    text-align: left;
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -80px;
+    padding: 45px 40px 0;
+    @include popupStyle();
+    
+    &.widthType {
+      width: 430px;
+      margin: -150px 0 0 -95px;
+      padding-top: 72px;
+    }
+    &.heightType {
+      height: 320px;
+      margin: -160px 0 0 -80px;
+      & .popup__message2 {
+        margin-bottom: 24px;
+      }
+    }
+    .popup__title {
+      display: block;
+      @include font-style('body');
+      font-weight: bold; 
+      color: $Scope-blue;
+      margin-bottom: 16px;
+    }
+    .Input__inner--error {
+      border-bottom: 1px solid $Scope-blue !important;
+    }
+    .TransferForm__input {
+      margin-bottom: 33px;
+    }
+    .Input__error {
+      color: $Scope-blue;
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 4px;
+        background-image: url('/static/images/icon-alert-03.svg'); 
+      }
+
+    }
+    .InputCopy__inputWrapper {
+      padding: 0;
+    }
+    .popup__message {
+      @include font-style('text-small');
+      color: $Grey-two;
+      margin-bottom: 28px;
+    }
+    .popup__message2 {
+      @include font-style('caption');
+      color: $Blue-five;
+      margin-bottom: 40px;
+      & p {
+        margin-bottom: 6px;
+      }
+      .info_link {
+        display: inline-block;
+        margin-left: 4px;
+        text-decoration: underline;
+      }
+      
+    }
+    .alert_text { 
+      color: $Red;
+    }
+    .popup__bottom__box{
+      text-align: center;
+    }
+  }
+  .item__list {
+    padding: 16px 0;
+    border-top: 1px solid $middle-blue-grey;
+    border-bottom: 1px solid $middle-blue-grey;
+    margin-top: 16px; 
+    & > li {
+
+      &::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    & li + li {
+      margin-top: 10px;
+    }
+    .item__name {
+      @include font-style('label');
+      float: left;
+      color: $main-theme;
+    }
+    .item__value {
+      float: right;
+      color: $Blue-five;
+      @include font-style('body');
+    }
+    .alert__text {
+      color: $Red;
+    }
+  }
+}
+.App__section__mainPage .createMainPopup {
+  background: rgba(0, 0, 0, .5);
+}
+
+
+
+.InputEdit {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  transition: border-width 100ms linear, border-color 300ms linear;
+  outline: 0;
+  background-color: transparent;
+  padding: 0;
+  padding-bottom: 8px;
+
+  &--isEditing {
+    border-bottom: 1px solid $middle-blue-grey;
+  }
+
+  &--error {
+    border-bottom: 1px solid $token-color-2-main;
+  }
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:focus-within {
+    border-color: $main-theme;
+  }
+  .InputEdit__Popup {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    &--inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -150px 0 0 -80px;
+      width: 400px;
+      height: 300px;
+      padding: 72px 40px 40px;
+      background: $White-one;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
+      border: solid 1px $Grey-four;
+      z-index: 10;
+    }
+    .InputEdit__box {
+      position: relative;
+      border-bottom: 1px solid #d9dcea;
+      transition: border-width 100ms linear, border-color 300ms linear;
+      &:focus-within {
+        border-color: $Scope-blue;
+      }
+    }
+    .InputEdit__ButtonBox {
+      text-align: center;
+      margin-top: 40px;
+    }
+    &:after {
+       content:'';
+       display: block;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       opacity: 0.7;
+       background-color: $Wallet-bg;
+    }
+  }
+
+}
+
+.InputEdit__inputWrapper {
+  position: relative;
+}
+
+.InputEdit__input {
+  @include font-style('body');
+  color: $dark-grey;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: right;
+  padding-right: 76px;
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+
+  &--active .InputEdit__eye {
+    &--show { background-image: url('/static/images/btn-show.svg'); }
+    &--hide { background-image: url('/static/images/btn-hide.svg'); }
+  }
+
+}
+
+.InputEdit__editButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  outline: none;
+  background: center / contain no-repeat transparent;
+  cursor: pointer;
+}
+
+.InputEdit__editOkButton {
+  @include font-style('label');
+  outline: none;
+  cursor: pointer;
+
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    margin-right: 3px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.InputEdit__editCancelButton {
+  @include font-style('label');
+  cursor: pointer;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 8px;
+    margin-right: 3px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.InputEdit__label {
+  @include font-style('label');
+  color: $main-theme;
+  cursor: text;
+  display: block;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.InputEdit__tooltip {
+  background-color: $dark !important;
+  box-shadow: 0 3px 6px 0 rgba($dark, 0.25);
+  padding: 20px 24px;
+  border-radius: 10px;
+}
+
+.InputEdit__unit {
+  @include font-style('body');
+  color: $dark-grey;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  margin-top: 2px;
+}

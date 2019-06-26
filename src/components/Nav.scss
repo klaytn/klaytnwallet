@@ -1,0 +1,32 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+.Nav {
+  position: absolute;
+  background-color: $Scope-blue;
+  top: 0;
+  left: 0;
+  min-width: 236px;
+  min-height: 800px;
+  color: $warm-grey;
+  height: 100%;
+}
+
+.Nav__copyright {
+  @include font-style('body');
+  color: #cccccc;
+  position: absolute;
+  left: 28px;
+  bottom: 40px;
+}
+.Header__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 72px;
+  display: inline-block;
+  background: url(/static/images/logo-wallet.svg) no-repeat 24px 26px;
+  background-size: 132.5px 24px;
+  z-index: 10;
+}

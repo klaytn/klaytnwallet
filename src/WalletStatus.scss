@@ -1,0 +1,31 @@
+.WalletStatus {
+  position: fixed;
+  right: 0;
+  top: 0;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .7);
+  padding: 3px 6px;
+}
+
+
+.WalletStatus__statusCircle {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(yellow, .8);
+
+  &--injected {
+    background-color: rgba(green, .8);
+  }
+}
+
+
+.WalletStatus__msg {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  font-family: Verdana;
+}

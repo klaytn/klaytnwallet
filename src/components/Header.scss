@@ -1,0 +1,112 @@
+@import "fonts.scss";
+@import "colors.scss";
+
+.Header {
+  width: 100%;
+  height: 72px;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 1.2rem;
+  position: fixed;
+
+  color: #fff;
+  background-color: $main-theme;
+  clear: both;
+
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.Header__LogoWithLink {
+  padding: 2.5rem 2.8rem;
+  display: inline-block;
+  width: calc(100% - 170px);
+  float: left;
+}
+
+.Header__logo {
+  float: left;
+  width: 235px;
+  height: 24px;
+  left: 28px;
+  display: inline-block;
+  background-image: url(/static/images/logo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.Header__link {
+  @include font-style('caption')
+  color: $steel-blue;
+  font-size: 12px;
+  float: right;
+  line-height: 24px;
+  cursor: pointer;
+  margin-right: 20px;
+
+  &::after {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 8px;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-outlink.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.Header__network {
+  @include font-style('caption');
+  position: absolute;
+  padding: 2.5rem 0;
+  right: 0;
+  top: 0;
+  min-width: 148px;
+  display: inline-block;
+  width: 172px;
+  color: $Neon-green;
+  border-left: 1px solid rgba($White-one, .1);
+  text-align: center;
+  line-height: 24px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: $Neon-green;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+
+  &--disconnected {
+    color: #ff7499;
+    &::before {
+      background-color: #ff7499;
+    }
+  }
+}
+.remove__sessionStorage{
+ 
+  color: $Scope-blue;
+  width: 64px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  width: 64px;
+  border-radius: 2px;
+  border: solid 1px $Scope-blue;
+  background-color: $White-one;
+}

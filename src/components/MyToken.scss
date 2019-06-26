@@ -1,0 +1,199 @@
+@import "mixins.scss";
+@import "fonts.scss";
+@import "colors.scss";
+
+.MyToken {
+  @include mobile {
+    padding-left: 0;
+    height: 100px;
+  }
+  position: relative;
+  text-align: left;
+  overflow-x: visible;
+  & > .Inner__Box {
+    position: relative;
+  }
+}
+
+.MyToken__header {
+}
+
+.MyToken__addTokenButton {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 3;
+}
+
+.MyToken__list {
+  @include boxColor();
+  height: 552px;
+  overflow-y: scroll;
+}
+
+.MyToken__addToken {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.04);
+  background-color: $Scope-blue;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.TokenItem {
+  @include font-style('button');
+  position: relative;
+  padding: 20px 40px;
+  border-bottom: 1px solid $light-blue-gray;
+  border-left: 0;
+  background-color: $White-one;
+  opacity: .3;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  &:last-of-type {
+    .TokenItem__decoration { }
+  }
+  &--one {
+    cursor: default;
+  }
+  &--active {
+    .TokenItem__arrow { display: inline-block; }
+    opacity: 1;
+  }
+
+  &--readOnly {
+    cursor: default;
+    background-color: $White-one;
+    .TokenItem__arrow { border-left: 0; }
+    opacity: 1;
+    &.TokenItem--active, &:hover {
+      opacity: 1;
+
+     // .TokenItem__balance, .TokenItem__tokenName { color: $dark-blue-grey !important; }
+      // color: inherit !important;
+      // background-color: $white !important;
+    }
+
+  }
+  &:not(.TokenItem--readOnly):hover:after,
+  &.TokenItem--active:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    margin-top: -4px;
+    border-left-color: $Scope-blue;
+
+  }
+  &--one.TokenItem:after,
+  &--one.TokenItem:hover:after {
+    display: none;
+  }
+  &--token-color-1 {
+    .TokenItem__decoration { background-color: #AD6AF0; }
+    .TokenItem__arrow { border-left: 20px solid #8B55C0; }
+    &.TokenItem--active, &:hover {
+      opacity: 1;
+      // background-color: #8B55C0;
+      // color: $white;
+
+      //.TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
+  }
+
+  &--token-color-2 {
+    .TokenItem__decoration { background-color: #FA265F; }
+    .TokenItem__arrow { border-left: 20px solid #C81E4C; }
+    &.TokenItem--active, &:hover {
+      opacity: 1;
+      // background-color: #C81E4C;
+      // color:$white;
+      //.TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
+  }
+
+  &--token-color-3 {
+    .TokenItem__decoration { background-color: #ffd800; }
+    .TokenItem__arrow { border-left: 20px solid #ccad00; }
+    &.TokenItem--active, &:hover {
+      opacity: 1;
+      // background-color: #ccad00;
+      // color:$white;
+     // .TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
+  }
+
+  &--token-color-4 {
+    .TokenItem__decoration { background-color: #9cce2c; }
+    .TokenItem__arrow { border-left: 20px solid #7da523; }
+    &.TokenItem--active, &:hover {
+      opacity: 1;
+      // background-color: #7da523;
+      // color:$white;
+      //.TokenItem__balance, .TokenItem__tokenName { color: $white; }
+    }
+  }
+}
+
+.TokenItem__balance {
+  @include font-family('roboto');
+  @include font-style('h3');
+  color: $dark-blue-grey;
+}
+
+.TokenItem__tokenName {
+  @include font-style('body');
+  margin-left: 10px;
+  color: $dark-blue-grey;
+  margin-bottom: 6px;
+}
+
+.TokenItem__description {
+  @include font-style('h3');
+  color: $dark-blue-grey;
+}
+
+.TokenItem__decoration {
+  position: absolute;
+  top: 24px;
+  left: 22px;
+  width: 10px;
+  background-color: #ad6af0;
+  height: 10px;
+  border-radius: 50%
+}
+
+.TokenItem__arrow {
+  display: none;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid $White-one;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.TokenItem__balanceInteger,
+.TokenItem__balanceDecimal {
+  @include font-style('body');
+  color: $Blue-five;
+}
+
+.TokenItem__title {
+  @include font-style('button');
+  margin-bottom: 6px;
+}

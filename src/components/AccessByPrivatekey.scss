@@ -1,0 +1,19 @@
+@import "mixins.scss";
+@import "fonts.scss";
+
+.AccessByPrivatekey {
+  @include mobile {
+    margin-bottom: 60px;
+  }
+  width: 100%;
+}
+
+.AccessByPrivatekey__input {
+  position: relative;
+  margin: 0 auto;
+}
+
+.AccessByPrivatekey__button {
+  @include font-style('button');
+  padding: 16px 40px;
+}

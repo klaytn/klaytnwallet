@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .cls-1{fill:none;opacity:.5}.cls-2{fill:#4a4d66}.cls-3{fill:#7f8195}.cls-4{fill:#e5e6ea}
+        </style>
+    </defs>
+    <g id="icon-menu-view-off" transform="translate(-46 -242)">
+        <path id="사각형_3996" d="M0 0h30v30H0z" class="cls-1" data-name="사각형 3996" transform="translate(46 242)"/>
+        <path id="사각형_4239" d="M2 0h14a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" class="cls-2" data-name="사각형 4239" transform="translate(50 247)"/>
+        <path id="사각형_4240" d="M2 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2z" class="cls-3" data-name="사각형 4240" transform="translate(63 255)"/>
+        <circle id="타원_1430" cx="2" cy="2" r="2" class="cls-4" data-name="타원 1430" transform="translate(63 255)"/>
+    </g>
+</svg>

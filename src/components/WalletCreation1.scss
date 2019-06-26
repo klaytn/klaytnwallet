@@ -1,0 +1,31 @@
+@import "mixins.scss";
+@import "colors.scss";
+
+.WalletCreation2 {
+  @include panelize;
+  @include boxColor;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 984px;
+  height: auto;
+  min-height: 704px;
+}
+
+.WalletCreation2__stepIndicator {
+  margin-bottom: 80px;
+}
+
+.input__box {
+  padding-bottom: 40px;
+  .InputCopy + .InputCopy {
+    margin-top: 15px;
+  }
+}
+.WalletCreationStepPlate__nextButtons {
+  .WalletCreationStep3__button {
+    width: 244px;
+  }
+  .WalletCreationStep3__button +.WalletCreationStep3__button {
+    
+  }
+}

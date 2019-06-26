@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.75" height="11.75" viewBox="0 0 10.75 11.75">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none;stroke-linecap:round}.cls-2{stroke:#4e527d;stroke-linejoin:round;stroke-width:1.5px}.cls-3,.cls-4{stroke:none}.cls-4{fill:#4e527d}
+        </style>
+    </defs>
+    <g id="icon-copy" transform="translate(-829 -176.25)">
+        <g id="패스_2024" class="cls-1" data-name="패스 2024">
+            <path d="M.7-1.13h6a1.234 1.234 0 0 1 1 1v7a1.234 1.234 0 0 1-1 1h-6a1.234 1.234 0 0 1-1-1v-7a1.234 1.234 0 0 1 1-1z" class="cls-3" transform="translate(829.3 180.13)"/>
+            <path d="M1.2.37v6h5v-6h-5m-.5-1.5h6c.42 0 1 .58 1 1v7c0 .42-.58 1-1 1h-6c-.42 0-1-.58-1-1v-7c0-.42.58-1 1-1z" class="cls-4" transform="translate(829.3 180.13)"/>
+        </g>
+        <path id="패스_2025" d="M1037.28 900.77h6v6" class="cls-2" data-name="패스 2025" transform="translate(-204.28 -723.77)"/>
+    </g>
+</svg>

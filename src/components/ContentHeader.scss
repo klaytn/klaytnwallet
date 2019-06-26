@@ -1,0 +1,162 @@
+@import "fonts.scss";
+@import "colors.scss";
+%header-button {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Roboto;
+  line-height: 37px;
+  
+  height: 38px;
+  padding: 0 0 0 42px;
+  border: 1px solid #d9ddf5;
+  border-radius: 10rem;
+  color: $Scope-blue;
+  outline: none;
+}
+
+.Header {
+  width: 984px;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 15px 0px;
+  text-align: right;
+  clear: both;
+  margin: 0 auto;
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.Header__link {
+  @include font-style('caption')
+  color: $steel-blue;
+  font-size: 12px;
+  float: right;
+  line-height: 24px;
+  cursor: pointer;
+  margin-right: 20px;
+
+  &::after {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 8px;
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-outlink.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+.Header__network__box {
+  display: inline-block;
+  position: relative; 
+}
+.network__dropdown {
+  display: none;
+  position: absolute;
+  width: 190px;
+  left: 0;
+  top: 43px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.35);
+  background-color: $Scope-blue;
+  z-index: 10;
+  border-radius: 5px;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  &.show {
+    display: block;
+  }
+  .network__dropdown__item {
+    position: relative;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 41px;
+    color: $Grey-one;
+    transition: background-color 100ms;
+    &:hover {
+      background-color: #3d4060;
+    }
+    &:hover:active {
+      background-color: $Black-two;
+    }
+    &.on {
+      color: $Blue-green-one;
+    }
+    &.on:after {
+      content:'';
+      position: absolute;
+      top: 50%;
+      left: 24px;
+      margin-top: -3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%; 
+      background-color: $Blue-green-one;
+
+    }
+  }
+}
+.Header__network {
+  @extend  %header-button;
+  background: left 22px center/9px no-repeat url(/static/images/icon-network.svg);
+  width: 190px;
+  cursor: pointer;
+  &::after {
+    content: "";
+    width: 0px;
+    position: absolute;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    right: 1.6rem;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid $Scope-blue;
+  }
+
+  &--disconnected {
+    color: #ff7499;
+    &::before {
+      background-color: #ff7499;
+    }
+  }
+}
+
+.App__section__mainPage .Header__network {
+  background: left 22px center/9px no-repeat url(/static/images/icon-network-white.svg);
+  border: 1px solid rgba(255,255, 255, .2);
+  color: $White-one;
+  &::after {
+    border-top: 4px solid $White-one;
+  }
+}
+
+.App__section__mainPage .Header__network {
+  background: left 22px center/9px no-repeat url(/static/images/icon-network-white.svg);
+  border: 1px solid rgba(255,255, 255, .2);
+  color: $White-one;
+  &::after {
+    border-top: 4px solid $White-one;
+  }
+}
+.remove__sessionStorage {
+  @extend  %header-button;
+  background: left 20px center/20px no-repeat url(/static/images/icon-clear.svg);
+  width: 154px;
+  margin-right: 20px;
+  display: none;
+  cursor: pointer;
+  &.show { display: inline-block; }
+}
+.App__section__mainPage .remove__sessionStorage {
+  background: left 20px center/14px 15px no-repeat url(/static/images/icon-clear-w.svg);
+  border: 1px solid rgba(255,255, 255, .2);
+  color: $White-one;
+}

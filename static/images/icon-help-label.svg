@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+    <defs>
+        <style>
+            .cls-1,.cls-4{fill:none}.cls-1{stroke:#cacbd8;stroke-width:1.3px}.cls-2{fill:#cacbd8}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <g id="그룹_3225" data-name="그룹 3225" transform="translate(-692 -1091)">
+        <g id="Icon_Qmark" transform="translate(692 1091)">
+            <g id="타원_1399" class="cls-1" data-name="타원 1399">
+                <circle cx="6" cy="6" r="6" class="cls-3"/>
+                <circle cx="6" cy="6" r="5.35" class="cls-4"/>
+            </g>
+        </g>
+        <g id="그룹_3077" data-name="그룹 3077" transform="translate(697 1093.5)">
+            <circle id="타원_1425" cx="1" cy="1" r="1" class="cls-2" data-name="타원 1425"/>
+            <path id="사각형_3583" d="M0 0h1.6v4.5H0z" class="cls-2" data-name="사각형 3583" transform="translate(.2 2.7)"/>
+        </g>
+    </g>
+</svg>
