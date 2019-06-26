@@ -96,8 +96,9 @@ export const changeKlayUnit = (data) => {
 }
 export const klaytnKeyCheck = (data) => {
   if(isValidWalletKey(data)){
+    
     //return data.match(/0x00|0x01/)[0]
-    return data.match(/0x00/)[0]
+    return data.slice(66, 70)
   }else{
     return false
   }

@@ -26,10 +26,9 @@ class AccessByPrivateKey extends Component<Props> {
     let inputValue , address
     const addressCheck = klaytnKeyCheck(e.target.value)
     this.setState({address: '' })
-    if(addressCheck && walletData && walletData.length ==112){
-      walletData = walletData.split(addressCheck)
-      inputValue = walletData[0]
-      address = walletData[1].length === 42 ? walletData[1] : null      
+    if(addressCheck && walletData && walletData.length == 112){
+      inputValue = walletData.slice(0, 66)
+      address = walletData.slice(70, 112) 
       this.setState({address: address })
     }else{
       inputValue = walletData
@@ -59,7 +58,7 @@ class AccessByPrivateKey extends Component<Props> {
     isHumanReadable = await caver.utils.isConvertableToHRA(address)
     if(address){
       wallet = caver.klay.accounts.wallet.add(privatekey,address)
-      sessionStorage.setItem('address', isHumanReadable ? caver.utils.hexToUtf8(address):address )
+      sessionStorage.setItem('address', address )
     }else{
       wallet = caver.klay.accounts.wallet.add(privatekey)
     }
