@@ -1,17 +1,18 @@
 # Klaytn Wallet Project
 
-## GroundX Klaytn Wallet Project explanation
+## Klaytn Wallet Project explanation
 table of contents 
 1) Getting started
 2) npm package information
 3) Directory Structure
 4) Web browser support scope
 5) Describe how to use the front api
-6) License
+6) Setting up the env file
+7) License
 
 ### 1) Getting started
 1. Open terminal
-2. Clone the repo by running `git clone https://github.com/ground-x/klaytnwallet.git`
+2. Clone the repo by running `git clone https://github.com/klaytn/klaytnwallet.git`
 3. Run `npm install`to install node packages
 4. Run `npm run start:local`
 5. App should be running in https://localhost:15000
@@ -19,7 +20,7 @@ table of contents
 ### 2) npm package information
 > dependencies
 ```
-The wallet project is optimized for crypto-js version "0.8.3-1".
+The wallet project is optimized for Caver-js version "0.8.3-2".
 Caver-js needs confirmation before updating.
 ```
 
@@ -29,10 +30,8 @@ Caver-js needs confirmation before updating.
 pm2.config.js           // npm run dev (execution server code )
 webpack.config.js       //webpack dev server config
 webpack.prod.config.js  // webpack prod config
-contracts               // Solidity contract
 dist                    // file built with 'npm run build'
 static                  // folder with static images and font.
-migrations              // file to be executed when truffle migrate
 public                  // index.html, favicon, manifest.json existence in folder
 
 1. src
@@ -41,7 +40,7 @@ src - components        // Folder where React components are defined(Save as .sc
 src - constants         // Define the .env file
 src - enhancers         // Folder where key event are defined
 src - klaytn            // klaytn related definition folder
-src - reducers          // polder where Redux reducer are defined 
+src - reducers          // folder where Redux reducer are defined 
 src - styles            // stylesheet code file. _mixins.scss
 src - utils             // utility file. (contract.js, misc.js, transaction.js, ui.js )
 src (root)              // index.js, App.js, store.js(Redux store), reducer.js(Redux reducer) file existence
@@ -78,7 +77,7 @@ Supported (Optimized) | Supported | Supported | Not supported
   - Because it uses caver, it can be used outside.
 
 2. EN Backend api ( KLAY Faucet )
-  - Since it is the backend area of ​​groundx, it can not be used from the outside.
+  - Since it is the backend area of ​​klaytn, it can not be used from the outside.
 ```
 > How to use the wallet API 
 ``` 
@@ -91,8 +90,22 @@ You can see how wallet works and how to use caver in the following sites.
 * klaytn docs wallet description url : https://docs.klaytn.com/toolkit/wallet 
 * klaytn docs caver-js url : https://docs.klaytn.com/caverjs 
 
+### 6) Setting up the env file
+> Default values ​​to include in the env file 
+
+``` 
+This is needed when starting based on the project.
+add 'API_HOST','KLAYTN_HOST','CRYPO_PASSWORD' in 'config/default.env'
+Explanation
+'API_HOST' : KLAY Faucet backend API
+'KLAYTN_HOST' : klaytn API
+ex) 'https://api.baobab.klaytn.net:8651'
+'CRYPO_PASSWORD' : The key used to encrypt the private key.
+ex) '12345A12345B12345C12345'
+```
+
 ### License
-Wallet service is released under the [MIT license](https://github.com/ground-x/klaytnwallet/blob/dev/LICENSE).
+Wallet service is released under the [MIT license](https://github.com/klaytn/klaytnwallet/blob/dev/LICENSE).
 
 ``` 
 MIT License
