@@ -58,7 +58,7 @@ class AccessByPrivateKey extends Component<Props> {
     isHumanReadable = await caver.utils.isConvertableToHRA(address)
     if(address){
       wallet = caver.klay.accounts.wallet.add(privatekey,address)
-      sessionStorage.setItem('address', address )
+      sessionStorage.setItem('address', isHumanReadable ? caver.utils.hexToUtf8(address):address )
     }else{
       wallet = caver.klay.accounts.wallet.add(privatekey)
     }
