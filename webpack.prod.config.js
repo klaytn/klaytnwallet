@@ -1,7 +1,6 @@
 const { envPath, defaultEnvPath } = require('./config')
 const webpack = require('webpack')
 const path = require('path')
-const fs = require('fs')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -70,7 +69,6 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       utils: path.resolve(__dirname, 'src/utils/'),
-      contracts: path.resolve(__dirname, 'contracts'),
       klaytn: path.resolve(__dirname, 'src/klaytn/'),
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
@@ -95,8 +93,6 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       DEV: false,
-      DEPLOYED_ADDRESS: JSON.stringify(fs.readFileSync('deployedAddress', 'utf8')),
-      METAMASK: process.env.METAMASK,
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new CompressionPlugin(),
