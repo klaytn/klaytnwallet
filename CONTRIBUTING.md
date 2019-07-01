@@ -22,7 +22,7 @@ There are various ways to contribute and participate. Please read the guidelines
 
 ### Issues and Bugs
 
-If you find a bug or other issues in Klaytnwallet, please [submit an issue](https://github.com/klaytn/klaytn/issues). Before submitting an issue, please invest some extra time to figure out that:
+If you find a bug or other issues in Klaytnwallet, please [submit an issue](https://github.com/klaytn/klaytnwallet/issues). Before submitting an issue, please invest some extra time to figure out that:
 
 - The issue is not a duplicate issue.
 - The issue has not been fixed in the latest release of Klaytnwallet.
