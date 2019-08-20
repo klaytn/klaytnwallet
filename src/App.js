@@ -108,3 +108,5 @@ class App extends Component<Props> {
 }
 
 export default App
+
+global.console.log(`Klaytnwallet: ${process.env.version}`)
