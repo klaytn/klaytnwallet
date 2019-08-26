@@ -83,6 +83,11 @@ module.exports = {
     minimizer: [
       new UglifyJSPlugin({
         sourceMap: true,
+        uglifyOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
       }),
     ],
   },
