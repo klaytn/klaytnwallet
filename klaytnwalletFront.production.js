@@ -24,6 +24,9 @@ app.use(function (req, res, next) {
     if (originalPath.endsWith('.css')) {
       res.set('Content-Type', 'text/css')
     }
+    if (originalPath.endsWith('.js')) {
+      res.set('Content-Type', 'text/javascript')
+    }
     res.append('Content-Encoding', 'gzip')
     res.setHeader('Vary', 'Accept-Encoding')
     res.setHeader('Cache-Control', 'public, max-age=512000')
