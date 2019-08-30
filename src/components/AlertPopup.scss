@@ -1,0 +1,11 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import "mixins.scss";
+.createMainPopup.AlertPopup {
+  .createMainPopup__inner {
+    height: 248px;
+  }
+  .popup__message2 {  
+    @include font-style('body');
+  }
+}

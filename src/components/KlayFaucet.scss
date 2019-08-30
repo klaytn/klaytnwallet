@@ -29,7 +29,9 @@
   text-align: center;
   margin-bottom: 16px;
 }
-
+.KlayFaucet__button {
+  float: left;
+}
 
 .KlayFaucet__img {
   width: 160px;
@@ -55,7 +57,39 @@
     color: $dark-blue-grey;
   }
 }
+.faucet__message__box {
+  &::after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.faucet__message {
+  @include font-style('text-small');
+  position: relative;
+  display: none;
+  text-align: left;
+  color: #d64a70;
+  margin: 9px 0 0 8px;
+  padding-left: 14px;
+  width: 355px;
+  &.on{
+    display: inline-block;
+  }
+  &::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-image: url(/static/images/icon-warning.svg);
+    display: inline-block;
+    
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
 
+  
+}
 .KlayFaucet__balance {
   &.KlayFaucet__input { 
     margin-bottom: 50px;
@@ -83,7 +117,11 @@
     }
     &.text__error {
       color: $Red;
+      display: inline-block;
+      float: left;
+      position: absolute;
       &::before {
+        display: block;
         width: 12px;
         height: 12px;
         background-image: url(/static/images/icon-warning.svg);
