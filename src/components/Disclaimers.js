@@ -81,9 +81,8 @@ class Disclaimers extends Component {
             <p className="Disclaimers_title">About Klaytn Wallet</p>
             <ul className="Disclaimers_list">
               <li>Klaytn Wallet is a Klaytn account management tool that connects to the Klaytn network through a web browser.</li>
-              <li>Klaytn Wallet is intended for blockchain application (BApp) development purpose only.
-                Klaytn Wallet should <b>NOT</b> be used on the mainnet for any personal or commercial use other than for such BApp development purpose.</li>
-              <li>Klaytn recommends that you use Klaytn Wallet on <b>the testnet (Baobab) ONLY.</b></li>
+              <li>Klaytn Wallet was developed to help blockchain application development and was not specifically targeted to serve end-users.</li>
+              <li>Klaytn recommends that you use Klaytn Wallet on the testnet (Baobao). When you use Klaytn Wallet to manage your assets on the mainnet (Cypress), please carefully read the &#34;Disclaimer&#34; and &#34;Important Notice on Security&#34; below. We assume that you acknowledge the basic characteristics of a blockchain.</li>
             </ul>
             <p className="Disclaimers_title">Disclaimer</p>
             <ul className="Disclaimers_list">
@@ -108,10 +107,8 @@ class Disclaimers extends Component {
             <p className="Disclaimers_title">Klaytn Wallet에 대한 안내</p>
             <ul className="Disclaimers_list">
               <li>Klaytn Wallet은 브라우저를 통해 Klaytn 네트워크와 연결되어 Klaytn 계정 관리를 돕는 도구(Tool)입니다.</li>
-              <li>Klaytn Wallet은 <b>오직</b> 블록체인 어플리케이션 (BApp) 개발의 용도로 만들어졌습니다. 따라서 Klaytn 메인넷(Mainnet) 상에서<br />
-                  <b>그 외의 목적 (개인적 용도 또는 상업 목적)으로 사용해서는 안됩니다.</b>
-              </li>
-              <li>Klaytn은 Klaytn Wallet을 <b>Klaytn 테스트넷 (Baobab) 환경에서만 사용할 것</b>을 권장합니다.</li>
+              <li>Klaytn Wallet은 블록체인 어플리케이션 (BApp) 개발을 지원하기 위해 만들어졌으며, 일반 사용자를 위한 서비스를 목표로 출시 되지는 않았습니다. </li>
+              <li>Klaytn은 Klaytn Wallet을 테스트넷 (Baobab) 환경에서 사용할 것을 권장합니다. 메인넷 (Cypress)에서 자산을 이동하기 위해 Klaytn Wallet을 사용하고자 한다면, 아래 &#34;책임의 한계&#34; 와 &#34;보안에 대한 중요 알림&#34; 을 반드시 숙독하시기 바랍니다. Klaytn Wallet을 사용하려면 블록체인에 대한 기본적인 이해가 반드시 필요합니다.</li>
             </ul>
             <p className="Disclaimers_title">책임의 한계</p>
             <ul className="Disclaimers_list">
