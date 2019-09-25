@@ -62,7 +62,7 @@
   position: absolute;
   width: 190px;
   left: 0;
-  top: 43px;
+  top: 0px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.35);
   background-color: $Scope-blue;
   z-index: 10;
@@ -80,6 +80,16 @@
     padding-left: 41px;
     color: $Grey-one;
     transition: background-color 100ms;
+    &:after {
+      content: "";
+      display: inline-block;
+      background-image: url(/static/images/icon-link-on.svg);
+      width: 10px;
+      height: 10px;
+      margin-left: 10px;
+      vertical-align: baseline;
+      opacity: .5;
+    }
     &:hover {
       background-color: #3d4060;
     }
@@ -90,6 +100,9 @@
       color: $Blue-green-one;
     }
     &.on:after {
+      display: none;
+    }
+    &.on:before {
       content:'';
       position: absolute;
       top: 50%;
