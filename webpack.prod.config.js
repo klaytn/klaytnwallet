@@ -9,11 +9,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
 
 require('babel-polyfill')
 
 const extractCSS = new ExtractTextPlugin('bundle-[hash:6].css')
 
+const gitRevisionPlugin = new GitRevisionPlugin()
 
 module.exports = {
   devtool: 'source-map',
@@ -94,6 +96,7 @@ module.exports = {
     new webpack.DefinePlugin({
       DEV: false,
       'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.version': JSON.stringify(gitRevisionPlugin.commithash().slice(0, 7)),
     }),
     new CompressionPlugin(),
     new CopyWebpackPlugin([{

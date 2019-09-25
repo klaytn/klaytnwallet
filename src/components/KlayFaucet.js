@@ -8,6 +8,7 @@ import Input from 'components/Input'
 import LodingButton from 'components/LodingButton'
 import FaucetHowItWork from 'components/FaucetHowItWork'
 import FaucetWarningModal from 'components/FaucetWarningModal'
+import AlertPopup from 'components/AlertPopup'
 import APIEntry from 'constants/network'
 import { KLAYTN_KLAY_UINT } from 'constants/url'
 import './KlayFaucet.scss'
@@ -30,7 +31,11 @@ class KlayFaucet extends Component<Props> {
       madeDate: null,
       isLoadingFaucetableBlock: true,
       isShowingModal: false,
-
+      popupShow: false,
+      buttonName: 'OK',
+      title: 'Your KLAY Fauccet request accepted.',
+      message: 'You can run faucet once every 24 hours.',
+      faucetMessage: 'You can run faucet once every 24 hours (last time you ran faucet was 24 hours ago).'
     }
   }
 
@@ -65,7 +70,7 @@ class KlayFaucet extends Component<Props> {
 
           root.setState({
             isLoadingFaucetableBlock: true,
-            madeDate: `You can run faucet once every 24 hours (last time you ran faucet was ${remainingHour} hours ${remainingMinute} minutes ago).`,
+            madeDate: '',
           })
         }else{
           root.setState({
@@ -112,6 +117,7 @@ class KlayFaucet extends Component<Props> {
         this.setState({ isRunning: false })
         this.getFaucetableBlock()
         this.updateBalance()
+        this.setState({ popupShow: true })
       },3000)
     })
   }
@@ -121,7 +127,11 @@ class KlayFaucet extends Component<Props> {
       isShowingModal: false,
     })
   }
-
+  buttonClick= () => {
+    this.setState({
+      popupShow: false,
+    })
+  }
   render() {
     const {
       balance,
@@ -130,6 +140,11 @@ class KlayFaucet extends Component<Props> {
       isLoadingFaucetableBlock,
       isShowingModal,
       madeDate,
+      popupShow,
+      buttonName,
+      title,
+      message,
+      faucetMessage,
     } = this.state
 
     const defaultOptions = {
@@ -143,6 +158,13 @@ class KlayFaucet extends Component<Props> {
     return (
       <div className="KlayFaucet">
         {isShowingModal && <FaucetWarningModal closeModal={this.closeModal} />}
+        <AlertPopup
+              popupShow={popupShow}
+              buttonName={buttonName}
+              buttonClick={this.buttonClick}
+              title={title}
+              message={message}
+        />
         <div className="KlayFaucet__content">
           
           <div className="KlayFaucet__head">
@@ -166,13 +188,17 @@ class KlayFaucet extends Component<Props> {
             madeDate={madeDate}
             isError={isLoadingFaucetableBlock}
           />
-          <LodingButton
-            title="Run Faucet"
-            className="KlayFaucet__button"
-            onClick={this.runFacuet}
-            disabled={isLoadingFaucetableBlock}
-            loadingSet={isRunning}
-          />
+          <div className="faucet__message__box">
+            <LodingButton
+              title="Run Faucet"
+              className="KlayFaucet__button"
+              onClick={this.runFacuet}
+              disabled={isLoadingFaucetableBlock}
+              loadingSet={isRunning}
+            />
+            <span className={cx('faucet__message',{'on': isLoadingFaucetableBlock})}>{isLoadingFaucetableBlock ? faucetMessage : ''}</span>
+          </div>
+          
           <FaucetHowItWork leftBlock={madeDate} />
         </div>
         

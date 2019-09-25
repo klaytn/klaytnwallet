@@ -78,6 +78,12 @@ class App extends Component<Props> {
   popupOpen = () => { 
     this.setState({ showSessionStoragePopup: true })
   }
+  bodyClick = () => {
+    const { networkShow } = this.state
+    if(networkShow) {
+      this.setState({ networkShow: false })
+    }
+  }
 
   render() {
     const { isCheckedSessionStorage, removeSessionStorageButton, showSessionStoragePopup, networkShow } = this.state
@@ -85,7 +91,7 @@ class App extends Component<Props> {
     return !!isCheckedSessionStorage && [
       <Popup key="Popup" />,
       <Toast key="Toast" />,
-      <div className="App" key="App">      
+      <div className="App" key="App" onClick={this.bodyClick}>   
         <section className={cx('App__section', {'App__section__mainPage': browserHistory.getCurrentLocation().pathname === '/'})}>
           <Nav className="App__navSection" onClick={this.navClick} />
           <div className="App__contentSection">
@@ -108,3 +114,5 @@ class App extends Component<Props> {
 }
 
 export default App
+
+global.console.log(`Klaytnwallet: ${process.env.version}`)
