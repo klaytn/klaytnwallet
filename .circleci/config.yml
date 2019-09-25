@@ -1,42 +1,243 @@
 ---
-version: 2
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/klaytnwallet
+  docker:
+    - image: circleci/node:10
+
+sync_s3: &sync_s3
+  run:
+    name: "Sync to S3 after npm install"
+    command: |
+          sudo apt-get install awscli
+          aws s3 sync dist/ s3://$FRONTEND_BUCKET/dist
+
+cloudfront_cache: &cloudfront_cache
+  run:
+    name: "Cloudfront create-invalidation"
+    command: |
+          aws configure set preview.cloudfront true
+          aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "/*"
+
+cloudflare_purge: &cloudflare_purge
+  run:
+    name: "Purging cache of Cloudflare "
+    command: |
+          if [ ! -z "$CLOUDFLARE_ZONE_ID" ]; then
+            echo "Purging cache of Zone ID $CLOUDFLARE_ZONE_ID"
+            curl --fail -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+              -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+              -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+              -H "Content-Type: application/json" \
+              --data '{"purge_everything": true}'
+          else
+            echo "No Cloudflare Zone ID set. Cache will not be purged."
+          fi
 
 jobs:
   deploy:
-    docker:
-      - image: circleci/node:10
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
           keys:
             - node_modules-{{ checksum "package-lock.json" }}
+      - run: 
+          name: "NPM install and build"
+          command: |
+              echo "Start npm install"
+              npm install
 
-      - run: |
-          # Get values specific to the environment we are deploying to
-          eval "CURRENT_ENVIRONMENT=\${ENVIRONMENT_$(echo "${CIRCLE_TAG//-/_}" | cut -d\/ -f 2)}"
-          set -a; eval $(echo $CURRENT_ENVIRONMENT | base64 -d); set +a
-
-          npm install
-          NODE_ENV=production npm run build
-
-          sudo apt-get install awscli
-          aws s3 sync dist/ s3://$FRONTEND_BUCKET/dist
-
-          aws configure set preview.cloudfront true
-          aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "/*"
-
+              echo "start npm run build"
+              NODE_ENV=production npm run build
+      - *sync_s3
+      - *cloudfront_cache
+      - *cloudflare_purge
+      - run:
+          name: "test env echo"
+          command: env
       - save_cache:
           key: node_modules-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
 
+  deploy_mainnet:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: "Deploy mainnet"
+          command: echo "Deploy mainnet"
+
+  tag_verify:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: "Verify tag and file verison match"
+          command: |
+            echo "tag version is " $CIRCLE_TAG
+            file_version=v$(.circleci/version.sh)
+            echo "file version is " $file_version
+            if [ $file_version == ${CIRCLE_TAG%-*} ]; then
+              echo "verification pass"
+            else
+              echo "It's not same version."
+              exit 1
+            fi
+
+  signoff_notify:
+    <<: *defaults
+    steps:
+      - run:
+          name: "Signoff slack notification"
+          command: |
+              curl --data '{"text": "A deployment needs approval: <'"https://circleci.com/workflow-run/$CIRCLE_WORKFLOW_ID|$CIRCLE_PROJECT_REPONAME - $CIRCLE_BRANCH"'>"}' "$SLACK_WEBHOOK_URL"
+
+  release_PR:
+    <<: *defaults
+    steps:
+      - add_ssh_keys
+      - checkout
+      - run:
+          name: "Push to release branch"
+          command: |
+              echo "push to release branch: /release/${CIRCLE_TAG%-*}"
+              git checkout -b release/${CIRCLE_TAG%-*}
+              git push origin release/${CIRCLE_TAG%-*}
+      - run:
+          name: "Install hub" 
+          command: |
+              curl -sSLf https://github.com/github/hub/releases/download/v2.12.3/hub-linux-amd64-2.12.3.tgz | \
+                tar zxf - --strip-components=1 -C /tmp && \
+                sudo mv /tmp/bin/hub /usr/local/bin/hub
+              type hub
+      - run:
+          name: "Create pull request" 
+          command: |
+              version=$(hub pr list -s open -L 10 -f "%H%n")
+              echo $version
+
+              if [[ $version == *"release/${CIRCLE_TAG%-*}"* ]]; then
+                echo "PR already exist"
+              else
+                echo "hub pull-request -m "[Master] release/$CIRCLE_TAG QA Signoff" -b $CIRCLE_PROJECT_USERNAME:master -h $CIRCLE_PROJECT_USERNAME:${CIRCLE_TAG%-*}"
+                hub pull-request -b $CIRCLE_PROJECT_USERNAME:master -h $CIRCLE_PROJECT_USERNAME:release/${CIRCLE_TAG%-*} -r $GITHUB_reviewer -l circleci -F- "[Master] release/${CIRCLE_TAG%-*} QA Sign-off \n\n This PR is automatically created by CI to release a new official version of $CIRCLE_PROJECT_REPONAME. \n\n When this PR is approved by QA team, a new version will be released."
+              fi
+
+  major_tagging:
+    <<: *defaults
+    steps:
+      - add_ssh_keys
+      - checkout
+      - run:
+          name: "Generate tag"
+          command: |
+              current_version=$(.circleci/version.sh)
+              echo "git tag v$current_version"
+              git tag v$current_version
+              git push origin v$current_version
+      - run:
+          name: "Delete release branch"
+          command: |
+              #delete release branch. it trigger by merge title
+              version=v$(.circleci/version.sh)
+              if [[ "release/v" = $(git log --oneline -1 | grep -o "release/v") ]]; then
+                echo "Delete branch release/$version"
+                git push origin --delete release/$version
+              else
+                echo "Need to delete branch manually"
+              fi  
+
+
+
 workflows:
-  version: 2
-  deploy:
+#  version: 2
+  workflow_deploy:
     jobs:
-      - deploy:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /env\/.*\/.*/
+    - deploy:
+        name: deploy_dev
+        context: klaytnwallet_dev
+        filters:
+          branches:
+            only:
+              - dev 
+
+    - tag_verify:
+        filters:
+          tags:
+            only: /^v[0-9]+\.[0-9]+\.[0-9]+.*/
+          branches:
+            ignore: /.*/
+
+    - release_PR:
+        requires:
+          - deploy_qa_cypress
+          - deploy_qa_baobab
+        filters:
+          tags:
+            only: /^v[0-9]+\.[0-9]+\.[0-9]+-rc.*/
+          branches:
+            ignore: /.*/
+
+    - deploy:
+        name: deploy_qa_baobab
+        requires:
+          - tag_verify
+        context: klaytnwallet_qa_baobab
+        filters:
+          tags:
+            only: /^v[0-9]+\.[0-9]+\.[0-9]+-rc.*/
+          branches:
+            ignore: /.*/
+
+    - deploy:
+        name: deploy_qa_cypress
+        requires:
+          - tag_verify
+        context: klaytnwallet_qa_cypress
+        filters:
+          tags:
+            only: /^v[0-9]+\.[0-9]+\.[0-9]+-rc.*/
+          branches:
+            ignore: /.*/
+
+    - deploy:
+        name: deploy_prod_baobab
+        context: klaytnwallet_prod_baobab
+        filters:
+          branches:
+            only:
+              - master
+
+    - major_tagging:
+        requires:
+          - deploy_prod_baobab
+        filters:
+          branches:
+            only: master
+
+    - signoff_notify:
+        requires:
+          - major_tagging
+        filters:
+          branches:
+            only: master
+
+    - signoff_hold:
+        requires:
+          - signoff_notify
+        type: approval
+        filters:
+          branches:
+            only: master     
+
+    - deploy:
+        name: deploy_prod_cypress
+        requires:
+          - signoff_hold
+        filters:
+          branches:
+            only: master  
+          
