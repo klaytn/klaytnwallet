@@ -54,9 +54,6 @@ jobs:
       - *sync_s3
       - *cloudfront_cache
       - *cloudflare_purge
-      - run:
-          name: "test env echo"
-          command: env
       - save_cache:
           key: node_modules-{{ checksum "package-lock.json" }}
           paths:
