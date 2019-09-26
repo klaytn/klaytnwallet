@@ -62,14 +62,6 @@ jobs:
           paths:
             - node_modules
 
-  deploy_mainnet:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: "Deploy mainnet"
-          command: echo "Deploy mainnet"
-
   tag_verify:
     <<: *defaults
     steps:
