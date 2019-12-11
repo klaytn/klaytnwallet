@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import ReactHtmlParser from 'react-html-parser'
@@ -88,18 +88,18 @@ class Disclaimers extends Component {
               title='KOREAN'
             />
           </div>
-					<div className={cx('Disclaimers_box', { show: true })}>
-						{this.textLanguageObject.map((data, key) => (
-							<span key={key}>
-								<p className="Disclaimers_title">{ReactHtmlParser(data.title)}</p>
-								<ul className="Disclaimers_list">
-									{data.body.map(description => (
-										<li>{ReactHtmlParser(description)}</li>
-									))}
-								</ul>
-							</span>
-						))}
-					</div>
+          <div className={cx('Disclaimers_box', { show: true })}>
+          	{this.textLanguageObject.map((data, key) => (
+          		<span key={key}>
+          			<p className="Disclaimers_title">{ReactHtmlParser(data.title)}</p>
+          			<ul className="Disclaimers_list">
+          				{data.body.map(description => (
+          					<li>{ReactHtmlParser(description)}</li>
+          				))}
+          			</ul>
+          		</span>
+          	))}
+          </div>
           <div className="Disclaimers_footer">
             <div className="Disclaimers_agree">
               <div 
