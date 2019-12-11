@@ -89,12 +89,12 @@ class Disclaimers extends Component {
             />
           </div>
           <div className={cx('Disclaimers_box', { show: true })}>
-          	{this.textLanguageObject.map((data, key) => (
-          		<span key={key}>
+          	{this.textLanguageObject.map(data => (
+          		<span key={data.title}>
           			<p className="Disclaimers_title">{ReactHtmlParser(data.title)}</p>
           			<ul className="Disclaimers_list">
-          				{data.body.map(description => (
-          					<li>{ReactHtmlParser(description)}</li>
+          				{data.body.map((description, key) => (
+          					<li key={key}>{ReactHtmlParser(description)}</li>
           				))}
           			</ul>
           		</span>
