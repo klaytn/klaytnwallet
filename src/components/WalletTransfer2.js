@@ -181,19 +181,25 @@ class WalletTransfer2 extends Component<Props> {
   transferCoin = () => {
     const { to, value, gas } = this.state
     const root = this
-    let setType = 'VALUE_TRANSFER'
+    let setOption
     caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
     const contractInstance = new caver.klay.Contract(krc20ABI, to)
-    if (contractInstance.options && contractInstance.options.address) {
-      setType = 'Legacy'
-    }
-    caver.klay.sendTransaction({
-      type: setType,
+    setOption = {
+      type: 'VALUE_TRANSFER',
       from: this.HRADataChange(),
       to,
       value: caver.utils.toWei(value, 'ether'),
       gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
-    })
+    }
+    if (contractInstance.options && contractInstance.options.address) {
+      setOption = {
+        from: this.HRADataChange(),
+        to,
+        value: caver.utils.toWei(value, 'ether'),
+        gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
+      }
+    }
+    caver.klay.sendTransaction(setOption)
       .once('transactionHash', (transactionHash) => {
         this.setState({ transactionHash }, this.changeView('complete'))
         this.formReset()
