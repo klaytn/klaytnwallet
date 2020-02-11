@@ -193,6 +193,7 @@ class WalletTransfer2 extends Component<Props> {
     }
     if (contractInstance.options && contractInstance.options.address) {
       setOption = {
+        type: 'SMART_CONTRACT_EXECUTION',
         from: this.HRADataChange(),
         to,
         value: caver.utils.toWei(value, 'ether'),
