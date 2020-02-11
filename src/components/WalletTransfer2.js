@@ -185,7 +185,7 @@ class WalletTransfer2 extends Component<Props> {
     caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
     const contractInstance = new caver.klay.Contract(krc20ABI, to)
     if (contractInstance.options && contractInstance.options.address) {
-      setType = ''
+      setType = 'Legacy'
     }
     caver.klay.sendTransaction({
       type: setType,
