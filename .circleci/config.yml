@@ -224,6 +224,7 @@ workflows:
 
     - deploy:
         name: deploy_prod_cypress
+        context: klaytnwallet_prod_cypress
         requires:
           - signoff_hold
         filters:
