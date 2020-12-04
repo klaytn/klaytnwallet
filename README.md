@@ -59,17 +59,17 @@ Supported (Optimized) | Supported | Supported | Not supported
 > Actual service wallet site
 ```
 1. Baobab testnet
-  - https://baobab.wallet.klaytn.com
+  - https://kaikas.baobab.klaytn.net
   - Use your wallet with a test klay. The Faucet menu is available.
 
 2. Main Network
-  - https://wallet.klaytn.com
+  - https://kaikas.cypress.klaytn.net
   - This site uses real klay. Take care when using your wallet. The Faucet menu is not available.
 
 * Check out the site link below
 ```
-* Baobab testnet url : https://baobab.wallet.klaytn.com
-* Main Network url : https://wallet.klaytn.com
+* Baobab testnet url : https://kaikas.baobab.klaytn.net
+* Main Network url : https://kaikas.cypress.klaytn.net
 
 > Api Type
 ```
@@ -99,7 +99,7 @@ add 'API_HOST','KLAYTN_HOST','CRYPO_PASSWORD' in 'config/default.env'
 Explanation
 'API_HOST' : KLAY Faucet backend API
 'KLAYTN_HOST' : klaytn API
-ex) 'https://api.baobab.klaytn.net:8651'
+ex) 'https://kaikas.baobab.klaytn.net:8651'
 'CRYPO_PASSWORD' : The key used to encrypt the private key.
 ex) '12345A12345B12345C12345'
 ```
