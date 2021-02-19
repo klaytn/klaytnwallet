@@ -37,7 +37,7 @@ class AccessByKeystore extends Component<Props> {
         const isValidKeystore = parsedKeystore.version &&
           parsedKeystore.id &&
           parsedKeystore.address &&
-          parsedKeystore.crypto &&
+          (parsedKeystore.crypto || parsedKeystore.keyring) &&
           !parsedKeystore.addressAsHumanReadableString
 
         if (!isValidKeystore) {
