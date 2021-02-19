@@ -2,7 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 
 import './FaucetHowItWork.scss'
-import { KLAYTN_KLAY_UINT } from 'constants/url'
+import { KLAYTN_KLAY_UINT } from 'walletConstants/url'
 const FaucetHowItWork = ({ leftBlock }) => (
   <div className="FaucetHowItWork">
     <header className="FaucetHowItWork__howItWorkTitle">

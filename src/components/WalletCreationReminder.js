@@ -1,6 +1,6 @@
 import React from 'react'
 import './WalletCreationReminder.scss'
-import { KLAYTN_KLAY_UINT, KLAYTN_URL_NAME } from 'constants/url'
+import { KLAYTN_KLAY_UINT, KLAYTN_URL_NAME } from 'walletConstants/url'
 const WalletCreationReminder = () => (
   <div className="WalletCreationReminder">
     {KLAYTN_URL_NAME == 'Main Network' ? (

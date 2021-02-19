@@ -6,7 +6,7 @@ import Button from 'components/Button'
 import './ContentHeader.scss'
 import ui from 'utils/ui'
 import { pipe } from 'utils/Functional'
-import {  KLAYTN_URL_NAME, KLAYTN_MAINNET_URL, KLAYTN_BAOBAB_URL } from 'constants/url'
+import {  KLAYTN_URL_NAME, KLAYTN_MAINNET_URL, KLAYTN_BAOBAB_URL } from 'walletConstants/url'
 const HEALTHCHECK_INTERVAL = 1000
 const CRYPO_PASSWORD = process && process.env.CRYPO_PASSWORD
 console.log(KLAYTN_URL_NAME)

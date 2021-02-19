@@ -8,7 +8,7 @@ import Button from 'components/Button'
 import { pipe } from 'utils/Functional'
 import BN from 'bignumber.js'
 import './PageAlertPopup.scss'
-import { KLAYTN_KLAY_UINT } from 'constants/url'
+import { KLAYTN_KLAY_UINT } from 'walletConstants/url'
 import { HRAMADEVALUE } from 'utils/crypto'
 
 class PageAlertPopup extends Component<Props> {

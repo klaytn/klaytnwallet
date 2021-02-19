@@ -9,8 +9,8 @@ import LodingButton from 'components/LodingButton'
 import FaucetHowItWork from 'components/FaucetHowItWork'
 import FaucetWarningModal from 'components/FaucetWarningModal'
 import AlertPopup from 'components/AlertPopup'
-import APIEntry from 'constants/network'
-import { KLAYTN_KLAY_UINT } from 'constants/url'
+import APIEntry from 'walletConstants/network'
+import { KLAYTN_KLAY_UINT } from 'walletConstants/url'
 import './KlayFaucet.scss'
 const FAUCET_SUCCESS = 0
 const FAUCET_FAILED = 900

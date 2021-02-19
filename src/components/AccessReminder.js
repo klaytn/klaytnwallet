@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import './AccessReminder.scss'
-import { KLAYTN_KLAY_UINT, KLAYTN_URL_NAME } from 'constants/url'
+import { KLAYTN_KLAY_UINT, KLAYTN_URL_NAME } from 'walletConstants/url'
 const AccessReminder = ({ isChecked, onClick }) => (
   <div className="AccessReminder">
     <div 

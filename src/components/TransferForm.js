@@ -11,7 +11,7 @@ import ErrorMessage from 'components/ErrorMessage'
 import { pipe } from 'utils/Functional'
 import { addCommas } from 'utils/misc'
 import { isHRA } from 'utils/crypto'
-import { KLAYTN_KLAY_UINT } from 'constants/url'
+import { KLAYTN_KLAY_UINT } from 'walletConstants/url'
 type Props = {
 
 }
