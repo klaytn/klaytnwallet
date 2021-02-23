@@ -1,13 +1,13 @@
 {
   "name": "klaytn-wallet",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Klaytn Wallet Project",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "jest",
-    "build": "webpack --config ./webpack.prod.config.js",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 webpack --config ./webpack.prod.config.js",
     "start": "node ./klaytnwalletFront.production.js",
     "start:local": "node ./klaytnwalletFront.local.js webpack.config.js --watch",
     "cypress:open": "cypress open"
