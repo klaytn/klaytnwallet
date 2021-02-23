@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { browserHistory } from 'react-router'
 import Button from 'components/Button'
-import { KLAYTN_URL_NAME } from 'constants/url'
+import { KLAYTN_URL_NAME } from 'walletConstants/url'
 import cx from 'classnames'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from '../store'

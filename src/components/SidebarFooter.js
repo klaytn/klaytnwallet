@@ -9,7 +9,7 @@ import {
   KLAYTN_MAIL_URL,
   KLAYTN_MEDIUM_URL,
   KLAYTN_TWITTER_URL 
-} from 'constants/url'
+} from 'walletConstants/url'
 
 const externalLinks = [{
   type: 'klaytn',

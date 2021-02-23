@@ -12,7 +12,7 @@ import MyToken from 'components/MyToken'
 import Button from 'components/Button'
 import ui from 'utils/ui'
 import { download } from 'utils/misc'
-import { KLAYTN_SCOPE_URL } from 'constants/url'
+import { KLAYTN_SCOPE_URL } from 'walletConstants/url'
 import { isHRA, humanReadableChange } from 'utils/crypto'
 import './MyWallet.scss'
 

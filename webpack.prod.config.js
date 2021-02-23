@@ -75,9 +75,13 @@ module.exports = {
       reducers: path.resolve(__dirname, 'src/reducers/'),
       actions: path.resolve(__dirname, 'src/actions'),
       images: path.resolve(__dirname, 'static/images/'),
-      constants: path.resolve(__dirname, 'src/constants/'),
+      walletConstants: path.resolve(__dirname, 'src/constants/'),
       enhancers: path.resolve(__dirname, 'src/enhancers/'),
     },
+  },
+  node: {
+    fs: 'empty',
+    net: 'empty',
   },
   optimization: {
     minimizer: [
