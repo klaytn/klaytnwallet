@@ -10,7 +10,7 @@ import PlusButton from 'components/PlusButton'
 import MyTokenReminder from 'components/MyTokenReminder'
 import { krc20ABI, isHRA, humanReadableChange } from 'utils/crypto'
 import numeral from 'numeral'
-import { KLAYTN_KLAY_UINT } from 'constants/url'
+import { KLAYTN_KLAY_UINT } from 'walletConstants/url'
 import './MyToken.scss'
 
 const INIT_TOKEN_LISTING_INTERVAL = 7000

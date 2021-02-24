@@ -9,10 +9,11 @@ import { caver } from 'klaytn/caver'
 import MyToken from 'components/MyToken'
 import TransferForm from 'components/TransferForm'
 import TransferTotal from 'components/TransferTotal'
+
 import TransferComplete from 'components/TransferComplete'
 import { krc20ABI, humanReadableChange } from 'utils/crypto'
 import { limit6Decimal } from 'utils/misc'
-import { KLAYTN_KLAY_UINT } from 'constants/url'
+import { KLAYTN_KLAY_UINT } from 'walletConstants/url'
 
 import './WalletTransfer2.scss'
 
@@ -181,7 +182,6 @@ class WalletTransfer2 extends Component<Props> {
   transferCoin = async () => {
     const { to, value, gas } = this.state
     const root = this
-    await caver.klay.accounts.wallet.add(this.wallet.privateKey, this.HRADataChange())
     const setType = await caver.klay.isContractAccount(to) ? 'SMART_CONTRACT_EXECUTION' : 'VALUE_TRANSFER'
 
     await caver.klay.sendTransaction({
@@ -220,19 +220,18 @@ class WalletTransfer2 extends Component<Props> {
     contractInstance.methods.transfer(toAddress, decimalProcessedTokenAmount).send({
       from: fromAddress,
       gas: gas || DEFAULT_TOKEN_TRANSFER_GAS,
-    })
-      .once('transactionHash', (transactionHash) => {
-        this.setState({ transactionHash }, this.changeView('complete'))
-        this.formReset()
-      })
-      .on('error', (e) => {
-        console.log(e.message)
+    }).then((value) => {
+      const transactionHash = value.transactionHash
+      this.setState({ transactionHash }, this.changeView('complete'))
+      this.formReset()
+    }).catch((reason) =>{
+      console.log(reason)
         this.setState({
           popupShow: true,
-          errorMessage: e.message,
+          errorMessage: reason,
         })
-      // ui.showToast({ msg: 'Error occurred.' })
-      })
+    });
+  
   }
   humanReadableCreatedCheck = (isCreated) => {
     this.setState({ humanReadableCreated: isCreated })
