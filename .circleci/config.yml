@@ -112,7 +112,7 @@ jobs:
                 echo "PR already exist"
               else
                 echo "hub pull-request -m "[Master] release/$CIRCLE_TAG QA Signoff" -b $CIRCLE_PROJECT_USERNAME:master -h $CIRCLE_PROJECT_USERNAME:${CIRCLE_TAG%-*}"
-                hub pull-request -b $CIRCLE_PROJECT_USERNAME:master -h $CIRCLE_PROJECT_USERNAME:release/${CIRCLE_TAG%-*} -r $GITHUB_reviewer -l circleci -F- "[Master] release/${CIRCLE_TAG%-*} QA Sign-off \n\n This PR is automatically created by CI to release a new official version of $CIRCLE_PROJECT_REPONAME. \n\n When this PR is approved by QA team, a new version will be released."
+                echo -e "[Master] release/${CIRCLE_TAG%-*} QA Sign-off\n\nThis PR is automatically created by CI to release a new official version of $CIRCLE_PROJECT_REPONAME.\n\nWhen this PR is approved by QA team, a new version will be released." | hub pull-request -b $CIRCLE_PROJECT_USERNAME:master -h $CIRCLE_PROJECT_USERNAME:release/${CIRCLE_TAG%-*} -r $GITHUB_reviewer -l circleci -F-
               fi
 
   major_tagging:
