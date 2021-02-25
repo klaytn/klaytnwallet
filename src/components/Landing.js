@@ -5,7 +5,7 @@ import LandingItem from 'components/LandingItem'
 import { Link } from 'react-router'
 import cookie from 'utils/cookie'
 import Disclaimers from 'components/Disclaimers'
-import {  KLAYTN_URL_NAME } from 'constants/url'
+import {  KLAYTN_URL_NAME } from 'walletConstants/url'
 import './Landing.scss'
 
 class Landing extends Component {

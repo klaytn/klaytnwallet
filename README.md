@@ -59,7 +59,7 @@ Supported (Optimized) | Supported | Supported | Not supported
 > Actual service wallet site
 ```
 1. Baobab testnet
-  - https://baobab.wallet.klaytn.com
+  - https://baobab.wallet.klaytn.com/
   - Use your wallet with a test klay. The Faucet menu is available.
 
 2. Main Network
@@ -68,7 +68,7 @@ Supported (Optimized) | Supported | Supported | Not supported
 
 * Check out the site link below
 ```
-* Baobab testnet url : https://baobab.wallet.klaytn.com
+* Baobab testnet url : https://baobab.wallet.klaytn.com/
 * Main Network url : https://wallet.klaytn.com
 
 > Api Type

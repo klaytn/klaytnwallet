@@ -1,8 +1,7 @@
 import React from 'react'
 
 import Button from 'components/Button'
-import { KLAYTN_SCOPE_URL } from 'constants/url'
-
+import { KLAYTN_SCOPE_URL } from 'walletConstants/url'
 import './TransferComplete.scss'
 
 type Props = {

@@ -15,7 +15,7 @@ import KlayFaucet from 'components/KlayFaucet'
 import Landing from 'components/Landing'
 import MyWallet from 'components/MyWallet'
 import ErrorPage from 'components/ErrorPage'
-import {  KLAYTN_URL_NAME } from 'constants/url'
+import {  KLAYTN_URL_NAME } from 'walletConstants/url'
 import './index.scss'
 
 import * as tokenActions from 'actions/token'

@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import cx from 'classnames'
 
 import { caver } from 'klaytn/caver'
-import { KLAYTN_SCOPE_URL } from 'constants/url'
+import { KLAYTN_SCOPE_URL } from 'walletConstants/url'
 
 import './Header.scss'
 
