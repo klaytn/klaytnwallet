@@ -7,34 +7,13 @@ import cookie from 'utils/cookie'
 import Disclaimers from 'components/Disclaimers'
 import {  KLAYTN_URL_NAME } from 'walletConstants/url'
 import './Landing.scss'
-
+import './Modal.scss'
 class Landing extends Component {
-  state = {
-    isShowingModal: false,
-  }
-
-  componentDidMount() {
-    this.showModal()
-  }
-
-  showModal = () => {
-    if (cookie.get('hideWalletScamPopup')) return
-    this.setState({ isShowingModal: true })
-  }
-
-  closeModal = () => {
-    this.setState({ isShowingModal: false })
-  }
 
   render() {
-    const { isShowingModal } = this.state
     return (
       <Fragment>
         <Disclaimers/>
-        <Modal
-          closeModal={this.closeModal}
-          isShowingModal={isShowingModal}
-        />
         <div className="Landing">     
           <header className="Landing__title">Welcome to Klaytn Wallet</header>
           {KLAYTN_URL_NAME === 'Main Network' ? (
