@@ -7,6 +7,7 @@ import cookie from 'utils/cookie'
 import Disclaimers from 'components/Disclaimers'
 import {  KLAYTN_URL_NAME } from 'walletConstants/url'
 import './Landing.scss'
+/* 다른 팝업에 스타일 적용되는 부분이 있어서 추가 */
 import './Modal.scss'
 class Landing extends Component {
 
