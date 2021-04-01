@@ -1,6 +1,6 @@
 {
   "name": "klaytn-wallet",
-  "version": "2.3.0",
+  "version": "2.4.1",
   "description": "Klaytn Wallet Project",
   "directories": {
     "test": "test"

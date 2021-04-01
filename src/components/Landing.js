@@ -7,43 +7,20 @@ import cookie from 'utils/cookie'
 import Disclaimers from 'components/Disclaimers'
 import {  KLAYTN_URL_NAME } from 'walletConstants/url'
 import './Landing.scss'
-
+/* 다른 팝업에 스타일 적용되는 부분이 있어서 추가 */
+import './Modal.scss'
 class Landing extends Component {
-  state = {
-    isShowingModal: false,
-  }
-
-  componentDidMount() {
-    this.showModal()
-  }
-
-  showModal = () => {
-    if (cookie.get('hideWalletScamPopup')) return
-    this.setState({ isShowingModal: true })
-  }
-
-  closeModal = () => {
-    this.setState({ isShowingModal: false })
-  }
-
   render() {
-    const { isShowingModal } = this.state
     return (
       <Fragment>
         <Disclaimers/>
-        <Modal
-          closeModal={this.closeModal}
-          isShowingModal={isShowingModal}
-        />
         <div className="Landing">     
           <header className="Landing__title">Welcome to Klaytn Wallet</header>
           {KLAYTN_URL_NAME === 'Main Network' ? (
             <p className="Landing__label">M a i n&nbsp;&nbsp;N e t w o r k</p>           
           ):(
             <p className="Landing__label">B a o b a b&nbsp;&nbsp;T e s t n e t</p>
-          )}
-          
-          
+          )} 
           <div className="main__link_list">
             <ul>
               <li><Link to={'/create'}><button className="create"><img className="TabItem__icon" src="/static/images/icon-create-on.svg"/>Create Account</button></Link></li>
