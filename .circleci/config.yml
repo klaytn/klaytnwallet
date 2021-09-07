@@ -10,6 +10,7 @@ sync_s3: &sync_s3
   run:
     name: "Sync to S3 after npm install"
     command: |
+          sudo apt-get update
           sudo apt-get install awscli
           aws s3 sync dist/ s3://$FRONTEND_BUCKET/dist
 
