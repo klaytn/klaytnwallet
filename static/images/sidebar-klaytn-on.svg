@@ -1,16 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon / Klaytn / On</title>
     <defs>
-        <style>
-            .cls-1{fill:#fff}.cls-2{fill:none}
-        </style>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
     </defs>
-    <g id="Logo_Footer_Klaytn_on" transform="translate(3 3)">
-        <g id="그룹_2978" data-name="그룹 2978">
-            <path id="패스_1984" d="M52.9 21.335l6.053 6.018a8.8 8.8 0 0 0 0-12.053z" class="cls-1" data-name="패스 1984" transform="translate(-43.619 -12.616)"/>
-            <path id="패스_1985" d="M22.465 52.1L16.5 58.047l5.965 2.453 5.965-2.456z" class="cls-1" data-name="패스 1985" transform="translate(-13.605 -42.96)"/>
-            <path id="패스_1986" d="M24.811 8.509l6.175-6.158L25.3 0l-5.7 13.684z" class="cls-1" data-name="패스 1986" transform="translate(-16.161)"/>
-            <path id="패스_1987" d="M0 10.781a8.724 8.724 0 0 0 2.368 6L8.316 2.5z" class="cls-1" data-name="패스 1987" transform="translate(0 -2.061)"/>
-        </g>
-        <path id="사각형_4503" d="M0 0h24v24H0z" class="cls-2" data-name="사각형 4503" transform="translate(-3 -3)"/>
+    <g id="Icon-/-Klaytn-/-On" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Rectangle"></g>
+        <path d="M12.0006702,13.1119788 L17.6052805,18.7184809 C14.3670715,21.4269271 9.63375664,21.4271833 6.39529144,18.7192496 L6.39529144,18.7192496 L12.0006702,13.1119788 Z M18.7199015,6.39039243 C21.4269215,9.62995072 21.4267166,14.3649144 18.7191843,17.6042678 L18.7191843,17.6042678 L13.1145739,11.9977144 Z M10.1158226,4.59555742 L5.21878126,17.5315499 C3.78294694,15.7749955 3.13301009,13.5909482 3.26722894,11.4464627 L3.26722894,11.4464627 L10.1158226,4.59555742 Z M12.3096604,3.24995388 C14.1994823,3.31616353 16.0715791,3.9905078 17.6071555,5.27498529 L17.6071555,5.27498529 L7.84703736,15.038449 Z" id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-2)"></path>
     </g>
 </svg>
