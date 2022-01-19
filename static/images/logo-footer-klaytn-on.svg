@@ -1,23 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.26 20">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon / Klaytn / On</title>
     <defs>
-        <style>
-            .cls-1{fill:#cacbd8}
-        </style>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
     </defs>
-    <g id="Logo_Footer_Klaytn" transform="translate(-979 -3629.853)">
-        <g id="그룹_2978" data-name="그룹 2978" transform="translate(979 3629.853)">
-            <path id="패스_1984" d="M52.9 22.18l6.9 6.86a10.036 10.036 0 0 0 0-13.74z" class="cls-1" data-name="패스 1984" transform="translate(-42.32 -12.24)"/>
-            <path id="패스_1985" d="M23.3 52.1l-6.8 6.78 6.8 2.8 6.8-2.8z" class="cls-1" data-name="패스 1985" transform="translate(-13.2 -41.68)"/>
-            <path id="패스_1986" d="M25.54 9.7l7.04-7.02L26.1 0l-6.5 15.6z" class="cls-1" data-name="패스 1986" transform="translate(-15.68)"/>
-            <path id="패스_1987" d="M0 11.94a9.945 9.945 0 0 0 2.7 6.84L9.48 2.5z" class="cls-1" data-name="패스 1987" transform="translate(0 -2)"/>
-        </g>
-        <g id="그룹_2979" data-name="그룹 2979" transform="translate(1005.2 3634.853)">
-            <path id="패스_1988" d="M305.9 40.1a2.721 2.721 0 0 0-2.46 1.34v-1.2h-1.34v7.84h1.34v-5.12a1.861 1.861 0 0 1 2.08-1.66c1.34 0 2.08.8 2.08 2.28v4.5h1.34v-4.76a2.938 2.938 0 0 0-3.04-3.22z" class="cls-1" data-name="패스 1988" transform="translate(-267.88 -37.08)"/>
-            <path id="패스_1989" d="M243.58 27.8h-1.34v1.56a1.033 1.033 0 0 1-1.04 1.04h-1.52l-2.5 6.02-2.5-6.02h-1.38l3.2 7.68-.82 1.98h-1.76v1.18h1.36a1.919 1.919 0 0 0 1.78-1.18l3.52-8.46h1.66v4.68a1.793 1.793 0 0 0 1.84 1.98h1.86v-1.18h-2.34v-5.5h2.34V30.4h-2.34v-2.6z" class="cls-1" data-name="패스 1989" transform="translate(-212.84 -27.24)"/>
-            <path id="패스_1990" d="M201.48 42.94c0-1.76-1.26-2.84-3.26-2.84a3.253 3.253 0 0 0-3.4 2.98h1.32a2.069 2.069 0 0 1 2.06-1.84 1.748 1.748 0 0 1 1.96 1.84v.52h-1.84c-2.6 0-3.72.82-3.72 2.26 0 1.46 1.16 2.36 2.96 2.36a2.632 2.632 0 0 0 2.68-1.38 1.353 1.353 0 0 0 1.54 1.26h.88v-1.18h-1.18zm-1.34 2.84c0 .8-.98 1.42-2.36 1.42-1.1 0-1.8-.42-1.8-1.22v-.32c0-.76.72-1.18 2.32-1.18h1.84z" class="cls-1" data-name="패스 1990" transform="translate(-181.88 -37.08)"/>
-            <path id="패스_1991" d="M178.44 25h-1.34v9.02a1.793 1.793 0 0 0 1.84 1.98h.68v-1.18h-1.18z" class="cls-1" data-name="패스 1991" transform="translate(-167.88 -25)"/>
-            <path id="사각형_3314" d="M0 0h1.34v11H0z" class="cls-1" data-name="사각형 3314"/>
-            <path id="패스_1992" d="M147.865 25h-1.68l-4.16 4.14a1.076 1.076 0 0 0-.08 1.44l4.34 5.42h1.68L143 29.82z" class="cls-1" data-name="패스 1992" transform="translate(-139.565 -25)"/>
-        </g>
+    <g id="Icon-/-Klaytn-/-On" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Rectangle"></g>
+        <path d="M12.0006702,13.1119788 L17.6052805,18.7184809 C14.3670715,21.4269271 9.63375664,21.4271833 6.39529144,18.7192496 L6.39529144,18.7192496 L12.0006702,13.1119788 Z M18.7199015,6.39039243 C21.4269215,9.62995072 21.4267166,14.3649144 18.7191843,17.6042678 L18.7191843,17.6042678 L13.1145739,11.9977144 Z M10.1158226,4.59555742 L5.21878126,17.5315499 C3.78294694,15.7749955 3.13301009,13.5909482 3.26722894,11.4464627 L3.26722894,11.4464627 L10.1158226,4.59555742 Z M12.3096604,3.24995388 C14.1994823,3.31616353 16.0715791,3.9905078 17.6071555,5.27498529 L17.6071555,5.27498529 L7.84703736,15.038449 Z" id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-2)"></path>
     </g>
 </svg>
