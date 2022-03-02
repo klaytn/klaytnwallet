@@ -57,6 +57,8 @@ class WalletTransfer2 extends Component<Props> {
     let klayAccounts = sessionStorage.getItem('address')
     klayAccounts = humanReadableChange(klayAccounts)
 
+    this.updateGasPrice()
+
     if (caver.klay.accounts.wallet[0]) {
       klayAccounts = klayAccounts || caver.klay.accounts.wallet[0].address
     }
@@ -72,8 +74,6 @@ class WalletTransfer2 extends Component<Props> {
     if (pathname !== '/transfer' && pathname.indexOf('/transfer/') < 0) {
       browserHistory.replace('/ErrorPage')
     }
-
-    this.updateGasPrice()
   }
 
   updateGasPrice = async () => {
