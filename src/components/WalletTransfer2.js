@@ -21,7 +21,7 @@ type Props = {
 
 }
 
-const KLAY_GAS_PRICE = caver.utils.toWei('25', 'shannon')
+var KLAY_GAS_PRICE = caver.utils.toWei('25', 'shannon')
 const DEFAULT_KLAY_TRANSFER_GAS = 100000
 const DEFAULT_TOKEN_TRANSFER_GAS = 100000
 const MAX_INTEGER_LENGTH = 14
@@ -57,6 +57,8 @@ class WalletTransfer2 extends Component<Props> {
     let klayAccounts = sessionStorage.getItem('address')
     klayAccounts = humanReadableChange(klayAccounts)
 
+    this.updateGasPrice()
+
     if (caver.klay.accounts.wallet[0]) {
       klayAccounts = klayAccounts || caver.klay.accounts.wallet[0].address
     }
@@ -72,6 +74,16 @@ class WalletTransfer2 extends Component<Props> {
     if (pathname !== '/transfer' && pathname.indexOf('/transfer/') < 0) {
       browserHistory.replace('/ErrorPage')
     }
+  }
+
+  updateGasPrice = async () => {
+    const gp = await caver.rpc.klay.getGasPrice()
+    KLAY_GAS_PRICE = caver.utils.toBN(gp).toString()
+    this.setState({
+      gasPrice: KLAY_GAS_PRICE,
+      totalGasFee: caver.utils.fromWei(`${DEFAULT_KLAY_TRANSFER_GAS * KLAY_GAS_PRICE}`) || '',
+    })
+    console.log('gas price updated', KLAY_GAS_PRICE)
   }
 
   handleChange = (e) => {
