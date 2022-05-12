@@ -22,9 +22,10 @@ type Props = {
 class KlayFaucet extends Component<Props> {
   constructor() {
     super()
-    this.wallet = caver.klay.accounts.wallet[0]
+    this.wallet = {}
     
     this.state = {
+      wallet:'',
       balance: '0',
       isRunning: false,
       isRunningComplete: true,
@@ -40,13 +41,6 @@ class KlayFaucet extends Component<Props> {
   }
 
   componentDidMount() {
-    if (!this.wallet) {
-      browserHistory.push('/access?next=faucet')
-      return
-    }
-
-    this.getFaucetableBlock()
-    this.updateBalance()
   }
 
   getFaucetableBlock = () => {
@@ -81,6 +75,17 @@ class KlayFaucet extends Component<Props> {
     }).catch(function (e) {
         console.log(e);
     });
+  }
+
+  changeWallet = (e) => {
+    if(e.target.value) {
+      this.wallet.address = e.target.value
+    }
+  }
+
+  onAddressBlur = () => {
+    this.getFaucetableBlock()
+    this.updateBalance()
   }
 
   updateBalance = () => {
@@ -174,8 +179,9 @@ class KlayFaucet extends Component<Props> {
           </div>
           
           <Input
-            value={this.wallet && this.wallet.address}
-            readOnly
+            onChange={this.changeWallet}
+            onBlur={this.onAddressBlur}
+            placeholder="Please put your wallet address here"
             label="Account Address"
             className="KlayFaucet__input KlayFaucet__address"
           />
