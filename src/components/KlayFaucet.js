@@ -22,9 +22,10 @@ type Props = {
 class KlayFaucet extends Component<Props> {
   constructor() {
     super()
-    this.wallet = caver.klay.accounts.wallet[0]
+    this.wallet = {}
     
     this.state = {
+      wallet:'',
       balance: '0',
       isRunning: false,
       isRunningComplete: true,
@@ -33,6 +34,7 @@ class KlayFaucet extends Component<Props> {
       isShowingModal: false,
       popupShow: false,
       buttonName: 'OK',
+      isInvalidAddress: true,
       title: 'Your KLAY Fauccet request accepted.',
       message: 'You can run faucet once every 24 hours.',
       faucetMessage: 'You can run faucet once every 24 hours (last time you ran faucet was 24 hours ago).'
@@ -40,13 +42,6 @@ class KlayFaucet extends Component<Props> {
   }
 
   componentDidMount() {
-    if (!this.wallet) {
-      browserHistory.push('/access?next=faucet')
-      return
-    }
-
-    this.getFaucetableBlock()
-    this.updateBalance()
   }
 
   getFaucetableBlock = () => {
@@ -75,12 +70,32 @@ class KlayFaucet extends Component<Props> {
         }else{
           root.setState({
             isLoadingFaucetableBlock: false,
+            isInvalidAddress:false,
             madeDate: 'Faucet is ready to run.',
           })
         }
     }).catch(function (e) {
         console.log(e);
     });
+  }
+
+  changeWallet = (e) => {
+    if(e.target.value) {
+      this.wallet.address = e.target.value
+    }
+  }
+
+  onAddressBlur = () => {
+    if(!caver.utils.isAddress(this.wallet.address)) {
+      this.setState({
+        isLoadingFaucetableBlock: true,
+        isInvalidAddress: true,
+        madeDate: 'Invalid address',
+      })
+      return
+    }
+    this.getFaucetableBlock()
+    this.updateBalance()
   }
 
   updateBalance = () => {
@@ -138,6 +153,7 @@ class KlayFaucet extends Component<Props> {
       isRunning,
       isRunningComplete,
       isLoadingFaucetableBlock,
+      isInvalidAddress,
       isShowingModal,
       madeDate,
       popupShow,
@@ -174,8 +190,9 @@ class KlayFaucet extends Component<Props> {
           </div>
           
           <Input
-            value={this.wallet && this.wallet.address}
-            readOnly
+            onChange={this.changeWallet}
+            onBlur={this.onAddressBlur}
+            placeholder="Please put your wallet address here"
             label="Account Address"
             className="KlayFaucet__input KlayFaucet__address"
           />
@@ -193,10 +210,12 @@ class KlayFaucet extends Component<Props> {
               title="Run Faucet"
               className="KlayFaucet__button"
               onClick={this.runFacuet}
-              disabled={isLoadingFaucetableBlock}
+              disabled={isLoadingFaucetableBlock || isInvalidAddress}
               loadingSet={isRunning}
             />
+            {!isInvalidAddress &&
             <span className={cx('faucet__message',{'on': isLoadingFaucetableBlock})}>{isLoadingFaucetableBlock ? faucetMessage : ''}</span>
+            }
           </div>
           
           <FaucetHowItWork leftBlock={madeDate} />

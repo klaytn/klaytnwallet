@@ -21,21 +21,6 @@ cloudfront_cache: &cloudfront_cache
           aws configure set preview.cloudfront true
           aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "/*"
 
-cloudflare_purge: &cloudflare_purge
-  run:
-    name: "Purging cache of Cloudflare "
-    command: |
-          if [ ! -z "$CLOUDFLARE_ZONE_ID" ]; then
-            echo "Purging cache of Zone ID $CLOUDFLARE_ZONE_ID"
-            curl --fail -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
-              -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
-              -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
-              -H "Content-Type: application/json" \
-              --data '{"purge_everything": true}'
-          else
-            echo "No Cloudflare Zone ID set. Cache will not be purged."
-          fi
-
 jobs:
   deploy:
     <<: *defaults
@@ -54,7 +39,6 @@ jobs:
               NODE_ENV=production npm run build
       - *sync_s3
       - *cloudfront_cache
-      - *cloudflare_purge
       - save_cache:
           key: node_modules-{{ checksum "package-lock.json" }}
           paths:

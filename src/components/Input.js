@@ -68,7 +68,7 @@ class Input extends Component<Props> {
         {errorMessage !== undefined && (
           <p className={classNames('Input__error', {'show':errorMessage})}>{errorMessage || ''}</p>
         )}
-        {!errorMessage && !isInvalidData && onBlur && (
+        {!errorMessage && !isInvalidData && onBlur && value && (
           <p className={classNames('Input__error success', {'show': value.length > 0 && isSuccess !== null && !isSuccess})}>{ !isSuccess ? 'This custom address does not exist, please check again':''}</p>
         )}
 
