@@ -67,17 +67,38 @@ class WalletCreationStep3 extends Component<Props> {
           </Fragment>
         )}
         render={() => (
-          <div className="input__box">
+          <div className="WalletCreationStep3__Info">
             <InputCopy
-              value={privateKey}
+              className="WalletCreationStep3__Input"
+              name="privateKey"
               label="Private Key"
+              value={privateKey}
+              isTooltip={true}
+              tooltipText={(
+                <Fragment>
+                  <p>This refers to the 32 byte private key commonly used in public key cryptography (following the same format as in Ethereum); it is used for transaction signing.</p>
+                  <p>Please store your private key securely, as its compromise can lead to loss of control of your account and assets within the account.</p>
+                </Fragment>
+              )}
+              styleType="oneLine"
+              readOnly
+              eye
             />
             <InputCopy
-              value={this.madeWalletKey()}
-              className="textarea__show"
+              className="WalletCreationStep3__Input"
+              name="Klaytn Wallet Key"
               label="Klaytn Wallet Key"
-              clickEvent={this.togglePrivateKey}
+              value={this.madeWalletKey()}
+              isTooltip={true}
+              tooltipText={(
+                <Fragment>
+                  <p>Klaytn Wallet Key contains important information that users need in order to access their account: the private key AND the account address. Users with custom address accounts are required to use Klaytn Wallet Key when signing in to services on Klaytn.</p>
+                  <p>Please note that Klaytn Wallet Key should NOT be used for transaction signing; it is for sign-in purpose only.</p>
+                </Fragment>
+              )}
               styleType="twoLine"
+              readOnly
+              eye
             />
             </div>
         )}

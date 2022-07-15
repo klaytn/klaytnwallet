@@ -29,3 +29,21 @@
     
   }
 }
+
+.WalletCreationStep3__Info {
+  margin-bottom: 60px;
+}
+
+.WalletCreationStep3__Input {
+  vertical-align: middle;
+  margin-bottom: 40px;
+  .InputCopy__label {
+    display: inline-block;
+  }
+  .InputCopy__oneLine {
+    font-size: 12px;
+    &.InputCopy__bullet {
+      font-size: 18px;
+    }
+  }
+}

@@ -123,7 +123,6 @@ class MyWallet extends Component<Props> {
               className="MyWallet__Input"
               name="privateKey"
               label="Private Key"
-              labelClassName="MyWallet__hideButton"
               value={this.wallet.privateKey}
               isTooltip={true}
               tooltipText={(
@@ -132,7 +131,7 @@ class MyWallet extends Component<Props> {
                   <p>Please store your private key securely, as its compromise can lead to loss of control of your account and assets within the account.</p>
                 </Fragment>
               )}
-              styleType="pullSize"
+              styleType="oneLine"
               readOnly
               eye
             />
@@ -140,7 +139,6 @@ class MyWallet extends Component<Props> {
               className="MyWallet__Input"
               name="Klaytn Wallet Key"
               label="Klaytn Wallet Key"
-              labelClassName="MyWallet__hideButton"
               value={this.privatekeySet()}
               isTooltip={true}
               tooltipText={(

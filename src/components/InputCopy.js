@@ -5,6 +5,20 @@ import { copy, madeBulletString } from 'utils/misc'
 import Tooltip from 'components/Tooltip'
 import './InputCopy.scss'
 
+/*
+ * A read-only text field.
+ *
+ * - eye: If nonempty, the contents are hidden by default and appears when
+ *   the user clicks an eye icon
+ * - styleType:
+ *   - "": Value and COPY buttons are on the same line
+ *   - "oneLine": Value takes up one line and COPY button is placed below the line
+ *   - "twoLine": Value takes up two lines and COPY button is placed below the lines
+ *
+ * As opposed to its name 'InputCopy', the values are rendered inside <div>
+ * for security reason related to CVE-2022-32969 (browser information leak via
+ * non-password input field)
+ */
 class InputCopy extends Component<Props> {
   state = {
     isCopied: false,
