@@ -134,7 +134,6 @@ class MyWallet extends Component<Props> {
               )}
               styleType="pullSize"
               readOnly
-              autoFocus
               eye
             />
             <InputCopy
@@ -152,7 +151,6 @@ class MyWallet extends Component<Props> {
               )}
               styleType="twoLine"
               readOnly
-              autoFocus
               eye
             />
             <div className="MyWallet__bottom">

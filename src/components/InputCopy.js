@@ -38,12 +38,7 @@ class InputCopy extends Component<Props> {
       name,
       value,
       label,
-      onChange,
-      onKeyPress,
-      placeholder,
       width,
-      disabled,
-      err,
       eye,
       isTooltip,
       tooltipText,
@@ -82,11 +77,7 @@ class InputCopy extends Component<Props> {
                 ? (!showPassword ? 'password' : 'text')
                 : 'text'}
             value={value}
-            onChange={onChange}
-            onKeyPress={onKeyPress}
-            placeholder={placeholder}
-            disabled={disabled}
-            className={cx('InputCopy__input', { 'InputCopy--err': err, 'hide': styleType == 'twoLine' })}
+            className={cx('InputCopy__input', { 'hide': styleType == 'twoLine' })}
             readOnly
           />
           {styleType == 'twoLine' && <textarea className={cx('textarea__Copy', {'textarea__password': eye && !showPassword })} value={ eye && !showPassword ? bullet : value} readOnly></textarea>}
