@@ -28,7 +28,6 @@ class MyWallet extends Component<Props> {
 
   state = {
     balance: null,
-    hidePrivateKey: true,
     klayAccounts : sessionStorage.getItem('address'),
     showPopup: false,
 
@@ -58,9 +57,6 @@ class MyWallet extends Component<Props> {
   //   console.log(address)
   //   return caver.utils.hexToUtf8(address)
   // }
-  togglePrivateKey = () => {
-    this.setState({ hidePrivateKey: !this.state.hidePrivateKey })
-  }
   HRADataChange = () => {
     let address = sessionStorage.getItem('address')
     if(address){
@@ -91,7 +87,7 @@ class MyWallet extends Component<Props> {
     this.setState({ showPopup: false })
   }
   render() {
-    const { hidePrivateKey, klayAccounts, showPopup } = this.state
+    const { klayAccounts, showPopup } = this.state
     const { isTokenAddMode } = this.props
     return !!this.wallet && (
       <div className={cx('MyWallet', {
@@ -127,9 +123,7 @@ class MyWallet extends Component<Props> {
               className="MyWallet__Input"
               name="privateKey"
               label="Private Key"
-              onLabelClick={this.togglePrivateKey}
               labelClassName="MyWallet__hideButton"
-              type={hidePrivateKey ? 'password' : 'text'}
               value={this.wallet.privateKey}
               isTooltip={true}
               tooltipText={(
@@ -147,9 +141,7 @@ class MyWallet extends Component<Props> {
               className="MyWallet__Input"
               name="Klaytn Wallet Key"
               label="Klaytn Wallet Key"
-              onLabelClick={this.togglePrivateKey}
               labelClassName="MyWallet__hideButton"
-              type={hidePrivateKey ? 'password' : 'text'}
               value={this.privatekeySet()}
               isTooltip={true}
               tooltipText={(
