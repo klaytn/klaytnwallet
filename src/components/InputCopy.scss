@@ -13,11 +13,6 @@
   &.not__margin { 
     margin-bottom: 4px;
   }
-  &.textarea__show .textarea__Copy {
-    @include font-style('caption-alert');
-    color: $Red;
-    padding: 7px 8px 8px;
-  }
 }
 
 .InputCopy__inputWrapper {
@@ -58,27 +53,32 @@
     opacity: 0;
     z-index: -1;
   }
-  .textarea__Copy {
-    position: relative;
-    width: 100%;
-    padding: 7px 37px 6px 8px;
-    height: 50px;
-    border: none;
-    resize: none;
-    color: $dark-blue-grey;
-    background-color: #f0f2fc;
-    outline: none;
-    z-index: 1;
-    @include font-style('body');
-    &.textarea__password {
-      font-size: 18px;
-      line-height: 1.1;
-    }
-  }
-  
 }
 
-.InputCopy__input {
+.InputCopy__twoLine {
+  @include font-style('body');
+  text-overflow: ellipsis;
+  color: $dark-blue-grey;
+  background-color: #f0f2fc;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  height: 30px;
+  line-height: normal;
+  height: 50px;
+  display: block;
+  padding: 7px 37px 6px 8px;
+  word-break: break-all;
+
+  &::placeholder {
+    color: $middle-blue-grey;
+  }
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+}
+.InputCopy__oneLine {
   @include font-style('body');
   text-overflow: ellipsis;
   color: $dark-blue-grey;
@@ -100,7 +100,10 @@
     background-color: transparent;
   }
 }
-.InputCopy__eye +.InputCopy__input  {
+.InputCopy__bullet {
+  font-size: 18px;
+}
+.InputCopy__eye +.InputCopy__oneLine {
   padding-right: 30px;
 }
 .InputCopy__copyButton {

@@ -9,7 +9,8 @@ class InputCopy extends Component<Props> {
   state = {
     isCopied: false,
     showPassword: false,
-    bullet: madeBulletString(112),
+    bulletOneLine: madeBulletString(66),
+    bulletTwoLine: madeBulletString(112),
   }
 
   copy = () => {
@@ -31,8 +32,13 @@ class InputCopy extends Component<Props> {
       showPassword: !this.state.showPassword,
     })
   }
+
+  showBullet = () => {
+    return this.eye && !this.showPassword;
+  }
+
   render() {
-    const { isCopied, showPassword, bullet } = this.state
+    const { isCopied, showPassword, bulletOneLine, bulletTwoLine } = this.state
     const {
       className,
       name,
@@ -59,7 +65,7 @@ class InputCopy extends Component<Props> {
           </Tooltip>}
 
         <div className={cx('InputCopy__inputWrapper', { 'InputCopy__inputWrapper__type2': subName, 'InputCopy__inputWrapper__type3': styleType })}>
-        {eye && (
+          {eye && (
             <button
               className={cx('InputCopy__eye', {
                 'InputCopy__eye--show': !showPassword,
@@ -73,14 +79,25 @@ class InputCopy extends Component<Props> {
           <input
             ref={($input) => this.$input = $input}
             name={name}
-            type={eye
-                ? (!showPassword ? 'password' : 'text')
-                : 'text'}
+            type="password"
             value={value}
-            className={cx('InputCopy__input', { 'hide': styleType == 'twoLine' })}
+            className="hide"
             readOnly
           />
-          {styleType == 'twoLine' && <textarea className={cx('textarea__Copy', {'textarea__password': eye && !showPassword })} value={ eye && !showPassword ? bullet : value} readOnly></textarea>}
+          {styleType != 'twoLine' && (
+            <div
+             className={cx('InputCopy__oneLine', { 'InputCopy__bullet': eye && !showPassword })}
+            >
+              {eye && !showPassword ? bulletOneLine : value}
+            </div>
+          )}
+          {styleType == 'twoLine' && (
+            <div
+             className={cx('InputCopy__twoLine', { 'InputCopy__bullet': eye && !showPassword })}
+            >
+            {eye && !showPassword ? bulletTwoLine : value}
+            </div>
+          )}
           
           <button
             className={cx('InputCopy__copyButton', {
