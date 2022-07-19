@@ -16,8 +16,10 @@
 }
 
 .input__box {
-  padding-bottom: 40px;
-  .InputCopy + .InputCopy {
+  .InputPasswordCopy__input {
+    color: #d64a70;
+  }
+  .InputPasswordCopy + .InputPasswordCopy {
     margin-top: 15px;
   }
 }

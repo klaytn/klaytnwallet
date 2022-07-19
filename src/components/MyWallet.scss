@@ -46,7 +46,8 @@
 
 .MyWallet__Input {
   margin-bottom: 40px;
-  .InputCopy__label{
+  padding-bottom: 0px;
+  .InputCopy__label, .InputPasswordCopy__label {
     display: inline-block;
   }
 }

@@ -33,7 +33,7 @@
 }
 
 .Header__link {
-  @include font-style('caption')
+  @include font-style('caption');
   color: $steel-blue;
   font-size: 12px;
   float: right;
