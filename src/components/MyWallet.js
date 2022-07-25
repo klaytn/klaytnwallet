@@ -7,6 +7,7 @@ import { caver } from 'klaytn/caver'
 import { pipe } from 'utils/Functional'
 import Input from 'components/Input'
 import InputCopy from 'components/InputCopy'
+import InputPasswordCopy from 'components/InputPasswordCopy'
 import KeystorePopup from 'components/KeystorePopup'
 import MyToken from 'components/MyToken'
 import Button from 'components/Button'
@@ -123,7 +124,7 @@ class MyWallet extends Component<Props> {
               subName="Hex"
             />
             
-            <InputCopy
+            <InputPasswordCopy
               className="MyWallet__Input"
               name="privateKey"
               label="Private Key"
@@ -143,7 +144,7 @@ class MyWallet extends Component<Props> {
               autoFocus
               eye
             />
-            <InputCopy
+            <InputPasswordCopy
               className="MyWallet__Input"
               name="Klaytn Wallet Key"
               label="Klaytn Wallet Key"

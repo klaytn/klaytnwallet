@@ -81,7 +81,7 @@ class AccessByPrivateKey extends Component<Props> {
         </p>
         <Input
           label="Klaytn Wallet Key or Private Key"
-          type="text"
+          type="password"
           autoFocus
           name="privatekey"
           className="AccessByPrivatekey__input"

@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router'
 import jsonFormat from 'json-format'
 import { Link } from 'react-router'
 import InputCopy from 'components/InputCopy'
+import InputPasswordCopy from 'components/InputPasswordCopy'
 import WalletCreationStepPlate from 'components/WalletCreationStepPlate'
 import { klayKeyMade } from 'utils/crypto'
 import { KLAYTN_SCOPE_URL } from 'walletConstants/url'
@@ -68,16 +69,19 @@ class WalletCreationStep3 extends Component<Props> {
         )}
         render={() => (
           <div className="input__box">
-            <InputCopy
+            <InputPasswordCopy
               value={privateKey}
               label="Private Key"
+              className="textarea__show"
+              eye
             />
-            <InputCopy
+            <InputPasswordCopy
               value={this.madeWalletKey()}
               className="textarea__show"
               label="Klaytn Wallet Key"
               clickEvent={this.togglePrivateKey}
               styleType="twoLine"
+              eye
             />
             </div>
         )}
