@@ -199,6 +199,7 @@ class WalletTransfer2 extends Component<Props> {
     await caver.klay.sendTransaction({
       type: setType,
       from: this.HRADataChange(),
+      data:'',
       to,
       value: caver.utils.toWei(value, 'ether'),
       gas: gas || DEFAULT_KLAY_TRANSFER_GAS,
