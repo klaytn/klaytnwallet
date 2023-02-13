@@ -81,6 +81,7 @@ class WalletHRACreationStep1 extends Component<Props> {
       type: 'ACCOUNT_CREATION',
       from: klayWallet.address,
       to: humanReadableAddress,
+      data:'',
       publicKey: newPublicKey,
       gas: BN(HRAMADEVALUE/25).multipliedBy(0.000000001).toFixed(),
       value: 0,
