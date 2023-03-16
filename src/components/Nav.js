@@ -13,7 +13,7 @@ if(KLAYTN_URL_NAME === 'Main Network'){
     { title: 'Create Account', menuClass: 'menu-create', link: '/create', icon: 'icon-create', },
     { title: 'View Account Info', link: '/access', dropDown: false , icon: 'icon-info' },
     { title: 'Send KLAY & Token', link: '/transfer', search:'?next=transfer', dropDown: false ,  icon: 'icon-send' },
-    { title: 'More', menuClass: 'menu-more',  link: null, isDropDown: true, icon: 'icon-more', dropDown: true , menu: [{name: 'Klaytnscope',pageMove: true, subLink: KLAYTN_SCOPE_URL}, {name: 'Klaytnfinder',pageMove: true, subLink: KLAYTN_FINDER_URL}, {name: 'Remix IDE', pageMove: true, subLink: KLAYTN_IDE_URL },{name: 'Klaytn Docs', pageMove: true, subLink: KLAYTN_DOCS_URL }]},
+    { title: 'More', menuClass: 'menu-more',  link: null, isDropDown: true, icon: 'icon-more', dropDown: true , menu: [{name: 'Klaytnfinder', pageMove: true, subLink: KLAYTN_FINDER_URL}, {name: 'Klaytnscope', pageMove: true, subLink: KLAYTN_SCOPE_URL}, {name: 'Remix IDE', pageMove: true, subLink: KLAYTN_IDE_URL }, {name: 'Klaytn Docs', pageMove: true, subLink: KLAYTN_DOCS_URL }]},
   ]
 }else{
   navLinks = [
@@ -22,7 +22,7 @@ if(KLAYTN_URL_NAME === 'Main Network'){
     { title: 'View Account Info', link: '/access', dropDown: false , icon: 'icon-info' },
     { title: 'Send KLAY & Token', link: '/transfer', search:'?next=transfer', dropDown: false ,  icon: 'icon-send' },
     { title: 'KLAY Faucet', link: '/faucet', dropDown: false ,search: '?next=faucet', icon: 'icon-faucet' },
-    { title: 'More', menuClass: 'menu-more',  link: null, isDropDown: true, icon: 'icon-more', dropDown: true , menu: [{name: 'Klaytnscope',pageMove: true, subLink: KLAYTN_SCOPE_URL}, {name: 'Klaytnfinder',pageMove: true, subLink: KLAYTN_FINDER_URL}, {name: 'Remix IDE', pageMove: true, subLink: KLAYTN_IDE_URL },{name: 'Klaytn Docs', pageMove: true, subLink: KLAYTN_DOCS_URL }]},
+    { title: 'More', menuClass: 'menu-more',  link: null, isDropDown: true, icon: 'icon-more', dropDown: true , menu: [{name: 'Klaytnfinder', pageMove: true, subLink: KLAYTN_FINDER_URL}, {name: 'Klaytnscope', pageMove: true, subLink: KLAYTN_SCOPE_URL}, {name: 'Remix IDE', pageMove: true, subLink: KLAYTN_IDE_URL }, {name: 'Klaytn Docs', pageMove: true, subLink: KLAYTN_DOCS_URL }]},
   ]
 }
 
