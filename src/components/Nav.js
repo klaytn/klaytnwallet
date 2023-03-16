@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import cx from 'classnames'
 
 import TabList from 'components/TabList'
-import { KLAYTN_SCOPE_URL,KLAYTN_DOCS_URL,KLAYTN_IDE_URL, KLAYTN_URL_NAME } from 'walletConstants/url'
+import { KLAYTN_SCOPE_URL,KLAYTN_DOCS_URL,KLAYTN_IDE_URL, KLAYTN_URL_NAME, KLAYTN_FINDER_URL } from 'walletConstants/url'
 import './Nav.scss'
 
 let navLinks
