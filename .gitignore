@@ -9,3 +9,4 @@ logs/
 
 # env
 .env
+/.idea/
