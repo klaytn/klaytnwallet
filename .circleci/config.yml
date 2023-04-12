@@ -67,9 +67,7 @@ jobs:
       - run:
           name: "Signoff slack notification"
           command: |
-              sudo apt-get update && sudo apt-get install -y ca-certificates
-              sudo apt-get install libgnutls-openssl27
-              curl --data '{"text": "A deployment needs approval: <'"https://circleci.com/workflow-run/$CIRCLE_WORKFLOW_ID|$CIRCLE_PROJECT_REPONAME - $CIRCLE_BRANCH"'>"}' "$SLACK_WEBHOOK_URL"
+              curl --data '{"text": "A deployment needs approval: <'"https://circleci.com/workflow-run/$CIRCLE_WORKFLOW_ID|$CIRCLE_PROJECT_REPONAME - $CIRCLE_BRANCH"'>"}' "$SLACK_WEBHOOK_URL" --insecure
 
   release_PR:
     <<: *defaults
