@@ -195,11 +195,11 @@ workflows:
             only: master
 
     - signoff_notify:
-        requires:
-          - major_tagging
+#        requires:
+#          - major_tagging
         filters:
           branches:
-            only: master
+            only: check_signoff_notify
 
     - signoff_hold:
         requires:
